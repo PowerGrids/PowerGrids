@@ -4,6 +4,7 @@ This repository contains the code for PowerGrids, a Modelica library for electro
 
 ## Table of Contents
 - [About PowerGrids](#about)
+- [Getting started](#start)
 - [Get involved](#contributions)
 - [Quoting PowerGrids](#quoting)
 - [License](#license)
@@ -12,7 +13,7 @@ This repository contains the code for PowerGrids, a Modelica library for electro
 
 <a name="about"></a>
 ## About PowerGrids 
-The PowerGrids library is a library for the modelling of power generation and transmission systems for electro-mechanical phenomena ("phasor" approximation). It could serve as a 
+The PowerGrids library is a library for the modelling of power generation and transmission systems for electro-mechanical phenomena ("phasor" approximation). 
 
 The main goal of the library is to demonstrate how it is possible to exploit the power of the Modelica language to develop fully declarative electro-mechanical models of power generation and transmission systems that are self-documented, easy to understand, and easy to modify and improve. For physical component models, the code is as close as possible to the model description as found in textbooks and basic theory manuals, entirely leaving to the Modelica tool the task of solving the equations. For control systems, block diagrams are used, as they are immediately recognized by domain experts.
 
@@ -33,6 +34,12 @@ Note that most of the models and test cases run with this version of OpenModelic
 
 If you want more detail on PowerGrids, you can either go through the library documentation or have a look to the [Modelica Conference paper](https://modelica.org/events/modelica2019/proceedings/html/papers/Modelica2019paper5D3.pdf).
 
+<a name="start"></a>
+## Getting started!
+To begin using the PowerGrids library, we recommend you to open it in your favorite Modelica environment and to follow the tutorial available in the UsersGuide section. The tutorial provides a large overview of the library main features while helping you to be accustomized to the library main concepts and choices.
+
+You can also have a look to the existing models, available in the Electrical and Control directories, as well as the test cases provided with the library, available in the Examples part.
+
 <a name="contributions"></a>
 ## Get involved!
 PowerGrids is an open-source project and as such, questions, discussions, contributions and feedbacks are very welcome. It is also an ongoing project and we are actively working on improving it and making it better so we encourage you to regularly check the project status and progresses.
@@ -41,6 +48,7 @@ Contributions in different forms, such as the addition of a new model, the creat
 <a name="quoting"></a>
 ## Quoting PowerGrids
 If you use the PowerGrids library in your work or paper, it is not mandatory but we kindly ask you to cite the following paper in your presentations or publications: 
+
 A. Bartolini, F. Casella, and A. Guironnet, “Towards Pan-European Power Grid Modelling in Modelica: Design Principles and a Prototype for a Reference Power System Library,” Proceedings of the 13th International Modelica Conference, Regensburg, Germany, March 4–6, 2019, Feb. 2019
 <a name="license"></a>
 ## License
