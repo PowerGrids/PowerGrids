@@ -1,0 +1,7 @@
+PowerGrids developers:
+
+* Andrea Bartolini (Dynamica s.r.l.)
+* Francesco Casella (Politecnico di Milano / Dynamica s.r.l.)
+* Adrien Guironnet (RTE)
+* Romain Losseau (RTE)
+* Marianne Saugier (RTE)
