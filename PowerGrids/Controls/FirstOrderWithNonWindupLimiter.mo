@@ -50,6 +50,5 @@ equation
 (see text view)"), Line(origin = {85, -61}, points = {{75, 25}}), Line(origin = {-4.62687, 9.80597}, points = {{0, 14}, {0, -8}}, arrow = {Arrow.None, Arrow.Open}, arrowSize = 5), Text(origin = {-22, 53}, extent = {{-96, 11}, {16, -3}}, textString = "Integrator charging
  upper limiter engaged"), Text(origin = {78, 53}, extent = {{-94, 11}, {16, -3}}, textString = "Integrator discharging
  lower limiter engaged")}),
-    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 0.2),
   Documentation(info = "<html><head></head><body><span style=\"font-size: 12px;\">Model to implement a first order filter:</span><div style=\"font-size: 12px;\"><br></div><div style=\"font-size: 12px;\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>y &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;k</div><div style=\"font-size: 12px;\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>- = -------------</div><div style=\"font-size: 12px;\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>u&nbsp; &nbsp; &nbsp; 1 + s*T</div><div style=\"font-size: 12px;\"><br></div><div style=\"font-size: 12px;\">It is required that T &gt; 0.</div><div style=\"font-size: 12px;\"><br></div><div style=\"font-size: 12px;\">Output limiter with anti-windup is also implemented.</div></body></html>"));
 end FirstOrderWithNonWindupLimiter;

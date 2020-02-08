@@ -47,6 +47,5 @@ equation
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, initialScale = 0.1), graphics = {Text(origin = {-91, -67}, extent = {{-35, 5}, {227, -19}}, textString = "The case noDynamics = true is handled via conditional blocks (see text view)
 When noDynamics = true the firstOrder block is not instantiated
 and the zero block is instantiated instead")}),
-    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-06, Interval = 0.2),
   Documentation(info = "<html><head></head><body><span style=\"font-size: 12px;\">Model to implement a Proportional-Integral filter:</span><div style=\"font-size: 12px;\"><br></div><div style=\"font-size: 12px;\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>y &nbsp; &nbsp; &nbsp; &nbsp; Ki</div><div style=\"font-size: 12px;\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>- = Kp +&nbsp;</div><div style=\"font-size: 12px;\"><span class=\"Apple-tab-span\" style=\"white-space: pre;\">	</span>u &nbsp; &nbsp; &nbsp; &nbsp; s</div><div style=\"font-size: 12px;\"><br></div><div style=\"font-size: 12px;\">Output limiter with anti-windup is also implemented.</div></body></html>"));
 end PIWithNonWindupLimiter;

@@ -64,7 +64,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(lineColor = {0, 0, 127}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin = {-4, 119}, lineColor = {0, 0, 255}, extent = {{-48, 11}, {48, -11}}, textString = "%name"), Text(origin = {0, 6}, extent = {{-56, 36}, {56, -36}}, textString = "Vt It"), Text(origin = {-11, -23}, extent = {{-65, 1}, {87, -51}}, textString = "Transducer"), Text(origin = {-1, 79}, extent = {{-65, 1}, {57, -39}}, textString = "Exciter")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.02),
-  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
   Documentation(info = "<html><head></head><body><span style=\"font-size: 12px;\">This class implements a model of the voltage transducer tipically used in static excitation systems,&nbsp;</span><span style=\"font-size: 12px;\">according to the IEEE Std 421.5TM-2005.</span><div><br></div><div>More precisely, said transducer is included in the exciters models of Type ST3A and ST4B of the IEEE Std 421.5TM-2005.</div></body></html>"));
 end ExciterVoltageTransducerIEEE;
