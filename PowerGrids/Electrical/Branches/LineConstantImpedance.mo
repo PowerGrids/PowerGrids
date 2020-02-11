@@ -1,16 +1,15 @@
 within PowerGrids.Electrical.Branches;
-
 model LineConstantImpedance "Transmission line with constant impedance"
   extends BaseClasses.PiNetwork(
-    final UNomA = UNom, 
+    final UNomA = UNom,
     final UNomB = UNom);
   extends Icons.Line;
 
   parameter Types.Voltage UNom "Nominal/rated voltage";
   parameter Types.Resistance R "Series resistance";
-  parameter Types.Resistance X "Series reactance";
+  parameter Types.Reactance X "Series reactance";
   parameter Types.Conductance G = 0  "Shunt conductance";
-  parameter Types.Conductance B = 0 "Shunt susceptance";
+  parameter Types.Susceptance B = 0 "Shunt susceptance";
 equation
   k = Complex(1);
   Y = 1/Complex(R, X);

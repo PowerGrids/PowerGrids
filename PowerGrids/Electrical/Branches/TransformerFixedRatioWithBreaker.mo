@@ -4,18 +4,18 @@ model TransformerFixedRatioWithBreaker
   extends Icons.Transformer;
 
   type BreakersState = enumeration(
-    Bc "breaker closed", 
-    Bo "breaker open"
-  );
+    Bc "breaker closed",
+    Bo "breaker open");
   parameter Boolean useBreaker = false "Use breaker (port b)" annotation(
     Dialog(group = "External Inputs"),
     choices(checkBox = true));
   parameter SI.PerUnit rFixed = 1 "Fixed transformer ratio VB/VA";
   parameter SI.Angle thetaFixed = 0 "Fixed phase lead of VB w.r.t. VA";
   parameter Types.Resistance R "Series resistance on B side";
-  parameter Types.Resistance X "Series reactance on B side";
+  parameter Types.Reactance X "Series reactance on B side";
   parameter Types.Conductance G = 0 "Shunt conductance on B side";
-  parameter Types.Conductance B = 0"Shunt susceptance on B side";
+  parameter Types.Susceptance B = 0
+                                   "Shunt susceptance on B side";
   parameter Boolean breakerStatusStart = true "Breaker start status - true means breaker closed" annotation(
     Dialog(tab = "Initialization"));
   final parameter Types.ComplexAdmittance Yseries = Complex(1)/Complex(R, X) "Series admittance" annotation(Evaluate = true);
@@ -31,21 +31,21 @@ model TransformerFixedRatioWithBreaker
     Placement(visible = true, transformation(origin = {70, 20}, extent = {{-20, -20}, {20, 20}}, rotation = -90), iconTransformation(origin = {70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 
 initial algorithm
-  if breakerStatusStart then 
+  if breakerStatusStart then
     breakerStatus := BreakersState.Bc;
   else
-    breakerStatus := BreakersState.Bo;  
+    breakerStatus := BreakersState.Bo;
   end if;
-  
+
 protected
   Modelica.Blocks.Interfaces.BooleanInput breakerStatusInInternal(start = breakerStatusStart, fixed = true) "breaker Status (port B)";
 
 algorithm
-  when breakerStatus == BreakersState.Bc 
+  when breakerStatus == BreakersState.Bc
        and not pre(breakerStatusInInternal) then
     breakerStatus := BreakersState.Bo "Bc to Bo";
 
-  elsewhen breakerStatus == BreakersState.Bo 
+  elsewhen breakerStatus == BreakersState.Bo
            and pre(breakerStatusInInternal) then
     breakerStatus := BreakersState.Bc "Bo to Bc";
 
@@ -57,12 +57,12 @@ equation
     YA_actual = Complex(0);
     YB_actual = Yshunt;
 
-  else 
+  else
     // Bo
     Y_actual = Complex(0);
     YA_actual = YbreakerOpen;
     YB_actual = Complex(0);
-  end if;  
+  end if;
 
   k = CM.fromPolar(rFixed, thetaFixed);
   Y = Y_actual;
