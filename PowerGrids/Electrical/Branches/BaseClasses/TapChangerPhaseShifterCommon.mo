@@ -3,19 +3,19 @@ partial model TapChangerPhaseShifterCommon "Common base class for tap-changer/ph
   extends BaseClasses.PiNetwork;
   extends Icons.Transformer;
 
-  final constant Real NotUsed = Modelica.Constants.inf "Generic default value for not-used parameters"; 
-  type MonitoredQuantitySelection = enumeration (currentMagnitude "phase shifter monitors the port_b current magnitude", 
-                                                 activePower "phase shifter monitors the port_b active power");
-  
+  final constant Real NotUsed = Modelica.Constants.inf "Generic default value for not-used parameters";
+  type MonitoredQuantitySelection = enumeration(currentMagnitude "phase shifter monitors the port_b current magnitude",
+                                                activePower "phase shifter monitors the port_b active power");
+
   parameter Types.Resistance R = 0 "Series resistance";
   parameter Types.Reactance X = 0 "Series reactance";
   parameter Types.Conductance G = 0 "Shunt conductance";
-  parameter Types.Conductance B = 0 "Shunt susceptance";
+  parameter Types.Susceptance B = 0 "Shunt susceptance";
 
 equation
   Y = 1/Complex(R, X);
-  YA = Complex (0);
-  YB = Complex (G, B);
+  YA = Complex(0);
+  YB = Complex(G, B);
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
