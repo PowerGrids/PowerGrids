@@ -1,8 +1,7 @@
 within PowerGrids.Electrical.Branches.BaseClasses;
-
 partial model PiNetwork "Generic Pi-Network base model"
   extends Electrical.BaseClasses.TwoPortAC;
-  Types.ComplexImpedance Y "Series admittance";
+  Types.ComplexAdmittance Y "Series admittance";
   Types.ComplexAdmittance YA "Shunt admittance at port a";
   Types.ComplexAdmittance YB "Shunt admittance at port b";
   Types.ComplexPerUnit k "Complex ratio of ideal transformer at port A (vB/vA)";

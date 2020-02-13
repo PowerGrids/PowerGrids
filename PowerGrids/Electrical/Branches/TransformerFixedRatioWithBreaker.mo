@@ -5,17 +5,17 @@ model TransformerFixedRatioWithBreaker
 
   type BreakersState = enumeration(
     Bc "breaker closed",
-    Bo "breaker open"
-  );
+    Bo "breaker open");
   parameter Boolean useBreaker = false "Use breaker (port b)" annotation(
     Dialog(group = "External Inputs"),
     choices(checkBox = true));
   parameter SI.PerUnit rFixed = 1 "Fixed transformer ratio VB/VA";
   parameter SI.Angle thetaFixed = 0 "Fixed phase lead of VB w.r.t. VA";
   parameter Types.Resistance R "Series resistance on B side";
-  parameter Types.Resistance X "Series reactance on B side";
+  parameter Types.Reactance X "Series reactance on B side";
   parameter Types.Conductance G = 0 "Shunt conductance on B side";
-  parameter Types.Conductance B = 0"Shunt susceptance on B side";
+  parameter Types.Susceptance B = 0
+                                   "Shunt susceptance on B side";
   parameter Boolean breakerStatusStart = true "Breaker start status - true means breaker closed" annotation(
     Dialog(tab = "Initialization"));
   final parameter Types.ComplexAdmittance Yseries = Complex(1)/Complex(R, X) "Series admittance" annotation(Evaluate = true);
