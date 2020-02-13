@@ -22,9 +22,9 @@ model TransformerFixedRatioWithBreaker
   final parameter Types.ComplexAdmittance Yshunt = Complex(G, B) "Shunt admittance at port B";
   final parameter Types.ComplexAdmittance YbreakerOpen = Yseries*Yshunt/(Yseries + Yshunt) "Total admittance when breaker is open (port B)" annotation(Evaluate = true);
 
-  discrete Types.ComplexAdmittance Y_actual "Actual series admittance";
-  discrete Types.ComplexAdmittance YA_actual "Actual shunt admittance at port A";
-  discrete Types.ComplexAdmittance YB_actual "Actual shunt admittance at port B";
+  Types.ComplexAdmittance Y_actual "Actual series admittance";
+  Types.ComplexAdmittance YA_actual "Actual shunt admittance at port A";
+  Types.ComplexAdmittance YB_actual "Actual shunt admittance at port B";
   BreakersState breakerStatus(start = BreakersState.Bc) "breacker current status";
 
   Modelica.Blocks.Interfaces.BooleanInput breakerStatusIn if useBreaker "Breaker Status (port B) - true means breaker closed" annotation(
