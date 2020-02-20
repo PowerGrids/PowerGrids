@@ -3,9 +3,9 @@ partial model TapChangerPhaseShifterLogicMax
   extends TapChangerPhaseShifterLogicCommon;
   
 protected
-  Boolean valueUnderStop(start = false) "whether the monitored signal is under the stop limit";
-  Boolean valueAboveMax(start = false) "wheter the monitored signal is above the maximum limit";
-  Types.Time tValueAboveMaxWhileRunning(start = timeInfinity, fixed = true) "time when the monitored signal went above the maximum limit and the tap-changer/phase-shifter is running";
+  Boolean valueUnderStop(start = false) "Whether the monitored signal is under the stop limit";
+  Boolean valueAboveMax(start = false) "Whether the monitored signal is above the maximum limit";
+  Types.Time tValueAboveMaxWhileRunning(start = timeInfinity, fixed = true) "Time when the monitored signal went above the maximum limit and the tap-changer/phase-shifter is running";
 
 equation
   lookingToDecreaseTap = pre(running) and pre(valueAboveMax) and directAction;
@@ -158,5 +158,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html><head></head><body>This class implements a model for a tap changer/phase-shifter with a MAX type logic. Said logic takes a maximum and stop values, and tries to bring the value back to the stop one when the maximum is reached.<div><br></div><div>The model is realized as asynchronous state-machine, the machine states are defined using the enumeration type State, defined in the <a href=\"Modelica:///PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterLogicCommon\">TapChangerPhaseShifterLogicCommon</a> class.&nbsp;</div><div><br></div><div>The transitions are defined using a when - elsewen structure, which allows the asyncronous behavior of the machine, and the relevant conditions are evaluated at the previous integration step.</div><div><br></div><div>The input variables are two booleans, which indicate if the monitored variable is under the stop limit or above the Max one.</div><div><br></div><div>The output variable tap represents the position of the tap-changer/phase shifter to be used in the next integration step, and it is updated by the transitions of the status-machine.</div></body></html>"));
+  Documentation(info = "<html><head></head><body>This class implements a model for a tap changer/phase-shifter with a maximum type logic. Said logic takes a maximum and stop values, and tries to bring the value back to the stop one when the maximum is reached.<div><br></div><div>The model is realized as asynchronous state-machine, the machine states are defined using the enumeration type State, defined in the <a href=\"Modelica:///PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterLogicCommon\">TapChangerPhaseShifterLogicCommon</a> class.&nbsp;</div><div><br></div><div>The transitions are defined using a when - elsewen structure, which allows the asyncronous behavior of the machine, and the relevant conditions are evaluated at the previous integration step.</div><div><br></div><div>The input variables are two booleans, which indicate if the monitored variable is under the stop limit or above the maximum one.</div><div><br></div><div>The output variable tap represents the position of the tap-changer/phase shifter to be used in the next integration step, and it is updated by the transitions of the state-machine.</div></body></html>"));
 end TapChangerPhaseShifterLogicMax;

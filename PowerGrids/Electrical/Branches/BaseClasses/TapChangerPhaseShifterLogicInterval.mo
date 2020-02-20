@@ -1,15 +1,15 @@
 within PowerGrids.Electrical.Branches.BaseClasses;
 model TapChangerPhaseShifterLogicInterval
   extends TapChangerPhaseShifterLogicCommon;
-  parameter Types.Time tToStandardState = 0.1 "time lag before transition to standard state, in order to avoid chattering";
+  parameter Types.Time tToStandardState = 0.1 "Time lag before transition to standard state, in order to avoid chattering";
 
 protected
-    Boolean valueUnderMin(start = false) "true if the monitored signal is under the minimum limit";
-    Boolean valueAboveMax(start = false) "true if the monitored signal is above the maximum limit";
-    Boolean valueInRange = not(pre(valueUnderMin)) and not(pre(valueAboveMax)) "true if the monitored signal is into the [valueMin ; valueMax] range";
-    Types.Time tValueUnderMinWhileRunning(start = timeInfinity) "time when the monitored signal went under the minimum limit and the tap-changer/phase-shifter is running";
-    Types.Time tValueAboveMaxWhileRunning(start = timeInfinity) "time when the monitored signal went above the maximum limit and the tap-changer/phase-shifter is running";
-    Types.Time tValueInRangeWhileRunning(start = timeInfinity) "time when the monitored signal comes back into the [valueMin ; valueMax] range and the tap-changer/phase-shifter is running";
+    Boolean valueUnderMin(start = false) "True if the monitored signal is under the minimum limit";
+    Boolean valueAboveMax(start = false) "True if the monitored signal is above the maximum limit";
+    Boolean valueInRange = not(pre(valueUnderMin)) and not(pre(valueAboveMax)) "Rrue if the monitored signal is into the [valueMin ; valueMax] range";
+    Types.Time tValueUnderMinWhileRunning(start = timeInfinity) "Time when the monitored signal went under the minimum limit and the tap-changer/phase-shifter is running";
+    Types.Time tValueAboveMaxWhileRunning(start = timeInfinity) "Time when the monitored signal went above the maximum limit and the tap-changer/phase-shifter is running";
+    Types.Time tValueInRangeWhileRunning(start = timeInfinity) "Time when the monitored signal comes back into the [valueMin ; valueMax] range and the tap-changer/phase-shifter is running";
 
 equation
   lookingToDecreaseTap = (pre(running) and pre(valueAboveMax) and directAction) or (pre(running) and pre(valueUnderMin) and reverseAction);
@@ -222,5 +222,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html><head></head><body>This class implements a&nbsp;model for tap-changer/phase-shifter with an INTERVAL type logic. Said logic tries to keep the monitored value within a [valueMin ; valueMax] interval.<div><br></div><div><div>The model is realized as asynchronous state-machine, the machine states are defined using the enumeration type State, defined in the <a href=\"Modelica:///PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterLogicCommon\">TapChangerPhaseShifterLogicCommon</a> class.&nbsp;</div><div><br></div><div>The transitions are defined using a when - elsewen structure, which allows the asynchronous behavior of the machine, and the relevant conditions are evaluated at the previous integration step.</div><div><br></div><div>The input variables are two booleans, which indicate if the monitored variable is under the Min limit or above the Max one.</div><div><br></div><div>The output variable tap represents the position of the tap-changer/phase shifter to be used in the next integration step, and it is updated by the transitions of the status-machine.</div></div></body></html>"));
+  Documentation(info = "<html><head></head><body>This class implements a&nbsp;model for tap-changer/phase-shifter with an interval type logic. Said logic tries to keep the monitored value within a [valueMin ; valueMax] interval.<div><br></div><div><div>The model is realized as asynchronous state-machine, the machine states are defined using the enumeration type State, defined in the <a href=\"Modelica:///PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterLogicCommon\">TapChangerPhaseShifterLogicCommon</a> class.&nbsp;</div><div><br></div><div>The transitions are defined using a when - elsewen structure, which allows the asynchronous behavior of the machine, and the relevant conditions are evaluated at the previous integration step.</div><div><br></div><div>The input variables are two booleans, which indicate if the monitored variable is under the minimu limit or above the maximum one.</div><div><br></div><div>The output variable tap represents the position of the tap-changer/phase shifter to be used in the next integration step, and it is updated by the transitions of the state-machine.</div></div></body></html>"));
 end TapChangerPhaseShifterLogicInterval;
