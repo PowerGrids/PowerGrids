@@ -5,11 +5,13 @@ model ReferenceBus "Reference bus for an isolated grid"
   extends Icons.Bus;
   import PowerGrids.Types.Choices.InitializationOption;
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
+  parameter Types.Voltage UStart = UNom "Initial voltage magnitude, phase-to-phase";
+  parameter Types.Angle thetaStart = 0 "Initial phase of voltage phasor";
   final parameter Types.ActivePower PSlack(fixed = false) "Constant slack active power leaving system through bus";
   final parameter Types.ReactivePower QSlack(fixed = false) "Constant slack reactive power leaving system through bus";
 initial equation
 // Set the initial voltage angle to zero
-  port.u = CM.fromPolar(UStart, UPhaseStart) "Initial bus voltage, phase-to-phase";
+  port.u = CM.fromPolar(UStart, thetaStart) "Initial bus voltage, phase-to-ground";
 equation
   port.P = PSlack;
   port.Q = QSlack;
