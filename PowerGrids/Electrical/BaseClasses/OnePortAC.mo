@@ -50,7 +50,7 @@ equation
     // to enforce P,Q at the port or achieve actuator saturation if that is not possible
     terminal.v*CM.conj(terminal.i) = Complex(port.PStart, port.QStart);
     port.v.re*port.vStart.im = port.v.im*port.vStart.re;
-    port.i.re*port.iStart.im = port.i.re*port.iStart.im;
+    port.i.re*port.iStart.im = port.i.im*port.iStart.re;
   else
     // In all other cases, the port voltage and current are equal to
     // the connector voltage and current
