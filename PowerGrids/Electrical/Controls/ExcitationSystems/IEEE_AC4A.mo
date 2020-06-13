@@ -32,7 +32,7 @@ block IEEE_AC4A "Static excitation system - IEEE type AC4A"
     Placement(visible = true, transformation(origin={10,0},   extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FirstOrderWithNonWindupLimiter firstOrderLim(T = Ta, initType = Modelica.Blocks.Types.Init.SteadyState, k = Ka, yMax = VrMax, yMin = VrMin, yStart = 1)  annotation (
     Placement(visible = true, transformation(origin={86,0},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Math.Max max1
+  Modelica.Blocks.Math.Max max
     annotation (Placement(transformation(extent={{40,-10},{60,10}})));
 initial equation
   /* The following equation could be written as
@@ -71,11 +71,11 @@ equation
     Line(points={{-122,30},{-90,30},{-90,8},{-78,8}},                      color = {0, 0, 127}));
   connect(VcPu, addIng.u2) annotation (
     Line(points={{-122,0},{-78,0}},                          color = {0, 0, 127}));
-  connect(max1.u1, leadLag.y)
+  connect(max.u1, leadLag.y)
     annotation (Line(points={{38,6},{30,6},{30,0},{21,0}}, color={0,0,127}));
-  connect(max1.u2, VuelPu) annotation (Line(points={{38,-6},{30,-6},{30,-40},{2,
+  connect(max.u2, VuelPu) annotation (Line(points={{38,-6},{30,-6},{30,-40},{2,
           -40}}, color={0,0,127}));
-  connect(max1.y, firstOrderLim.u)
+  connect(max.y, firstOrderLim.u)
     annotation (Line(points={{61,0},{74,0}}, color={0,0,127}));
   annotation (
     Icon(graphics={  Rectangle(origin = {0, 1}, extent = {{-100, 99}, {100, -101}}), Text(origin = {24, 4}, extent = {{-94, 70}, {56, -72}}, textString = "IEEE
