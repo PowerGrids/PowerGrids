@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Buses;
 
-model BaseClasses
+package BaseClasses
   extends Modelica.Icons.BasesPackage;
 
   partial model BusBase
@@ -18,6 +18,4 @@ model BaseClasses
 <p>This model can be specialized to describe an infinite bus with fixed or variable reference voltage.</p>
 </body></html>"));
   end BusBase;
-equation
-
 end BaseClasses;
