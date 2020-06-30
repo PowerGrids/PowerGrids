@@ -28,9 +28,9 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
   final parameter Types.ComplexAdmittance Yshunt = Complex(G / 2, B / 2) "Shunt admittance at port A/B";
   final parameter Types.ComplexAdmittance YbreakerOpen = Yseries * Yshunt / (Yseries + Yshunt) "Total admittance when breaker A/B is open" annotation(Evaluate = true);
 
-  discrete Types.ComplexAdmittance Y_actual "Actual series admittance";
-  discrete Types.ComplexAdmittance YA_actual "Actual shunt admittance at port A";
-  discrete Types.ComplexAdmittance YB_actual "Actual shunt admittance at port B";
+  Types.ComplexAdmittance Y_actual "Actual series admittance";
+  Types.ComplexAdmittance YA_actual "Actual shunt admittance at port A";
+  Types.ComplexAdmittance YB_actual "Actual shunt admittance at port B";
   BreakersState breakerStatus(start = BreakersState.AcBc) "Breakers current status";
 
   Modelica.Blocks.Interfaces.BooleanInput breakerStatusA if useBreakerA "Breaker status at port A - true means breaker closed" annotation(
