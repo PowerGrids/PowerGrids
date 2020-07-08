@@ -1,8 +1,6 @@
 within PowerGrids.Electrical.Buses;
 model InfiniteBusVariableVoltage
-  extends BaseClasses.BusBase(
-    e = CM.fromPolar(UAux/sqrt(3), thetaAux),
-    Z = Complex(R, X));
+  extends BaseClasses.BusBase;
   extends Icons.Bus;
   parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase" annotation(Dialog(enable = not useThetaIn));
   parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage" annotation(Dialog(enable = not useThetaIn));
@@ -24,6 +22,9 @@ protected
   Modelica.Blocks.Interfaces.RealInput thetaAux "Source voltage phase angle";
 
 equation
+   Z = Complex(R, X) "Internal impedance";
+   e = CM.fromPolar(UAux/sqrt(3), thetaAux) "Voltage of ideal generator, phase-to-ground";
+
 // Conditional connectors
    connect(UIn, UAux);
    if not useUIn then
