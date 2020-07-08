@@ -15,7 +15,7 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
   parameter Boolean useBreakerB = false "Use breaker at port B" annotation(
     Dialog(group = "External Inputs"),
     choices(checkBox = true));
-  parameter Types.Voltage UNom "Nominal/rated voltage";
+  parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
   parameter Types.Resistance R "Series resistance";
   parameter Types.Resistance X "Series reactance";
   parameter Types.Conductance G = 0 "Shunt conductance";

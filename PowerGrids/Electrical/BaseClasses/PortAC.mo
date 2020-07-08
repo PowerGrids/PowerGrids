@@ -1,8 +1,8 @@
 within PowerGrids.Electrical.BaseClasses;
 
 model PortAC "AC port computing auxiliary quantities"
-  parameter Types.Power   SNom "Nominal or rated power";
-  parameter Types.Voltage UNom "Nominal or rated phase-to-phase voltage";
+  parameter Types.Power   SNom(start = 100e6) "Nominal or rated power";
+  parameter Types.Voltage UNom(start = 400e3) "Nominal or rated phase-to-phase voltage";
   parameter Types.Power   SBase = SNom "Base power";
   parameter Types.Voltage UBase = UNom "Base phase-to-phase voltage";
 
