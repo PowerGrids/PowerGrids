@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Controls.TurbineGovernors;
 
-block GoverProportional "Simple proportional governor"
+model GoverProportional "Simple proportional governor"
   extends Controls.BaseClasses.BaseControllerFramework;
 
   parameter SI.PerUnit KGover "Mechanical power sensitivity to frequency";

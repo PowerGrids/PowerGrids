@@ -1,5 +1,5 @@
 within PowerGrids.Electrical.Controls.ExcitationSystems;
-block IEEE_AC4A "Static excitation system - IEEE type AC4A"
+model IEEE_AC4A "Static excitation system - IEEE type AC4A"
   extends Controls.BaseClasses.BaseControllerFramework;
 
   parameter SI.PerUnit ViMax = 100 "Input voltage max limit in p.u.";
