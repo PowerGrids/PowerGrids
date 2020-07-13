@@ -2,7 +2,7 @@ within PowerGrids.Controls;
 block LimiterWithLag
   extends Modelica.Blocks.Interfaces.SISO;
   
-  type State = enumeration(
+  encapsulated type State = enumeration(
     upperSat "Upper limit reached",
     lowerSat "Lower limit reached",
     notSat   "u is in range"

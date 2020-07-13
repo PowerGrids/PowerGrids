@@ -4,8 +4,8 @@ partial model TapChangerPhaseShifterCommon "Common base class for tap-changer/ph
   extends Icons.Transformer;
 
   final constant Real NotUsed = Modelica.Constants.inf "Generic default value for not-used parameters";
-  type MonitoredQuantitySelection = enumeration(currentMagnitude "phase shifter monitors the port_b current magnitude",
-                                                activePower "phase shifter monitors the port_b active power");
+  encapsulated type MonitoredQuantitySelection = enumeration(currentMagnitude "phase shifter monitors the port_b current magnitude",
+                                                             activePower "phase shifter monitors the port_b active power");
 
   parameter Types.Resistance R = 0 "Series resistance";
   parameter Types.Reactance X = 0 "Series reactance";
