@@ -1,5 +1,5 @@
 within PowerGrids.Electrical.Controls.TurbineGovernors;
-model IEEE_TGOV1 "Simple Steam Turbine Governor - IEEE type TGOV1"
+block IEEE_TGOV1 "Simple Steam Turbine Governor - IEEE type TGOV1"
   extends Controls.BaseClasses.BaseControllerFramework;
 
   parameter SI.PerUnit VMax = 1 "Maximum gate limit in p.u.";

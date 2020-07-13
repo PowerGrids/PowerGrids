@@ -1,5 +1,5 @@
 within PowerGrids.Electrical.Controls.ExcitationSystems;
-model VRProportional
+block VRProportional
   extends Controls.BaseClasses.BaseControllerFramework;
 
   parameter SI.PerUnit Ka(min = 0) "Overall equivalent gain";
