@@ -11,10 +11,10 @@ model TestTapChangerLogicMax
     tapStart = 10 "Initial tap", 
     stateStart = State.standard "Initial state");
 equation
-  locked = time > 5 and time < 8;
+  locked = time >= 5 and time < 8;
   running = true;
-  valueUnderStop = time > 15.5;
-  valueAboveMax = time > 1 and time < 10;
+  valueUnderStop = time >= 15.5;
+  valueAboveMax = time >= 1 and time < 10;
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
