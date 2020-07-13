@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Controls.BaseClasses;
 
-model BaseControllerFramework "Base framework for all controllers such as AVR, PSS, etc."
+block BaseControllerFramework "Base framework for all controllers such as AVR, PSS, etc."
   final parameter Boolean fixInitialControlledVariableDefault = 
     if (systemPowerGrids.initOpt == Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow or
         systemPowerGrids.initOpt == Types.Choices.InitializationOption.localSteadyStateFixedPowerFlow)
