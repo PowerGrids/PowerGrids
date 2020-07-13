@@ -1,5 +1,5 @@
 within PowerGrids.Controls;
-model LimiterWithLag
+block LimiterWithLag
   extends Modelica.Blocks.Interfaces.SISO;
   
   type State = enumeration(
