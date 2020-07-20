@@ -5,7 +5,7 @@ model LineConstantImpedance "Transmission line with constant impedance"
     final UNomB = UNom);
   extends Icons.Line;
 
-  parameter Types.Voltage UNom "Nominal/rated voltage";
+  parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
   parameter Types.Resistance R "Series resistance";
   parameter Types.Reactance X "Series reactance";
   parameter Types.Conductance G = 0  "Shunt conductance";

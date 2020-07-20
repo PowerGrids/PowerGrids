@@ -19,9 +19,9 @@ partial model GovHydro4Base "Base class for Governors of hydraulic turbines"
     Dialog(group = "Control and Actuators"));
   parameter Modelica.SIunits.PerUnit gMin = 0 "Minimum gate opening" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.Time rPerm = 0.05 "Permanent droop" annotation(
+  parameter Modelica.SIunits.PerUnit rPerm = 0.05 "Permanent droop" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.Time rTemp = 0.3 "Temporary droop" annotation(
+  parameter Modelica.SIunits.PerUnit rTemp = 0.3 "Temporary droop" annotation(
     Dialog(group = "Control and Actuators"));
   parameter Real GvPgvTable[:, :] = [0, 0; 1, 1] "Points to define the curve Pgv = f(Gv)" annotation(
     Dialog(group = "Turbine"));

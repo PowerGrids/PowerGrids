@@ -27,7 +27,7 @@ model ControlledGridWithReferenceCalculation "System under automatic control wit
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FreeOffset VrefPu(use_u = true)  annotation(
     Placement(visible = true, transformation(origin = {-100, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.RealExpression deltaVrefPu(y=if time > 2 then 3e3*sin(2*Modelica.Constants.pi * 0.05 *(time-2))/GEN.UNom else 0) annotation(
+  Modelica.Blocks.Sources.RealExpression deltaVrefPu(y=if time >= 2 then 3e3*sin(2*Modelica.Constants.pi * 0.05 *(time-2))/GEN.UNom else 0) annotation(
     Placement(visible = true, transformation(origin = {-132, -30}, extent = {{-12, -10}, {12, 10}}, rotation = 0)));
 
   Real VrefPuTot = deltaVrefPu.y + GEN.VStartPu;

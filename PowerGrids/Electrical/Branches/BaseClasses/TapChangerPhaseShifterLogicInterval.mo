@@ -1,5 +1,5 @@
 within PowerGrids.Electrical.Branches.BaseClasses;
-model TapChangerPhaseShifterLogicInterval
+partial model TapChangerPhaseShifterLogicInterval
   extends TapChangerPhaseShifterLogicCommon;
   parameter Types.Time tToStandardState = 0.1 "time lag before transition to standard state, in order to avoid chattering";
 
