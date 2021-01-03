@@ -5,10 +5,10 @@ partial model PiNetwork "Generic Pi-Network base model"
   Types.ComplexAdmittance YA "Shunt admittance at port a";
   Types.ComplexAdmittance YB "Shunt admittance at port b";
   Types.ComplexPerUnit k "Complex ratio of ideal transformer at port A (vB/vA)";
-  Types.ComplexVoltage vA = portA.v;
-  Types.ComplexVoltage vB = portB.v;
-  Types.ComplexCurrent iA = portA.i;
-  Types.ComplexCurrent iB = portB.i;
+  Types.ComplexVoltage vA(re(nominal = portA.VBase), im(nominal = portA.VBase)) = portA.v;
+  Types.ComplexVoltage vB(re(nominal = portB.VBase), im(nominal = portB.VBase)) = portB.v;
+  Types.ComplexCurrent iA(re(nominal = portA.IBase), im(nominal = portA.IBase)) = portA.i;
+  Types.ComplexCurrent iB(re(nominal = portB.IBase), im(nominal = portB.IBase)) = portB.i;
   // See diagram in the documentation layer for the variable definitions
   Types.ComplexVoltage vAt(re(nominal = portB.VBase), im(nominal = portB.VBase));
   Types.ComplexVoltage vz(re(nominal = portB.VBase), im(nominal = portB.VBase));
