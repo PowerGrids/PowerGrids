@@ -3,8 +3,8 @@ within PowerGrids.Electrical.Machines;
 model AsynchronousMachine1stOrder
   import PowerGrids.Types.Choices.LocalInitializationOption;
   import PowerGrids.Types.Choices.InitializationOption;
-  extends Icons.Machine; 
-  extends BaseClasses.OnePortAC(portVariablesPu = true,
+  extends Icons.Machine;
+  extends BaseClasses.OnePortACdqPU(portVariablesPhases=true,
   localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow
                 then LocalInitializationOption.PQ
                 else LocalInitializationOption.none);
@@ -20,20 +20,21 @@ model AsynchronousMachine1stOrder
   
   parameter Types.ComplexPerUnit ZmPu  = Complex(0, XmPu) "Magetization impedance";
   final parameter Types.ComplexPerUnit ZsrPuStart( re(fixed = false), im(start = XsPu + XrPu, fixed = true)); 
-  final parameter Types.PerUnit CePuStart(fixed = false) "Starting electrical torque";
   final parameter Types.PerUnit slipPuStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle";
   final parameter Types.PerUnit CmPuScaled(fixed = false) "The value of the mechanical torque when omegaPu = 0"; 
+  final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
+  constant Types.PerUnit omegaNomPu = 1 "Nominal frequency in p.u.";
+
   Types.PerUnit omegaRefPu = systemPowerGrids.omegaRef/systemPowerGrids.omegaNom "Reference frequency in p.u.";
-  Types.PerUnit omegaPu(start = 1-slipPuStart) "Angular frequency in p.u.";
-  Types.PerUnit CePu(start = CePuStart) "Electrical torque in p.u. (base SNom/omegaBase)";
-  Types.PerUnit CmPu(start = CePuStart) "Mechanical torque in p.u. (base PNom/omegaBase)";
+  Types.PerUnit omegaPu "Angular frequency in p.u.";
+  Types.PerUnit CePu "Electrical torque in p.u. (base SNom/omegaBase)";
+  Types.PerUnit CmPu "Mechanical torque in p.u. (base PNom/omegaBase)";
   Types.PerUnit slipPu(start = slipPuStart) "Machine slip";
   Types.ComplexPerUnit ZsrPu(re(start = ZsrPuStart.re)) "Sum of stator and rotor impedance";
 initial equation
   // Equations to compute start values
   port.QStart/port.SNom = (port.UStart/port.UNom)^2*(1/XmPu + (XsPu+XrPu)/CM.'abs'(ZsrPuStart)^2); // Q of equivalent circuit
   ZsrPuStart.re = RsPu + RrPu / slipPuStart;
-  CePuStart = (port.UStart/port.UNom)^2*RrPu/slipPuStart/CM.'abs'(ZsrPuStart)^2;
   
   // Equations to determine the initial state values
   if initOpt == InitializationOption.noInit then
@@ -43,6 +44,8 @@ initial equation
     CmPuScaled = CmPu/(omegaPu^ExpCm);
   end if;
 equation
+  // Need to handle different reference here
+  theta = port.UPhase;
   // Mechanical equations
   CmPu = CmPuScaled*omegaPu^ExpCm;
   slipPu = omegaRefPu - omegaPu;
