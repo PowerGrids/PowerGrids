@@ -1,6 +1,6 @@
 within PowerGrids.Examples.AsynchMachine;
 
-model AM1stOrder
+model AM1stOrderNominalReference
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(referenceFrequency = PowerGrids.Types.Choices.ReferenceFrequency.nominalFrequency)  annotation(
     Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -31,4 +31,4 @@ equation
     Documentation(info = "<html><head></head><body>Infinite bus connected to an asynchronous machine.</body></html>"),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst --daeMode",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "ida", nls = "kinsol"));
-end AM1stOrder;
+end AM1stOrderNominalReference;

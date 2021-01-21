@@ -1,6 +1,6 @@
 within PowerGrids.Examples.AsynchMachine;
 
-model AM1stOrderWithLinePowerFlow
+model AMPowerFlow
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -20,5 +20,7 @@ connect(bus.terminal, am.terminal) annotation(
 connect(line.terminalB, bus.terminal) annotation(
     Line(points = {{0, -16}, {0, -28}}));
   annotation(
-    Documentation(info = "<html><head></head><body>Power flow for an infinite bus connected to an asynchronous machine.</body></html>"));
-end AM1stOrderWithLinePowerFlow;
+    Documentation(info = "<html><head></head><body>Power flow for an infinite bus connected to an asynchronous machine.</body></html>"),
+    __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst",
+  __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"));
+end AMPowerFlow;
