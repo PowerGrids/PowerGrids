@@ -15,12 +15,14 @@ model AsynchronousMachine1stOrder
   parameter Types.PerUnit XrPu "Rotor reactance  in p.u.";
   parameter Types.PerUnit XmPu "Magnetization reactance  in p.u.";
   parameter Modelica.SIunits.Time H "Kinetic constant = kinetic energy / rated power";
+  parameter Real ExpCm "Exponent of the torque-speed dependance - omegaPu^ExpCm";
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
   
   parameter Types.ComplexPerUnit ZmPu  = Complex(0, XmPu) "Magetization impedance";
   final parameter Types.ComplexPerUnit ZsrPuStart( re(fixed = false), im(start = XsPu + XrPu, fixed = true)); 
   final parameter Types.PerUnit CePuStart(fixed = false) "Starting electrical torque";
   final parameter Types.PerUnit slipPuStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle";
+  final parameter Types.PerUnit CmPuScaled(fixed = false) "The value of the mechanical torque when omegaPu = 0"; 
   Types.PerUnit omegaRefPu = systemPowerGrids.omegaRef/systemPowerGrids.omegaNom "Reference frequency in p.u.";
   Types.PerUnit omegaPu(start = 1-slipPuStart) "Angular frequency in p.u.";
   Types.PerUnit CePu(start = CePuStart) "Electrical torque in p.u. (base SNom/omegaBase)";
@@ -38,10 +40,11 @@ initial equation
     // No initial equations
   else
     der(omegaPu) = 0;
+    CmPuScaled = CmPu/(omegaPu^ExpCm);
   end if;
 equation
   // Mechanical equations
-  der(CmPu) = 0; // Temporary load torque changes disabled
+  CmPu = CmPuScaled*omegaPu^ExpCm;
   slipPu = omegaRefPu - omegaPu;
   der(omegaPu) = -1 / (2 * H) * (CmPu - CePu);
   
