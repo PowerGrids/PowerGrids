@@ -19,7 +19,6 @@ model AsynchronousMachine1stOrder
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
   
   parameter Types.ComplexPerUnit ZmPu  = Complex(0, XmPu) "Magetization impedance";
-  final parameter Types.ComplexPerUnit ZsrPuStart( re(fixed = false), im(start = XsPu + XrPu, fixed = true)); 
   final parameter Types.PerUnit slipPuStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle";
   final parameter Types.PerUnit CmPuScaled(fixed = false) "The value of the mechanical torque when omegaPu = 0"; 
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
@@ -30,11 +29,11 @@ model AsynchronousMachine1stOrder
   Types.PerUnit CePu "Electrical torque in p.u. (base SNom/omegaBase)";
   Types.PerUnit CmPu "Mechanical torque in p.u. (base PNom/omegaBase)";
   Types.PerUnit slipPu(start = slipPuStart) "Machine slip";
-  Types.ComplexPerUnit ZsrPu(re(start = ZsrPuStart.re)) "Sum of stator and rotor impedance";
+  Types.ComplexPerUnit ZsrPu "Sum of stator and rotor impedance";
 initial equation
   // Equations to compute start values
-  port.QStart/port.SNom = (port.UStart/port.UNom)^2*(1/XmPu + (XsPu+XrPu)/CM.'abs'(ZsrPuStart)^2); // Q of equivalent circuit
-  ZsrPuStart.re = RsPu + RrPu / slipPuStart;
+  port.QStart/port.SNom = (port.UStart/port.UNom)^2*(1 / XmPu + (XsPu + XrPu) // Q of equivalent circuit
+                          / CM.'abs'(Complex(RsPu + RrPu / slipPuStart, XsPu + XrPu))^2); 
   
   // Equations to determine the initial state values
   if initOpt == InitializationOption.noInit then
