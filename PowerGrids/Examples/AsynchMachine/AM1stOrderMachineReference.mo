@@ -1,9 +1,9 @@
 within PowerGrids.Examples.AsynchMachine;
 
-model AM1stOrder
+model AM1stOrderMachineReference
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(referenceFrequency = PowerGrids.Types.Choices.ReferenceFrequency.nominalFrequency)  annotation(
-    Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-10, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.AsynchronousMachine1stOrder am1(ExpCm = 2,H = 2, PStart(displayUnit = "MW") = 100000, QStart(displayUnit = "MVA") = 43568.36380106667, RrPu = 0.00489, RsPu = 0.028, SNom(displayUnit = "V.A") = 0.1e6, UNom(displayUnit = "V") = 20000, UPhaseStart =-0.04925915594457064, UStart(displayUnit = "kV") = 19424.17645210658, XmPu = 4.236, XrPu = 0.1822, XsPu = 0.01) annotation(
     Placement(visible = true, transformation(origin = {0, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 PowerGrids.Electrical.Branches.LineConstantImpedance line(R = 20, SNom(displayUnit = "W") = 1e6, UNom (displayUnit = "V") = 20000, UNomA(displayUnit = "V") = 20e3, X = 200) annotation(
@@ -27,8 +27,10 @@ equation
     Line(points = {{-54, 6}, {0, 6}, {0, -6}}));
   connect(line.terminalA, busFault.terminal) annotation(
     Line(points = {{0, -12}, {0, -6}}));
+  connect(GEN.omega, systemPowerGrids.omegaRefIn) annotation(
+    Line(points = {{-44, 12}, {-32, 12}, {-32, 50}, {-20, 50}}, color = {0, 0, 127}));
   annotation(
     Documentation(info = "<html><head></head><body>Infinite bus connected to an asynchronous machine.</body></html>"),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst --daeMode",
   __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "ida", nls = "kinsol"));
-end AM1stOrder;
+end AM1stOrderMachineReference;

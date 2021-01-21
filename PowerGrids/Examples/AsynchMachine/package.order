@@ -1,4 +1,5 @@
-AM1stOrderPowerFlow
-AM1stOrderWithLinePowerFlow
-AM1stOrder
-AM1stOrderWithLine
+AMPowerFlow
+AM1stOrderMachineReference
+AM1stOrderNominalReference
+AM3rdOrderMachineReference
+AM3rdOrderNominalReference
