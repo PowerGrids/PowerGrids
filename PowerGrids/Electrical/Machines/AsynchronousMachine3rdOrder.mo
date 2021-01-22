@@ -17,8 +17,8 @@ extends AsynchronousMachine1stOrder;
   final parameter Types.PerUnit lambdasdPuStart(fixed=false) "Start d-axis stator flux";
   final parameter Types.PerUnit lambdasqPuStart(fixed=false) "Start q-axis stator flux";  
 initial equation
-  0 = (RrPu / XrrPu * XmPu) * idPu - RrPu / XrrPu * lambdardPuStart + lambdarqPuStart; // Approximated omegaSynchPu with nominal
-  0 = (RrPu / XrrPu * XmPu) * iqPu - RrPu / XrrPu * lambdarqPuStart - lambdardPuStart; // Approximated omegaSynchPu with nominal
+  0 = (RrPu / XrrPu * XmPu) * idPuStart - RrPu / XrrPu * lambdardPuStart + lambdarqPuStart; // Approximated omegaSynchPu with nominal
+  0 = (RrPu / XrrPu * XmPu) * iqPuStart - RrPu / XrrPu * lambdarqPuStart - lambdardPuStart; // Approximated omegaSynchPu with nominal
   udPuStart = RsPu * idPuStart - omegaSynchPu / omegaNomPu / 1 * lambdasqPuStart;
   uqPuStart = RsPu * iqPuStart + omegaSynchPu / omegaNomPu / 1 * lambdasdPuStart;
   
