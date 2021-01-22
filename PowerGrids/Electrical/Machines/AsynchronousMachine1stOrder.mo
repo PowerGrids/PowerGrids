@@ -26,7 +26,6 @@ model AsynchronousMachine1stOrder
 
   Types.PerUnit omegaRefPu = systemPowerGrids.omegaRef/systemPowerGrids.omegaNom "Reference frequency in p.u.";
   Types.PerUnit omegaPu "Angular frequency in p.u.";
-  Types.PerUnit omegaSynchPu(start=1) "Electrical frequency at the machine port";
 
   Types.PerUnit CePu "Electrical torque in p.u. (base SNom/omegaBase)";
   Types.PerUnit CmPu "Mechanical torque in p.u. (base PNom/omegaBase)";
@@ -45,17 +44,11 @@ initial equation
     CmPuScaled = CmPu/(omegaPu^ExpCm);
   end if;
 equation
-  // The equations will be written in the stator-aligned synchronous rotating frame
-  if systemPowerGrids.referenceFrequency == PowerGrids.Types.Choices.ReferenceFrequency.nominalFrequency then
-    omegaSynchPu*omegaBase = der(port.UPhase);
-    der(theta) = (omegaSynchPu-omegaRefPu)*omegaBase;
-  else
-    theta = port.UPhase;
-    omegaSynchPu = omegaRefPu;
-  end if;
+  // The equations will be written in the synchronous rotating frame
+  theta = port.UPhase;
   // Mechanical equations
   CmPu = CmPuScaled*omegaPu^ExpCm;
-  slipPu = omegaSynchPu - omegaPu;
+  slipPu = omegaRefPu - omegaPu;
   der(omegaPu) = -1 / (2 * H) * (CmPu - CePu);
   
   // Equivalent circuit equations

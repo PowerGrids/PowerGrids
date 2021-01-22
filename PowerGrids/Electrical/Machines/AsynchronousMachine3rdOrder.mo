@@ -17,17 +17,17 @@ extends AsynchronousMachine1stOrder;
   final parameter Types.PerUnit lambdasdPuStart(fixed=false) "Start d-axis stator flux";
   final parameter Types.PerUnit lambdasqPuStart(fixed=false) "Start q-axis stator flux";  
 initial equation
-  0 = (RrPu / XrrPu * XmPu) * idPuStart - RrPu / XrrPu * lambdardPuStart + lambdarqPuStart; // Approximated omegaSynchPu with nominal
-  0 = (RrPu / XrrPu * XmPu) * iqPuStart - RrPu / XrrPu * lambdarqPuStart - lambdardPuStart; // Approximated omegaSynchPu with nominal
-  udPuStart = RsPu * idPuStart - omegaSynchPu / omegaNomPu / 1 * lambdasqPuStart;
-  uqPuStart = RsPu * iqPuStart + omegaSynchPu / omegaNomPu / 1 * lambdasdPuStart;
+  0 = (RrPu / XrrPu * XmPu) * idPuStart - RrPu / XrrPu * lambdardPuStart + lambdarqPuStart; // Approximated omegaRefPu with nominal
+  0 = (RrPu / XrrPu * XmPu) * iqPuStart - RrPu / XrrPu * lambdarqPuStart - lambdardPuStart; // Approximated omegaRefPu with nominal
+  udPuStart = RsPu * idPuStart - omegaRefPu / omegaNomPu / 1 * lambdasqPuStart;
+  uqPuStart = RsPu * iqPuStart + omegaRefPu / omegaNomPu / 1 * lambdasdPuStart;
   
   der(lambdardPu) = 0;
   der(lambdarqPu) = 0;
 equation
-  der(lambdardPu) / omegaBase = (RrPu / XrrPu * XmPu) * idPu - RrPu / XrrPu * lambdardPu + (omegaSynchPu/omegaNomPu) * lambdarqPu;
-  der(lambdarqPu) / omegaBase = (RrPu / XrrPu * XmPu) * iqPu - RrPu / XrrPu * lambdarqPu - (omegaSynchPu/omegaNomPu) * lambdardPu;
-  udPu = RsPu * idPu - omegaSynchPu / omegaNomPu * lambdasqPu;
-  uqPu = RsPu * iqPu + omegaSynchPu / omegaNomPu * lambdasdPu;
+  der(lambdardPu) / omegaBase = (RrPu / XrrPu * XmPu) * idPu - RrPu / XrrPu * lambdardPu + (omegaRefPu/omegaNomPu) * lambdarqPu;
+  der(lambdarqPu) / omegaBase = (RrPu / XrrPu * XmPu) * iqPu - RrPu / XrrPu * lambdarqPu - (omegaRefPu/omegaNomPu) * lambdardPu;
+  udPu = RsPu * idPu - omegaRefPu / omegaNomPu * lambdasqPu;
+  uqPu = RsPu * iqPu + omegaRefPu / omegaNomPu * lambdasdPu;
   
 end AsynchronousMachine3rdOrder;
