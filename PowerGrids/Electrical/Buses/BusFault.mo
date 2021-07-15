@@ -15,11 +15,11 @@ model BusFault
 
 // State machine to compute the fault variable
 algorithm
-   when time > startTime then
+   when time >= startTime then
      fault := true;
    end when;
 
-   when time > stopTime then
+   when time >= stopTime then
      fault := false;
    end when;
 

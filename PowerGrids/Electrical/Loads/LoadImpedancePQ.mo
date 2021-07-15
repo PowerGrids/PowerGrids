@@ -2,7 +2,8 @@ within PowerGrids.Electrical.Loads;
 
 model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"
   extends PowerGrids.Electrical.Buses.BaseClasses.BusBase(
-    final e = Complex(0),
+    e = Complex(0),
+    Z = 1/ComplexMath.conj(Complex(PRef,QRef)/URef^2),
     PStart = PRefConst,
     QStart = QRefConst);
   extends Icons.Load;
@@ -12,8 +13,7 @@ model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"
   parameter Types.Voltage URef = UNom "Reference value of phase-to-phase voltage";
   Types.ActivePower PRef(nominal = SNom) = PRefConst "Active power consumption at reference voltage, the default binding can be changed when instantiating";
   Types.ActivePower QRef(nominal = SNom) = QRefConst "Reactive power consumption at reference voltage, the default binding can be changed when instantiating";
-equation
-  Z = 1/ComplexMath.conj(Complex(PRef,QRef)/URef^2);
+
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

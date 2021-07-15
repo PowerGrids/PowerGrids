@@ -2,18 +2,18 @@ within PowerGrids.Electrical.Branches.BaseClasses;
 partial model TapChangerPhaseShifterLogicCommon
   final constant Types.Time timeInfinity = Modelica.Constants.inf "Default value for counters";
   
-  type State = enumeration (moveDownN "1: tap-changer/phase-shifter has decreased the next tap", 
-                            moveDown1 "2: tap-changer/phase-shifter has decreased the first tap", 
-                            waitingToMoveDown "3: tap-changer/phase-shifter is waiting to decrease the first tap", 
-                            standard "4:tap-changer/phase-shifter is in standard state with UThresholdDown <= UMonitored <= UThresholdUp", 
-                            waitingToMoveUp "5: tap-changer/phase-shifter is waiting to increase the first tap", 
-                            moveUp1 "6: tap-changer/phase-shifter has increased the first tap", 
-                            moveUpN "7: tap-changer/phase-shifter has increased the next tap",
-                            locked "8: tap-changer/phase-shifter locked");
+  encapsulated type State = enumeration (moveDownN "1: tap-changer/phase-shifter has decreased the next tap",
+                                         moveDown1 "2: tap-changer/phase-shifter has decreased the first tap",
+                                         waitingToMoveDown "3: tap-changer/phase-shifter is waiting to decrease the first tap",
+                                         standard "4:tap-changer/phase-shifter is in standard state with UThresholdDown <= UMonitored <= UThresholdUp",
+                                         waitingToMoveUp "5: tap-changer/phase-shifter is waiting to increase the first tap",
+                                         moveUp1 "6: tap-changer/phase-shifter has increased the first tap",
+                                         moveUpN "7: tap-changer/phase-shifter has increased the next tap",
+                                         locked "8: tap-changer/phase-shifter locked");
   State state(start = stateStart, fixed = true);
   
-  type ActionType = enumeration (direct "Whether increasing the tap will increase the monitored value",
-                                 reverse "Whether increasing the tap will decrease the monitored value");
+  encapsulated type ActionType = enumeration (direct "Whether increasing the tap will increase the monitored value",
+                                              reverse "Whether increasing the tap will decrease the monitored value");
   
   parameter Types.Time t1st(min = 0) "Time lag before changing the first tap";
   parameter Types.Time tNext(min = 0) "Time lag before changing subsequent taps";

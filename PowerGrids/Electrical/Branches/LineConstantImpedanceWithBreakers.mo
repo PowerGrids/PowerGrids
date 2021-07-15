@@ -1,9 +1,9 @@
 within PowerGrids.Electrical.Branches;
 
 model LineConstantImpedanceWithBreakers "Transmission line with constant impedance and breakers"
-  extends BaseClasses.PiNetwork(final UNomA = UNom, final UNomB = UNom);
+  extends BaseClasses.PiNetwork(UNomA = UNom, UNomB = UNomA);
   extends Icons.Line;
-  type BreakersState = enumeration(
+  encapsulated type BreakersState = enumeration(
     AcBc "Both breakers at port A and at port B closed", 
     AcBo "Breaker at port A closed, breaker at port B open", 
     AoBc "Breaker at port A open, breaker at port B closed", 
@@ -15,7 +15,7 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
   parameter Boolean useBreakerB = false "Use breaker at port B" annotation(
     Dialog(group = "External Inputs"),
     choices(checkBox = true));
-  parameter Types.Voltage UNom "Nominal/rated voltage";
+  parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
   parameter Types.Resistance R "Series resistance";
   parameter Types.Resistance X "Series reactance";
   parameter Types.Conductance G = 0 "Shunt conductance";

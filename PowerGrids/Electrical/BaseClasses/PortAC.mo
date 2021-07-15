@@ -1,8 +1,8 @@
 within PowerGrids.Electrical.BaseClasses;
 
 model PortAC "AC port computing auxiliary quantities"
-  parameter Types.Power   SNom "Nominal or rated power";
-  parameter Types.Voltage UNom "Nominal or rated phase-to-phase voltage";
+  parameter Types.Power   SNom(start = 100e6) "Nominal or rated power";
+  parameter Types.Voltage UNom(start = 400e3) "Nominal or rated phase-to-phase voltage";
   parameter Types.Power   SBase = SNom "Base power";
   parameter Types.Voltage UBase = UNom "Base phase-to-phase voltage";
 
@@ -27,10 +27,13 @@ model PortAC "AC port computing auxiliary quantities"
   final parameter Types.ComplexCurrent iStart = CM.conj(Complex(PStart,QStart)/(Complex(3)*vStart))
     "Start value of current phasor flowing into the port";
   
-  input Types.ComplexVoltage v(re(nominal = VBase, start = vStart.re),
-                               im(nominal = VBase, start = vStart.im)) "Port voltage (line-to-neutral)";
-  input Types.ComplexCurrent i(re(nominal = IBase, start = iStart.re),
-                               im(nominal = IBase, start = iStart.im)) "Port current";
+  connector InputComplexVoltage = input Types.ComplexVoltage "Marks potential input for balancedness check without requiring binding equation";
+  connector InputComplexCurrent = input Types.ComplexCurrent "Marks potential input for balancedness check without requiring binding equation";
+
+  InputComplexVoltage v(re(nominal = VBase, start = vStart.re),
+                        im(nominal = VBase, start = vStart.im)) "Port voltage (line-to-neutral)";
+  InputComplexCurrent i(re(nominal = IBase, start = iStart.re),
+                        im(nominal = IBase, start = iStart.im)) "Port current";
 
   Types.ComplexVoltage u(re(nominal = UBase, start = vStart.re*sqrt(3)),
                          im(nominal = UBase, start = vStart.im*sqrt(3))) = sqrt(3)*v

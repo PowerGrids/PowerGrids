@@ -1,16 +1,14 @@
 within PowerGrids.Electrical.Buses;
 model InfiniteBus "Infinite bus with internal impedance"
-  extends BaseClasses.BusBase;
+  extends BaseClasses.BusBase(
+      e = CM.fromPolar(ERef, theta),
+      Z = Complex(R, X));
   extends Icons.Bus;
   parameter Types.Resistance R = 0 "Series resistance";
   parameter Types.Reactance X = 0 "Series reactance";
   parameter Types.Angle theta = 0 "Voltage phase angle of ideal voltage generator";
   parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
   final parameter Types.Voltage ERef = URef/sqrt(3) "Phase-to-ground voltage of ideal voltage generator";
-
-equation
-   Z = Complex(R, X) "Internal impedance";
-   e = CM.fromPolar(ERef, theta) "Voltage of ideal generator, phase-to-ground";
 
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

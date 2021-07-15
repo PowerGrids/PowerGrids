@@ -3,10 +3,10 @@ within PowerGrids.Electrical.Buses;
 package BaseClasses
   extends Modelica.Icons.BasesPackage;
 
-  partial model BusBase
+  model BusBase
     extends PowerGrids.Electrical.BaseClasses.OnePortAC;
-    Types.ComplexVoltage e(re(nominal = port.VBase), im(nominal = port.VBase)) "Voltage of ideal generator, phase-to-ground";
-    Types.ComplexImpedance Z "Internal impedance";
+    input Types.ComplexVoltage e(re(nominal = port.VBase), im(nominal = port.VBase)) "Voltage of ideal generator, phase-to-ground";
+    input Types.ComplexImpedance Z "Internal impedance";
     Types.ComplexVoltage v(re(nominal = port.VBase), im(nominal = port.VBase)) = port.v "Port voltage, phase-to-ground";
     Types.ComplexCurrent i(re(nominal = port.IBase), im(nominal = port.IBase)) = port.i "Port current";
   equation

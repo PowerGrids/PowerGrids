@@ -16,7 +16,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
 
   Types.ActivePower PRef(nominal = SNom) =  PRefConst "Active power at reference voltage, the default binding can be changed when instantiating";
   Types.ActivePower QRef(nominal = SNom) =  QRefConst "Reactive power at reference voltage, the default binding can be changed when instantiating";
-    Types.PerUnit U_URef "Ratio between voltage and reference voltage";
+    Types.PerUnit U_URef(start = UStart/UNom) "Ratio between voltage and reference voltage";
 equation
   U_URef = port.U / URef;
   port.P = PRef*U_URef^alpha;

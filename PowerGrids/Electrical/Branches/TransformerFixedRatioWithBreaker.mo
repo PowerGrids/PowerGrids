@@ -3,7 +3,7 @@ model TransformerFixedRatioWithBreaker
   extends BaseClasses.PiNetwork;
   extends Icons.Transformer;
 
-  type BreakersState = enumeration(
+  encapsulated type BreakersState = enumeration(
     Bc "breaker closed",
     Bo "breaker open");
   parameter Boolean useBreaker = false "Use breaker (port b)" annotation(
