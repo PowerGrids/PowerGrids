@@ -6,5 +6,5 @@ equation
 
 annotation(
     __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY", homotopyOnFirstTry="()"));
+    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"));
 end TwoGeneratorsLocalInitialization;

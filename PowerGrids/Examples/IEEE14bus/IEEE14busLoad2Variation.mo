@@ -11,6 +11,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5}, initialScale = 0.1), graphics = {Text(origin = {-43, -97}, lineColor = {0, 0, 255}, extent = {{-41, 7}, {41, -7}}, textString = "Load2 changed by modifiers")}),
-    experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-6, Interval = 0.04),
-    __OpenModelica_simulationFlags(homotopyOnFirstTry="()"));
+    experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-6, Interval = 0.04));
 end IEEE14busLoad2Variation;

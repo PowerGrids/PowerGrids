@@ -46,6 +46,6 @@ equation
 annotation (
     experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.008),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY", homotopyOnFirstTry="()"),  Diagram(coordinateSystem(extent={{-100,
-            -60},{80,60}})));
+    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"),
+    Diagram(coordinateSystem(extent={{-100,-60},{80,60}})));
 end LoadChangeByInputSignals;
