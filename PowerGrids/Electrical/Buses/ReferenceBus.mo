@@ -20,7 +20,7 @@ initial equation
     "You probably need a better balancing of the active power generators in the system.\n" +
     "Please check the documentation of ReferenceBus for further reference", AssertionLevel.warning);
   assert(abs(QSlack)/SNom < 0.01, "The reactive power flowing into or out of the reference bus is above 0.01 pu.\n"+
-    "You probably need a better setup of excitation voltages, or to adjust the voltage of the reference bus.\n" +
+    "You probably need a better setup of excitation voltages, or you can set setPhaseOnly = true.\n" +
     "Please check the documentation of ReferenceBus for further reference", AssertionLevel.warning);
 equation
   port.P = PSlack;
