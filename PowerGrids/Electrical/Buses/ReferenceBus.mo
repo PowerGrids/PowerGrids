@@ -16,6 +16,12 @@ initial equation
     port.u.re*nStart.im = port.u.im*nStart.re "port.u has the same phase as nStart";
     QSlack = 0 "No reactive power leaving system through bus";
   end if;
+  assert(abs(PSlack)/SNom < 0.01, "The active power flowing into or out of the reference bus is above 0.01 pu.\n"+
+    "You probably need a better balancing of the active power generators in the system.\n" +
+    "Please check the documentation of ReferenceBus for further reference", AssertionLevel.warning);
+  assert(abs(QSlack)/SNom < 0.01, "The reactive power flowing into or out of the reference bus is above 0.01 pu.\n"+
+    "You probably need a better setup of excitation voltages, or to adjust the voltage of the reference bus.\n" +
+    "Please check the documentation of ReferenceBus for further reference", AssertionLevel.warning);
 equation
   port.P = PSlack;
   port.Q = QSlack;
