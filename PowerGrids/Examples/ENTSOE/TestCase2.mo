@@ -3,7 +3,7 @@ within PowerGrids.Examples.ENTSOE;
 model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of the model for the synchronous generator and its governor"
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
-    Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {30, 42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, PStart = -3.8e+08, QStart = 0, SNom = 4.75e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, UPhaseStart = 0, UStart = 21000, portVariablesPhases = true, raPu = 0, referenceGenerator = true, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
     Placement(visible = true, transformation(origin = {-26, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.ReferenceBus NGEN(SNom = 5e+08, UNom = 21000, portVariablesPhases = true, portVariablesPu = true) annotation(
@@ -32,7 +32,7 @@ model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of th
   
 equation
   connect(GEN.VPu, AVR.VcPu) annotation(
-    Line(points = {{-16, -6}, {0, -6}, {0, 56}, {-120, 56}, {-120, -14}, {-72, -14}}, color = {0, 0, 127}));
+    Line(points = {{-16, -6}, {-4, -6}, {-4, 52}, {-114, 52}, {-114, -14}, {-72, -14}}, color = {0, 0, 127}));
   connect(zero2.y, LOAD.QRefIn) annotation(
     Line(points = {{6, -62}, {10, -62}, {10, -48}, {22, -48}, {22, -48}}, color = {0, 0, 127}));
   connect(zero.y, AVR.VuelPu) annotation(
@@ -56,7 +56,7 @@ equation
   connect(GEN.terminal, NGEN.terminal) annotation(
     Line(points = {{-26, 0}, {-26, -10}, {-26, -10}, {-26, -20}, {-2, -20}, {-2, -20}, {24, -20}}));
   annotation(
-    Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),
+    Diagram(coordinateSystem(extent = {{-120, 60}, {60, -80}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY", homotopyOnFirstTry="()"));

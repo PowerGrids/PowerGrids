@@ -3,7 +3,7 @@ within PowerGrids.Examples.ENTSOE;
 model TestCase1 "Test Case 1, Section 5.1, focuses on the dynamic behavior of the model for the synchronous generator machine and its AVR"
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
-    Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {26, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, PStart = 0, QStart = 0, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, UPhaseStart = 0, UStart = 21000, portVariablesPhases = true, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
     Placement(visible = true, transformation(origin = {-26, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.ReferenceBus NTLV(SNom = 5e+08, UNom = 21000, portVariablesPhases = true, portVariablesPu = true) annotation(
@@ -27,9 +27,9 @@ model TestCase1 "Test Case 1, Section 5.1, focuses on the dynamic behavior of th
 
 equation
   connect(GEN.PPu, PSS.Vsi2Pu) annotation(
-    Line(points = {{-16, -2}, {0, -2}, {0, 56}, {-130, 56}, {-130, -6}, {-108, -6}, {-108, -6}}, color = {0, 0, 127}));
+    Line(points = {{-16, -2}, {-4, -2}, {-4, 56}, {-124, 56}, {-124, -6}, {-108, -6}}, color = {0, 0, 127}));
   connect(GEN.VPu, AVR.VcPu) annotation(
-    Line(points = {{-16, -6}, {10, -6}, {10, 66}, {-138, 66}, {-138, -14}, {-72, -14}, {-72, -14}}, color = {0, 0, 127}));
+    Line(points = {{-16, -6}, {0, -6}, {0, 60}, {-128, 60}, {-128, -14}, {-72, -14}}, color = {0, 0, 127}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-87, 24}, {-72, 24}}, color = {0, 0, 127}));
   connect(VrefPu.y, AVR.VrefPu) annotation(
@@ -37,7 +37,7 @@ equation
   connect(zero.y, AVR.VuelPu) annotation(
     Line(points = {{-88.8, -48}, {-79.8, -48}, {-79.8, -22}, {-71.8, -22}}, color = {0, 0, 127}));
   connect(GEN.omegaPu, PSS.Vsi1Pu) annotation(
-    Line(points = {{-16, 2}, {-8, 2}, {-8, 48}, {-124, 48}, {-124, 6}, {-108, 6}}, color = {0, 0, 127}));
+    Line(points = {{-16, 2}, {-8, 2}, {-8, 48}, {-118, 48}, {-118, 6}, {-108, 6}}, color = {0, 0, 127}));
   connect(PSS.VstPu, AVR.VsPu) annotation(
     Line(points = {{-87, 0}, {-76.5, 0}, {-76.5, -10}, {-72, -10}}, color = {0, 0, 127}));
   connect(AVR.efdPu, GEN.ufPuIn) annotation(
@@ -49,7 +49,7 @@ equation
   connect(GEN.terminal, NTLV.terminal) annotation(
     Line(points = {{-26, 0}, {-26, -10}, {-26, -10}, {-26, -20}, {-2, -20}, {-2, -20}, {24, -20}}));
   annotation(
-    Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),
+    Diagram(coordinateSystem(extent = {{-140, 60}, {40, -60}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY", homotopyOnFirstTry="()"));
