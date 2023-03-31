@@ -29,10 +29,9 @@ To achieve this goal, the following features were implemented:
 
 The library is meant to be used to model small-scale systems, e.g. for teaching, as well as medium-scale systems. Small system models can be built and managed with the graphical user interface of Modelica tools, while larger models can be built automatically by suitable scripts.
 
-PowerGrids was developed and tested using OpenModelica 1.14.1, but is expected to run on all Modelica tools that fully support Complex numbers and the homotopy transformation. For numerical efficiency of models with more than a few buses, it is necessary that the tool does not transform the equations into ODE form, but rather directly uses a sparse DAE solver. The reason for this requirement is that while the DAE is sparse, the corresponding ODE is dense.
-Note that most of the models and test cases run with this version of OpenModelica but some solver issues are still under consideration and should only be available from OpenModelica 1.16 - in case you want to benefit from the latest developments, we recommend you to download the nightly-build from OpenModelica.
+PowerGrids was developed and tested using OpenModelica and is expected to run on all Modelica tools that fully support the Modelica standard, including Complex numbers and the homotopy transformation. Numerically robust and efficient simulation performance requires certain types of symbolic manipulations and numerical solvers to be used by the Modelica tool; this may require to activate special flags or advanced options in some cases. For more details, please read the Tool Support section of the embedded documentation of the library. If you are using OpenModelica to run the simulations, we recommend using the latest released version for the best end-user experience.
 
-If you want more detail on PowerGrids, you can either go through the library documentation or have a look to the [Modelica Conference paper](https://modelica.org/events/modelica2019/proceedings/html/papers/Modelica2019paper5D3.pdf).
+For more details about PowerGrids, its rationale, and its implementation and numerical details, please consult the library documentation and the [Modelica Conference paper](https://modelica.org/events/modelica2019/proceedings/html/papers/Modelica2019paper5D3.pdf).
 
 <a name="start"></a>
 ## Getting started!

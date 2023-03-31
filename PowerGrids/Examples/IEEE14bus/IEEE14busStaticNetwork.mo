@@ -736,6 +736,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -110}, {200, 110}}, grid = {0.5, 0.5})),
-    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
-   __OpenModelica_simulationFlags(homotopyOnFirstTry="()"));
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002));
 end IEEE14busStaticNetwork;
