@@ -37,7 +37,7 @@ model SteadyState "Reproduces the basic static power flow, see fig. 3-1 of the r
   Types.ReactivePower AA_08_QGRID = -GRID.port.Q;
   Types.ActivePower   AA_09_PGRIDL = GRIDL.port.P;
   Types.ReactivePower AA_10_QGRIDL = GRIDL.port.Q;
-  Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = 2.5e+09, UNom = 380000, URef = 1.05 * 380e3, c = 1.1, portVariablesPhases = true, portVariablesPu = true)  annotation(
+  Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation(
     Placement(visible = true, transformation(origin = {140, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(VrefPu.y, AVR.VrefPu) annotation(
