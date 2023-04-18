@@ -22,7 +22,7 @@ model SmallSystem
       Placement(visible = true, transformation(origin = {20, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.SlackBus slack(SNom = 1e+08, UNom = 400000, portVariablesPu = true)  annotation(
       Placement(visible = true, transformation(origin = {-60, 10}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  Buses.Bus bus(SNom = 2e+07, UNom = 400000)  annotation(
+  Buses.Bus bus(UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(load1.terminal, line1.terminalA) annotation(

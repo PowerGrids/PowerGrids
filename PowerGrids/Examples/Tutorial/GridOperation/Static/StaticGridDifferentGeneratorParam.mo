@@ -7,9 +7,9 @@ model StaticGridDifferentGeneratorParam "Systems operating in steady-state with 
 // First Grid
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN_1(H = 4, PStart = -4.75e+08, QStart = -1.56e+08,SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, UPhaseStart = 0.161156, UStart = 21e3 * 0.9917, portVariablesPhases = true, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8)  annotation (
     Placement(visible = true, transformation(origin={-69.5, 50},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV_1(SNom = 5e+08, UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.Bus NTLV_1(UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={-34.5, 34},  extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus NTHV_1(SNom = 5e+08, UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.Bus NTHV_1(UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={11.5, 34},  extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_1(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-15, 34},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -24,9 +24,9 @@ model StaticGridDifferentGeneratorParam "Systems operating in steady-state with 
   // Second Grid - Transformer nominal voltage changed
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN_2(H = 4, PStart = -4.75e+08, QStart = -1.56e+08,SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, UPhaseStart = 0.161156, UStart = 21e3 * 0.9917, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, portVariablesPhases = true, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8)  annotation (
     Placement(visible = true, transformation(origin={-69.5, -6},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV_2(SNom = 5e+08, UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.Bus NTLV_2(UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={-34.5, -22},  extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus NTHV_2(SNom = 5e+08, UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.Bus NTHV_2(UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={3.5, -22},    extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_2(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-14.5, -22},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -42,9 +42,9 @@ model StaticGridDifferentGeneratorParam "Systems operating in steady-state with 
 // Third Grid - Generator Nominal Voltage changed
   PowerGrids.Electrical.Machines.SynchronousMachine4WindingsInternalParameters GEN_3(H = 4, LDPu = 0.2, LQ1Pu = 0.444231, LQ2Pu = 0.2625, LdPu = 0.15, LfPu = 0.224242, LqPu = 0.15, MdPu = 1.85, MqPu = 1.65, PStart = -4.75e+08, QStart = -1.56e+08,SNom = 5e+08, UNom = 21000, UPhaseStart = 0.161156, UStart = 21e3 * 0.9917, mrcPu = 0, portVariablesPhases = true, rDPu = 0.0303152, rQ1Pu = 0.00308618, rQ2Pu = 0.0234897, raPu = 0, rfPu = 0.00128379)  annotation (
     Placement(visible = true, transformation(origin={-69.5, -62},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV_3(SNom = 5e+08, UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.Bus NTLV_3(UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={-34.5, -78},  extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus NTHV_3(SNom = 5e+08, UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.Bus NTHV_3(UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={15.5, -78},  extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_3(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-4.5, -78},   extent = {{-10, -10}, {10, 10}}, rotation = 0)));
