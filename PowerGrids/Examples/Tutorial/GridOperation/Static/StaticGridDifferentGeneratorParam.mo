@@ -13,7 +13,7 @@ model StaticGridDifferentGeneratorParam "Systems operating in steady-state with 
     Placement(visible = true, transformation(origin={11.5, 34},  extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_1(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-15, 34},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.EquivalentGrid GRID_1(R_X = 1 / 10, SNom = 5e+08, SSC = 2.5e+09, UNom = 380000, URef = 1.05 * 380e3, c = 1.1, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.EquivalentGrid GRID_1(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={49.5, 48},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL_1(PRefConst = 4.75e+08, QRefConst = 7.6e+07, SNom = 5e+08, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={47.5, 22},  extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -30,7 +30,7 @@ model StaticGridDifferentGeneratorParam "Systems operating in steady-state with 
     Placement(visible = true, transformation(origin={3.5, -22},    extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_2(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-14.5, -22},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.EquivalentGrid GRID_2(R_X = 1 / 10, SNom = 5e+08, SSC = 2.5e+09, UNom = 380000, URef = 1.05 * 380e3, c = 1.1, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.EquivalentGrid GRID_2(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={51.5, -12},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL_2(PRefConst = 4.75e+08, QRefConst = 7.6e+07, SNom = 5e+08, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={47.5, -30},  extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -48,7 +48,7 @@ model StaticGridDifferentGeneratorParam "Systems operating in steady-state with 
     Placement(visible = true, transformation(origin={15.5, -78},  extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_3(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-4.5, -78},   extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.EquivalentGrid GRID_3(R_X = 1 / 10, SNom = 5e+08, SSC = 2.5e+09, UNom = 380000, URef = 1.05 * 380e3, c = 1.1, portVariablesPhases = true, portVariablesPu = true)  annotation (
+  PowerGrids.Electrical.Buses.EquivalentGrid GRID_3(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={51.5, -68},  extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL_3(PRefConst = 4.75e+08, QRefConst = 7.6e+07, SNom = 5e+08, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin={49.5, -90},  extent = {{-10, -10}, {10, 10}}, rotation = 90)));
