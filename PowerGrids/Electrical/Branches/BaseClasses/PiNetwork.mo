@@ -5,17 +5,17 @@ partial model PiNetwork "Generic Pi-Network base model"
   Types.ComplexAdmittance YA "Shunt admittance at port a";
   Types.ComplexAdmittance YB "Shunt admittance at port b";
   Types.ComplexPerUnit k "Complex ratio of ideal transformer at port A (vB/vA)";
-  Types.ComplexVoltage vA(re(nominal = portA.VBase), im(nominal = portA.VBase)) = portA.v;
-  Types.ComplexVoltage vB(re(nominal = portB.VBase), im(nominal = portB.VBase)) = portB.v;
-  Types.ComplexCurrent iA(re(nominal = portA.IBase), im(nominal = portA.IBase)) = portA.i;
-  Types.ComplexCurrent iB(re(nominal = portB.IBase), im(nominal = portB.IBase)) = portB.i;
+  Types.ComplexVoltage vA(re(nominal = portA.VNom), im(nominal = portA.VNom)) = portA.v;
+  Types.ComplexVoltage vB(re(nominal = portB.VNom), im(nominal = portB.VNom)) = portB.v;
+  Types.ComplexCurrent iA(re(nominal = portA.INom), im(nominal = portA.INom)) = portA.i;
+  Types.ComplexCurrent iB(re(nominal = portB.INom), im(nominal = portB.INom)) = portB.i;
   // See diagram in the documentation layer for the variable definitions
-  Types.ComplexVoltage vAt(re(nominal = portB.VBase), im(nominal = portB.VBase));
-  Types.ComplexVoltage vz(re(nominal = portB.VBase), im(nominal = portB.VBase));
-  Types.ComplexCurrent iAt(re(nominal = portB.IBase), im(nominal = portB.IBase));
-  Types.ComplexCurrent iAs(re(nominal = portB.IBase), im(nominal = portB.IBase));
-  Types.ComplexCurrent iBs(re(nominal = portB.IBase), im(nominal = portB.IBase));
-  Types.ComplexCurrent iz(re(nominal = portB.IBase), im(nominal = portB.IBase));
+  Types.ComplexVoltage vAt(re(nominal = portB.VNom), im(nominal = portB.VNom));
+  Types.ComplexVoltage vz(re(nominal = portB.VNom), im(nominal = portB.VNom));
+  Types.ComplexCurrent iAt(re(nominal = portB.INom), im(nominal = portB.INom));
+  Types.ComplexCurrent iAs(re(nominal = portB.INom), im(nominal = portB.INom));
+  Types.ComplexCurrent iBs(re(nominal = portB.INom), im(nominal = portB.INom));
+  Types.ComplexCurrent iz(re(nominal = portB.INom), im(nominal = portB.INom));
 equation
 // Kirchhoff's laws
   iAt = iz + iAs;
