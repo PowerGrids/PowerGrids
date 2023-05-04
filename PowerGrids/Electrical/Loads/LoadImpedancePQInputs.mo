@@ -5,7 +5,9 @@ model LoadImpedancePQInputs "Load model with impedance specified by PRefIn and Q
     final PRef = PRefIn, 
     final QRef = QRefIn,
     final PRefConst = 0,
-    final QRefConst = 0);
+    final QRefConst = 0,
+    SNom = SRef);
+  parameter Types.Power SRef "Reference power";
   Modelica.Blocks.Interfaces.RealInput PRefIn(unit="W", displayUnit="MW") "Active reference power at VPu = 1, W" annotation(
     Placement(visible = true, transformation(origin = {-100, 36}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput QRefIn(unit="var", displayUnit = "MVA") "Reactive reference power at VPu = 1, var" annotation(

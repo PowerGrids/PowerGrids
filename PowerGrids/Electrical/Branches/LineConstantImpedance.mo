@@ -2,7 +2,8 @@ within PowerGrids.Electrical.Branches;
 model LineConstantImpedance "Transmission line with constant impedance"
   extends BaseClasses.PiNetwork(
     final UNomA = UNom,
-    final UNomB = UNom);
+    final UNomB = UNom,
+    SNom = UNom^2/X);
   extends Icons.Line;
 
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
