@@ -3,8 +3,8 @@ within PowerGrids.Electrical.BaseClasses;
 model PortAC "AC port computing auxiliary quantities"
   parameter Types.Power   SNom(start = 100e6) "Nominal or rated power";
   parameter Types.Voltage UNom(start = 400e3) "Nominal or rated phase-to-phase voltage";
-  parameter Types.Power   SBase = SNom "Base power";
-  parameter Types.Voltage UBase = UNom "Base phase-to-phase voltage";
+  final parameter Types.Power   SBase = SNom "Base power";
+  final parameter Types.Voltage UBase = UNom "Base phase-to-phase voltage";
 
   parameter Types.Power PStart = SNom "Start value of active power flowing into port";
   parameter Types.Power QStart = 0 "Start value of reactive power flowing into port";
@@ -16,8 +16,8 @@ model PortAC "AC port computing auxiliary quantities"
   constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
 
   // Computed parameters
-  final parameter Types.Voltage VNom = UNom/sqrt(3) "Base phase-to-ground voltage";
-  final parameter Types.Current INom = SNom/(3*VNom) "Base current";
+  final parameter Types.Voltage VNom = UNom/sqrt(3) "Nominal phase-to-ground voltage";
+  final parameter Types.Current INom = SNom/(3*VNom) "Nominal current";
 
   final parameter Types.Voltage VBase = UBase/sqrt(3) "Base phase-to-ground voltage";
   final parameter Types.Current IBase = SBase/(3*VBase) "Base current";
