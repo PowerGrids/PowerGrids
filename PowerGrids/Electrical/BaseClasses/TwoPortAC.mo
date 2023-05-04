@@ -1,9 +1,9 @@
 within PowerGrids.Electrical.BaseClasses;
 
 partial model TwoPortAC "Base class for two-port AC components"
-  parameter Types.Voltage UNomA(start = 400e3) "Nominal/rated voltage, port A" annotation(Evaluate = true);
-  parameter Types.Voltage UNomB = UNomA "Nominal/rated voltage, port B" annotation(Evaluate = true);
-  parameter Types.Power SNom(start = 100e6) "Nominal/rated power" annotation(Evaluate = true);
+  parameter Types.Voltage UNomA(start = 400e3) "Nominal/rated voltage, port A, also used as p.u. base" annotation(Evaluate = true);
+  parameter Types.Voltage UNomB = UNomA "Nominal/rated voltage, port B, also used as p.u. base" annotation(Evaluate = true);
+  parameter Types.Power SNom(start = 100e6) "Nominal/rated power, also used as p.u. base" annotation(Evaluate = true);
 
   parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
   constant Boolean portVariablesPu = true "Add per-unit variables to model";
