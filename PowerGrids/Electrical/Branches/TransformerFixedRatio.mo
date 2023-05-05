@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Branches;
 
 model TransformerFixedRatio "Transformer with fixed voltage ratio"
-  extends BaseClasses.PiNetwork;
+  extends BaseClasses.PiNetwork(SNom = UNomB^2/X);
   extends Icons.Transformer;
 
   parameter SI.PerUnit rFixed = 1 "Fixed transformer ratio VB/VA";

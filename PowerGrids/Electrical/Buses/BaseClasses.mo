@@ -5,10 +5,10 @@ package BaseClasses
 
   model BusBase
     extends PowerGrids.Electrical.BaseClasses.OnePortAC;
-    input Types.ComplexVoltage e(re(nominal = port.VBase), im(nominal = port.VBase)) "Voltage of ideal generator, phase-to-ground";
+    input Types.ComplexVoltage e(re(nominal = port.VNom), im(nominal = port.VNom)) "Voltage of ideal generator, phase-to-ground";
     input Types.ComplexImpedance Z "Internal impedance";
-    Types.ComplexVoltage v(re(nominal = port.VBase), im(nominal = port.VBase)) = port.v "Port voltage, phase-to-ground";
-    Types.ComplexCurrent i(re(nominal = port.IBase), im(nominal = port.IBase)) = port.i "Port current";
+    Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
+    Types.ComplexCurrent i(re(nominal = port.INom), im(nominal = port.INom)) = port.i "Port current";
   equation
     v = e + Z*i;
     annotation(

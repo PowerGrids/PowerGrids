@@ -12,67 +12,54 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus2(
-    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus3(
-    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus4(
-    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {114, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus5(
-    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus6(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus7(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus8(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {160, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Buses.Bus bus9(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus10(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus11(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus12(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus13(
-    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus14(
-    SNom = 100e6,
     UNom = 13.8e3  
   ) annotation(
     Placement(visible = true, transformation(origin = {30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

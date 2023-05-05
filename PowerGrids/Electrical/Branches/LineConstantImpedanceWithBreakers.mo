@@ -1,7 +1,10 @@
 within PowerGrids.Electrical.Branches;
 
 model LineConstantImpedanceWithBreakers "Transmission line with constant impedance and breakers"
-  extends BaseClasses.PiNetwork(UNomA = UNom, UNomB = UNomA);
+  extends BaseClasses.PiNetwork(
+    final UNomA = UNom,
+    final UNomB = UNom,
+    SNom = UNom^2/X);
   extends Icons.Line;
   encapsulated type BreakersState = enumeration(
     AcBc "Both breakers at port A and at port B closed", 

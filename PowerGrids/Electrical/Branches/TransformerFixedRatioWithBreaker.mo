@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Branches;
 model TransformerFixedRatioWithBreaker
-  extends BaseClasses.PiNetwork;
+  extends BaseClasses.PiNetwork(SNom = UNomB^2/X);
   extends Icons.Transformer;
 
   encapsulated type BreakersState = enumeration(

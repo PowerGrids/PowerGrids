@@ -7,8 +7,8 @@ model BusFault
   parameter SI.Time startTime "Start time of the fault" annotation(Dialog(group="Fault data"));
   parameter SI.Time stopTime "End time of the fault" annotation(Dialog(group="Fault data"));
 
-  Types.ComplexVoltage v(re(nominal = port.VBase), im(nominal = port.VBase)) = port.v "Port voltage, phase-to-ground";
-  Types.ComplexCurrent i(re(nominal = port.IBase), im(nominal = port.IBase)) = port.i "Port current";
+  Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
+  Types.ComplexCurrent i(re(nominal = port.INom), im(nominal = port.INom)) = port.i "Port current";
 
   discrete Types.ComplexAdmittance Y(re(start = 0, fixed = true), im(start = 0, fixed = true)) "Shunt admittance";
   Boolean fault(start = false, fixed = true) "The fault is active";

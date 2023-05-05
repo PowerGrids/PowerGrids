@@ -1,8 +1,9 @@
 within PowerGrids.Electrical.Branches;
 model LineConstantImpedanceFault "Transmission line with constant impedance and fault in intermediate position"
   extends Electrical.BaseClasses.TwoPortAC(
-    UNomA = UNom,
-    UNomB = UNomA);
+    final UNomA = UNom,
+    final UNomB = UNom,
+    SNom = UNom^2/X);
   extends Icons.Line;
 
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";

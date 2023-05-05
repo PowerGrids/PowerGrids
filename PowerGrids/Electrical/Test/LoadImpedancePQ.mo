@@ -4,11 +4,11 @@ model LoadImpedancePQ "Test case for LoadImpedancePQ"
   extends Modelica.Icons.Example;
   inner System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {78, 78}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ load1(PRef = 8e+07, PRefConst = 40e6, QRef = 4e+07, QRefConst = 20e6, SNom = 1e+08, UNom = 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true) annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQ load1(PRef = 8e+07, PRefConst = 40e6, QRef = 4e+07, QRefConst = 20e6, SNom (displayUnit = "V.A")= 1e+08, UNom (displayUnit = "V")= 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {-70, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ load2(PRef = 8e+07 + (if time >= 1 then 1e7 else 0), PRefConst = 4e+07, QRef = 4e+7 + (if time >= 2 then 5e6 else 0), QRefConst = 2e+07, SNom = 1e+08, UNom = 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true) annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQ load2(PRef = 8e+07 + (if time >= 1 then 1e7 else 0), PRefConst = 4e+07, QRef = 4e+7 + (if time >= 2 then 5e6 else 0), QRefConst = 2e+07, SNom (displayUnit = "V.A")= 1e+08, UNom (displayUnit = "V")= 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQInputs load3(SNom = 5e+08, UNom = 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQInputs load3(SNom (displayUnit = "V.A")= 5e+08, SRef = 5e+08, UNom (displayUnit = "V")= 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true, UStart(displayUnit = "V"))  annotation(
     Placement(visible = true, transformation(origin = {70, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.InfiniteBus infiniteBus1(SNom = 1e+08, UNom = 380000, URef = 400000, portVariablesPhases = true, portVariablesPu = true) annotation(
     Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

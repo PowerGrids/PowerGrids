@@ -4,7 +4,7 @@ model TwoGeneratorsOneReferenceGenerator
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, referenceFrequency = PowerGrids.Types.Choices.ReferenceFrequency.fixedReferenceGenerator) annotation(
     Placement(visible = true, transformation(origin = {130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV1(SNom = 5e+08, UNom = 21000, portVariablesPhases = true, portVariablesPu = true) annotation(
+  PowerGrids.Electrical.Buses.Bus NTLV1(UNom = 21000, portVariablesPhases = true, portVariablesPu = true) annotation(
     Placement(visible = true, transformation(origin = {-80, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Buses.ReferenceBus NTHV1(SNom = 5e+08, UNom = 380000, portVariablesPhases = true, portVariablesPu = true) annotation(
     Placement(visible = true, transformation(origin = {-20, 20}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
@@ -18,11 +18,11 @@ model TwoGeneratorsOneReferenceGenerator
     Placement(visible = true, transformation(origin = {10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN2(GEN(UNom = 21e3, SNom = 500e6, UStart = 20.825e3, UPhaseStart = 9.1746/180*3.14159, PStart = -450.88e6, QStart = -294.351e6), TGOV(R = 0.05)) annotation(
     Placement(visible = true, transformation(origin = {100, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTHV2(SNom = 5e+08, UNom = 380000, portVariablesPhases = true, portVariablesPu = true) annotation(
+  PowerGrids.Electrical.Buses.Bus NTHV2(UNom = 380000, portVariablesPhases = true, portVariablesPu = true) annotation(
     Placement(visible = true, transformation(origin = {40, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRef = 450e6 + (if time < 1 then 0 else -100e6), PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 500e6, UNom = 380000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRef = 450e6 + (if time < 1 then 0 else -100e6), PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 500e6, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {-10, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 500e6, UNom = 380000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 500e6, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {30, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(NTLV1.terminal, TGEN1.terminalA) annotation(
