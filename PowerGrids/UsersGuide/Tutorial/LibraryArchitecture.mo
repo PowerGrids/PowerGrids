@@ -20,7 +20,42 @@ The PowerGrids library is designed around two fundamental principles.<p></p>
 
 <h3>Types for Physical Quantities</h3>
 <p>The <a href=\"modelica://PowerGrids.Types\">PowerGrids.Types</a> package defines the types for all physical variables, which use SI units, and for non-dimensional per-unit variables. Physical types include a default <code>nominal</code> attribute for proper scaling of variable in the generated simulation code, and default <code>displayUnit</code> attributes, which allow GUIs to provide parameter input and to display simulation results using more convenient units such as kV or MW. Note that the numerical values in the Modelica source code are always in SI units for consistency.
-</p>
+</p><h3>Name conventions</h3><div>The following conventions are used for the names of the parameters that define nominal/reference Voltages and/or Powers:</div><ul dir=\"auto\"><li><b>xxNom:</b> these parameters&nbsp;are always present in the input mask, possibly with some 
+default value (see below the PQ load case). They are used to set the Nominal/rated xx values and as p.u. base. They are also used in the library as&nbsp;<code>nominal</code>&nbsp;attribute for proper scaling of variable in the generated simulation code.<br><u>Exception to this rule:</u> SNom for the Bus component is declared as 
+final SNom = 1, so it is removed from the input mask, since SPu = 0 all 
+the time (no power flow through the port). As a consequence port.P, 
+port.Q, port.PPu, port.QPu etc. will all be zero, as they should, with 
+no divisions by zero.</li>
+<li><b>xxRef: </b>these&nbsp;parameters are used to define the behaviour of a components by
+ specifying a reference operating point. In this case, the default value
+ for <b>xxNom</b> is defined in terms of <b>xxRef</b> to avoid double input if one 
+wants to see 1 p.u. at the reference operating point, this can be 
+changed by explicitly inputting some different value for <b>xxNom</b>.</li>
+</ul><p>Some example are listed below,</p><p><!--StartFragment--><!--EndFragment--></p><ol dir=\"auto\">
+<li><b>Machines (Synchronous and transformer):</b> The user will be asked for 
+xxNom in the input mask, intended as the nominal, or rated values of the
+ machine, <em>but also</em> as the values from which p.u. impedances are
+ computed from the corresponding ohm values, as made it clear from the 
+comment to the parameter. No need of xxRef. For transformer we will have
+ one UNom per winding. xxNom will also be used for scaling, but we don't
+ mention that in the parameter input mask.</li>
+<li><b>Lines:</b> same as machines, will be asked for xxNom in the input mask, intended as the nominal, or rated values of the line, <em>but also</em>
+ as the ones from which p.u. impedances are computed from the 
+corresponding ohm values. xxNom values are asked only once and used for 
+both ports, contrary to transformers that have one SNom but two separate
+ UNomA and UNomB. We can give a default value for SNom = UNom^2/X, which
+ corresponds to the maximum power transfer when neglecting the losses, 
+which is probably good enough in most cases, but can always be changed.</li>
+<li><b>Constant impedance loads described through P and Q:</b> the user will be
+ asked in the components' mask for PRefConst, QRefConst and URef 
+(intended as the value at which, from the inputed P and Q, the internal 
+impedances are computed). Regarding UNom and SNom, they will also appear
+ in the input mask, but they will have the defaults UNom = URef and SNom
+ = sqrt(PRefConst^2+ QRefConst^2) already set. One could always change 
+them if you want to see a value of p.u. different from 1 at the 
+reference operating point, which can be different from the nominal one 
+(e.g. you are working at 50% load, so you want to see 0.5 p.u.)</li>
+</ol>
 
 <h3>Connectors</h3>
 <p>AC connections are made through the <a href=\"modelica://PowerGrids.Interfaces.TerminalAC\">PowerGrids.Interfaces.TerminalAC</a> connectors, which carry a phase-to-ground voltage phasor and a line current phasor. Any two connectors belonging to the same synchronous system can be connected.</p>
