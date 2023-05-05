@@ -5,7 +5,7 @@ partial model TwoPortAC "Base class for two-port AC components"
   parameter Types.Voltage UNomB = UNomA "Nominal/rated voltage, port B, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.Power SNom(start = 100e6) "Nominal/rated power, also used as p.u. base" annotation(Evaluate = true);
 
-  parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
+  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
   constant Boolean portVariablesPu = true "Add per-unit variables to model";
   parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component";
 

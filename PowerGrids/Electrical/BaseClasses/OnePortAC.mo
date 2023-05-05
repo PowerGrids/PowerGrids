@@ -4,7 +4,7 @@ partial model OnePortAC "Base class for AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
-  parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
+  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
   constant Boolean portVariablesPu = true "Add per-unit variables to model";
   constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
   parameter LocalInitializationOption localInit = LocalInitializationOption.none
