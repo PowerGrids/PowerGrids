@@ -63,9 +63,9 @@ model PortAC "AC port computing auxiliary quantities"
   HideResult = portVariablesPu);
   
   Types.Angle UPhase(start = UPhaseStart) = if portVariablesPhases then atan2(v.im, v.re) else 0 "Phase of voltage across the port"  annotation(
-  HideResult = portVariablesPhases);
+  HideResult = not portVariablesPhases);
   Types.Angle IPhase(start = CM.arg(iStart)) = if portVariablesPhases then atan2(i.im, i.re) else 0 "Phase of current into the port" annotation(
-  HideResult = portVariablesPhases);
+  HideResult = not portVariablesPhases);
   
   Types.ComplexCurrent iGen(re(nominal = INom, start = -iStart.re),
                             im(nominal = INom, start = -iStart.im)) = -i "Port current, generator convention";

@@ -18,6 +18,9 @@ model System "System object"
 
       rotation = 0)));
   Types.AngularVelocity omegaRef = omegaRefInternal "Reference frequency";
+
+  parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
+
 protected
   Modelica.Blocks.Interfaces.RealInput omegaRefInternal(unit = "rad/s") 
     "Protected connector for conditional connector handling";
