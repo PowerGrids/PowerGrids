@@ -25,7 +25,7 @@ model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of th
   Modelica.Blocks.Sources.RealExpression zero2 annotation(
     Placement(visible = true, transformation(origin = {-8, -62}, extent = {{-12, -10}, {12, 10}}, rotation = 0)));
 
-  Types.PerUnit AA_01_GEN_UPu = GEN.port.VPu "Fig. 5-3, terminal voltage";
+  Types.PerUnit AA_01_GEN_UPu = GEN.port.VPu "Fig. 5-3, power terminal voltage";
   Types.PerUnit AA_02_GEN_PPu = GEN.port.PGenPu "Fig. 5-4, active power of the synchronous machine";
   Types.PerUnit AA_03_GEN_PmechPu = GEN.PmPu "Fig. 5-5, mechanical power of the synchronous machine";
   Types.PerUnit AA_04_GEN_omegaPu = GEN.omegaPu "Fig. 5-6, speed";
@@ -43,7 +43,7 @@ equation
     Line(points = {{-91, -25}, {-85.8, -25}, {-85.8, -18}, {-71.8, -18}}, color = {0, 0, 127}));
   connect(PLoad.y, LOAD.PRefIn) annotation(
     Line(points = {{1, -34}, {10, -34}, {10, -42}, {22, -42}}, color = {0, 0, 127}));
-  connect(NGEN.terminal, LOAD.terminal) annotation(
+  connect(NGEN.powerTerminal, LOAD.powerTerminal) annotation(
     Line(points = {{24, -20}, {32, -20}, {32, -38}}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-87, 24}, {-72, 24}}, color = {0, 0, 127}));
@@ -53,7 +53,7 @@ equation
     Line(points = {{-16, 2}, {-8, 2}, {-8, 48}, {-84, 48}, {-84, 32}, {-72, 32}}, color = {0, 0, 127}));
   connect(TGOV.PMechPu, GEN.PmPu) annotation(
     Line(points = {{-52, 28}, {-44, 28}, {-44, 4}, {-40, 4}, {-40, 4}, {-36, 4}}, color = {0, 0, 127}));
-  connect(GEN.terminal, NGEN.terminal) annotation(
+  connect(GEN.powerTerminal, NGEN.powerTerminal) annotation(
     Line(points = {{-26, 0}, {-26, -10}, {-26, -10}, {-26, -20}, {-2, -20}, {-2, -20}, {24, -20}}));
   annotation(
     Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),

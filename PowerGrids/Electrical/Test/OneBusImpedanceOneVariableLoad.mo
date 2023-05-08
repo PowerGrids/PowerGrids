@@ -24,9 +24,9 @@ equation
     Line(points = {{21, 20}, {29, 20}, {29, -4}, {42, -4}}, color = {0, 0, 127}));
   connect(QSignal.y, load2.QRefIn) annotation(
     Line(points = {{21, -20}, {31.5, -20}, {31.5, -10}, {42, -10}}, color = {0, 0, 127}));
-  connect(bus2.terminal, load2.terminal) annotation(
+  connect(bus2.powerTerminal, load2.powerTerminal) annotation(
     Line(points = {{52, 10}, {52, 5}, {50, 5}, {50, 0}}));
-  connect(bus1.terminal, load1.terminal) annotation(
+  connect(bus1.powerTerminal, load1.powerTerminal) annotation(
     Line(points = {{-48, 10}, {-48, 5}, {-50, 5}, {-50, 0}}));
   annotation(
     experiment(StopTime = 3.0, Interval = 0.01),

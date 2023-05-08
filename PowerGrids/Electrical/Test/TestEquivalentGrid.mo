@@ -16,11 +16,11 @@ model TestEquivalentGrid "Test case EquivalentGrid model"
   Loads.LoadPQVoltageDependence load(PRefConst = 1e+07, QRefConst = 2e+07, SNom (displayUnit = "V.A")= 5e+08, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V"))  annotation(
     Placement(visible = true, transformation(origin = {-20, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(load.terminal, equivalentGrid.terminal) annotation(
+  connect(load.powerTerminal, equivalentGrid.powerTerminal) annotation(
     Line(points = {{-20, 0}, {40, 0}, {40, 0}, {40, 0}}));
-  connect(ground.terminal, equivalentLine.terminalA) annotation(
+  connect(ground.powerTerminal, equivalentLine.powerTerminalA) annotation(
     Line(points = {{-20, -40}, {-2, -40}, {-2, -40}, {0, -40}}));
-  connect(equivalentLine.terminalB, voltageSource.terminal) annotation(
+  connect(equivalentLine.powerTerminalB, voltageSource.powerTerminal) annotation(
     Line(points = {{20, -40}, {42, -40}, {42, -40}, {40, -40}, {40, -40}}));
   annotation(
     Diagram,

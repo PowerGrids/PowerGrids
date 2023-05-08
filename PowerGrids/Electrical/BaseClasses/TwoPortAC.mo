@@ -27,11 +27,11 @@ partial model TwoPortAC "Base class for two-port AC components"
   parameter Types.ReactivePower QStartB = 0 "Start value of reactive power flowing into port B"
     annotation(Dialog(tab = "Initialization"));
 
-  PowerGrids.Interfaces.PowerTerminalAC terminalA annotation(
+  PowerGrids.Interfaces.PowerTerminalAC powerTerminalA annotation(
     Placement(visible = true, transformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Interfaces.PowerTerminalAC terminalB annotation(
+  PowerGrids.Interfaces.PowerTerminalAC powerTerminalB annotation(
     Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PortAC portA(final v = terminalA.v, final i = terminalA.i,
+  PortAC portA(final v = powerTerminalA.v, final i = powerTerminalA.i,
                final UNom = UNomA, final SNom = SNom,
                final portVariablesPu = portVariablesPu,
                final portVariablesPhases = portVariablesPhases,
@@ -40,8 +40,8 @@ partial model TwoPortAC "Base class for two-port AC components"
                final UPhaseStart = UPhaseStartA,
                final PStart = PStartA,
                final QStart = QStartA)
-               "AC port - terminalA";
-  PortAC portB(final v = terminalB.v, final i = terminalB.i,
+               "AC port - powerTerminalA";
+  PortAC portB(final v = powerTerminalB.v, final i = powerTerminalB.i,
                final UNom = UNomB, final SNom = SNom,
                final portVariablesPu = portVariablesPu,
                final portVariablesPhases = portVariablesPhases,
@@ -50,7 +50,7 @@ partial model TwoPortAC "Base class for two-port AC components"
                final UPhaseStart = UPhaseStartB,
                final PStart = PStartB,
                final QStart = QStartB)
-               "AC port - terminalB";
+               "AC port - powerTerminalB";
 
   Types.ComplexPower Sbal = portA.S + portB.S if computePowerBalance "Complex power balance";
   outer Electrical.System systemPowerGrids "Reference to system object";

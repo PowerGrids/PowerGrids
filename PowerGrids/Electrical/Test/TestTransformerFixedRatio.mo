@@ -11,9 +11,9 @@ model TestTransformerFixedRatio
   PowerGrids.Electrical.Branches.TransformerFixedRatio transformer(R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5, portVariablesPu = true, rFixed = 2) annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(infiniteBus.terminal, transformer.terminalA) annotation(
+  connect(infiniteBus.powerTerminal, transformer.powerTerminalA) annotation(
     Line(points = {{-40, 0}, {-20, 0}}));
-  connect(transformer.terminalB, loadPQ.terminal) annotation(
+  connect(transformer.powerTerminalB, loadPQ.powerTerminal) annotation(
     Line(points = {{0, 0}, {20, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

@@ -16,7 +16,7 @@ block IEEE_AC4A "Static excitation system - IEEE type AC4A"
 
   Modelica.Blocks.Interfaces.RealInput VsPu "PSS output p.u" annotation(
     Placement(visible = true, transformation(origin = {-140, 30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput VcPu "Machine terminal voltage p.u." annotation(
+  Modelica.Blocks.Interfaces.RealInput VcPu "Machine power terminal voltage p.u." annotation(
     Placement(visible = true, transformation(origin = {-140, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput VrefPu "Voltage reference p.u." annotation(
     Placement(visible = true, transformation(origin = {-140, -30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

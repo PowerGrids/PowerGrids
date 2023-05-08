@@ -65,35 +65,35 @@ equation
     Line(points = {{-97, 22}, {-86, 22}}, color = {0, 0, 127}));
   connect(PmPu_3.y, GEN_3.PmPu) annotation (
     Line(points = {{-97, -34}, {-86, -34}}, color = {0, 0, 127}));
-  connect(GEN_1.terminal, NTLV_1.terminal) annotation (
+  connect(GEN_1.powerTerminal, NTLV_1.powerTerminal) annotation (
     Line(points = {{-76, 64}, {-76, 44}, {-48, 44}}));
-  connect(NTLV_1.terminal, TGEN_1.terminalA) annotation (
+  connect(NTLV_1.powerTerminal, TGEN_1.powerTerminalA) annotation (
     Line(points = {{-48, 44}, {-34, 44}}));
-  connect(TGEN_1.terminalB, NTHV_1.terminal) annotation (
+  connect(TGEN_1.powerTerminalB, NTHV_1.powerTerminal) annotation (
     Line(points = {{-14, 44}, {4, 44}}));
-  connect(NTHV_1.terminal, GRID_1.terminal) annotation (
+  connect(NTHV_1.powerTerminal, GRID_1.powerTerminal) annotation (
     Line(points = {{4, 44}, {4, 54}, {26, 54}}));
-  connect(NTHV_1.terminal, GRIDL_1.terminal) annotation (
+  connect(NTHV_1.powerTerminal, GRIDL_1.powerTerminal) annotation (
     Line(points = {{4, 44}, {4, 32}, {20, 32}}));
-  connect(GEN_2.terminal, NTLV_2.terminal) annotation (
+  connect(GEN_2.powerTerminal, NTLV_2.powerTerminal) annotation (
     Line(points = {{-76, 18}, {-76, -2}, {-48, -2}}));
-  connect(NTLV_2.terminal, TGEN_2.terminalA) annotation (
+  connect(NTLV_2.powerTerminal, TGEN_2.powerTerminalA) annotation (
     Line(points = {{-48, -2}, {-34, -2}}));
-  connect(TGEN_2.terminalB, NTHV_2.terminal) annotation (
+  connect(TGEN_2.powerTerminalB, NTHV_2.powerTerminal) annotation (
     Line(points = {{-14, -2}, {4, -2}}));
-  connect(NTHV_2.terminal, GRID_2.terminal) annotation (
+  connect(NTHV_2.powerTerminal, GRID_2.powerTerminal) annotation (
     Line(points = {{4, -2}, {4, 8}, {26, 8}}));
-  connect(NTHV_2.terminal, GRIDL_2.terminal) annotation (
+  connect(NTHV_2.powerTerminal, GRIDL_2.powerTerminal) annotation (
     Line(points = {{4, -2}, {4, -14}, {20, -14}}));
-  connect(GEN_3.terminal, NTLV_3.terminal) annotation (
+  connect(GEN_3.powerTerminal, NTLV_3.powerTerminal) annotation (
     Line(points = {{-76, -38}, {-76, -58}, {-48, -58}}));
-  connect(NTLV_3.terminal, TGEN_3.terminalA) annotation (
+  connect(NTLV_3.powerTerminal, TGEN_3.powerTerminalA) annotation (
     Line(points = {{-48, -58}, {-34, -58}}));
-  connect(TGEN_3.terminalB, NTHV_3.terminal) annotation (
+  connect(TGEN_3.powerTerminalB, NTHV_3.powerTerminal) annotation (
     Line(points = {{-14, -58}, {2, -58}}));
-  connect(NTHV_3.terminal, GRID_3.terminal) annotation (
+  connect(NTHV_3.powerTerminal, GRID_3.powerTerminal) annotation (
     Line(points = {{2, -58}, {2, -48}, {26, -48}}));
-  connect(NTHV_3.terminal, GRIDL_3.terminal) annotation (
+  connect(NTHV_3.powerTerminal, GRIDL_3.powerTerminal) annotation (
     Line(points = {{2, -58}, {2, -70}, {20, -70}}));
   connect(GEN_2.ufPuIn, ufPuIn_2.y) annotation (
     Line(points = {{-86, 14}, {-94, 14}, {-94, 4}, {-97, 4}}, color = {0, 0, 127}));

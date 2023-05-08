@@ -16,15 +16,15 @@ model ControlledGridWithControlledGen "System under automatic control with high-
   PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator ctrlGEN(AVR(Ka = 150)) annotation(
     Placement(visible = true, transformation(origin = {-64, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(NTLV.terminal, TGEN.terminalA) annotation(
+  connect(NTLV.powerTerminal, TGEN.powerTerminalA) annotation(
     Line(points = {{-30, 0}, {-10, 0}}));
-  connect(TGEN.terminalB, NTHV.terminal) annotation(
+  connect(TGEN.powerTerminalB, NTHV.powerTerminal) annotation(
     Line(points = {{10, 0}, {30, 0}}));
-  connect(NTHV.terminal, GRID.terminal) annotation(
+  connect(NTHV.powerTerminal, GRID.powerTerminal) annotation(
     Line(points = {{30, 0}, {36, 0}, {36, 10}, {56, 10}}));
-  connect(NTHV.terminal, GRIDL.terminal) annotation(
+  connect(NTHV.powerTerminal, GRIDL.powerTerminal) annotation(
     Line(points = {{30, 0}, {36, 0}, {36, -12}, {50, -12}}));
-  connect(ctrlGEN.terminal, NTLV.terminal) annotation(
+  connect(ctrlGEN.powerTerminal, NTLV.powerTerminal) annotation(
     Line(points = {{-64, 0}, {-30, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

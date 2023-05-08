@@ -16,15 +16,15 @@ model PowerFlow "Power flow for the basic grid used in the tutorial"
   PowerGrids.Electrical.PowerFlow.SlackBus GRID(SNom = 5e+8, U = 399000, UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin = {60, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 equation
-  connect(GEN.terminal, NTLV.terminal) annotation (
+  connect(GEN.powerTerminal, NTLV.powerTerminal) annotation (
     Line(points = {{-50, 0}, {-30, 0}, {-30, 0}, {-30, 0}}));
-  connect(NTLV.terminal, TGEN.terminalA) annotation (
+  connect(NTLV.powerTerminal, TGEN.powerTerminalA) annotation (
     Line(points = {{-30, 0}, {-10, 0}, {-10, 0}, {-10, 0}}));
-  connect(TGEN.terminalB, NTHV.terminal) annotation (
+  connect(TGEN.powerTerminalB, NTHV.powerTerminal) annotation (
     Line(points = {{10, 0}, {30, 0}, {30, 0}, {30, 0}}));
-  connect(NTHV.terminal, GRID.terminal) annotation (
+  connect(NTHV.powerTerminal, GRID.powerTerminal) annotation (
     Line(points = {{30, 0}, {32, 0}, {32, 20}, {60, 20}, {60, 20}}));
-  connect(GRIDL.terminal, NTHV.terminal) annotation (
+  connect(GRIDL.powerTerminal, NTHV.powerTerminal) annotation (
     Line(points = {{60, -20}, {32, -20}, {32, 0}, {30, 0}}));
   annotation (
     Icon(coordinateSystem(grid={2,2}, extent={{-100,-100},{100,100}})),

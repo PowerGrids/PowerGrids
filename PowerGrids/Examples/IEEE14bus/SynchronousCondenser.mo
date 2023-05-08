@@ -4,7 +4,7 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   extends Icons.Machine;
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {-26, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Interfaces.PowerTerminalAC terminal annotation(
+  PowerGrids.Interfaces.PowerTerminalAC powerTerminal annotation(
     Placement(visible = true, transformation(origin = {-26, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart / GEN.UNom, VrMax = 5, VrMin = -5)  annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -17,7 +17,7 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   Modelica.Blocks.Interfaces.RealOutput omega annotation(
     Placement(visible = true, transformation(origin = {10, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(GEN.terminal, terminal) annotation(
+  connect(GEN.powerTerminal, powerTerminal) annotation(
     Line(points = {{-26, 0}, {-26, -50}}));
   connect(AVR.VcPu, GEN.VPu) annotation(
     Line(points = {{-80, -4}, {-172, -4}, {-172, 70}, {40, 70}, {40, -6}, {-16, -6}}, color = {0, 0, 127}));
