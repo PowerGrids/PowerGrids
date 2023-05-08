@@ -25,23 +25,23 @@ model PowerFlow
   inner Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(NTLV1.terminal, TGEN1.terminalA) annotation(
+  connect(NTLV1.powerTerminal, TGEN1.powerTerminalA) annotation(
     Line(points = {{-80, 0}, {-60, 0}}));
-  connect(TGEN1.terminalB, NTHV1.terminal) annotation(
+  connect(TGEN1.powerTerminalB, NTHV1.powerTerminal) annotation(
     Line(points = {{-40, 0}, {-20, 0}}));
-  connect(NTHV1.terminal, GRIDL1.terminal) annotation(
+  connect(NTHV1.powerTerminal, GRIDL1.powerTerminal) annotation(
     Line(points = {{-20, 0}, {-10, 0}, {-10, -46}}));
-  connect(GEN1.terminal, NTLV1.terminal) annotation(
+  connect(GEN1.powerTerminal, NTLV1.powerTerminal) annotation(
     Line(points = {{-104, 0}, {-80, 0}}));
-  connect(LINE.terminalA, NTHV1.terminal) annotation(
+  connect(LINE.powerTerminalA, NTHV1.powerTerminal) annotation(
     Line(points = {{0, 0}, {-20, 0}}));
-  connect(LINE.terminalB, NTHV2.terminal) annotation(
+  connect(LINE.powerTerminalB, NTHV2.powerTerminal) annotation(
     Line(points = {{20, 0}, {40, 0}}));
-  connect(NTHV2.terminal, GRIDL2.terminal) annotation(
+  connect(NTHV2.powerTerminal, GRIDL2.powerTerminal) annotation(
     Line(points = {{40, 0}, {30, 0}, {30, -46}}));
-  connect(NTHV2.terminal, TGEN2.terminalB) annotation(
+  connect(NTHV2.powerTerminal, TGEN2.powerTerminalB) annotation(
     Line(points = {{40, 0}, {60, 0}, {60, 0}, {60, 0}}));
-  connect(TGEN2.terminalA, GEN2.terminal) annotation(
+  connect(TGEN2.powerTerminalA, GEN2.powerTerminal) annotation(
     Line(points = {{80, 0}, {100, 0}, {100, 0}, {100, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

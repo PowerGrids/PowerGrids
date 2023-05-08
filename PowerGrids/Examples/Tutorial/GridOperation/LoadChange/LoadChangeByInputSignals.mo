@@ -28,15 +28,15 @@ equation
     Line(points={{-77,28},{-60,28}},                        color = {0, 0, 127}));
   connect(ufPuIn.y, GEN.ufPuIn) annotation (
     Line(points={{-77,4},{-72,4},{-72,20},{-60,20}},                         color = {0, 0, 127}));
-  connect(GEN.terminal, NTLV.terminal) annotation (
+  connect(GEN.powerTerminal, NTLV.powerTerminal) annotation (
     Line(points={{-50,24},{-50,4},{-30,4}}));
-  connect(NTLV.terminal, TGEN.terminalA) annotation (
+  connect(NTLV.powerTerminal, TGEN.powerTerminalA) annotation (
     Line(points={{-30,4},{-12,4}}));
-  connect(TGEN.terminalB, NTHV.terminal) annotation (
+  connect(TGEN.powerTerminalB, NTHV.powerTerminal) annotation (
     Line(points={{8,4},{30,4}}));
-  connect(NTHV.terminal, GRID.terminal) annotation (
+  connect(NTHV.powerTerminal, GRID.powerTerminal) annotation (
     Line(points={{30,4},{36,4},{36,14},{56,14}}));
-  connect(NTHV.terminal, GRIDL.terminal) annotation (
+  connect(NTHV.powerTerminal, GRIDL.powerTerminal) annotation (
     Line(points={{30,4},{36,4},{36,-8},{50,-8}}));
   connect(PRef.y, GRIDL.PRefIn) annotation (
     Line(points={{21,-26},{54,-26},{54,-18}},                      color = {0, 0, 127}));

@@ -23,15 +23,15 @@ model SynchronousMachine4WindingsPowerSwing
 equation
   connect(ufPu.y, machine.ufPuIn) annotation(
     Line(points = {{-41, 20}, {-24.5, 20}, {-24.5, 14}, {-10, 14}}, color = {0, 0, 127}));
-  connect(machine.terminal, line.terminalA) annotation(
+  connect(machine.powerTerminal, line.powerTerminalA) annotation(
     Line(points = {{-1.42109e-15, 18}, {-1.42109e-15, -8}, {20, -8}}));
-  connect(line.terminalB, bus.terminal) annotation(
+  connect(line.powerTerminalB, bus.powerTerminal) annotation(
     Line(points = {{40, -8}, {58, -8}}));
   connect(Q.y, load.QRefIn) annotation(
     Line(points = {{-39, -52}, {-21, -52}, {-21, -27}, {-10, -27}}, color = {0, 0, 127}));
   connect(PmPu.y, machine.PmPu) annotation(
     Line(points = {{-39, 54}, {-23, 54}, {-23, 22}, {-10, 22}}, color = {0, 0, 127}));
-  connect(load.terminal, machine.terminal) annotation(
+  connect(load.powerTerminal, machine.powerTerminal) annotation(
     Line(points = {{-1.42109e-15, -22}, {-1.42109e-15, 18}}));
   connect(P.y, load.PRefIn) annotation(
     Line(points = {{-39, -18}, {-10, -18}}, color = {0, 0, 127}));

@@ -29,7 +29,7 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
   Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050 * 380e3, portVariablesPhases = true, portVariablesPu = true)  annotation(
     Placement(visible = true, transformation(origin = {140, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
-  Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.7, terminal voltage";
+  Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.7, power terminal voltage";
   Types.PerUnit AA_02_GEN_efd = GEN.ufPuIn "Fig. 5.8, excitation voltage";
   Types.PerUnit AA_03_GEN_Ppu = GEN.port.PGenPu/0.95 "Fig. 5.9, active power of the synchronous machine";
   Types.PerUnit AA_04_GEN_Qpu = GEN.port.QGenPu/0.314583 "Fig. 5.10, reactive power of the synchronous machine";
@@ -39,13 +39,13 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
   Types.PerUnit AA_08_GRIDL_Qpu = GRIDL.port.QPu/0.1519 "Fig. 5.14, reactive power of the load";
 
 equation
-  connect(GRID.terminal, NTHV.terminal) annotation(
+  connect(GRID.powerTerminal, NTHV.powerTerminal) annotation(
     Line(points = {{148, -20}, {88, -20}, {88, -20}, {88, -20}}));
   connect(VrefPu.y, AVR.VrefPu) annotation(
     Line(points = {{-88.8, -31}, {-89.3, -31}, {-89.3, -31}, {-85.8, -31}, {-85.8, -18}, {-79.8, -18}, {-79.8, -18}, {-71.8, -18}}, color = {0, 0, 127}));
-  connect(TGEN.terminalB, NTHV.terminal) annotation(
+  connect(TGEN.powerTerminalB, NTHV.powerTerminal) annotation(
     Line(points = {{64, -20}, {84, -20}}));
-  connect(NTHV.terminal, GRIDL.terminal) annotation(
+  connect(NTHV.powerTerminal, GRIDL.powerTerminal) annotation(
     Line(points = {{84, -20}, {110, -20}, {110, -50}}));
   connect(GEN.PPu, PSS.Vsi2Pu) annotation(
     Line(points = {{-16, -2}, {0, -2}, {0, 56}, {-130, 56}, {-130, -6}, {-108, -6}, {-108, -6}}, color = {0, 0, 127}));
@@ -65,9 +65,9 @@ equation
     Line(points = {{-16, 2}, {-8, 2}, {-8, 48}, {-84, 48}, {-84, 32}, {-72, 32}}, color = {0, 0, 127}));
   connect(TGOV.PMechPu, GEN.PmPu) annotation(
     Line(points = {{-52, 28}, {-44, 28}, {-44, 4}, {-40, 4}, {-40, 4}, {-36, 4}}, color = {0, 0, 127}));
-  connect(NTLV.terminal, TGEN.terminalA) annotation(
+  connect(NTLV.powerTerminal, TGEN.powerTerminalA) annotation(
     Line(points = {{24, -20}, {44, -20}}));
-  connect(GEN.terminal, NTLV.terminal) annotation(
+  connect(GEN.powerTerminal, NTLV.powerTerminal) annotation(
     Line(points = {{-26, 0}, {-26, -10}, {-26, -10}, {-26, -20}, {-2, -20}, {-2, -20}, {24, -20}}));
   annotation(
     Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),

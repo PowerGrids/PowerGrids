@@ -58,7 +58,7 @@ reference operating point, which can be different from the nominal one
 </ol>
 
 <h3>Connectors</h3>
-<p>AC connections are made through the <a href=\"modelica://PowerGrids.Interfaces.TerminalAC\">PowerGrids.Interfaces.TerminalAC</a> connectors, which carry a phase-to-ground voltage phasor and a line current phasor. Any two connectors belonging to the same synchronous system can be connected.</p>
+<p>AC connections are made through the <a href=\"modelica://PowerGrids.Interfaces.PowerTerminalAC\">PowerGrids.Interfaces.PowerTerminalAC</a> connectors, which carry a phase-to-ground voltage phasor and a line current phasor. Any two connectors belonging to the same synchronous system can be connected.</p>
 
 <h3>AC Ports</h3>
 <p>The <a href=\"modelica://PowerGrids.Electrical.BaseClasses.PortAC\">PowerGrids.Electrical.BaseClasses.PortAC</a> model is the fundamental component to interface AC models with the outside world via a three-phase balanced AC system. The <code>PortAC</code> model contains all the useful representations of the quantites found at a component port, as well as the equations relating them: phase-to-phase and phase-to-ground voltage in Cartesian and polar coordinates, line currents in Cartesian and polar coordinates, active and reactive power flows, both in SI units and per-unit, referred to local base power SBase and voltage UBase. Each of these quantities can be used to formulate the equations of the component, without the need of re-defining them each and every time.</p>

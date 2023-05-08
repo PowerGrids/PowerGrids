@@ -465,129 +465,129 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     Placement(visible = true, transformation(origin = {180, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 equation
-  connect(bus12.terminal, L6to12.terminalB) annotation(
+  connect(bus12.powerTerminal, L6to12.powerTerminalB) annotation(
     Line(points = {{-90, 80}, {-90, 80}, {-90, 60}, {-70, 60}, {-70, 60}}));
-  connect(L12to13.terminalA, bus12.terminal) annotation(
+  connect(L12to13.powerTerminalA, bus12.powerTerminal) annotation(
     Line(points = {{-70, 72}, {-86, 72}, {-86, 80}, {-90, 80}}));
-  connect(L12to13.terminalB, bus13.terminal) annotation(
+  connect(L12to13.powerTerminalB, bus13.powerTerminal) annotation(
     Line(points = {{-50, 72}, {-36, 72}, {-36, 80}, {-30, 80}}));
-  connect(L6to12.terminalA, bus6.terminal) annotation(
+  connect(L6to12.powerTerminalA, bus6.powerTerminal) annotation(
     Line(points = {{-50, 60}, {-36, 60}, {-36, 0}, {-30, 0}, {-30, 0}}));
-  connect(L6to13.terminalA, bus6.terminal) annotation(
+  connect(L6to13.powerTerminalA, bus6.powerTerminal) annotation(
     Line(points = {{-30, 52}, {-30, 52}, {-30, 0}, {-30, 0}}));
-  connect(L6to13.terminalB, bus13.terminal) annotation(
+  connect(L6to13.powerTerminalB, bus13.powerTerminal) annotation(
     Line(points = {{-30, 72}, {-30, 72}, {-30, 80}, {-30, 80}}));
-  connect(bus13.terminal, L6to13.terminalB) annotation(
+  connect(bus13.powerTerminal, L6to13.powerTerminalB) annotation(
     Line(points = {{-30, 80}, {-30, 80}, {-30, 72}, {-30, 72}}));
-  connect(L6to11.terminalA, bus6.terminal) annotation(
+  connect(L6to11.powerTerminalA, bus6.powerTerminal) annotation(
     Line(points = {{-10, 10}, {-10, 10}, {-10, 6}, {-24, 6}, {-24, 0}, {-30, 0}, {-30, 0}}));
-  connect(L6to11.terminalB, bus11.terminal) annotation(
+  connect(L6to11.powerTerminalB, bus11.powerTerminal) annotation(
     Line(points = {{-10, 30}, {-10, 30}, {-10, 40}, {-10, 40}}));
-  connect(L13to14.terminalA, bus13.terminal) annotation(
+  connect(L13to14.powerTerminalA, bus13.powerTerminal) annotation(
     Line(points = {{-10, 72}, {-24, 72}, {-24, 80}, {-30, 80}}));
-  connect(L13to14.terminalB, bus14.terminal) annotation(
+  connect(L13to14.powerTerminalB, bus14.powerTerminal) annotation(
     Line(points = {{10, 72}, {24, 72}, {24, 80}, {30, 80}}));
-  connect(L9to14.terminalB, bus14.terminal) annotation(
+  connect(L9to14.powerTerminalB, bus14.powerTerminal) annotation(
     Line(points = {{60, 72}, {36, 72}, {36, 80}, {30, 80}}));
-  connect(L9to14.terminalA, bus9.terminal) annotation(
+  connect(L9to14.powerTerminalA, bus9.powerTerminal) annotation(
     Line(points = {{80, 72}, {102, 72}, {102, 40}, {110, 40}}));
-  connect(L10to11.terminalB, bus11.terminal) annotation(
+  connect(L10to11.powerTerminalB, bus11.powerTerminal) annotation(
     Line(points = {{10, 30}, {-4, 30}, {-4, 40}, {-10, 40}, {-10, 40}}));
-  connect(L10to11.terminalA, bus10.terminal) annotation(
+  connect(L10to11.powerTerminalA, bus10.powerTerminal) annotation(
     Line(points = {{30, 30}, {34, 30}, {34, 40}, {40, 40}, {40, 40}}));
-  connect(L9to10.terminalB, bus10.terminal) annotation(
+  connect(L9to10.powerTerminalB, bus10.powerTerminal) annotation(
     Line(points = {{50, 30}, {46, 30}, {46, 40}, {40, 40}, {40, 40}}));
-  connect(L9to10.terminalA, bus9.terminal) annotation(
+  connect(L9to10.powerTerminalA, bus9.powerTerminal) annotation(
     Line(points = {{70, 30}, {104, 30}, {104, 40}, {110, 40}, {110, 40}}));
-  connect(L7to8.terminalA, bus7.terminal) annotation(
+  connect(L7to8.powerTerminalA, bus7.powerTerminal) annotation(
     Line(points = {{130, 20}, {126, 20}, {126, 0}, {120, 0}, {120, 0}}));
-  connect(L7to9.terminalA, bus7.terminal) annotation(
+  connect(L7to9.powerTerminalA, bus7.powerTerminal) annotation(
     Line(points = {{114, 10}, {114, 10}, {114, 0}, {120, 0}, {120, 0}}));
-  connect(L7to9.terminalB, bus9.terminal) annotation(
+  connect(L7to9.powerTerminalB, bus9.powerTerminal) annotation(
     Line(points = {{114, 30}, {114, 30}, {114, 40}, {110, 40}, {110, 40}}));
-  connect(L7to8.terminalB, bus8.terminal) annotation(
+  connect(L7to8.powerTerminalB, bus8.powerTerminal) annotation(
     Line(points = {{150, 20}, {160, 20}, {160, 20}, {160, 20}}));
-  connect(T4to9.terminalA, bus4.terminal) annotation(
+  connect(T4to9.powerTerminalA, bus4.powerTerminal) annotation(
     Line(points = {{108, -28}, {108, -40}, {114, -40}}));
-  connect(T4to9.terminalB, bus9.terminal) annotation(
+  connect(T4to9.powerTerminalB, bus9.powerTerminal) annotation(
     Line(points = {{108, -8}, {108, 40}, {110, 40}}));
-  connect(T5to6.terminalB, bus6.terminal) annotation(
+  connect(T5to6.powerTerminalB, bus6.powerTerminal) annotation(
     Line(points = {{-30, -10}, {-30, -10}, {-30, 0}, {-30, 0}}));
-  connect(T5to6.terminalA, bus5.terminal) annotation(
+  connect(T5to6.powerTerminalA, bus5.powerTerminal) annotation(
     Line(points = {{-30, -30}, {-30, -30}, {-30, -40}, {-30, -40}}));
-  connect(L1to2.terminalA, bus1.terminal) annotation(
+  connect(L1to2.powerTerminalA, bus1.powerTerminal) annotation(
     Line(points = {{-132, -20}, {-132, 0}, {-130, 0}}));
-  connect(L1to2.terminalB, bus2.terminal) annotation(
+  connect(L1to2.powerTerminalB, bus2.powerTerminal) annotation(
     Line(points = {{-132, -40}, {-132, -70}, {-96, -70}, {-96, -80}, {-90, -80}}));
-  connect(L1to5.terminalA, bus1.terminal) annotation(
+  connect(L1to5.powerTerminalA, bus1.powerTerminal) annotation(
     Line(points = {{-100, -52}, {-124, -52}, {-124, 0}, {-130, 0}, {-130, 0}}));
-  connect(L1to5.terminalB, bus5.terminal) annotation(
+  connect(L1to5.powerTerminalB, bus5.powerTerminal) annotation(
     Line(points = {{-80, -52}, {-36, -52}, {-36, -40}, {-30, -40}, {-30, -40}}));
-  connect(L2to5.terminalB, bus5.terminal) annotation(
+  connect(L2to5.powerTerminalB, bus5.powerTerminal) annotation(
     Line(points = {{-50, -60}, {-30, -60}, {-30, -40}, {-30, -40}}));
-  connect(L4to5.terminalB, bus5.terminal) annotation(
+  connect(L4to5.powerTerminalB, bus5.powerTerminal) annotation(
     Line(points = {{30, -52}, {-24, -52}, {-24, -40}, {-30, -40}, {-30, -40}}));
-  connect(L2to5.terminalA, bus2.terminal) annotation(
+  connect(L2to5.powerTerminalA, bus2.powerTerminal) annotation(
     Line(points = {{-70, -60}, {-90, -60}, {-90, -80}, {-90, -80}}));
-  connect(L2to4.terminalA, bus2.terminal) annotation(
+  connect(L2to4.powerTerminalA, bus2.powerTerminal) annotation(
     Line(points = {{30, -70}, {-82, -70}, {-82, -80}, {-90, -80}, {-90, -80}}));
-  connect(L3to4.terminalB, bus4.terminal) annotation(
+  connect(L3to4.powerTerminalB, bus4.powerTerminal) annotation(
     Line(points = {{120, -50}, {120, -40}, {114, -40}}));
-  connect(L3to4.terminalA, bus3.terminal) annotation(
+  connect(L3to4.powerTerminalA, bus3.powerTerminal) annotation(
     Line(points = {{120, -70}, {120, -80}}));
-  connect(L2to4.terminalB, bus4.terminal) annotation(
+  connect(L2to4.powerTerminalB, bus4.powerTerminal) annotation(
     Line(points = {{50, -70}, {114, -70}, {114, -40}, {114, -40}}));
-  connect(L4to5.terminalA, bus4.terminal) annotation(
+  connect(L4to5.powerTerminalA, bus4.powerTerminal) annotation(
     Line(points = {{50, -52}, {108, -52}, {108, -40}, {114, -40}, {114, -40}}));
-  connect(L2to3.terminalB, bus3.terminal) annotation(
+  connect(L2to3.powerTerminalB, bus3.powerTerminal) annotation(
     Line(points = {{10, -90}, {114, -90}, {114, -80}, {120, -80}, {120, -80}}));
-  connect(Tgen8.terminalB, bus8.terminal) annotation(
+  connect(Tgen8.powerTerminalB, bus8.powerTerminal) annotation(
     Line(points = {{180, 10}, {180, 10}, {180, 14}, {180, 14}, {180, 20}, {160, 20}, {160, 20}}));
-  connect(Tgen3.terminalB, bus3.terminal) annotation(
+  connect(Tgen3.powerTerminalB, bus3.powerTerminal) annotation(
     Line(points = {{140, -90}, {128, -90}, {128, -80}, {120, -80}, {120, -80}}));
-  connect(Tgen2.terminalB, bus2.terminal) annotation(
+  connect(Tgen2.powerTerminalB, bus2.powerTerminal) annotation(
     Line(points = {{-120, -90}, {-96, -90}, {-96, -80}, {-90, -80}, {-90, -80}}));
-  connect(Tgen1.terminalB, bus1.terminal) annotation(
+  connect(Tgen1.powerTerminalB, bus1.powerTerminal) annotation(
     Line(points = {{-130, 10}, {-130, 0}}));
-  connect(Load12.terminal, bus12.terminal) annotation(
+  connect(Load12.powerTerminal, bus12.powerTerminal) annotation(
     Line(points = {{-90, 94}, {-90, 80}}));
-  connect(bus13.terminal, Load13.terminal) annotation(
+  connect(bus13.powerTerminal, Load13.powerTerminal) annotation(
     Line(points = {{-30, 80}, {-30, 94}}));
-  connect(Load14.terminal, bus14.terminal) annotation(
+  connect(Load14.powerTerminal, bus14.powerTerminal) annotation(
     Line(points = {{30, 94}, {30, 80}}));
-  connect(Load11.terminal, bus11.terminal) annotation(
+  connect(Load11.powerTerminal, bus11.powerTerminal) annotation(
     Line(points = {{-10, 54}, {-10, 40}}));
-  connect(Load10.terminal, bus10.terminal) annotation(
+  connect(Load10.powerTerminal, bus10.powerTerminal) annotation(
     Line(points = {{40, 54}, {40, 40}}));
-  connect(Cbank9.terminal, bus9.terminal) annotation(
+  connect(Cbank9.powerTerminal, bus9.powerTerminal) annotation(
     Line(points = {{110, 54}, {110, 40}}));
-  connect(Load9.terminal, bus9.terminal) annotation(
+  connect(Load9.powerTerminal, bus9.powerTerminal) annotation(
     Line(points = {{130, 54}, {130, 46}, {118, 46}, {118, 40}, {110, 40}}));
-  connect(Load6.terminal, bus6.terminal) annotation(
+  connect(Load6.powerTerminal, bus6.powerTerminal) annotation(
     Line(points = {{-10, -10}, {-10, -10}, {-10, -6}, {-24, -6}, {-24, 0}, {-30, 0}, {-30, 0}}));
-  connect(Load5.terminal, bus5.terminal) annotation(
+  connect(Load5.powerTerminal, bus5.powerTerminal) annotation(
     Line(points = {{-50, -34}, {-50, -36}, {-36, -36}, {-36, -40}, {-30, -40}}));
-  connect(Load3.terminal, bus3.terminal) annotation(
+  connect(Load3.powerTerminal, bus3.powerTerminal) annotation(
     Line(points = {{120, -94}, {120, -80}}));
-  connect(Load2.terminal, bus2.terminal) annotation(
+  connect(Load2.powerTerminal, bus2.powerTerminal) annotation(
     Line(points = {{-90, -94}, {-90, -80}}));
-  connect(L2to3.terminalA, bus2.terminal) annotation(
+  connect(L2to3.powerTerminalA, bus2.powerTerminal) annotation(
     Line(points = {{-10, -90}, {-82, -90}, {-82, -80}, {-90, -80}, {-90, -80}}));
-  connect(Tgen1.terminalA, GEN1.terminal) annotation(
+  connect(Tgen1.powerTerminalA, GEN1.powerTerminal) annotation(
     Line(points = {{-130, 30}, {-130, 46}}));
-  connect(GEN2.terminal, Tgen2.terminalA) annotation(
+  connect(GEN2.powerTerminal, Tgen2.powerTerminalA) annotation(
     Line(points = {{-154, -90}, {-140, -90}, {-140, -90}, {-140, -90}}));
-  connect(Tgen3.terminalA, GEN3.terminal) annotation(
+  connect(Tgen3.powerTerminalA, GEN3.powerTerminal) annotation(
     Line(points = {{160, -90}, {174, -90}}));
-  connect(GEN8.terminal, Tgen8.terminalA) annotation(
+  connect(GEN8.powerTerminal, Tgen8.powerTerminalA) annotation(
     Line(points = {{180, -26}, {180, -26}, {180, -10}, {180, -10}}));
-  connect(Load4.terminal, bus4.terminal) annotation(
+  connect(Load4.powerTerminal, bus4.powerTerminal) annotation(
     Line(points = {{136, -50}, {136, -46}, {122, -46}, {122, -40}, {114, -40}}));
-  connect(GEN6.terminal, bus6.terminal) annotation(
+  connect(GEN6.powerTerminal, bus6.powerTerminal) annotation(
     Line(points = {{-70, -10}, {-36, -10}, {-36, 0}, {-30, 0}, {-30, 0}}));
-  connect(T4to7.terminalA, bus4.terminal) annotation(
+  connect(T4to7.powerTerminalA, bus4.powerTerminal) annotation(
     Line(points = {{120, -28}, {120, -28}, {120, -40}, {114, -40}, {114, -40}}));
-  connect(T4to7.terminalB, bus7.terminal) annotation(
+  connect(T4to7.powerTerminalB, bus7.powerTerminal) annotation(
     Line(points = {{120, -8}, {120, -8}, {120, 0}, {120, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

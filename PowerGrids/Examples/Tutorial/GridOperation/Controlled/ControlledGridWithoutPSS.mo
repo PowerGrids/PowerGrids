@@ -26,15 +26,15 @@ model ControlledGridWithoutPSS "System under automatic control without PSS"
   PowerGrids.Electrical.Buses.BusFault NTHV(R = 0.05,SNom = 5e+08, UNom = 380000, UPhaseStart = 0, UStart = 1.050 * 380e3,portVariablesPhases = true, portVariablesPu = true, startTime = 2, stopTime = 2.1)  annotation(
     Placement(visible = true, transformation(origin = {84, -20}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
 equation
-  connect(GEN.terminal, NTLV.terminal) annotation(
+  connect(GEN.powerTerminal, NTLV.powerTerminal) annotation(
     Line(points = {{-26, 0}, {-26, 0}, {-26, -20}, {24, -20}, {24, -20}}));
-  connect(NTLV.terminal, TGEN.terminalA) annotation(
+  connect(NTLV.powerTerminal, TGEN.powerTerminalA) annotation(
     Line(points = {{24, -20}, {44, -20}, {44, -20}, {44, -20}}));
-  connect(TGEN.terminalB, NTHV.terminal) annotation(
+  connect(TGEN.powerTerminalB, NTHV.powerTerminal) annotation(
     Line(points = {{64, -20}, {84, -20}, {84, -20}, {84, -20}}));
-  connect(NTHV.terminal, GRID.terminal) annotation(
+  connect(NTHV.powerTerminal, GRID.powerTerminal) annotation(
     Line(points = {{84, -20}, {90, -20}, {90, -10}, {110, -10}, {110, -10}}));
-  connect(NTHV.terminal, GRIDL.terminal) annotation(
+  connect(NTHV.powerTerminal, GRIDL.powerTerminal) annotation(
     Line(points = {{84, -20}, {90, -20}, {90, -32}, {104, -32}, {104, -32}}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-86, 24}, {-74, 24}, {-74, 24}, {-72, 24}}, color = {0, 0, 127}));

@@ -8,8 +8,8 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
   extends Icons.Grid;
   import Modelica.ComplexMath;
   
-  parameter Types.Voltage URef = UNom "Reference phase-to-phase voltage at connection terminal";
-  parameter Types.Angle UPhaseRef = 0 "Voltage phase angle at connection terminal";
+  parameter Types.Voltage URef = UNom "Reference phase-to-phase voltage at connection power terminal";
+  parameter Types.Angle UPhaseRef = 0 "Voltage phase angle at connection power terminal";
   parameter Types.ApparentPower SSC "Short-circuit apparent power";
   parameter Types.PerUnit R_X = 1/10 "Ratio of resistance to reactance of the grid";
   final parameter Types.ComplexPower Ssc = ComplexMath.fromPolar(SSC, atan(1/R_X)) "Short circuit active power";
@@ -23,7 +23,7 @@ initial equation
   port.u = ComplexMath.fromPolar(URef, UPhaseRef);
 annotation(
     Documentation(info = "<html><head></head><body><p>This model describes an equivalent grid with an internal impedance driven by a constant voltage source.</p>
-<p>The impedance is computed to provide an apparent power flow <code>SSC&nbsp;</code>out of the voltage source, assuming the voltage is set to the nominal value <code>UNom</code> and that the grid terminal is shorted to ground.</p>
+<p>The impedance is computed to provide an apparent power flow <code>SSC&nbsp;</code>out of the voltage source, assuming the voltage is set to the nominal value <code>UNom</code> and that the grid power terminal is shorted to ground.</p>
 <p>The actual modulus and phase of the voltage source are computed to give the required voltage modulus and phase <code>URef, UPhaseRef</code> during initialization.</p>
 </body></html>"));
 end EquivalentGrid;
