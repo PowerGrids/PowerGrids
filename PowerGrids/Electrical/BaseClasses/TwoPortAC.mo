@@ -27,9 +27,9 @@ partial model TwoPortAC "Base class for two-port AC components"
   parameter Types.ReactivePower QStartB = 0 "Start value of reactive power flowing into port B"
     annotation(Dialog(tab = "Initialization"));
 
-  PowerGrids.Interfaces.TerminalAC terminalA annotation(
+  PowerGrids.Interfaces.PowerTerminalAC terminalA annotation(
     Placement(visible = true, transformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Interfaces.TerminalAC terminalB annotation(
+  PowerGrids.Interfaces.PowerTerminalAC terminalB annotation(
     Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PortAC portA(final v = terminalA.v, final i = terminalA.i,
                final UNom = UNomA, final SNom = SNom,

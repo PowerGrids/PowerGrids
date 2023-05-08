@@ -19,7 +19,7 @@ partial model OnePortAC "Base class for AC components with one port"
   parameter Types.ReactivePower QStart = 0 "Start value of reactive power flowing into the port"
     annotation(Dialog(tab = "Initialization"));
 
-  PowerGrids.Interfaces.TerminalAC terminal
+  PowerGrids.Interfaces.PowerTerminalAC terminal
     (v(re(start = port.vStart.re), im(start = port.vStart.im)),
      i(re(start = port.iStart.re), im(start = port.iStart.im))) annotation(
     Placement(visible = true, transformation(origin = {-1.42109e-14, 98}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-1.42109e-14, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
