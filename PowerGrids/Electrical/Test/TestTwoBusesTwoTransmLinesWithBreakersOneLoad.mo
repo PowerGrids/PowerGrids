@@ -14,13 +14,13 @@ model TestTwoBusesTwoTransmLinesWithBreakersOneLoad
   PowerGrids.Electrical.Buses.InfiniteBus infiniteBus2(SNom = 1e+07, UNom = 10000, portVariablesPu = true, theta = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {60, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 equation
-  connect(transmissionLine2.powerTerminalB, infiniteBus2.powerTerminal) annotation(
+  connect(transmissionLine2.terminalAC_b, infiniteBus2.terminalAC) annotation(
     Line(points = {{40, 0}, {60, 0}, {60, 0}, {60, 0}}));
-  connect(loadPQ.powerTerminal, transmissionLine2.powerTerminalA) annotation(
+  connect(loadPQ.terminalAC, transmissionLine2.terminalAC_a) annotation(
     Line(points = {{0, 0}, {20, 0}, {20, 0}, {20, 0}}));
-  connect(transmissionLine1.powerTerminalB, loadPQ.powerTerminal) annotation(
+  connect(transmissionLine1.terminalAC_b, loadPQ.terminalAC) annotation(
     Line(points = {{-20, 0}, {0, 0}}));
-  connect(infiniteBus1.powerTerminal, transmissionLine1.powerTerminalA) annotation(
+  connect(infiniteBus1.terminalAC, transmissionLine1.terminalAC_a) annotation(
     Line(points = {{-60, 1.42109e-15}, {-40, 1.42109e-15}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

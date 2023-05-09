@@ -8,7 +8,7 @@ model OneSlackOneZLoad
   PowerGrids.Electrical.PowerFlow.ZLoad load(PNom = 2e+07, QNom = 1e+07, SNom = 3e+07, UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(load.powerTerminal, slack.powerTerminal) annotation(
+  connect(load.terminalAC, slack.terminalAC) annotation(
     Line(points = {{0, -4}, {0, 20}}));
 annotation(
     Documentation(info = "<html><head></head><body>Simple test system with one slack node and one <a href=\"modelica://PowerGrids.Electrical.PowerFlow.ZLoad\"> ZLoad</a>.</body></html>"));end OneSlackOneZLoad;

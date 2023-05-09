@@ -18,5 +18,5 @@ equation
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.02),
     __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl"),
-  Documentation(info = "<html><head></head><body><span style=\"font-size: 12px;\">This model demonstrates the correct behaviour of the power terminal Voltage Transducer IEEE</span><span style=\"font-size: 12px;\">&nbsp;</span><span style=\"font-size: 12px;\">in a simple case.</span></body></html>"));
+  Documentation(info = "<html><head></head><body><span style=\"font-size: 12px;\">This model demonstrates the correct behaviour of the terminal Voltage Transducer IEEE</span><span style=\"font-size: 12px;\">&nbsp;</span><span style=\"font-size: 12px;\">in a simple case.</span></body></html>"));
 end TestTerminalVoltageTransducerIEEE;

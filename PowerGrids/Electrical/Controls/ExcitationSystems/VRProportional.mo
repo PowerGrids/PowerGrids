@@ -17,7 +17,7 @@ block VRProportional
 
   outer PowerGrids.Electrical.System systemPowerGrids "Reference to system object";
 
-  Modelica.Blocks.Interfaces.RealInput VcPu "Machine power terminal voltage p.u." annotation(
+  Modelica.Blocks.Interfaces.RealInput VcPu "Machine terminal voltage p.u." annotation(
     Placement(visible = true, transformation(origin = {-140, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-98, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput VrefPu "Voltage reference p.u." annotation(
     Placement(visible = true, transformation(origin = {-140, -30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-98, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

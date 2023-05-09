@@ -25,11 +25,11 @@ equation
     Line(points = {{42, -38}, {52, -38}, {52, -30}, {60, -30}, {60, -30}}, color = {0, 0, 127}));
   connect(PRef.y, load3.PRefIn) annotation(
     Line(points = {{42, -10}, {52, -10}, {52, -24}, {60, -24}, {60, -24}}, color = {0, 0, 127}));
-  connect(infiniteBus3.powerTerminal, load3.powerTerminal) annotation(
+  connect(infiniteBus3.terminalAC, load3.terminalAC) annotation(
     Line(points = {{70, 0}, {70, 0}, {70, -20}, {70, -20}}));
-  connect(infiniteBus2.powerTerminal, load2.powerTerminal) annotation(
+  connect(infiniteBus2.terminalAC, load2.terminalAC) annotation(
     Line(points = {{0, 0}, {0, 0}, {0, -20}, {0, -20}}));
-  connect(infiniteBus1.powerTerminal, load1.powerTerminal) annotation(
+  connect(infiniteBus1.terminalAC, load1.terminalAC) annotation(
     Line(points = {{-70, 0}, {-71, 0}, {-71, 0}, {-68, 0}, {-68, -20}, {-68, -20}, {-68, -20}, {-70, -20}, {-70, -20}}));
   annotation(
     Documentation(info = "<html><head></head><body><p>Test case for <a href=\"modelica://PowerGrids.Electrical.Loads.LoadImpedancePQ\">Electrical.Loads.LoadImpedancePQ</a>.</p>

@@ -33,15 +33,15 @@ model ControlledGridWithReferenceCalculation "System under automatic control wit
   Real VrefPuTot = deltaVrefPu.y + GEN.VStartPu;
 
 equation
-  connect(GEN.powerTerminal, NTLV.powerTerminal) annotation(
+  connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-26, 0}, {-26, 0}, {-26, -20}, {24, -20}, {24, -20}}));
-  connect(NTLV.powerTerminal, TGEN.powerTerminalA) annotation(
+  connect(NTLV.terminalAC, TGEN.terminalAC_a) annotation(
     Line(points = {{24, -20}, {44, -20}, {44, -20}, {44, -20}}));
-  connect(TGEN.powerTerminalB, NTHV.powerTerminal) annotation(
+  connect(TGEN.terminalAC_b, NTHV.terminalAC) annotation(
     Line(points = {{64, -20}, {84, -20}, {84, -20}, {84, -20}}));
-  connect(NTHV.powerTerminal, GRID.powerTerminal) annotation(
+  connect(NTHV.terminalAC, GRID.terminalAC) annotation(
     Line(points = {{84, -20}, {90, -20}, {90, -10}, {110, -10}, {110, -10}}));
-  connect(NTHV.powerTerminal, GRIDL.powerTerminal) annotation(
+  connect(NTHV.terminalAC, GRIDL.terminalAC) annotation(
     Line(points = {{84, -20}, {90, -20}, {90, -32}, {104, -32}, {104, -32}}));
   connect(AVR.VuelPu, zero.y) annotation(
     Line(points = {{-72, -22}, {-76, -22}, {-76, -52}, {-87, -52}}, color = {0, 0, 127}));

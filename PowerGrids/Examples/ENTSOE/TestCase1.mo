@@ -21,7 +21,7 @@ model TestCase1 "Test Case 1, Section 5.1, focuses on the dynamic behavior of th
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 0) annotation(
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
-  Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.1, power terminal voltage";
+  Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.1, terminal voltage";
   Types.PerUnit AA_02_GEN_efd = GEN.ufPuIn "Fig. 5.2, excitation voltage";
   
 
@@ -46,7 +46,7 @@ equation
     Line(points = {{-16, 2}, {-8, 2}, {-8, 48}, {-84, 48}, {-84, 32}, {-72, 32}}, color = {0, 0, 127}));
   connect(TGOV.PMechPu, GEN.PmPu) annotation(
     Line(points = {{-52, 28}, {-44, 28}, {-44, 4}, {-40, 4}, {-40, 4}, {-36, 4}}, color = {0, 0, 127}));
-  connect(GEN.powerTerminal, NTLV.powerTerminal) annotation(
+  connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-26, 0}, {-26, -10}, {-26, -10}, {-26, -20}, {-2, -20}, {-2, -20}, {24, -20}}));
   annotation(
     Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),

@@ -25,23 +25,23 @@ model TwoGeneratorsOneReferenceGenerator
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 500e6, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {30, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(NTLV1.powerTerminal, TGEN1.powerTerminalA) annotation(
+  connect(NTLV1.terminalAC, TGEN1.terminalAC_a) annotation(
     Line(points = {{-80, 20}, {-60, 20}}));
-  connect(TGEN1.powerTerminalB, NTHV1.powerTerminal) annotation(
+  connect(TGEN1.terminalAC_b, NTHV1.terminalAC) annotation(
     Line(points = {{-40, 20}, {-20, 20}}));
-  connect(NTHV1.powerTerminal, GRIDL1.powerTerminal) annotation(
+  connect(NTHV1.terminalAC, GRIDL1.terminalAC) annotation(
     Line(points = {{-20, 20}, {-10, 20}, {-10, -26}}));
-  connect(GEN1.powerTerminal, NTLV1.powerTerminal) annotation(
+  connect(GEN1.terminalAC, NTLV1.terminalAC) annotation(
     Line(points = {{-104, 6}, {-104, 20}, {-80, 20}}));
-  connect(LINE.powerTerminalA, NTHV1.powerTerminal) annotation(
+  connect(LINE.terminalAC_a, NTHV1.terminalAC) annotation(
     Line(points = {{0, 20}, {-20, 20}}));
-  connect(LINE.powerTerminalB, NTHV2.powerTerminal) annotation(
+  connect(LINE.terminalAC_b, NTHV2.terminalAC) annotation(
     Line(points = {{20, 20}, {40, 20}}));
-  connect(NTHV2.powerTerminal, GRIDL2.powerTerminal) annotation(
+  connect(NTHV2.terminalAC, GRIDL2.terminalAC) annotation(
     Line(points = {{40, 20}, {30, 20}, {30, -26}}));
-  connect(NTHV2.powerTerminal, TGEN2.powerTerminalB) annotation(
+  connect(NTHV2.terminalAC, TGEN2.terminalAC_b) annotation(
     Line(points = {{40, 20}, {60, 20}}));
-  connect(TGEN2.powerTerminalA, GEN2.powerTerminal) annotation(
+  connect(TGEN2.terminalAC_a, GEN2.terminalAC) annotation(
     Line(points = {{80, 20}, {100, 20}, {100, 8}}));
   connect(GEN2.omega, systemPowerGrids.omegaRefIn) annotation(
     Line(points = {{108, 8}, {112, 8}, {112, 50}, {120, 50}, {120, 50}}, color = {0, 0, 127}));

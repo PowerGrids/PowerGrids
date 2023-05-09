@@ -13,7 +13,7 @@ model SynchronousMachine4WindingsExact
   Modelica.Blocks.Sources.Step ufPu(height = 0, offset = 0.000939) annotation(
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(bus.powerTerminal, machine.powerTerminal) annotation(
+  connect(bus.terminalAC, machine.terminalAC) annotation(
     Line(points = {{0, 20}, {0, 0}}));
   connect(ufPu.y, machine.ufPuIn) annotation(
     Line(points = {{-38, -30}, {-24, -30}, {-24, -14}, {-10, -14}, {-10, -14}}, color = {0, 0, 127}));

@@ -11,9 +11,9 @@ model TwoBusesPowerTransferTransmissionLine
   PowerGrids.Electrical.Buses.InfiniteBus infiniteBusB(SNom = 1e+08, UNom = 10000, portVariablesPhases = true, portVariablesPu = true, theta = 0) annotation(
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
 equation
-  connect(infiniteBusA.powerTerminal, transmissionLine.powerTerminalA) annotation(
+  connect(infiniteBusA.terminalAC, transmissionLine.terminalAC_a) annotation(
     Line(points = {{-40, 0}, {-10, 0}}));
-  connect(transmissionLine.powerTerminalB, infiniteBusB.powerTerminal) annotation(
+  connect(transmissionLine.terminalAC_b, infiniteBusB.terminalAC) annotation(
     Line(points = {{10, 0}, {40, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
