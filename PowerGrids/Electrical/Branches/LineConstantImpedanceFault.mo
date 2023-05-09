@@ -23,13 +23,13 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   PowerGrids.Electrical.Buses.BusFault busFault(R = RFault, SNom = SNom, UNom = UNom, X = XFault, portVariablesPu = false, startTime = startTime, stopTime = stopTime)  annotation(
     Placement(visible = true, transformation(origin = {-2, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(busFault.powerTerminal, lineA.powerTerminalB) annotation(
+  connect(busFault.terminalAC, lineA.terminalAC_b) annotation(
     Line(points = {{-2, -40}, {-2, -40}, {-2, 0}, {-20, 0}, {-20, 0}}));
-  connect(lineB.powerTerminalB, powerTerminalB) annotation(
+  connect(lineB.terminalAC_b, terminalAC_b) annotation(
     Line(points = {{60, 0}, {96, 0}, {96, 0}, {100, 0}}));
-  connect(lineA.powerTerminalB, lineB.powerTerminalA) annotation(
+  connect(lineA.terminalAC_b, lineB.terminalAC_a) annotation(
     Line(points = {{-20, 0}, {20, 0}, {20, -2}, {20, -2}, {20, 0}}));
-  connect(lineA.powerTerminalA, powerTerminalA) annotation(
+  connect(lineA.terminalAC_a, terminalAC_a) annotation(
     Line(points={{-60,0},{-94,0},{-94,0},{-100,0}}));
   annotation(
     Documentation(info = "<html>

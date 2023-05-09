@@ -15,9 +15,9 @@ model TestTransformerWithTapChangerMax
 equation
   connect(Uset.y, infiniteBus.UIn) annotation(
     Line(points = {{-39, 30}, {-26, 30}, {-26, 10}}, color = {0, 0, 127}));
-  connect(trafo.powerTerminalB, busLoad.powerTerminal) annotation(
+  connect(trafo.terminalAC_b, busLoad.terminalAC) annotation(
     Line(points = {{10, 0}, {30, 0}}));
-  connect(infiniteBus.powerTerminal, trafo.powerTerminalA) annotation(
+  connect(infiniteBus.terminalAC, trafo.terminalAC_a) annotation(
     Line(points = {{-30, 0}, {-10, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

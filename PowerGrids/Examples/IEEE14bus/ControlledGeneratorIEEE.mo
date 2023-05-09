@@ -3,7 +3,7 @@ model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus
   extends Icons.Machine;
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {-26, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Interfaces.PowerTerminalAC powerTerminal annotation(
+  PowerGrids.Interfaces.TerminalAC terminalAC annotation(
     Placement(visible = true, transformation(origin = {-26, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart / GEN.UNom, VrMax = 5, VrMin = -5)  annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -20,7 +20,7 @@ model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus
   Modelica.Blocks.Interfaces.RealOutput omega annotation(
     Placement(visible = true, transformation(origin = {10, 16}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(GEN.powerTerminal, powerTerminal) annotation(
+  connect(GEN.terminalAC, terminalAC) annotation(
     Line(points = {{-26, 0}, {-26, -50}}));
   connect(GOV.omegaPu, GEN.omegaPu) annotation(
     Line(points = {{-80, 26}, {-164, 26}, {-164, 64}, {32, 64}, {32, 2}, {-16, 2}}, color = {0, 0, 127}));

@@ -11,7 +11,7 @@ model ControlledGenerator "Model of a synchronous generator with governor, AVR, 
     Placement(visible = true, transformation(origin = {-36, -52}, extent = {{-12, -10}, {12, 10}}, rotation = 0)));
   PowerGrids.Electrical.Controls.PowerSystemStabilizers.IEEE_PSS2A PSS(Ks1 = 10, Ks2 = 0.1564, M = 0, N = 0, T1 = 0.25, T2 = 0.03, T3 = 0.15, T4 = 0.015, T7 = 2, T8 = 0.5, T9 = 0.1, Tw1 = 2, Tw2 = 2, Tw3 = 2, Tw4 = 0, VstMax = 0.1, VstMin = -0.1)  annotation(
     Placement(visible = true, transformation(origin = {-32, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Interfaces.PowerTerminalAC powerTerminal annotation(
+  PowerGrids.Interfaces.TerminalAC terminalAC annotation(
     Placement(visible = true, transformation(origin = {40, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FreeOffset RefLPu annotation(
     Placement(visible = true, transformation(origin = {-32, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -30,7 +30,7 @@ equation
     Line(points = {{-21, 0}, {-14, 0}, {-14, -10}, {-6, -10}}, color = {0, 0, 127}));
   connect(PSS.Vsi2Pu, GEN.PPu) annotation(
     Line(points = {{-42, -6}, {-58, -6}, {-58, 48}, {90, 48}, {90, -2}, {50, -2}}, color = {0, 0, 127}));
-  connect(GEN.powerTerminal, powerTerminal) annotation(
+  connect(GEN.terminalAC, terminalAC) annotation(
     Line(points = {{40, 0}, {40, -50}}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-21, 24}, {-6, 24}}, color = {0, 0, 127}));

@@ -11,9 +11,9 @@ model OneBusTransmissionLineOneLoad
   PowerGrids.Electrical.Branches.LineConstantImpedance transmissionLine(R = 0.3, SNom = 1e+07, UNom = 10000, X = 1.5, portVariablesPu = true) annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(infiniteBus.powerTerminal, transmissionLine.powerTerminalA) annotation(
+  connect(infiniteBus.terminalAC, transmissionLine.terminalAC_a) annotation(
     Line(points = {{-40, 0}, {-20, 0}}));
-  connect(transmissionLine.powerTerminalB, loadPQ.powerTerminal) annotation(
+  connect(transmissionLine.terminalAC_b, loadPQ.terminalAC) annotation(
     Line(points = {{0, 0}, {20, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

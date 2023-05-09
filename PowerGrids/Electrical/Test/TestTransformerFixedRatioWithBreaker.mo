@@ -17,15 +17,15 @@ model TestTransformerFixedRatioWithBreaker
   Branches.LineConstantImpedance line(R = 0.06, SNom = 1e+7, UNom = 10000, X = 1.5)  annotation(
     Placement(visible = true, transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(infiniteBus1.powerTerminal, transformer.powerTerminalA) annotation(
+  connect(infiniteBus1.terminalAC, transformer.terminalAC_a) annotation(
     Line(points = {{-40, 0}, {-20, 0}}));
-  connect(transformer.powerTerminalB, loadPQ.powerTerminal) annotation(
+  connect(transformer.terminalAC_b, loadPQ.terminalAC) annotation(
     Line(points = {{0, 0}, {20, 0}}));
   connect(breakerState.y, transformer.breakerStatusIn) annotation(
     Line(points = {{-18, 28}, {-4, 28}, {-4, 2}, {-2, 2}}, color = {255, 0, 255}));
-  connect(loadPQ.powerTerminal, line.powerTerminalA) annotation(
+  connect(loadPQ.terminalAC, line.terminalAC_a) annotation(
     Line(points = {{20, 0}, {38, 0}, {38, 0}, {40, 0}}));
-  connect(line.powerTerminalB, infiniteBus2.powerTerminal) annotation(
+  connect(line.terminalAC_b, infiniteBus2.terminalAC) annotation(
     Line(points = {{60, 0}, {80, 0}, {80, 0}, {80, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

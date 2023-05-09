@@ -49,5 +49,5 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(lineColor = {0, 0, 127}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(origin = {-4, 119}, lineColor = {0, 0, 255}, extent = {{-48, 11}, {48, -11}}, textString = "%name"), Text(origin = {0, 26}, extent = {{-56, 36}, {56, -36}}, textString = "Vt It"), Text(origin = {-3, -25}, extent = {{-79, 59}, {87, -51}}, textString = "Transducer")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html><head></head><body>This model implements a power terminal voltage transducer according to the IEEE Std 421.5TM-2005.<div><br></div><div>It includes a load compensator and a time constant, which is common for the combined voltage sensing and compensation signal.</div></body></html>"));
+  Documentation(info = "<html><head></head><body>This model implements a terminal voltage transducer according to the IEEE Std 421.5TM-2005.<div><br></div><div>It includes a load compensator and a time constant, which is common for the combined voltage sensing and compensation signal.</div></body></html>"));
 end TerminalVoltageTransducerIEEE;

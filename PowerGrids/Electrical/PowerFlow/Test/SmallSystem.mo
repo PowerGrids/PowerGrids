@@ -25,23 +25,23 @@ model SmallSystem
   Buses.Bus bus(UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(load1.powerTerminal, line1.powerTerminalA) annotation(
+  connect(load1.terminalAC, line1.terminalAC_a) annotation(
     Line(points = {{-60, -30}, {-40, -30}}));
-  connect(line3.powerTerminalB, load4.powerTerminal) annotation(
+  connect(line3.terminalAC_b, load4.terminalAC) annotation(
     Line(points = {{0, 14}, {0, 33}, {20, 33}, {20, 30}}));
-  connect(line2.powerTerminalB, load2.powerTerminal) annotation(
+  connect(line2.terminalAC_b, load2.terminalAC) annotation(
     Line(points = {{40, -30}, {46, -30}, {46, 0}, {60, 0}}));
-  connect(load1.powerTerminal, slack.powerTerminal) annotation(
+  connect(load1.terminalAC, slack.terminalAC) annotation(
     Line(points = {{-60, -30}, {-60, 10}}));
-  connect(line2.powerTerminalB, bus2.powerTerminal) annotation(
+  connect(line2.terminalAC_b, bus2.terminalAC) annotation(
     Line(points = {{40, -30}, {60, -30}}));
-  connect(line1.powerTerminalB, bus.powerTerminal) annotation(
+  connect(line1.terminalAC_b, bus.terminalAC) annotation(
     Line(points = {{-20, -30}, {0, -30}, {0, -30}, {0, -30}}));
-  connect(line2.powerTerminalA, bus.powerTerminal) annotation(
+  connect(line2.terminalAC_a, bus.terminalAC) annotation(
     Line(points = {{20, -30}, {0, -30}, {0, -30}, {0, -30}}));
-  connect(line3.powerTerminalA, bus.powerTerminal) annotation(
+  connect(line3.terminalAC_a, bus.terminalAC) annotation(
     Line(points = {{0, -6}, {0, -6}, {0, -30}, {0, -30}}));
-  connect(load3.powerTerminal, bus.powerTerminal) annotation(
+  connect(load3.terminalAC, bus.terminalAC) annotation(
     Line(points = {{0, -50}, {0, -50}, {0, -30}, {0, -30}}));
 annotation(
     Documentation(info = "<html><head></head><body>Small system with a few PQ buses, one PV bus and one slack bus connected through constant impedant lines.</body></html>"));end SmallSystem;

@@ -15,7 +15,7 @@ model IEEE_ST4B "Static excitation system - IEEE type ST4B "
   parameter SI.PerUnit vbmax = 11.63 "Maximum excitation voltage";
   Modelica.Blocks.Interfaces.RealInput VsPu "PSS output p.u" annotation(
     Placement(visible = true, transformation(origin = {-160, 90}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-110, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput VcPu "Machine power terminal voltage p.u." annotation(
+  Modelica.Blocks.Interfaces.RealInput VcPu "Machine terminal voltage p.u." annotation(
     Placement(visible = true, transformation(origin = {-160, 30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-110, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput VePu "Exciter voltage back of commutating reactance p.u." annotation(
     Placement(visible = true, transformation(origin = {-160, -80}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-110, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
