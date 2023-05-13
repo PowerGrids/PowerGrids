@@ -14,7 +14,7 @@ model FirstOrderWithNonWindupLimiter "First order filter with non-windup limiter
     Evaluate = true,
     choices(checkBox = true),
     Dialog(tab = "Advanced"));
-  Modelica.Blocks.Nonlinear.Limiter lim(limitsAtInit = true, strict = strict, uMax = yMax, uMin = yMin) annotation(
+  Modelica.Blocks.Nonlinear.Limiter lim(strict = strict, uMax = yMax, uMin = yMin) annotation(
     Placement(visible = true, transformation(origin = {52, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback feedback annotation(
     Placement(visible = true, transformation(origin = {-56, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

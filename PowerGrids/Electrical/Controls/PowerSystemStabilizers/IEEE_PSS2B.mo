@@ -31,9 +31,9 @@ model IEEE_PSS2B "Power System Stabilizer IEEE type PSS2B"
     Placement(visible = true, transformation(origin = {-200, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-102, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput VstPu annotation(
     Placement(visible = true, transformation(origin = {200, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiterVsi1(limitsAtInit = true, uMax = Vsi1Max, uMin = Vsi1Min)  annotation(
+  Modelica.Blocks.Nonlinear.Limiter limiterVsi1(uMax = Vsi1Max, uMin = Vsi1Min)  annotation(
     Placement(visible = true, transformation(origin = {-160, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiterVsi2(limitsAtInit = true, uMax = Vsi2Max, uMin = Vsi2Min)  annotation(
+  Modelica.Blocks.Nonlinear.Limiter limiterVsi2(uMax = Vsi2Max, uMin = Vsi2Min)  annotation(
     Placement(visible = true, transformation(origin = {-160, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.DerivativeLag firstWashoutVsi1( T1 = Tw1,Td = Tw1, initType = Modelica.Blocks.Types.Init.SteadyState, yStart = 0)  annotation(
     Placement(visible = true, transformation(origin = {-130, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -57,7 +57,7 @@ model IEEE_PSS2B "Power System Stabilizer IEEE type PSS2B"
     Placement(visible = true, transformation(origin = {110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.LeadLag leadLag3(T1 = T10, T2 = T11, initType = Modelica.Blocks.Types.Init.SteadyState, k = 1, yStart = 0)  annotation(
     Placement(visible = true, transformation(origin = {140, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiterVst(limitsAtInit = true, uMax = VstMax, uMin = VstMin)  annotation(
+  Modelica.Blocks.Nonlinear.Limiter limiterVst(uMax = VstMax, uMin = VstMin)  annotation(
     Placement(visible = true, transformation(origin = {170, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FirstOrder firstOrderVsi2(T = T7, initType = Modelica.Blocks.Types.Init.SteadyState, k = Ks2, y_start = 0)  annotation(
     Placement(visible = true, transformation(origin = {-70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

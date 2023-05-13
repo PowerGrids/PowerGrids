@@ -53,7 +53,7 @@ model IEEE_ST4B "Static excitation system - IEEE type ST4B "
     Placement(visible = true, transformation(origin = {-30, -56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Product prod2 annotation(
     Placement(visible = true, transformation(origin = {10, -56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiterVbmax(limitsAtInit = true, uMax = vbmax, uMin = -Modelica.Constants.inf) annotation(
+  Modelica.Blocks.Nonlinear.Limiter limiterVbmax(uMax = vbmax, uMin = -Modelica.Constants.inf) annotation(
     Placement(visible = true, transformation(origin = {50, -56}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(limiterVbmax.y, prod1.u2) annotation(
