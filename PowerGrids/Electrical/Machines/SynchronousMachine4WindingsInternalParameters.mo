@@ -26,7 +26,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   parameter Types.PerUnit LQ2Pu "Leakage of quadrature axis 2nd damper in p.u.";
   parameter Types.PerUnit rQ2Pu "Resistance of quadrature axis 2nd damper in p.u.";
   parameter Types.PerUnit DPu = 0 "Damping coefficient of the swing equation in p.u.";
-  parameter Modelica.SIunits.Time H "Kinetic constant = kinetic energy / rated power";
+  parameter SI.Time H "Kinetic constant = kinetic energy / rated power";
   parameter Types.Choices.ExcitationPuType excitationPuType = 
     PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad "Choice of excitation base voltage";
   parameter Boolean neglectTransformerTerms = true "Neglect the transformer terms in the Park equations";

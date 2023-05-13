@@ -1,43 +1,43 @@
 within PowerGrids.Electrical.Controls.TurbineGovernors.BaseClasses;
 
 partial model GovHydro4Base "Base class for Governors of hydraulic turbines"
-  parameter Modelica.SIunits.PerUnit db1 = 0 "Intentional dead-band width" annotation(
+  parameter SI.PerUnit db1 = 0 "Intentional dead-band width" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit db2 = 0 "Unintentional dead-band width" annotation(
+  parameter SI.PerUnit db2 = 0 "Unintentional dead-band width" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.Time Tp = 0.1 "Pilot servo time constant" annotation(
+  parameter SI.Time Tp = 0.1 "Pilot servo time constant" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.Time Tg = 0.5 "Gate servo time constant" annotation(
+  parameter SI.Time Tg = 0.5 "Gate servo time constant" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.Time Tr = 5 "Dashpot time constant" annotation(
+  parameter SI.Time Tr = 5 "Dashpot time constant" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit uo = 0.2 "Max gate opening velocity" annotation(
+  parameter SI.PerUnit uo = 0.2 "Max gate opening velocity" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit uc = -0.2 "Max gate closing velocity" annotation(
+  parameter SI.PerUnit uc = -0.2 "Max gate closing velocity" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit gMax = 1 "Maximum gate opening" annotation(
+  parameter SI.PerUnit gMax = 1 "Maximum gate opening" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit gMin = 0 "Minimum gate opening" annotation(
+  parameter SI.PerUnit gMin = 0 "Minimum gate opening" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit rPerm = 0.05 "Permanent droop" annotation(
+  parameter SI.PerUnit rPerm = 0.05 "Permanent droop" annotation(
     Dialog(group = "Control and Actuators"));
-  parameter Modelica.SIunits.PerUnit rTemp = 0.3 "Temporary droop" annotation(
+  parameter SI.PerUnit rTemp = 0.3 "Temporary droop" annotation(
     Dialog(group = "Control and Actuators"));
   parameter Real GvPgvTable[:, :] = [0, 0; 1, 1] "Points to define the curve Pgv = f(Gv)" annotation(
     Dialog(group = "Turbine"));
   parameter Modelica.Blocks.Types.Smoothness GvPgvSmoothness = Modelica.Blocks.Types.Smoothness.LinearSegments "Smoothness of curve Pgv = f(Gv)" annotation(
     Dialog(group = "Turbine"));
-  parameter Modelica.SIunits.PerUnit at = 1.2 "Turbine gain" annotation(
+  parameter SI.PerUnit at = 1.2 "Turbine gain" annotation(
     Dialog(group = "Turbine"));
-  parameter Modelica.SIunits.PerUnit qnl = 0.08 "No-load flow at nominal head" annotation(
+  parameter SI.PerUnit qnl = 0.08 "No-load flow at nominal head" annotation(
     Dialog(group = "Turbine"));
-  parameter Modelica.SIunits.Time Tw = 1 "Water inertia time constant" annotation(
+  parameter SI.Time Tw = 1 "Water inertia time constant" annotation(
     Dialog(group = "Turbine"));
-  parameter Modelica.SIunits.PerUnit hDam = 1 "Head available at dam" annotation(
+  parameter SI.PerUnit hDam = 1 "Head available at dam" annotation(
     Dialog(group = "Turbine"));
-  parameter Modelica.SIunits.PerUnit dTurb = 0.5 "Turbine damping factor" annotation(
+  parameter SI.PerUnit dTurb = 0.5 "Turbine damping factor" annotation(
     Dialog(group = "Turbine"));
-  parameter Modelica.SIunits.PerUnit qStart "Turbine flow Start value" annotation(
+  parameter SI.PerUnit qStart "Turbine flow Start value" annotation(
     Dialog(group = "Initialization"));
   Modelica.Blocks.Interfaces.RealInput deltaOmegaPu annotation(
     Placement(visible = true, transformation(origin = {-200, 50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
@@ -51,7 +51,7 @@ partial model GovHydro4Base "Base class for Governors of hydraulic turbines"
     Placement(visible = true, transformation(origin = {-116, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FirstOrder lagTp(T = Tp, initType = Modelica.Blocks.Types.Init.SteadyState, y_start = 1) annotation(
     Placement(visible = true, transformation(origin = {-76, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limU(limitsAtInit = true, uMax = uo, uMin = uc) annotation(
+  Modelica.Blocks.Nonlinear.Limiter limU(uMax = uo, uMin = uc) annotation(
     Placement(visible = true, transformation(origin = {0, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.IntegratorWithNonWindupLimiter limIntG(initType = Modelica.Blocks.Types.Init.SteadyState, yMax = gMax, yMin = gMin, yStart = 1) annotation(
     Placement(visible = true, transformation(origin = {40, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

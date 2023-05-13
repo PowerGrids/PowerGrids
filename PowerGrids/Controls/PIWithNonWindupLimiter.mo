@@ -15,7 +15,7 @@ model PIWithNonWindupLimiter "Proportional-Integral filter with non-windup limit
     Evaluate = true,
     choices(checkBox = true),
     Dialog(tab = "Advanced"));
-  Modelica.Blocks.Nonlinear.Limiter lim(limitsAtInit = true, strict = strict, uMax = yMax, uMin = yMin) annotation(
+  Modelica.Blocks.Nonlinear.Limiter lim(strict = strict, uMax = yMax, uMin = yMin) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback feedback annotation(
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
