@@ -5,10 +5,7 @@ package PowerGrids
   import CM = Modelica.ComplexMath;
 
   annotation(
-    version = "1.0.3",
-    conversion(noneFromVersion = "1.0.0",
-               noneFromVersion = "1.0.1",
-               noneFromVersion = "1.0.2"),
+    version = "2.0.0",
     uses(Modelica(version="4.0.0")),
   Documentation(info = "<html><head></head><body><p>Copyright © 2018-2020, RTE.</p><p>PowerGrids is licensed under the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, you can obtain one&nbsp;<a href=\"http://mozilla.org/MPL/2.0.\">here</a>.</p><p></p><p>-------------------------------------------------------------------------------------------------------------</p><p>
 The PowerGrids library is a library for the modelling of power generation and transmission systems for electro-mechanical phenomena (\"phasor\" approximation).</p>
