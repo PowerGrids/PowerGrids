@@ -24,7 +24,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
 equation
   U_URef = port.U/URef;
 
-  if noEvent(port.VPu > VPuThr) or not lowVoltageAsImpedance then
+  if port.VPu > VPuThr or not lowVoltageAsImpedance then
     port.P = PRef*U_URef^alpha;
     port.Q = QRef*U_URef^beta;
   else
