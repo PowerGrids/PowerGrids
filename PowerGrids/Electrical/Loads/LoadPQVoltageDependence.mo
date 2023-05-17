@@ -9,6 +9,8 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
     SNom = sqrt(PRefConst^2+QRefConst^2));
   extends Icons.Load;
 
+  parameter Boolean lowVoltageAsImpedance = false "true, if the load shall work as a fixed-impedance at low-voltage condition" annotation(Evaluate = true);
+  parameter Types.PerUnit VPuThr = 0.5 "Threshold of p.u. voltage for low-voltage fixed-impedance approximation";
   parameter Types.PerUnit alpha = 0 "Exponential of voltage ratio for actual P calculation";
   parameter Types.PerUnit beta = 0 "Exponential of voltage ratio for actual Q calculation";
   
@@ -20,9 +22,15 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   Types.ActivePower QRef(nominal = SNom) =  QRefConst "Reactive power at reference voltage, the default binding can be changed when instantiating";
     Types.PerUnit U_URef(start = UStart/UNom) "Ratio between voltage and reference voltage";
 equation
-  U_URef = port.U / URef;
-  port.P = PRef*U_URef^alpha;
-  port.Q = QRef*U_URef^ beta;
+  U_URef = port.U/URef;
+
+  if noEvent(port.VPu > VPuThr) or not lowVoltageAsImpedance then
+    port.P = PRef*U_URef^alpha;
+    port.Q = QRef*U_URef^beta;
+  else
+    port.v = port.i/CM.conj(Complex(PRef*VPuThr^alpha, QRef*VPuThr^beta)/URef^2);
+  end if;
+
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
