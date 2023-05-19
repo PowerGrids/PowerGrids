@@ -20,7 +20,6 @@ equation
   connect(busShort.terminalAC, bus4.terminalAC) annotation(
     Line(points = {{90, -40}, {90, -44}, {114, -44}, {114, -40}}));
   annotation(
-    __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5}, initialScale = 0.1)),
     experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.04));

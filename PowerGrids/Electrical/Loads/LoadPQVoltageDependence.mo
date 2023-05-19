@@ -20,7 +20,8 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
 
   Types.ActivePower PRef(nominal = SNom) =  PRefConst "Active power at reference voltage, the default binding can be changed when instantiating";
   Types.ActivePower QRef(nominal = SNom) =  QRefConst "Reactive power at reference voltage, the default binding can be changed when instantiating";
-    Types.PerUnit U_URef(start = UStart/UNom) "Ratio between voltage and reference voltage";
+  Types.PerUnit U_URef(start = UStart/UNom) "Ratio between voltage and reference voltage";
+
 equation
   U_URef = port.U/URef;
 
@@ -28,7 +29,7 @@ equation
     port.P = PRef*U_URef^alpha;
     port.Q = QRef*U_URef^beta;
   else
-    port.v = port.i/CM.conj(Complex(PRef*VPuThr^alpha, QRef*VPuThr^beta)/URef^2);
+    port.v = port.i/CM.conj(Complex(PRef*(UNom*VPuThr/URef)^alpha, QRef*(UNom*VPuThr/URef)^beta)/(UNom*VPuThr)^2);
   end if;
 
   assert(port.IPu < 1.5, "Load current too high, check if the numerical solution is valid (very low VPu), consider setting lowVoltageAsImpedance=true");
