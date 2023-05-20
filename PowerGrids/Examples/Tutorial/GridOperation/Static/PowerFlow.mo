@@ -5,7 +5,11 @@ model PowerFlow "Power flow for the basic grid used in the tutorial"
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Buses.Bus NTLV(SNom = 5e+8, UNom = 21000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN( R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+8, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, portVariablesPu = true, rFixed = 419 / 21)  annotation (
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN( R = 0.15e-2 * 419 ^ 2 / 500,
+    SNom=500000000,
+    UNomA=21000,
+    UNomB=419000,                                                                                                                     X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true,
+    showPFdata=true,                                                                                                                                                                         portVariablesPu = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus NTHV(SNom = 5e+8, UNom = 380000, portVariablesPhases = true, portVariablesPu = true)  annotation (
     Placement(visible = true, transformation(origin = {30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
