@@ -14,7 +14,7 @@ model SynchronousMachine4Windings "Synchronous machine with four windings - exte
     final LqPu(fixed = false,  min = 1e-3, start = 0.1),
     final MqPu(fixed = false,  min = 1e-3, start = 1),
     final rQ1Pu(fixed = false, min = 1e-5, start = 0.01),
-    final rQ2Pu(fixed = false, min = 1e-5, start = 0.001),
+    final rQ2Pu(fixed = false, min = 1e-5, start = 0.01),
     final LQ1Pu(fixed = false, min = 1e-3, start = 0.5),
     final LQ2Pu(fixed = false, min = 1e-3, start = 0.1),
     final thetaStart = 
