@@ -7,6 +7,8 @@ model System "System object"
     ReferenceFrequency.nominalFrequency "Choice of reference frequency for generators";
   parameter InitializationOption initOpt = 
     InitializationOption.globalSteadyStateFixedSetPoints "Initialization option";
+  parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads shall work as a fixed-impedances at low-voltage conditions" annotation(Evaluate = true);
+
   final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
 
   Modelica.Blocks.Interfaces.RealInput omegaRefIn(unit = "rad/s") 
