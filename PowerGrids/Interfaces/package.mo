@@ -6,6 +6,7 @@ package Interfaces "Interfaces package"
   connector TerminalAC "Terminal for phasor-based AC connections"
     Types.ComplexVoltage v "Phase-to-ground voltage phasor";
     flow Types.ComplexCurrent i "Line current phasor";
+    Types.ReferenceAngularVelocityPu omegaRefPu "Reference angular speed in PerUnit";
     annotation(
       Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 1, grid = {2, 2}), graphics = {Rectangle(origin = {92, 3}, fillColor = {85, 170, 255}, fillPattern = FillPattern.Solid, extent = {{-192, 97}, {8, -103}})}),
       Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 1, grid = {2, 2})),

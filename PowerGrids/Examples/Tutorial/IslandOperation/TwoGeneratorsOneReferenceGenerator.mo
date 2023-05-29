@@ -43,8 +43,6 @@ equation
     Line(points = {{40, 20}, {60, 20}}));
   connect(TGEN2.terminalAC_a, GEN2.terminalAC) annotation(
     Line(points = {{80, 20}, {100, 20}, {100, 8}}));
-  connect(GEN2.omega, systemPowerGrids.omegaRefIn) annotation(
-    Line(points = {{108, 8}, {112, 8}, {112, 50}, {120, 50}, {120, 50}}, color = {0, 0, 127}));
 annotation(
     experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-6, Interval = 0.01),
     __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing",

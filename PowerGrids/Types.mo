@@ -25,6 +25,15 @@ package Types "Domain-specific type definitions"
   operator record ComplexPower = SI.ComplexPower(re(nominal = 1e8, displayUnit="MW"), im(nominal = 1e8, displayUnit="MVA"));
   operator record ComplexPerUnit = Complex(re(unit = "1"), im(unit = "1"));
 
+  type ReferenceAngularVelocityPu
+    extends PerUnit;
+    function equalityConstraint
+      input ReferenceAngularVelocityPu omegaPu1;
+      input ReferenceAngularVelocityPu omegaPu2;
+      output PerUnit residue[0];
+    end equalityConstraint;
+  end ReferenceAngularVelocityPu;
+  
   package Choices
     extends Modelica.Icons.TypesPackage;
   

@@ -7,6 +7,13 @@ model SlackBus "Slack Bus"
   parameter Types.Angle theta = 0 "Phase of voltage phasor";
 equation
   port.u = CM.fromPolar(U, theta) "Voltage of ideal generator, phase-to-ground";
+  
+  // Overconstrained connector
+  Connections.potentialRoot(terminalAC.omegaRefPu);
+  if Connections.isRoot(terminalAC.omegaRefPu) then
+     terminalAC.omegaRefPu =  1;
+  end if;
+    
 annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {126, 12}, extent = {{-26, 20}, {34, -40}}, textString = "S")}),
     Documentation(info = "<html>

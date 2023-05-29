@@ -1,5 +1,9 @@
 within PowerGrids.Electrical;
 model System "System object"
+  replaceable function machinePriority = PowerGrids.Functions.machinePriority
+    constrainedby PowerGrids.Functions.Interfaces.machinePriorityInterface
+    annotation(choicesAllMatching = true);
+
   import PowerGrids.Types.Choices.ReferenceFrequency;
   import PowerGrids.Types.Choices.InitializationOption;
   parameter SI.Frequency fNom = 50 "Nominal system frequency";
@@ -8,34 +12,13 @@ model System "System object"
   parameter InitializationOption initOpt = 
     InitializationOption.globalSteadyStateFixedSetPoints "Initialization option";
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads shall work as a fixed-impedances at low-voltage conditions" annotation(Evaluate = true);
-
-  final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
-
-  Modelica.Blocks.Interfaces.RealInput omegaRefIn(unit = "rad/s") 
-    if referenceFrequency == ReferenceFrequency.fixedReferenceGenerator "Reference frequency input"  
-    annotation(
-      Placement(visible = true, transformation(origin = {-98, 2}, 
-      extent = {{-20, -20}, {20, 20}}, rotation = 0), 
-      iconTransformation(origin = {-98, 2}, extent = {{-20, -20}, {20, 20}},
-
-      rotation = 0)));
-  Types.AngularVelocity omegaRef = omegaRefInternal "Reference frequency";
-
   parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
-
-protected
-  Modelica.Blocks.Interfaces.RealInput omegaRefInternal(unit = "rad/s") 
-    "Protected connector for conditional connector handling";
+  final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
 
 initial equation
   assert(not referenceFrequency == ReferenceFrequency.adaptiveReferenceGenerators,
    "Adaptive reference generators option not yet implemented");
 
-equation
-  connect(omegaRefIn, omegaRefInternal) "Effective only if omegaRefIn is instantiated";
-  if referenceFrequency == ReferenceFrequency.nominalFrequency then
-    omegaRefInternal = omegaNom;
-  end if;
 annotation (
     defaultComponentName="systemPowerGrids",
     defaultComponentPrefixes="inner",

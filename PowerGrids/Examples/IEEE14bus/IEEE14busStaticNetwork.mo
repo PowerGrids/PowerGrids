@@ -718,8 +718,6 @@ equation
     Line(points = {{120, -28}, {120, -28}, {120, -40}, {114, -40}, {114, -40}}));
   connect(T4to7.terminalAC_b, bus7.terminalAC) annotation(
     Line(points = {{120, -8}, {120, -8}, {120, 0}, {120, 0}}));
-  connect(GEN1.omega, systemPowerGrids.omegaRefIn) annotation(
-    Line(points = {{-136, 46}, {-170, 46}, {-170, 70}, {-160, 70}, {-160, 70}}, color = {0, 0, 127}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -110}, {200, 110}}, grid = {0.5, 0.5})),
