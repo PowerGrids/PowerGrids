@@ -18,9 +18,18 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
   final parameter Types.ComplexVoltage eSource(
     re(fixed = false, start = eStart.re),
     im(fixed = false, start = eStart.im)) "Constant value of voltage source";
+
 initial equation
   // Initial voltage at port fixed at reference values
   port.u = ComplexMath.fromPolar(URef, UPhaseRef);
+
+equation
+  // Overconstrained connector
+  Connections.potentialRoot(terminalAC.omegaRefPu);
+  if Connections.isRoot(terminalAC.omegaRefPu) then
+     terminalAC.omegaRefPu = 1;
+  end if;
+
 annotation(
     Documentation(info = "<html><head></head><body><p>This model describes an equivalent grid with an internal impedance driven by a constant voltage source.</p>
 <p>The impedance is computed to provide an apparent power flow <code>SSC&nbsp;</code>out of the voltage source, assuming the voltage is set to the nominal value <code>UNom</code> and that the grid terminal is shorted to ground.</p>
