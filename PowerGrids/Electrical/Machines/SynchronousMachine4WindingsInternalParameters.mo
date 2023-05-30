@@ -31,6 +31,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad "Choice of excitation base voltage";
   parameter Boolean neglectTransformerTerms = true "Neglect the transformer terms in the Park equations";
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
+  parameter Integer priority = integer(100 - 10*log10(PNom)) "Priority level used to select the machine to be used as frrequency reference (0=higher priority)" annotation(Evaluate = true);
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
   final parameter Types.PerUnit kuf(fixed = false) "Scaling factor for excitation p.u. voltage";
   constant Types.PerUnit omegaNomPu = 1 "Nominal frequency in p.u.";
@@ -40,9 +41,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   final parameter Types.PerUnit ufPuStart(fixed = false) "Start value of exciter voltage in p.u. (Kundur base)";
   final parameter Types.PerUnit ufPuInStart(fixed = false) "Start value of input exciter voltage in p.u. (user-selcted base";
   final parameter Types.PerUnit ifPuStart(fixed = false) "Start value of ifPu";
-  
-  final parameter Integer priority = systemPowerGrids.machinePriority(PNom);
-  
+    
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
     Placement(visible = true, transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));

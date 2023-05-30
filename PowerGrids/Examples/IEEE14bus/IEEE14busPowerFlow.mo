@@ -477,8 +477,6 @@ equation
     Line(points = {{-30, 52}, {-30, 52}, {-30, 0}, {-30, 0}}));
   connect(L6to13.terminalAC_b, bus13.terminalAC) annotation(
     Line(points = {{-30, 72}, {-30, 72}, {-30, 80}, {-30, 80}}));
-  connect(bus13.terminalAC, L6to13.terminalAC_b) annotation(
-    Line(points = {{-30, 80}, {-30, 80}, {-30, 72}, {-30, 72}}));
   connect(L6to11.terminalAC_a, bus6.terminalAC) annotation(
     Line(points = {{-10, 10}, {-10, 10}, {-10, 6}, {-24, 6}, {-24, 0}, {-30, 0}, {-30, 0}}));
   connect(L6to11.terminalAC_b, bus11.terminalAC) annotation(

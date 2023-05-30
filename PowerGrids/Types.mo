@@ -31,6 +31,8 @@ package Types "Domain-specific type definitions"
       input ReferenceAngularVelocityPu omegaPu1;
       input ReferenceAngularVelocityPu omegaPu2;
       output PerUnit residue[0];
+    algorithm
+      assert(abs(omegaPu1-omegaPu2)<1e-10, "inconsistent omega reference across the branch");
     end equalityConstraint;
   end ReferenceAngularVelocityPu;
   
