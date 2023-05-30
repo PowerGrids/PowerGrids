@@ -150,9 +150,7 @@ equation
   // Overconstrained connector
   Connections.potentialRoot(terminalAC.omegaRefPu, priority);
   if Connections.isRoot(terminalAC.omegaRefPu) then
-     terminalAC.omegaRefPu =  if systemPowerGrids.referenceFrequency == Types.Choices.ReferenceFrequency.nominalFrequency
-                              then omegaNomPu
-                              else omegaPu;
+     terminalAC.omegaRefPu = omegaPu;
   end if;
   
 annotation(
