@@ -54,6 +54,12 @@ partial model TwoPortAC "Base class for two-port AC components"
 
   Types.ComplexPower Sbal = portA.S + portB.S if computePowerBalance "Complex power balance";
   outer Electrical.System systemPowerGrids "Reference to system object";
+  
+equation  
+  // Overconstrained connectors
+  terminalAC_a.omegaRefPu = terminalAC_b.omegaRefPu;
+  Connections.branch(terminalAC_a.omegaRefPu, terminalAC_b.omegaRefPu); 
+  
   annotation(
     Documentation(info = "<html><head></head><body><p>This is the base class for all the components with two AC terminals. It contains two corresponding <code>PortAC</code> components to compute useful quantities for modelling and monitoring purposes.</p>
 </body></html>"));

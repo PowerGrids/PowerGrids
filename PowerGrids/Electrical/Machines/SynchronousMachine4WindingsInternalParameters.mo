@@ -30,8 +30,8 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   parameter Types.Choices.ExcitationPuType excitationPuType = 
     PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad "Choice of excitation base voltage";
   parameter Boolean neglectTransformerTerms = true "Neglect the transformer terms in the Park equations";
-  parameter Boolean referenceGenerator = false "True if reference generator in an isolated synchronous system";
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
+  parameter Integer priority = integer(100 - 10*log10(PNom)) "Priority level used to select the machine to be used as frrequency reference (0=higher priority)" annotation(Evaluate = true);
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
   final parameter Types.PerUnit kuf(fixed = false) "Scaling factor for excitation p.u. voltage";
   constant Types.PerUnit omegaNomPu = 1 "Nominal frequency in p.u.";
@@ -41,13 +41,14 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   final parameter Types.PerUnit ufPuStart(fixed = false) "Start value of exciter voltage in p.u. (Kundur base)";
   final parameter Types.PerUnit ufPuInStart(fixed = false) "Start value of input exciter voltage in p.u. (user-selcted base";
   final parameter Types.PerUnit ifPuStart(fixed = false) "Start value of ifPu";
+    
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
     Placement(visible = true, transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput ufPuIn(unit = "1", start = ufPuInStart) "Input voltage of exciter winding in p.u. (user-selected base voltage)" annotation(
     Placement(visible = true, transformation(origin = {-104, -50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   // Output variables
-  Modelica.Blocks.Interfaces.RealOutput omega(unit = "rad/s") "Angular frequency in rad/s for system object" annotation(
+  Modelica.Blocks.Interfaces.RealOutput omega(unit = "rad/s") "Angular frequency in rad/s" annotation(
     Placement(visible = true, transformation(origin = {106, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {101, 59}, extent = {{-11, -11}, {11, 11}}, rotation = 0)));        
 // Other per-unit variables
   Modelica.Blocks.Interfaces.RealOutput omegaPu(start = 1) "Angular frequency in p.u." annotation(
@@ -63,11 +64,11 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   Types.PerUnit lambdafPu "Flux of excitation winding in p.u.";
   Types.PerUnit lambdaQ1Pu "Flux of quadrature axis 1st damper in p.u.";
   Types.PerUnit lambdaQ2Pu "Flux of quadrature axis 1st damper in p.u.";
-  Types.PerUnit omegaRefPu = systemPowerGrids.omegaRef/systemPowerGrids.omegaNom "Reference frequency in p.u.";
   Types.PerUnit CmPu(start = -PStart/SNom) "Mechanical torque in p.u. (base PNom/omegaBase)";
   Types.PerUnit CePu(start = -PStart/SNom) "Electrical torque in p.u. (base SNom/omegaBase)";
   Types.PerUnit PePu(start = -PStart/SNom) "Electrical power in p.u. (base SNom)";
   Types.PerUnit PePuPNom = PePu*SNom/PNom "Electrical active power in p.u. (base PNom)";
+  final Types.PerUnit omegaRefPu = terminalAC.omegaRefPu "Reference frequency in p.u.";
 
   // SI-unit variables
   Types.Frequency f = systemPowerGrids.fNom*omegaPu "Frequency of rotation of d-q axes";
@@ -144,6 +145,13 @@ equation
   // Output signal equations
   VPu = port.VPu;
   PPu = -port.P/PNom;
+  
+  // Overconstrained connector
+  Connections.potentialRoot(terminalAC.omegaRefPu, integer(priority));
+  if Connections.isRoot(terminalAC.omegaRefPu) then
+     terminalAC.omegaRefPu = omegaPu;
+  end if;
+  
 annotation(
     Documentation(info = "<html><head></head><body><p>Model of a sychronous machine with four windings. The transformer voltage terms are neglected if <code>neglectTransformerTerms=true</code>. The model parameters refer directly to internal physical parameters such as inductances and resistances.</p>
 <p>The model is taken from the theory manual of the Eurostag software. For consistency with the base class <a href=\"modelica://PowerGrids.Electrical.BaseClasses.OnePortACdq\">OnePortACdq</a>, however, the currents ifPu, idPu and iqPu are all assumed to be positive entering, while the Eurostag manual assumes them to be all positive leaving. Therefore, all the current and fluxes have an opposite sign in the Park equations.</p>

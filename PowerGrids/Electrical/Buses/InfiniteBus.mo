@@ -10,6 +10,13 @@ model InfiniteBus "Infinite bus with internal impedance"
   parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
   final parameter Types.Voltage ERef = URef/sqrt(3) "Phase-to-ground voltage of ideal voltage generator";
 
+equation
+  // Overconstrained connector
+  Connections.potentialRoot(terminalAC.omegaRefPu);
+  if Connections.isRoot(terminalAC.omegaRefPu) then
+     terminalAC.omegaRefPu = 1;
+  end if;
+  
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

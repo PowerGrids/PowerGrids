@@ -1,7 +1,7 @@
 within PowerGrids.Examples.IEEE14bus;
 model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating in steady-state"
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, referenceFrequency = PowerGrids.Types.Choices.ReferenceFrequency.fixedReferenceGenerator)  annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow)  annotation(
     Placement(visible = true, transformation(origin = {-150, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // Buses
@@ -606,8 +606,6 @@ equation
     Line(points = {{-30, 52}, {-30, 52}, {-30, 0}, {-30, 0}}));
   connect(L6to13.terminalAC_b, bus13.terminalAC) annotation(
     Line(points = {{-30, 72}, {-30, 72}, {-30, 80}, {-30, 80}}));
-  connect(bus13.terminalAC, L6to13.terminalAC_b) annotation(
-    Line(points = {{-30, 80}, {-30, 80}, {-30, 72}, {-30, 72}}));
   connect(L6to11.terminalAC_a, bus6.terminalAC) annotation(
     Line(points = {{-10, 10}, {-10, 10}, {-10, 6}, {-24, 6}, {-24, 0}, {-30, 0}, {-30, 0}}));
   connect(L6to11.terminalAC_b, bus11.terminalAC) annotation(
@@ -718,8 +716,6 @@ equation
     Line(points = {{120, -28}, {120, -28}, {120, -40}, {114, -40}, {114, -40}}));
   connect(T4to7.terminalAC_b, bus7.terminalAC) annotation(
     Line(points = {{120, -8}, {120, -8}, {120, 0}, {120, 0}}));
-  connect(GEN1.omega, systemPowerGrids.omegaRefIn) annotation(
-    Line(points = {{-136, 46}, {-170, 46}, {-170, 70}, {-160, 70}, {-160, 70}}, color = {0, 0, 127}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -110}, {200, 110}}, grid = {0.5, 0.5})),
