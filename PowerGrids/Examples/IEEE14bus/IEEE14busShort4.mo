@@ -9,7 +9,6 @@ model IEEE14busShort4 "Bus 4 shorted to ground in the time interval [1, 1.2] sec
     UStart=1.050*380e3,
     X=0,
     portVariablesPhases=true,
-    portVariablesPu=true,
     startTime=1,
     stopTime=1.2) annotation( 
 Placement(visible=true, transformation(
