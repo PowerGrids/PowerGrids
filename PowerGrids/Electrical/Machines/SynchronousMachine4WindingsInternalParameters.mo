@@ -147,7 +147,7 @@ equation
   PPu = -port.P/PNom;
   
   // Overconstrained connector
-  Connections.potentialRoot(terminalAC.omegaRefPu, priority);
+  Connections.potentialRoot(terminalAC.omegaRefPu, integer(priority));
   if Connections.isRoot(terminalAC.omegaRefPu) then
      terminalAC.omegaRefPu = omegaPu;
   end if;
