@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Test;
 
 model SynchronousMachine4WindingsPowerSwing
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus bus(SNom = 5.5e+08, UNom = 24000, UStart = 24000, X = 0, portVariablesPhases = true, portVariablesPu = true, theta = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus bus(SNom = 5.5e+08, UNom = 24000, UStart = 24000, X = 0, portVariablesPhases = true, theta = 0) annotation(
     Placement(visible = true, transformation(origin = {58, -8}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine(H = 6, PStart = -4.95e+08, QStart = -2.5e+08, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, UStart = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad, portVariablesPhases = true, raPu = 0, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.exactComputation, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76) annotation(
     Placement(visible = true, transformation(origin = {0, 18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -12,7 +12,7 @@ model SynchronousMachine4WindingsPowerSwing
     Placement(visible = true, transformation(origin = {-50, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step ufPu(height = 0, offset = machine.ufPuInStart) annotation(
     Placement(visible = true, transformation(origin = {-52, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line(PStartA = 0, PStartB = 0, R = 0, SNom = 1e+08, UNom = 24000, X = 1, portVariablesPhases = true, portVariablesPu = true) annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance line(PStartA = 0, PStartB = 0, R = 0, SNom = 1e+08, UNom = 24000, X = 1, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {30, -8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load(PStart (displayUnit = "W")= 4.95e+08, QStart (displayUnit = "var")= 2.5e+08, SRef = 5.5e+08, UPhaseStart = 0.680678, portVariablesPhases = true, URef = 24000, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {0, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

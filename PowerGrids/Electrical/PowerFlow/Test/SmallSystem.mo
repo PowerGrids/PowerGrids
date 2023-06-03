@@ -4,23 +4,23 @@ model SmallSystem
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
       Placement(visible = true, transformation(origin = {50, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.PowerFlow.PVBus bus2(P = -1e+08,SNom = 1e+08, UNom = 400000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.PowerFlow.PVBus bus2(P = -1e+08,SNom = 1e+08, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {60, -30}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line1(R = 100, SNom = 1e+08, UNom = 400000, X = 1000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance line1(R = 100, SNom = 1e+08, UNom = 400000, X = 1000)  annotation(
       Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line2(R = 100, SNom = 1e+08, UNom = 400000, X = 1000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance line2(R = 100, SNom = 1e+08, UNom = 400000, X = 1000)  annotation(
       Placement(visible = true, transformation(origin = {30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line3(R = 100, SNom = 1e+08, UNom = 400000, X = 1000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance line3(R = 100, SNom = 1e+08, UNom = 400000, X = 1000)  annotation(
       Placement(visible = true, transformation(origin = {0, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.PowerFlow.PQBus load1(P = 3e+07, SNom = 3e+07, UNom = 400000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.PowerFlow.PQBus load1(P = 3e+07, SNom = 3e+07, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {-60, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.PowerFlow.PQBus load2(P = 2e+07, SNom = 4e+07, UNom = 400000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.PowerFlow.PQBus load2(P = 2e+07, SNom = 4e+07, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {60, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.PowerFlow.PQBus load3(P = 2e+07, SNom = 2e+07, UNom = 400000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.PowerFlow.PQBus load3(P = 2e+07, SNom = 2e+07, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {0, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.PowerFlow.PQBus load4(P = 3e+07, SNom = 3e+07, UNom = 400000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.PowerFlow.PQBus load4(P = 3e+07, SNom = 3e+07, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {20, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.PowerFlow.SlackBus slack(SNom = 1e+08, UNom = 400000, portVariablesPu = true)  annotation(
+  PowerGrids.Electrical.PowerFlow.SlackBus slack(SNom = 1e+08, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {-60, 10}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   Buses.Bus bus(UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

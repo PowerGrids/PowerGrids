@@ -2,7 +2,6 @@ within PowerGrids.Electrical.Loads;
 
 model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    final portVariablesPu=true,
     PStart = PRefConst,
     QStart = QRefConst,
     UNom = URef,

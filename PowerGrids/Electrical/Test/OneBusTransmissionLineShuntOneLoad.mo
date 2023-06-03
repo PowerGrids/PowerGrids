@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Test;
 
 model OneBusTransmissionLineShuntOneLoad
-  extends OneBusTransmissionLineOneLoad(transmissionLine.B = 0.02, transmissionLine.G = 0.01, transmissionLine.portVariablesPu = true);
+  extends OneBusTransmissionLineOneLoad(transmissionLine.B = 0.02, transmissionLine.G = 0.01);
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),

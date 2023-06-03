@@ -12,10 +12,9 @@ model PortAC "AC port computing auxiliary quantities"
   parameter Types.Angle UPhaseStart = 0 "Start value of voltage phase";
   
   parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
-  constant Boolean portVariablesPu = true "Add per-unit variables to model";
   constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
 
-  // Computed parameters
+// Computed parameters
   final parameter Types.Voltage VNom = UNom/sqrt(3) "Nominal phase-to-ground voltage";
   final parameter Types.Current INom = SNom/(3*VNom) "Nominal current";
 
@@ -49,12 +48,12 @@ model PortAC "AC port computing auxiliary quantities"
   Types.Voltage U(nominal = UNom, start = UStart) = CM.abs(u) "Port voltage absolute value (phase-to-phase)";
   Types.Current I(nominal = INom, start = IStart) = CM.abs(i) "Port current (positive entering)";
 
-  Types.PerUnit        PPu(start = PStart/SBase) = S.re/SBase if portVariablesPu "Active power flowing into the port in p.u. (base SBase)";
-  Types.PerUnit        QPu(start = QStart/SBase) = S.im/SBase if portVariablesPu "Reactive power flowing into the port in p.u. (base SBase)";
-  Types.ComplexPerUnit vPu(re(start = vStart.re/VBase),im(start = vStart.im/VBase)) = u*(1/UBase) if portVariablesPu "Complex voltage across the port in p.u. (base VBase)";
-  SI.PerUnit           VPu(start = VStart/VBase) = U/UBase if portVariablesPu "Absolute value of voltage across the port in p.u. (base VBase)";
-  Types.ComplexPerUnit iPu(re(start = iStart.re/IBase), im(start = iStart.im/IBase)) = i*(1/IBase) if portVariablesPu "Complex current flowing into the port in p.u. (base IBase)";
-  SI.PerUnit           IPu(start = IStart/IBase) = I/IBase if portVariablesPu "Absolute value of complex current flowing into the port in p.u. (base IBase)";
+  Types.PerUnit        PPu(start = PStart/SBase) = S.re/SBase "Active power flowing into the port in p.u. (base SBase)";
+  Types.PerUnit        QPu(start = QStart/SBase) = S.im/SBase "Reactive power flowing into the port in p.u. (base SBase)";
+  Types.ComplexPerUnit vPu(re(start = vStart.re/VBase),im(start = vStart.im/VBase)) = u*(1/UBase) "Complex voltage across the port in p.u. (base VBase)";
+  SI.PerUnit           VPu(start = VStart/VBase) = U/UBase "Absolute value of voltage across the port in p.u. (base VBase)";
+  Types.ComplexPerUnit iPu(re(start = iStart.re/IBase), im(start = iStart.im/IBase)) = i*(1/IBase) "Complex current flowing into the port in p.u. (base IBase)";
+  SI.PerUnit           IPu(start = IStart/IBase) = I/IBase "Absolute value of complex current flowing into the port in p.u. (base IBase)";
   
   Types.Angle UPhase(start = UPhaseStart) = atan2(v.im, v.re) if portVariablesPhases "Phase of voltage across the port";
   Types.Angle IPhase(start = CM.arg(iStart)) = atan2(i.im, i.re) if portVariablesPhases "Phase of current into the port";
@@ -66,12 +65,12 @@ model PortAC "AC port computing auxiliary quantities"
   Types.PerUnit PGenPu(start = -PStart/SBase) = -PPu "Active power flowing out of the port in p.u. (base SBase)";
   Types.PerUnit QGenPu(start = -QStart/SBase) = -QPu "Reactive power flowing out of the port in p.u. (base SBase)";
   Types.ComplexPerUnit iGenPu(re(start = -iStart.re/IBase),im(start = -iStart.im/IBase)) = -iPu "Complex current flowing out of the port in p.u. (base IBase)";
-  SI.PerUnit IGenPu(start = IStart/IBase) = I/IBase if portVariablesPu and generatorConvention "Absolute value of current flowing out of the port in p.u. (base IBase)";
+  SI.PerUnit IGenPu(start = IStart/IBase) = if generatorConvention then I/IBase else 0 "Absolute value of current flowing out of the port in p.u. (base IBase)" annotation(
+  HideResult = not generatorConvention);
   annotation(
-    Documentation(info = "<html>
-<p>This model computes quantities associated to an AC port that can be useful or relevant for modelling and monitoring purposes, such as the complex power flow, the absolute value of the phase-to-phase voltage, the angle of the current, or various per-unit quantities. The phase-to-ground voltage and line current phasors must be assigned as inputs.</p>
+    Documentation(info = "<html><head></head><body><p>This model computes quantities associated to an AC port that can be useful or relevant for modelling and monitoring purposes, such as the complex power flow, the absolute value of the phase-to-phase voltage, the angle of the current, or various per-unit quantities. The phase-to-ground voltage and line current phasors must be assigned as inputs.</p>
 
-<p>Per-unit quantities, angles and quantities using the generator convention are defined if the corresponding parameters <code>portVariablesPu</code>, <code>portVariablesAngles</code>, and <code>generatorConvention</code> are set to true, respectively.</p>
-</html>"),
+<p>Angles and quantities using the generator convention are defined if the corresponding parameters&nbsp;<code>portVariablesAngles</code>, and <code>generatorConvention</code> are set to true, respectively.</p>
+</body></html>"),
     Icon(graphics = {Rectangle(extent = {{-100, 100}, {100, -100}})}));
 end PortAC;
