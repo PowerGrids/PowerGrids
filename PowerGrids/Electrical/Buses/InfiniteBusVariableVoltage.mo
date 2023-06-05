@@ -36,6 +36,12 @@ equation
    end if;
 
    assert(UAux >= 0, "Magnitude must be positive");
+   
+  // Overconstrained connector
+  Connections.potentialRoot(terminalAC.omegaRefPu);
+  if Connections.isRoot(terminalAC.omegaRefPu) then
+     terminalAC.omegaRefPu = 1;
+  end if;   
 
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
