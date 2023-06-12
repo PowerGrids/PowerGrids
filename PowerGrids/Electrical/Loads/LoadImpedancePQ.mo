@@ -1,20 +1,27 @@
 within PowerGrids.Electrical.Loads;
 
-model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"
-  extends PowerGrids.Electrical.Buses.BaseClasses.BusBase(
-    e = Complex(0),
-    Z = 1/ComplexMath.conj(Complex(PRef,QRef)/URef^2),
+model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"   
+  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     PStart = PRefConst,
     QStart = QRefConst,
     UNom = URef,
     SNom = sqrt(PRefConst^2+QRefConst^2));
+    
   extends Icons.Load;
   import Modelica.ComplexMath;
+  
   parameter Types.ActivePower PRefConst = 0 "Active power consumption at reference voltage";
   parameter Types.ReactivePower QRefConst = 0 "Reactive power consumption at reference voltage";
   parameter Types.Voltage URef "Reference value of phase-to-phase voltage";
+  
   Types.ActivePower PRef(nominal = SNom) = PRefConst "Active power consumption at reference voltage, the default binding can be changed when instantiating";
   Types.ActivePower QRef(nominal = SNom) = QRefConst "Reactive power consumption at reference voltage, the default binding can be changed when instantiating";
+  Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
+  Types.ComplexCurrent i(re(nominal = port.INom), im(nominal = port.INom)) = port.i "Port current";
+  final Types.ComplexImpedance Z = 1/ComplexMath.conj(Complex(PRef,QRef)/URef^2) "Internal impedance";
+
+equation
+  v = Z*i;    
 
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
