@@ -11,58 +11,104 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     UStart = 69e3*1.0598
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus2(
-    UNom = 69e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus2(
+    UNom = 69e3,
+    UStart = 72.0866e3,  
+    UPhaseStart = -0.087    
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus3(
-    UNom = 69e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus3(
+    UNom = 69e3,
+    UStart = 69.685e3,  
+    UPhaseStart = -0.22231    
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus4(
-    UNom = 69e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus4(
+    UNom = 69e3,
+    UStart = 70.2049e3,
+    UPhaseStart = -0.180223    
   ) annotation(
     Placement(visible = true, transformation(origin = {114, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus5(
-    UNom = 69e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus5(
+    UNom = 69e3,
+    UStart = 70.3898e3,
+    UPhaseStart = -0.153511    
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus6(
-    UNom = 13.8e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus6(
+    UNom = 13.8e3,
+    UStart = 14.7347e3,
+    UPhaseStart = -0.249364  
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus7(
+  replaceable PowerGrids.Electrical.Buses.Bus bus7(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus8(
+  replaceable PowerGrids.Electrical.Buses.Bus bus8(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {160, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus bus9(
-    UNom = 13.8e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus9(
+    UNom = 13.8e3,
+    UStart = 14.5624e3,  
+    UPhaseStart = -0.261599    
   ) annotation(
     Placement(visible = true, transformation(origin = {110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus10(
-    UNom = 13.8e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus10(
+    UNom = 13.8e3,
+    UStart = 14.4903e3,  
+    UPhaseStart = -0.264445    
   ) annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus11(
-    UNom = 13.8e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus11(
+    UNom = 13.8e3,
+    UStart = 14.5633e3,  
+    UPhaseStart = -0.259223    
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus12(
-    UNom = 13.8e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus12(
+    UNom = 13.8e3,
+    UStart = 14.5308e3,  
+    UPhaseStart = -0.264428    
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus13(
-    UNom = 13.8e3
+  replaceable PowerGrids.Electrical.Buses.Bus bus13(
+    UNom = 13.8e3,
+    UStart = 14.4648e3,  
+    UPhaseStart = -0.265952    
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus14(
-    UNom = 13.8e3  
+  replaceable PowerGrids.Electrical.Buses.Bus bus14(
+    UNom = 13.8e3,
+    UStart = 14.2714e3,  
+    UPhaseStart = -0.281002    
   ) annotation(
     Placement(visible = true, transformation(origin = {30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  replaceable PowerGrids.Electrical.Buses.Bus busGEN1(
+    UNom = 24e3,
+    UStart = 25.4068e3,
+    UPhaseStart = 0.0171006    
+  ) annotation(
+    Placement(visible = true, transformation(origin = {-130, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  replaceable PowerGrids.Electrical.Buses.Bus busGEN2(
+    UNom = 24e3,
+    UStart = 25.1608e3,
+    UPhaseStart = -0.0837392    
+  ) annotation(
+    Placement(visible = true, transformation(origin = {-150, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+  replaceable PowerGrids.Electrical.Buses.Bus busGEN3(
+    UNom = 20e3,
+    UStart = 20.229e3,
+    UPhaseStart = -0.22231    
+  ) annotation(
+    Placement(visible = true, transformation(origin = {170, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  replaceable PowerGrids.Electrical.Buses.Bus busGEN8(
+    UNom = 18e3,
+    UStart = 19.6461e3,
+    UPhaseStart = -0.233851    
+  ) annotation(
+    Placement(visible = true, transformation(origin = {180, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // Lines
   PowerGrids.Electrical.Branches.LineConstantImpedance L1to2(
@@ -244,9 +290,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 12.7e6,
     SNom = 100e6, 
     UNom = 69e3,
-    URef = 72.105e3,
-    UStart = 72.0866e3,  
-    UPhaseStart = -0.087
+    URef = 72.105e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load3(
@@ -256,9 +300,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 19.1e6,
     SNom = 100e6, 
     UNom = 69e3,
-    URef = 69.69e3,
-    UStart = 69.685e3,  
-    UPhaseStart = -0.22231
+    URef = 69.69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load4(
@@ -268,9 +310,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = -3.9e6,
     SNom = 100e6, 
     UNom = 69e3,
-    URef = 70.2756e3,
-    UStart = 70.2049e3,
-    UPhaseStart = -0.180223
+    URef = 70.2756e3
   ) annotation(
     Placement(visible = true, transformation(origin = {136, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load5(
@@ -280,9 +320,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 1.6e6,
     SNom = 100e6, 
     UNom = 69e3,
-    URef = 70.4552e3,
-    UStart = 70.3898e3,
-    UPhaseStart = -0.153511  
+    URef = 70.4552e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-50, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load6(
@@ -292,9 +330,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 7.5e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.766e3,
-    UStart = 14.7347e3,  
-    UPhaseStart = -0.249364
+    URef = 14.766e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load9(
@@ -304,9 +340,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 16.6e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.5966e3,
-    UStart = 14.5624e3,  
-    UPhaseStart = -0.261599  
+    URef = 14.5966e3
   ) annotation(
     Placement(visible = true, transformation(origin = {130, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load10(
@@ -316,9 +350,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 5.8e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.5241e3,
-    UStart = 14.4903e3,  
-    UPhaseStart = -0.264445  
+    URef = 14.5241e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load11(
@@ -328,9 +360,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 1.8e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.5959e3,
-    UStart = 14.5633e3,  
-    UPhaseStart = -0.259223
+    URef = 14.5959e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load12(
@@ -340,9 +370,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 1.6e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.499e3,
-    UStart = 14.5308e3,  
-    UPhaseStart = -0.264428 
+    URef = 14.499e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load13(
@@ -352,9 +380,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 5.8e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.5634e3,
-    UStart = 14.4648e3,  
-    UPhaseStart = -0.265952  
+    URef = 14.5634e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence Load14(
@@ -364,9 +390,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     QRefConst = 5e6,
     SNom = 100e6, 
     UNom = 13.8e3,
-    URef = 14.3062e3,
-    UStart = 14.2714e3,  
-    UPhaseStart = -0.281002  
+    URef = 14.3062e3
   ) annotation(
     Placement(visible = true, transformation(origin = {30, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
 
@@ -482,12 +506,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       SNom = 1211e6,
       UNom = 24e3,
       PStart = -232.37e6,
-      QStart = 15.7473e6,
-      UStart = 25.4068e3,
-      UPhaseStart = 0.0171006
+      QStart = 15.7473e6
     )
   ) annotation(
-    Placement(visible = true, transformation(origin = {-130, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(visible = true, transformation(origin = {-130, 56}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN2(
     GEN(  
       DPu = 0.0,
@@ -508,12 +530,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       SNom = 1120e6,
       UNom = 24e3,
       PStart = -40e6,
-      QStart = -42.7306e6,
-      UStart = 25.1608e3,
-      UPhaseStart = -0.0837392
+      QStart = -42.7306e6
     )
   ) annotation(
-    Placement(visible = true, transformation(origin = {-154, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+    Placement(visible = true, transformation(origin = {-168, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Examples.IEEE14bus.SynchronousCondenser GEN3(
     GEN( 
       DPu = 0.0,
@@ -534,12 +554,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       SNom = 1650e6,
       UNom = 20e3,
       PStart = 0.0,
-      QStart = -25.3998e6,
-      UStart = 20.229e3,
-      UPhaseStart = -0.22231
+      QStart = -25.3998e6
     )
   ) annotation(
-    Placement(visible = true, transformation(origin = {174, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+    Placement(visible = true, transformation(origin = {184, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Examples.IEEE14bus.SynchronousCondenser GEN6(
     GEN(
       xpqPu = 0.225,
@@ -560,9 +578,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       SNom = 80.0e6,
       UNom = 13.8e3,
       PStart = 0,
-      QStart = -15.0186e6,
-      UStart = 14.7347e3,
-      UPhaseStart = -0.249364
+      QStart = -15.0186e6
     )  
   ) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -586,12 +602,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       SNom = 250e6,
       UNom = 18e3,
       PStart = 0,
-      QStart = -16.2253e6,
-      UStart = 19.6461e3,
-      UPhaseStart = -0.233851
+      QStart = -16.2253e6
     )
   ) annotation(
-    Placement(visible = true, transformation(origin = {180, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {180, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 equation
   connect(bus12.terminalAC, L6to12.terminalAC_b) annotation(
@@ -665,7 +679,7 @@ equation
   connect(L2to4.terminalAC_b, bus4.terminalAC) annotation(
     Line(points = {{50, -70}, {114, -70}, {114, -40}, {114, -40}}));
   connect(L4to5.terminalAC_a, bus4.terminalAC) annotation(
-    Line(points = {{50, -52}, {108, -52}, {108, -40}, {114, -40}, {114, -40}}));
+    Line(points = {{50, -52}, {112, -52}, {112, -40}, {114, -40}}));
   connect(L2to3.terminalAC_b, bus3.terminalAC) annotation(
     Line(points = {{10, -90}, {114, -90}, {114, -80}, {120, -80}, {120, -80}}));
   connect(Tgen8.terminalAC_b, bus8.terminalAC) annotation(
@@ -700,14 +714,6 @@ equation
     Line(points = {{-90, -94}, {-90, -80}}));
   connect(L2to3.terminalAC_a, bus2.terminalAC) annotation(
     Line(points = {{-10, -90}, {-82, -90}, {-82, -80}, {-90, -80}, {-90, -80}}));
-  connect(Tgen1.terminalAC_a, GEN1.terminalAC) annotation(
-    Line(points = {{-130, 30}, {-130, 46}}));
-  connect(GEN2.terminalAC, Tgen2.terminalAC_a) annotation(
-    Line(points = {{-154, -90}, {-140, -90}, {-140, -90}, {-140, -90}}));
-  connect(Tgen3.terminalAC_a, GEN3.terminalAC) annotation(
-    Line(points = {{160, -90}, {174, -90}}));
-  connect(GEN8.terminalAC, Tgen8.terminalAC_a) annotation(
-    Line(points = {{180, -26}, {180, -26}, {180, -10}, {180, -10}}));
   connect(Load4.terminalAC, bus4.terminalAC) annotation(
     Line(points = {{136, -50}, {136, -46}, {122, -46}, {122, -40}, {114, -40}}));
   connect(GEN6.terminalAC, bus6.terminalAC) annotation(
@@ -716,6 +722,22 @@ equation
     Line(points = {{120, -28}, {120, -28}, {120, -40}, {114, -40}, {114, -40}}));
   connect(T4to7.terminalAC_b, bus7.terminalAC) annotation(
     Line(points = {{120, -8}, {120, -8}, {120, 0}, {120, 0}}));
+  connect(GEN2.terminalAC, busGEN2.terminalAC) annotation(
+    Line(points = {{-168, -90}, {-150, -90}}));
+  connect(Tgen2.terminalAC_a, busGEN2.terminalAC) annotation(
+    Line(points = {{-140, -90}, {-150, -90}}));
+  connect(Tgen3.terminalAC_a, busGEN3.terminalAC) annotation(
+    Line(points = {{160, -90}, {170, -90}}));
+  connect(GEN3.terminalAC, busGEN3.terminalAC) annotation(
+    Line(points = {{184, -90}, {170, -90}}));
+  connect(GEN8.terminalAC, busGEN8.terminalAC) annotation(
+    Line(points = {{180, -36}, {180, -20}}));
+  connect(Tgen8.terminalAC_a, busGEN8.terminalAC) annotation(
+    Line(points = {{180, -10}, {180, -20}}));
+  connect(GEN1.terminalAC, busGEN1.terminalAC) annotation(
+    Line(points = {{-130, 56}, {-130, 40}}));
+  connect(Tgen1.terminalAC_a, busGEN1.terminalAC) annotation(
+    Line(points = {{-130, 30}, {-130, 40}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -110}, {200, 110}}, grid = {0.5, 0.5})),
