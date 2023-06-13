@@ -5,7 +5,6 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
     e = eSource,
     Z = ZGrid,
     UStart = URef, UPhaseStart = 0);
-  extends Icons.Bus; 
   extends Icons.Grid; 
   import Modelica.ComplexMath;
   

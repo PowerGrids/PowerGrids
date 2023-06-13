@@ -51,6 +51,6 @@ package Icons "Icons for the PowerGrids library"
   equation
 
     annotation(
-      Icon(coordinateSystem(initialScale = 0.1), graphics = {Rectangle(origin = {0, 33}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-60, 27}, {60, -25}}), Text(origin = {-1, 80}, textColor = {0, 0, 255}, extent = {{-81, 12}, {81, -12}}, textString = "%name"), Rectangle(origin = {0, 34},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 26}, {60, -26}})}));
+      Icon(coordinateSystem(initialScale = 0.1), graphics = {Text(origin = {-3, 150}, textColor = {0, 0, 255}, extent = {{-81, 12}, {81, -12}}, textString = "%name"), Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}), Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
   end Grid;
 end Icons;
