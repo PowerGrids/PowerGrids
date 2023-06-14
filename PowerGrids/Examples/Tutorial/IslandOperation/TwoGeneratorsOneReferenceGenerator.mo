@@ -8,11 +8,11 @@ model TwoGeneratorsOneReferenceGenerator
     Placement(visible = true, transformation(origin = {-80, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Buses.ReferenceBus NTHV1(SNom = 5e+08, UNom = 380000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-20, 20}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN1(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN1(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2*419^2/500, portVariablesPhases = true, rFixed = 419/21) annotation(
     Placement(visible = true, transformation(origin = {-50, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN1(GEN(UNom = 21e3, SNom = 500e6, PStart = -450.88e6, QStart = -294.351e6), TGOV(R = 0.05)) annotation(
     Placement(visible = true, transformation(origin = {-104, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRef = 450e6 + (if time < 1 then 0 else -100e6), PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 500e6, portVariablesPhases = true, URef = 380000) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRef = 450e6 + (if time < 1 then 0 else -100e6), PRefConst = 4.5e+08, QRefConst = 200e6, SNom(displayUnit = "V.A") = 500e6, portVariablesPhases = true, URef = 380000) annotation(
     Placement(visible = true, transformation(origin = {-10, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(NTLV1.terminalAC, TGEN1.terminalAC_a) annotation(
@@ -24,8 +24,8 @@ equation
   connect(GEN1.terminalAC, NTLV1.terminalAC) annotation(
     Line(points = {{-104, 6}, {-104, 20}, {-80, 20}}));
   annotation(
-    experiment(StartTime = 0, StopTime = 100, Tolerance = 1e-6, Interval = 0.01),
+    experiment(StartTime = 0, StopTime = 0.1, Tolerance = 1e-06, Interval = 0.05),
     __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"),
+    __OpenModelica_simulationFlags(nls = "kinsol", lv = "LOG_INIT_HOMOTOPY"),
     Diagram(coordinateSystem(extent = {{-160, -100}, {160, 100}})));
 end TwoGeneratorsOneReferenceGenerator;
