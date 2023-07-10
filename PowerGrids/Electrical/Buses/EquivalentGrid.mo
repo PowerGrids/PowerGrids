@@ -5,7 +5,7 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
     e = eSource,
     Z = ZGrid,
     UStart = URef, UPhaseStart = 0);
-  extends Icons.Grid;
+  extends Icons.Grid; 
   import Modelica.ComplexMath;
   
   parameter Types.Voltage URef = UNom "Reference phase-to-phase voltage at connection terminal";

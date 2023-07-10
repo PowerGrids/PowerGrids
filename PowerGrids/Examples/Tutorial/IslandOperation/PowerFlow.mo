@@ -5,7 +5,7 @@ model PowerFlow
   PowerGrids.Electrical.PowerFlow.PVBus GEN1(P = -4.5088e+08, SNom = 5e+08, U = 20825, UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {-104, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(P = -4.5088e+08, SNom = 5e+08, U = 20825, UNom = 21000) annotation(
-    Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {122, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 5e+08, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V")) annotation(
     Placement(visible = true, transformation(origin = {-10, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 5e+08, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V")) annotation(
@@ -24,6 +24,8 @@ model PowerFlow
     Placement(visible = true, transformation(origin = {70, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   inner Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  PowerGrids.Electrical.Buses.Bus NTLV2(UNom = 21000, portVariablesPhases = true) annotation(
+    Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
 equation
   connect(NTLV1.terminalAC, TGEN1.terminalAC_a) annotation(
     Line(points = {{-80, 0}, {-60, 0}}));
@@ -41,8 +43,10 @@ equation
     Line(points = {{40, 0}, {30, 0}, {30, -46}}));
   connect(NTHV2.terminalAC, TGEN2.terminalAC_b) annotation(
     Line(points = {{40, 0}, {60, 0}, {60, 0}, {60, 0}}));
-  connect(TGEN2.terminalAC_a, GEN2.terminalAC) annotation(
-    Line(points = {{80, 0}, {100, 0}, {100, 0}, {100, 0}}));
+  connect(TGEN2.terminalAC_a, NTLV2.terminalAC) annotation(
+    Line(points = {{80, 0}, {100, 0}}));
+  connect(NTLV2.terminalAC, GEN2.terminalAC) annotation(
+    Line(points = {{100, 0}, {122, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-160, -100}, {160, 100}}, grid = {0.5, 0.5})),

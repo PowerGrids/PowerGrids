@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Buses;
 
 model Bus "Bus model"
-  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
     final PStart = 0,
     final QStart = 0,
     final SNom = 1);

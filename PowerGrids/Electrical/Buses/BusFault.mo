@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Buses;
 model BusFault
   extends Icons.Bus;
-  extends Electrical.BaseClasses.OnePortAC;
+  extends Electrical.BaseClasses.OnePortACBus;
   parameter Types.Resistance R = 0 "Series resistance to ground during fault" annotation(Dialog(group="Fault data"));
   parameter Types.Reactance X = 0 "Series reactance to ground during fault" annotation(Dialog(group="Fault data"));
   parameter SI.Time startTime "Start time of the fault" annotation(Dialog(group="Fault data"));

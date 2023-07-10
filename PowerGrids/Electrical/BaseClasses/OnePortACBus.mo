@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseClasses;
 
-partial model OnePortAC "Base class for AC components with one port"
+partial model OnePortACBus
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
@@ -9,17 +9,18 @@ partial model OnePortAC "Base class for AC components with one port"
   parameter LocalInitializationOption localInit = LocalInitializationOption.none
     "Initialize the component locally in steady state from port start values"
     annotation(Evaluate = true);
-  parameter Types.Voltage UStart(fixed = false) "Start value of phase-to-phase voltage phasor, absolute value"
+  parameter Types.Voltage UStart = UNom "Start value of phase-to-phase voltage phasor, absolute value"
     annotation(Dialog(tab = "Initialization"));
-  parameter Types.Angle UPhaseStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle"
+  parameter Types.Angle UPhaseStart = 0 "Start value of phase-to-phase voltage phasor, phase angle"
     annotation(Dialog(tab = "Initialization"));
   parameter Types.ActivePower PStart = SNom "Start value of active power flowing into the port"
     annotation(Dialog(tab = "Initialization"));
   parameter Types.ReactivePower QStart = 0 "Start value of reactive power flowing into the port"
     annotation(Dialog(tab = "Initialization"));
 
-  PowerGrids.Interfaces.TerminalAC terminalAC
-    (v(re(start = port.vStart.re), im(start = port.vStart.im)),
+  PowerGrids.Interfaces.TerminalACBus terminalAC
+    (UStart = UStart, UPhaseStart = UPhaseStart,
+     v(re(start = port.vStart.re), im(start = port.vStart.im)),
      i(re(start = port.iStart.re), im(start = port.iStart.im))) annotation(
     Placement(visible = true, transformation(origin = {-1.42109e-14, 98}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-1.42109e-14, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PortAC port(final UNom = UNom, final SNom = SNom,
@@ -31,10 +32,6 @@ partial model OnePortAC "Base class for AC components with one port"
               final QStart = QStart)
               "AC port of node";
   outer Electrical.System systemPowerGrids "Reference to system object";
-  
-initial equation
-  UStart = terminalAC.UStart;
-  UPhaseStart = terminalAC.UPhaseStart;
   
 equation
   if initial() and localInit == LocalInitializationOption.PV then
@@ -64,4 +61,4 @@ equation
     Documentation(info = "<html>
 <p>This is the base class for all the components with an AC terminal. It contains a corresponding <code>PortAC</code> component to compute useful quantities for modelling and monitoring purposes.</p>
 </html>"));
-end OnePortAC;
+end OnePortACBus;

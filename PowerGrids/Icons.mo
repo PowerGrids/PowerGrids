@@ -44,13 +44,13 @@ package Icons "Icons for the PowerGrids library"
   equation
 
     annotation(
-      Icon(graphics = {Line(origin = {0, -20}, points = {{0, 20}, {0, -20}, {0, -20}}), Line(origin = {0, -40}, points = {{-40, 0}, {40, 0}, {40, 0}, {40, 0}}), Line(origin = {0, -60}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {0, -80}, points = {{-4, 0}, {4, 0}})}, coordinateSystem(initialScale = 0.1)));
+      Icon(graphics = {Line(origin = {50, -20}, points = {{0, 20}, {0, -20}, {0, -20}}), Line(origin = {50, -40}, points = {{-40, 0}, {40, 0}, {40, 0}, {40, 0}}), Line(origin = {50, -60}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {50, -80}, points = {{-4, 0}, {4, 0}})}, coordinateSystem(initialScale = 0.1)));
   end Ground;
 
   model Grid
   equation
 
     annotation(
-      Icon(coordinateSystem(initialScale = 0.1), graphics = {Rectangle(origin = {0, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.CrossDiag, extent = {{-60, 61}, {60, -59}}), Text(origin = {-1, 80}, lineColor = {0, 0, 255}, extent = {{-81, 12}, {81, -12}}, textString = "%name")}));
+      Icon(coordinateSystem(initialScale = 0.1), graphics = {Text(origin = {-3, 150}, textColor = {0, 0, 255}, extent = {{-81, 12}, {81, -12}}, textString = "%name"), Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}), Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
   end Grid;
 end Icons;
