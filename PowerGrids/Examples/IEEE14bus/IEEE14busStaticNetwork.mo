@@ -11,99 +11,99 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
     UStart = 69e3*1.0598
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus2(
+  PowerGrids.Electrical.Buses.Bus bus2(
     UNom = 69e3,
     UStart = 72.0866e3,  
     UPhaseStart = -0.087    
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus3(
+  PowerGrids.Electrical.Buses.Bus bus3(
     UNom = 69e3,
     UStart = 69.685e3,  
     UPhaseStart = -0.22231    
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus4(
+  PowerGrids.Electrical.Buses.Bus bus4(
     UNom = 69e3,
     UStart = 70.2049e3,
     UPhaseStart = -0.180223    
   ) annotation(
     Placement(visible = true, transformation(origin = {114, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus5(
+  PowerGrids.Electrical.Buses.Bus bus5(
     UNom = 69e3,
     UStart = 70.3898e3,
     UPhaseStart = -0.153511    
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus6(
+  PowerGrids.Electrical.Buses.Bus bus6(
     UNom = 13.8e3,
     UStart = 14.7347e3,
     UPhaseStart = -0.249364  
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus7(
+  PowerGrids.Electrical.Buses.Bus bus7(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus8(
+  PowerGrids.Electrical.Buses.Bus bus8(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {160, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus9(
+  PowerGrids.Electrical.Buses.Bus bus9(
     UNom = 13.8e3,
     UStart = 14.5624e3,  
     UPhaseStart = -0.261599    
   ) annotation(
     Placement(visible = true, transformation(origin = {110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus10(
+  PowerGrids.Electrical.Buses.Bus bus10(
     UNom = 13.8e3,
     UStart = 14.4903e3,  
     UPhaseStart = -0.264445    
   ) annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus11(
+  PowerGrids.Electrical.Buses.Bus bus11(
     UNom = 13.8e3,
     UStart = 14.5633e3,  
     UPhaseStart = -0.259223    
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus12(
+  PowerGrids.Electrical.Buses.Bus bus12(
     UNom = 13.8e3,
     UStart = 14.5308e3,  
     UPhaseStart = -0.264428    
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus13(
+  PowerGrids.Electrical.Buses.Bus bus13(
     UNom = 13.8e3,
     UStart = 14.4648e3,  
     UPhaseStart = -0.265952    
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus bus14(
+  PowerGrids.Electrical.Buses.Bus bus14(
     UNom = 13.8e3,
     UStart = 14.2714e3,  
     UPhaseStart = -0.281002    
   ) annotation(
     Placement(visible = true, transformation(origin = {30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus busGEN1(
+  PowerGrids.Electrical.Buses.Bus busGEN1(
     UNom = 24e3,
     UStart = 25.4068e3,
     UPhaseStart = 0.0171006    
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  replaceable PowerGrids.Electrical.Buses.Bus busGEN2(
+  PowerGrids.Electrical.Buses.Bus busGEN2(
     UNom = 24e3,
     UStart = 25.1608e3,
     UPhaseStart = -0.0837392    
   ) annotation(
     Placement(visible = true, transformation(origin = {-150, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  replaceable PowerGrids.Electrical.Buses.Bus busGEN3(
+  PowerGrids.Electrical.Buses.Bus busGEN3(
     UNom = 20e3,
     UStart = 20.229e3,
     UPhaseStart = -0.22231    
   ) annotation(
     Placement(visible = true, transformation(origin = {170, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  replaceable PowerGrids.Electrical.Buses.Bus busGEN8(
+  PowerGrids.Electrical.Buses.Bus busGEN8(
     UNom = 18e3,
     UStart = 19.6461e3,
     UPhaseStart = -0.233851    
