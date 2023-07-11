@@ -1,7 +1,8 @@
-within PowerGrids.Electrical.Buses;
-model BusFault
-  extends Icons.Bus;
-  extends Electrical.BaseClasses.OnePortACBus;
+within PowerGrids.Electrical.Faults;
+
+model ThreePhaseFault
+  extends Icons.Fault;
+  extends Electrical.BaseClasses.OnePortAC;
   parameter Types.Resistance R = 0 "Series resistance to ground during fault" annotation(Dialog(group="Fault data"));
   parameter Types.Reactance X = 0 "Series reactance to ground during fault" annotation(Dialog(group="Fault data"));
   parameter SI.Time startTime "Start time of the fault" annotation(Dialog(group="Fault data"));
@@ -34,6 +35,7 @@ algorithm
    end when;
 equation
    i = Y*v;
-annotation (
-    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={  Line(origin = {-64.98, -38}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, thickness = 1, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6)}));
-end BusFault;
+
+annotation(
+    Icon(graphics = {Text(origin = {0, -24}, extent = {{-20, 20}, {20, -20}}, textString = "Z"), Text(origin = {0, -121}, textColor = {0, 0, 255}, extent = {{-100, 13}, {100, -13}}, textString = "%name")}));
+end ThreePhaseFault;
