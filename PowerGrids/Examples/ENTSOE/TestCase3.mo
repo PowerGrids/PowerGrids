@@ -6,11 +6,9 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, PStart = -4.75e+08, QStart = -1.56e+08, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, UPhaseStart = 0.161146, UStart = 21e3 * 0.992, portVariablesPhases = true, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8)  annotation(
     Placement(visible = true, transformation(origin = {-26, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV(UNom = 21000, portVariablesPhases = true)  annotation(
+  PowerGrids.Electrical.Buses.Bus NTLV(UNom = 21000, portVariablesPhases = true, UStart = 0.992*21e3, UPhaseStart = 0.161146)  annotation(
     Placement(visible = true, transformation(origin = {24, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.BusFault NTHV(R = 0.05, SNom = 5e+08, UNom = 380000, UStart = 1.050 * 380e3, X = 0, portVariablesPhases = true, startTime = 0.1, stopTime = 0.2)  annotation(
-    Placement(visible = true, transformation(origin = {88, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161146, UPhaseStartB = 0, UStartA = 0.992 * 21e3, UStartB = 1.050 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21)  annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21)  annotation(
     Placement(visible = true, transformation(origin = {54, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Controls.TurbineGovernors.IEEE_TGOV1 TGOV(R = 0.05, T1 = 0.5, T2 = 3, T3 = 10, VMax = 1)  annotation(
     Placement(visible = true, transformation(origin = {-62, 28}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
@@ -24,10 +22,12 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
     Placement(visible = true, transformation(origin = {-102, -31}, extent = {{-12, -11}, {12, 11}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 475 / 500 * 0.05)  annotation(
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom (displayUnit = "V.A")= 5e+08, UNom (displayUnit = "V")= 380000, URef = 1.05 * 380e3, portVariablesPhases = true, UStart(displayUnit = "V"))  annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom (displayUnit = "V.A")= 500000000, UNom (displayUnit = "V")= 380000, URef = 1.05 * 380e3, portVariablesPhases = true, UStart(displayUnit = "V"))  annotation(
     Placement(visible = true, transformation(origin = {110, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050 * 380e3, portVariablesPhases = true)  annotation(
-    Placement(visible = true, transformation(origin = {140, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050 * 380e3, portVariablesPhases = true)  annotation(
+    Placement(visible = true, transformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  PowerGrids.Electrical.Faults.ThreePhaseFault FAULT(R = 0.05, SNom = 5e+08, UNom = 380000, X = 0, portVariablesPhases = true, startTime = 0.1, stopTime = 0.2) annotation(
+    Placement(visible = true, transformation(origin = {132, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
   Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.7, terminal voltage";
   Types.PerUnit AA_02_GEN_efd = GEN.ufPuIn "Fig. 5.8, excitation voltage";
@@ -37,16 +37,9 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
   Types.PerUnit AA_06_PSS_out = PSS.VstPu "Fig. 5.12, PSS output signal";
   Types.PerUnit AA_07_GRIDL_Ppu = GRIDL.port.PPu/0.95 "Fig. 5.13, active power of the load";
   Types.PerUnit AA_08_GRIDL_Qpu = GRIDL.port.QPu/0.1519 "Fig. 5.14, reactive power of the load";
-
 equation
-  connect(GRID.terminalAC, NTHV.terminalAC) annotation(
-    Line(points = {{148, -20}, {88, -20}, {88, -20}, {88, -20}}));
   connect(VrefPu.y, AVR.VrefPu) annotation(
     Line(points = {{-88.8, -31}, {-89.3, -31}, {-89.3, -31}, {-85.8, -31}, {-85.8, -18}, {-79.8, -18}, {-79.8, -18}, {-71.8, -18}}, color = {0, 0, 127}));
-  connect(TGEN.terminalAC_b, NTHV.terminalAC) annotation(
-    Line(points = {{64, -20}, {84, -20}}));
-  connect(NTHV.terminalAC, GRIDL.terminalAC) annotation(
-    Line(points = {{84, -20}, {110, -20}, {110, -50}}));
   connect(GEN.PPu, PSS.Vsi2Pu) annotation(
     Line(points = {{-16, -2}, {0, -2}, {0, 56}, {-130, 56}, {-130, -6}, {-108, -6}, {-108, -6}}, color = {0, 0, 127}));
   connect(GEN.VPu, AVR.VcPu) annotation(
@@ -69,6 +62,12 @@ equation
     Line(points = {{24, -20}, {44, -20}}));
   connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-26, 0}, {-26, -10}, {-26, -10}, {-26, -20}, {-2, -20}, {-2, -20}, {24, -20}}));
+  connect(TGEN.terminalAC_b, GRID.terminalAC) annotation(
+    Line(points = {{64, -20}, {110, -20}, {110, -10}}));
+  connect(GRIDL.terminalAC, GRID.terminalAC) annotation(
+    Line(points = {{110, -50}, {110, -10}}));
+  connect(FAULT.terminalAC, GRID.terminalAC) annotation(
+    Line(points = {{132, -50}, {132, -20}, {110, -20}, {110, -10}}));
   annotation(
     Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
