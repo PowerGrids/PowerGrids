@@ -53,4 +53,9 @@ package Icons "Icons for the PowerGrids library"
     annotation(
       Icon(coordinateSystem(initialScale = 0.1), graphics = {Text(origin = {-3, 150}, textColor = {0, 0, 255}, extent = {{-81, 12}, {81, -12}}, textString = "%name"), Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}), Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
   end Grid;
+
+  model Fault
+  annotation (
+      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Line(origin = {3.23656, -70.242}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -15}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 25}, {20, -25}})}));
+  end Fault;
 end Icons;
