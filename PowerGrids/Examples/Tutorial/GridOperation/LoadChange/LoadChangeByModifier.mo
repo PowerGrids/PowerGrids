@@ -7,8 +7,6 @@ model LoadChangeByModifier "Load step response specified by modifiers on a copy 
     Placement(visible = true, transformation(origin={-26,6},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus NTLV(UNom = 21000, portVariablesPhases = true)  annotation (
     Placement(visible = true, transformation(origin={-6,-16},    extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus NTHV(UNom = 380000, portVariablesPhases = true)  annotation (
-    Placement(visible = true, transformation(origin={42,-16},    extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN(PStartA = 4.75e+08, PStartB = -4.75e+08, QStartA = 1.56e+08, QStartB = -7.6e+07, R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, UPhaseStartA = 0.161156, UPhaseStartB = 0, UStartA = 0.9917 * 21e3, UStartB = 0.95227 * 380e3, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={16,-16},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true)  annotation (
@@ -20,29 +18,25 @@ model LoadChangeByModifier "Load step response specified by modifiers on a copy 
       UNom = 380000,
       URef = 1.05 * 380e3,
       portVariablesPhases = true)  annotation (
-    Placement(visible = true, transformation(origin={62,-28},     extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+    Placement(visible = true, transformation(origin={68,-26},     extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression PmPu(y = -GEN.PStart / GEN.SNom)  annotation (
     Placement(visible = true, transformation(origin={-60,10},   extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression ufPuIn(y = GEN.ufPuInStart)  annotation (
     Placement(visible = true, transformation(origin={-60,-14},    extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-
 equation
-  connect(PmPu.y, GEN.PmPu) annotation (
-    Line(points={{-49,10},{-36,10}},                        color = {0, 0, 127}));
-  connect(ufPuIn.y, GEN.ufPuIn) annotation (
-    Line(points={{-49,-14},{-44,-14},{-44,2},{-36,2}},                       color = {0, 0, 127}));
-  connect(GRIDL.terminalAC, NTHV.terminalAC) annotation (
-    Line(points={{62,-28},{44,-28},{44,-16},{42,-16}}));
-  connect(GEN.terminalAC, NTLV.terminalAC) annotation (
-    Line(points={{-26,6},{-26,-16},{-6,-16}}));
-  connect(NTLV.terminalAC, TGEN.terminalAC_a) annotation (
-    Line(points={{-6,-16},{6,-16}}));
-  connect(TGEN.terminalAC_b, NTHV.terminalAC) annotation (
-    Line(points={{26,-16},{42,-16}}));
-  connect(NTHV.terminalAC, GRID.terminalAC) annotation (
-    Line(points={{42,-16},{44,-16},{44,-6},{68,-6}}));
-
-annotation (
+  connect(PmPu.y, GEN.PmPu) annotation(
+    Line(points = {{-49, 10}, {-36, 10}}, color = {0, 0, 127}));
+  connect(ufPuIn.y, GEN.ufPuIn) annotation(
+    Line(points = {{-49, -14}, {-44, -14}, {-44, 2}, {-36, 2}}, color = {0, 0, 127}));
+  connect(GEN.terminalAC, NTLV.terminalAC) annotation(
+    Line(points = {{-26, 6}, {-26, -16}, {-6, -16}}));
+  connect(NTLV.terminalAC, TGEN.terminalAC_a) annotation(
+    Line(points = {{-6, -16}, {6, -16}}));
+  connect(TGEN.terminalAC_b, GRID.terminalAC) annotation(
+    Line(points = {{26, -16}, {68, -16}, {68, -6}}));
+  connect(GRID.terminalAC, GRIDL.terminalAC) annotation(
+    Line(points = {{68, -6}, {68, -26}}));
+  annotation (
     experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.008),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"),
