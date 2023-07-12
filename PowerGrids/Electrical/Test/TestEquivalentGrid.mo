@@ -13,7 +13,7 @@ model TestEquivalentGrid "Test case EquivalentGrid model"
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Buses.Ground ground annotation(
     Placement(visible = true, transformation(origin = {-20, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Loads.LoadPQVoltageDependence load(PRefConst = 1e+07, QRefConst = 2e+07, SNom (displayUnit = "V.A")= 5e+08, portVariablesPhases = true, URef = 380000, UStart(displayUnit = "V"))  annotation(
+  Loads.LoadPQVoltageDependence load(PRefConst = 1e+07, QRefConst = 2e+07, SNom = 5e+08, portVariablesPhases = true, URef = 380000)  annotation(
     Placement(visible = true, transformation(origin = {-20, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(load.terminalAC, equivalentGrid.terminalAC) annotation(

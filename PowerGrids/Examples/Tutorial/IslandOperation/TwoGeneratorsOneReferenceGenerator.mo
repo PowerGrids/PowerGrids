@@ -20,7 +20,7 @@ model TwoGeneratorsOneReferenceGenerator
     Placement(visible = true, transformation(origin = {120, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus NTHV2(UNom = 380000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {40, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRef = 450e6 + (if time < 1 then 0 else -100e6), PRefConst = 4.5e+08, QRefConst = 200e6, SNom (displayUnit = "V.A")= 500e6, portVariablesPhases = true, URef = 380000) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRef = 450e6 + (if time < 1 then 0 else -100e6), PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 500e6, portVariablesPhases = true, URef = 380000) annotation(
     Placement(visible = true, transformation(origin = {-10, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 500e6, portVariablesPhases = true, URef = 380000) annotation(
     Placement(visible = true, transformation(origin = {30, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

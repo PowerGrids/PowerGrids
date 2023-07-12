@@ -22,7 +22,7 @@ model SteadyState "Reproduces the basic static power flow, see fig. 3-1 of the r
     Placement(visible = true, transformation(origin = {-102, -31}, extent = {{-12, -11}, {12, 11}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 475 / 500 * 0.05)  annotation(
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRefConst = 4.75e+08, PStart(displayUnit = "W"), QRefConst = 7.6e+07, SNom = 5e+08, UNom = 380000, URef(displayUnit = "V") = 1.05 * 380e3, UStart(displayUnit = "V"), portVariablesPhases = true)  annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRefConst = 4.75e+08, QRefConst = 7.6e+07, SNom = 5e+08, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {110, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID(UPhaseStart = 0, UStart = 1.050 * 380e3, R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

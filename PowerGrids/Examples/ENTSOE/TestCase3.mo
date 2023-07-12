@@ -22,7 +22,7 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
     Placement(visible = true, transformation(origin = {-102, -31}, extent = {{-12, -11}, {12, 11}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 475 / 500 * 0.05)  annotation(
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom (displayUnit = "V.A")= 500000000, UNom (displayUnit = "V")= 380000, URef = 1.05 * 380e3, portVariablesPhases = true, UStart(displayUnit = "V"))  annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom = 500000000, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {110, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050 * 380e3, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
