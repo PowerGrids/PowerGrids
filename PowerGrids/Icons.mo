@@ -40,13 +40,6 @@ package Icons "Icons for the PowerGrids library"
       Icon(graphics = {Polygon(origin = {0, -70}, fillPattern = FillPattern.Solid, points = {{-40, 30}, {40, 30}, {0, -30}, {-40, 30}}), Rectangle(origin = {0, -14}, fillPattern = FillPattern.Solid, extent = {{-20, 2}, {20, -2}}), Rectangle(origin = {0, -26}, fillPattern = FillPattern.Solid, extent = {{-20, 2}, {20, -2}}), Line(origin = {0, -7}, points = {{0, 7}, {0, -7}}), Line(origin = {0, -34}, points = {{0, 8}, {0, -8}}), Text(origin = {-1, -119}, lineColor = {0, 0, 255}, extent = {{-81, 11}, {81, -11}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
   end CapacitorBank;
 
-  model Ground
-  equation
-
-    annotation(
-      Icon(graphics = {Line(origin = {50, -20}, points = {{0, 20}, {0, -20}, {0, -20}}), Line(origin = {50, -40}, points = {{-40, 0}, {40, 0}, {40, 0}, {40, 0}}), Line(origin = {50, -60}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {50, -80}, points = {{-4, 0}, {4, 0}})}, coordinateSystem(initialScale = 0.1)));
-  end Ground;
-
   model Grid
   equation
 
@@ -58,4 +51,9 @@ package Icons "Icons for the PowerGrids library"
   annotation (
       Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Line(origin = {3.23656, -70.242}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -15}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 25}, {20, -25}})}));
   end Fault;
+  
+  model Short
+  annotation (
+      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {0, -46}, fillPattern = FillPattern.Solid, extent = {{-24, 6}, {24, -6}}), Line(origin = {0, -20}, points = {{0, 20}, {0, -20}}), Text(origin = {5, -76}, textColor = {0, 0, 255}, extent = {{-75, 16}, {75, -16}}, textString = "%name")}));
+  end Short;
 end Icons;

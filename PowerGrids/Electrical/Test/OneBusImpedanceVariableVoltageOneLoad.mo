@@ -4,7 +4,7 @@ model OneBusImpedanceVariableVoltageOneLoad
   extends Modelica.Icons.Example;
   PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage bus1(PStart = -1e+07, R = 0.04, SNom = 1e+08, UNom = 10000, X = 0.4, generatorConvention = true, portVariablesPhases = true, useThetaIn = true, useUIn = true) annotation(
     Placement(visible = true, transformation(origin = {0, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence load1(PRefConst = 1e+07,PStart (displayUnit = "W")= 1e+07, QRefConst = 0, QStart (displayUnit = "var")= 0, SNom (displayUnit = "V.A")= 1e+08, portVariablesPhases = true, URef = 10000, UStart(displayUnit = "V")) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence load1(PRefConst = 1e+07,PStart = 1e+07, QRefConst = 0, QStart = 0, SNom = 1e+08, portVariablesPhases = true, URef = 10000) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
