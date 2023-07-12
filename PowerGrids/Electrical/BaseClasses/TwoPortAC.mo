@@ -8,18 +8,18 @@ partial model TwoPortAC "Base class for two-port AC components"
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
   parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component";
 
-  parameter Types.Voltage UStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, absolute value"
+  final parameter Types.Voltage UStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, absolute value"
     annotation(Dialog(tab = "Initialization"));
-  parameter Types.Angle UPhaseStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, phase angle"
+  final parameter Types.Angle UPhaseStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, phase angle"
     annotation(Dialog(tab = "Initialization"));
   parameter Types.ActivePower PStartA = SNom "Start value of active power flowing into port A"
     annotation(Dialog(tab = "Initialization"));
   parameter Types.ReactivePower QStartA = 0 "Start value of reactive power flowing into port A"
     annotation(Dialog(tab = "Initialization"));
 
-  parameter Types.Voltage UStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, absolute value"
+  final parameter Types.Voltage UStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, absolute value"
     annotation(Dialog(tab = "Initialization"));
-  parameter Types.Angle UPhaseStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, phase angle"
+  final parameter Types.Angle UPhaseStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, phase angle"
     annotation(Dialog(tab = "Initialization"));
   parameter Types.ActivePower PStartB = -SNom "Start value of active power flowing into port B"
     annotation(Dialog(tab = "Initialization"));

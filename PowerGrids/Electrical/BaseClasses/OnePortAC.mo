@@ -9,9 +9,9 @@ partial model OnePortAC "Base class for AC components with one port"
   parameter LocalInitializationOption localInit = LocalInitializationOption.none
     "Initialize the component locally in steady state from port start values"
     annotation(Evaluate = true);
-  parameter Types.Voltage UStart(fixed = false) "Start value of phase-to-phase voltage phasor, absolute value"
+  final parameter Types.Voltage UStart(fixed = false) "Start value of phase-to-phase voltage phasor, absolute value"
     annotation(Dialog(tab = "Initialization"));
-  parameter Types.Angle UPhaseStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle"
+  final parameter Types.Angle UPhaseStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle"
     annotation(Dialog(tab = "Initialization"));
   parameter Types.ActivePower PStart = SNom "Start value of active power flowing into the port"
     annotation(Dialog(tab = "Initialization"));
