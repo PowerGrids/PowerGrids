@@ -5,7 +5,7 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
     final UNomB = UNom,
     SNom = UNom^2/X);
   extends Icons.Line;
-
+  
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
   parameter Types.Resistance R "Series resistance";
   parameter Types.Reactance X "Series reactance";
@@ -16,13 +16,13 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   parameter SI.Time stopTime "End time of the fault" annotation(Dialog(group="Fault data"));
   parameter Types.Resistance RFault "Fault resistance" annotation(Dialog(group="Fault data"));
   parameter Types.Reactance XFault "Fault reactance" annotation(Dialog(group="Fault data"));
-  PowerGrids.Electrical.Branches.LineConstantImpedance lineA(B = faultLocationPu * B, G = faultLocationPu * G, PStartA = PStartA, PStartB = (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, QStartA = QStartA, QStartB = (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, R = faultLocationPu,SNom = SNom, UNom = UNom, UPhaseStartA = UPhaseStartA, UPhaseStartB = (1 - faultLocationPu) * UPhaseStartA + faultLocationPu * UPhaseStartB, UStartA = UStartA, UStartB = (1 - faultLocationPu) * UStartA + faultLocationPu * UStartB, X = faultLocationPu * X)  annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance lineA(B = faultLocationPu * B, G = faultLocationPu * G, PStartA = PStartA, PStartB = (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, QStartA = QStartA, QStartB = (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, R = faultLocationPu*R,SNom = SNom, UNom = UNom, X = faultLocationPu * X)  annotation(
     Placement(visible = true, transformation(origin = {-40, 2.44249e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance lineB(B = (1 - faultLocationPu) * B, G = (1 - faultLocationPu) * G, PStartA = (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, PStartB = PStartB, QStartA = (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, QStartB = QStartA, R = (1 - faultLocationPu) * R,SNom = SNom, UNom = UNom, UPhaseStartA = UPhaseStartA, UPhaseStartB = UPhaseStartB, UStartA = UStartA, UStartB = UStartB, X = (1 - faultLocationPu) * X) annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance lineB(B = (1 - faultLocationPu) * B, G = (1 - faultLocationPu) * G, PStartA = (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, PStartB = PStartB, QStartA = (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, QStartB = QStartA, R = (1 - faultLocationPu) * R,SNom = SNom, UNom = UNom, X = (1 - faultLocationPu) * X) annotation(
     Placement(visible = true, transformation(origin = {40, 1.77636e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   PowerGrids.Electrical.Faults.ThreePhaseFault threePhaseFault(R = RFault, SNom = SNom, UNom = UNom, X = XFault, startTime = startTime, stopTime = stopTime) annotation(
     Placement(visible = true, transformation(origin = {0, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Buses.Bus busFault(UNom=UNom) annotation(
+  Buses.Bus busFault(UNom=UNom, UStart = (1 - faultLocationPu) * UStartA + faultLocationPu * UStartB, UPhaseStart = (1 - faultLocationPu) * UPhaseStartA + faultLocationPu * UPhaseStartB) annotation(
     Placement(visible = true, transformation(origin = {0, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(lineB.terminalAC_b, terminalAC_b) annotation(
