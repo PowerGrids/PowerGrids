@@ -36,8 +36,10 @@ equation
   connect(busFault.terminalAC, threePhaseFault.terminalAC) annotation(
     Line(points = {{0, -12}, {0, -26}}));
   annotation(
-    Documentation(info = "<html>
-<p>Transmission line with constant series impedance R+jX and constant shunt admittance G+jB. </p>
-<p>Implemented as a child class of <a href=\"modelica://PowerGrids.Electrical.Branches.BaseClasses.PiNetwork\">PiNetwork</a>, where Ya=Yb=(G+jB)/2 and k = 1, see the corresponding documentation.</p>
-</html>"));
+    Documentation(info = "<html><head></head><body><p>Transmission line with constant series impedance R+jX and constant shunt admittance G+jB plus an intermediate three-phase fault with constant shunt impedance RFault+jXFault.&nbsp;</p><p>The fault position along the line can be set by means of the&nbsp;<span style=\"font-family: 'Cascadia Code'; font-size: 10pt;\">faultLocationPu</span>&nbsp;parameter, that can assume a value in the range 0-1 were 0 means fault at port A, 1 means fault at port B and each intermediate value means fault in the corrispondent intermediate positio (e.g. 0.5 means fault in the middle).</p><p>Fault start time and duration (i.e. stop time - start time) can be set by means of the parameters&nbsp;<span style=\"font-family: 'Cascadia Code'; font-size: 13.333333015441895px;\">startTime&nbsp;</span>and <span style=\"font-family: 'Cascadia Code'; font-size: 13.333333015441895px;\">stopTime.</span></p>
+
+<p>Implemented as two&nbsp;<span style=\"font-family: 'Cascadia Code'; font-size: 10pt;\"><a href=\"modelica://PowerGrids.Electrical.Branches.LineConstantImpedance\">LineConstantImpedance</a>&nbsp;</span>series-connected plus a&nbsp;<span style=\"font-family: 'Cascadia Code'; font-size: 10pt;\"><a href=\"modelica://PowerGrids.Electrical.Faults.ThreePhaseFault\">TrheePhaseFault</a></span>&nbsp;connected between the two lines.</p>
+
+
+</body></html>"));
 end LineConstantImpedanceFault;
