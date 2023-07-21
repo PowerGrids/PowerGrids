@@ -6,7 +6,13 @@ model System "System object"
     InitializationOption.globalSteadyStateFixedSetPoints "Initialization option";
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads shall work as a fixed-impedances at low-voltage conditions" annotation(Evaluate = true);
   parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
+  parameter Boolean computeEPF = true "= true, includes embedded models for power-flow computation";
   final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
+
+initial equation
+  assert(not computeEPF, 
+         "Embedded Power Flow computation is active, it can be turned-off by setting computeEPF=false in the system object",
+         level = AssertionLevel.warning);
 
 annotation (
     defaultComponentName="systemPowerGrids",
