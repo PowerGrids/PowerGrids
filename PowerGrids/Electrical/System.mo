@@ -1,6 +1,8 @@
 within PowerGrids.Electrical;
 model System "System object"
   import PowerGrids.Types.Choices.InitializationOption;
+  parameter Boolean showDataOnDiagram = true "=true, P,Q,V and phase are shown in the diagram";
+  parameter Integer dataOnDiagramDigit = 3 "number of digit for data on diagrams";
   parameter SI.Frequency fNom = 50 "Nominal system frequency";
   parameter InitializationOption initOpt = 
     InitializationOption.globalSteadyStateFixedSetPoints "Initialization option";
