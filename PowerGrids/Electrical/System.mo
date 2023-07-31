@@ -7,7 +7,7 @@ model System "System object"
   parameter InitializationOption initOpt = 
     InitializationOption.globalSteadyStateFixedSetPoints "Initialization option";
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads shall work as a fixed-impedances at low-voltage conditions" annotation(Evaluate = true);
-  parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
+  parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
   final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
 
 annotation (
