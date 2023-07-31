@@ -15,7 +15,7 @@ model LoadPQVoltageDependenceInputs "Load model with voltage dependent P and Q s
   Modelica.Blocks.Interfaces.RealInput QRefIn(unit="var", displayUnit = "MVA") "Reactive reference power at VPu = 1, var" annotation(
     Placement(visible = true, transformation(origin = {-100, -44}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1})),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {-79, -70}, extent = {{-1, 50}, {1, -50}}), Line(origin = {-45.9763, -70.2767}, points = {{-32, 0}, {26, 0}})}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html><head></head><body><p>Model of a PQ load with voltage dependence.</p>
 <p><code style=\"font-size: 12px;\">port.P = PRefIn*(port.U/URef)^alpha;</code><span style=\"font-size: 12px;\">&nbsp;</span><br style=\"font-size: 12px;\"><code style=\"font-size: 12px;\">port.Q = QRefIn*(port.U/URef)^beta;</code></p>
