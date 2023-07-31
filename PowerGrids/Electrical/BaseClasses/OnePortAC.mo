@@ -2,6 +2,8 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortAC "Base class for AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
+  parameter Boolean showDataOnDiagram = systemPowerGrids.showDataOnDiagram "=true, P,Q,V and phase are shown in the diagram";
+  parameter Integer dataOnDiagramDigit = systemPowerGrids.dataOnDiagramDigit "number of digit for data on diagrams";
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
@@ -31,11 +33,11 @@ partial model OnePortAC "Base class for AC components with one port"
               final QStart = QStart)
               "AC port of node";
   outer Electrical.System systemPowerGrids "Reference to system object";
-  
+
 initial equation
   UStart = terminalAC.UStart;
   UPhaseStart = terminalAC.UPhaseStart;
-  
+
 equation
   if initial() and localInit == LocalInitializationOption.PV then
     // During local initialization, P,V is enforced at the connector towards
@@ -60,8 +62,21 @@ equation
     port.v = terminalAC.v;
     port.i = terminalAC.i;
   end if;
-  annotation(
+  annotation (
     Documentation(info = "<html>
 <p>This is the base class for all the components with an AC terminal. It contains a corresponding <code>PortAC</code> component to compute useful quantities for modelling and monitoring purposes.</p>
-</html>"));
+</html>"), 
+     Icon(graphics={  
+       Text(
+        visible=showDataOnDiagram,
+        origin={-60,13},
+        extent={{-76,15},{76,-15}},
+        textString = DynamicSelect("P", if port.P > 0 then "P="+String(port.P/1e6, significantDigits=dataOnDiagramDigit)
+                                                      else "P=("+String(port.P/1e6, significantDigits=dataOnDiagramDigit)+")")),
+       Text(
+        visible=showDataOnDiagram,
+        origin={-60,-11},
+        extent={{-76,15},{76,-15}},
+        textString = DynamicSelect("Q", if port.Q > 0 then "Q="+String(port.Q/1e6, significantDigits=dataOnDiagramDigit)
+                                                      else "Q=("+String(port.Q/1e6, significantDigits=dataOnDiagramDigit)+")"))}));
 end OnePortAC;
