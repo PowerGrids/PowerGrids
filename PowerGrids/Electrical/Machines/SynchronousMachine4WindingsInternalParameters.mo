@@ -54,6 +54,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   Modelica.Blocks.Interfaces.RealOutput omegaPu(start = 1) "Angular frequency in p.u." annotation(
     Placement(visible = true, transformation(origin = {106, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Types.PerUnit iDPu(start = 0) "Current of direct axis damper in p.u";
+  Types.PerUnit ifPu(start = ifPuStart) "Current of excitation winding in p.u.";
   Types.PerUnit iQ1Pu(start = 0) "Current of quadrature axis 1st damper in p.u.";
   Types.PerUnit iQ2Pu(start = 0) "Current of quadrature axis 2nd damper in p.u.";
   Types.PerUnit ufPu(start = ufPuStart) "Voltage of exciter winding in p.u. (base voltage as per Kundur)";
@@ -75,8 +76,9 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     Placement(visible = true, transformation(origin = {106, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput PPu "Active Power Production [pu base PNom]" annotation(
     Placement(visible = true, transformation(origin = {106, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealOutput ifPu(start = ifPuStart) "Current of excitation winding in p.u." annotation(
+  Modelica.Blocks.Interfaces.RealOutput ifPuOut "Current of excitation winding in p.u." annotation(
     Placement(visible = true, transformation(origin = {106, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, -100}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+
 initial equation
   // Scaling factor for excitation p.u. voltage
   if excitationPuType == Types.Choices.ExcitationPuType.Kundur then
@@ -146,6 +148,7 @@ equation
   // Output signal equations
   VPu = port.VPu;
   PPu = -port.P/PNom;
+  ifPuOut = ifPu;
   
   // Overconstrained connector
   Connections.potentialRoot(terminalAC.omegaRefPu, integer(priority));
