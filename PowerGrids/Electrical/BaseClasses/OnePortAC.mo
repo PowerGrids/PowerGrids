@@ -70,7 +70,7 @@ equation
      Icon(graphics={  
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-60,13},
+        origin={0,-145},
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if (port.P>=0) and showDataOnDiagramsPu then String(port.PPu, significantDigits=dataOnDiagramDigits)
@@ -81,7 +81,7 @@ equation
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-60,-11},
+        origin={0,-173},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if (port.Q>=0) and showDataOnDiagramsPu then String(port.QPu, significantDigits=dataOnDiagramDigits)

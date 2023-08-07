@@ -72,7 +72,7 @@ equation
      Icon(graphics={  
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-100,-29},
+        origin={-100,-30},
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if (portA.P>=0) and showDataOnDiagramsPu then String(portA.PPu, significantDigits=dataOnDiagramDigits)
@@ -83,7 +83,7 @@ equation
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-100,-53},
+        origin={-100,-58},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if (portA.Q>=0) and showDataOnDiagramsPu then String(portA.QPu, significantDigits=dataOnDiagramDigits)
@@ -94,7 +94,7 @@ equation
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={100,-29},
+        origin={100,-30},
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if (portB.P>=0) and showDataOnDiagramsPu then String(portB.PPu, significantDigits=dataOnDiagramDigits)
@@ -105,7 +105,7 @@ equation
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={100,-53},
+        origin={100,-58},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if (portB.Q>=0) and showDataOnDiagramsPu then String(portB.QPu, significantDigits=dataOnDiagramDigits)

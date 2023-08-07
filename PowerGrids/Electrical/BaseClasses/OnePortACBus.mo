@@ -67,7 +67,7 @@ equation
      Icon(graphics={  
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-60,-27},
+        origin={-184, 17},
         extent={{-76,15},{76,-15}},
         textColor = {28,108,200},
         textString = DynamicSelect("P", if (port.U>=0) and showDataOnDiagramsPu then String(port.VPu, significantDigits=dataOnDiagramDigits)
@@ -80,7 +80,7 @@ equation
 
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-60,-51},
+        origin={-184, -17},
         extent={{-76,15},{76,-15}},
         textColor = {0,0,255},
         textString = DynamicSelect("Uph", if port.UPhase > 0 then String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)+"°"
