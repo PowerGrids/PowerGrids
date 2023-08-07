@@ -1,6 +1,10 @@
 within PowerGrids.Examples.IEEE14bus;
 model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus benchmark - synchronous machine with proportional regulations"
   extends Icons.Machine;
+  outer PowerGrids.Electrical.System systemPowerGrids;
+  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, WVAR)";
+  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";  
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {-26, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Interfaces.TerminalAC terminalAC annotation(
@@ -43,6 +47,31 @@ equation
   connect(GEN.omega, omega) annotation(
     Line(points = {{-16, 6}, {-8, 6}, {-8, 16}, {10, 16}, {10, 16}}, color = {0, 0, 127}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {12, -74}, extent = {{-58, 10}, {34, -4}}, textString = "CONTROL"), Rectangle(origin = {0, -70}, extent = {{-50, 10}, {50, -10}})}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), 
+         graphics = {
+         Text(origin = {12, -74}, extent = {{-58, 10}, {34, -4}}, textString = "CONTROL"), 
+         Rectangle(origin = {0, -70}, extent = {{-50, 10}, {50, -10}}),
+         Text(
+          visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+          origin={0,-121},
+          extent={{-76,15},{76,-15}},
+          textColor = {238,46,47},
+          textString = DynamicSelect("P", if (GEN.port.P>=0) and showDataOnDiagramsPu then String(GEN.port.PPu, significantDigits=dataOnDiagramDigits)
+                                          elseif (GEN.port.P>=0) and showDataOnDiagramsSI then String(GEN.port.P/1e6, significantDigits=dataOnDiagramDigits)
+                                          elseif (GEN.port.P>=0) then ""
+                                          elseif (GEN.port.P<0) and showDataOnDiagramsPu then "("+String(GEN.port.PPu, significantDigits=dataOnDiagramDigits)+")"
+                                          elseif (GEN.port.P<0) and showDataOnDiagramsSI then "("+String(GEN.port.P/1e6, significantDigits=dataOnDiagramDigits)+")"
+                                          else "")),
+         Text(
+          visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+          origin={0,-149},
+          extent={{-76,15},{76,-15}},
+          textColor={217,67,180},
+          textString = DynamicSelect("Q", if (GEN.port.Q>=0) and showDataOnDiagramsPu then String(GEN.port.QPu, significantDigits=dataOnDiagramDigits)
+                                          elseif (GEN.port.Q>=0) and showDataOnDiagramsSI then String(GEN.port.Q/1e6, significantDigits=dataOnDiagramDigits)
+                                          elseif (GEN.port.Q>=0) then ""
+                                          elseif (GEN.port.Q<0) and showDataOnDiagramsPu then "("+String(GEN.port.QPu, significantDigits=dataOnDiagramDigits)+")"
+                                          elseif (GEN.port.Q<0) and showDataOnDiagramsSI then "("+String(GEN.port.Q/1e6, significantDigits=dataOnDiagramDigits)+")"
+                                          else ""))}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5})));
 end ControlledGeneratorIEEE;
