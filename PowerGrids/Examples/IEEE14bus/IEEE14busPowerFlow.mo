@@ -221,7 +221,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {70, 72}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {70, 74}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L10to11(
     portVariablesPhases = true,
     R = 0.156256, 
@@ -241,7 +241,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {-60, 72}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-60, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L13to14(
     portVariablesPhases = true,
     R = 0.325519, 
@@ -251,7 +251,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {0, 72}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {0, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // LOADS
   PowerGrids.Electrical.PowerFlow.PQBus Load2(
@@ -309,7 +309,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {40, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(visible = true, transformation(origin = {40, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load11(
     portVariablesPhases = true,
     P = 3.5e6, 
@@ -317,7 +317,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {-10, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(visible = true, transformation(origin = {-10, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load12(
     portVariablesPhases = true,
     P = 6.1e6, 
@@ -325,7 +325,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {-90, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(visible = true, transformation(origin = {-90, 86}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load13(
     portVariablesPhases = true,
     P = 13.8e6, 
@@ -333,7 +333,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {-30, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(visible = true, transformation(origin = {-30, 86}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load14(
     portVariablesPhases = true,
     P = 14.9e6, 
@@ -341,7 +341,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     SNom = 100e6, 
     UNom = 13.8e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {30, 94}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(visible = true, transformation(origin = {30, 86}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
 
 // Capacitor bank
   PowerGrids.Electrical.Banks.CapacitorBankFixed Cbank9(
@@ -484,9 +484,9 @@ equation
   connect(bus12.terminalAC, L6to12.terminalAC_b) annotation(
     Line(points = {{-90, 80}, {-90, 80}, {-90, 60}, {-70, 60}, {-70, 60}}));
   connect(L12to13.terminalAC_a, bus12.terminalAC) annotation(
-    Line(points = {{-70, 72}, {-86, 72}, {-86, 80}, {-90, 80}}));
+    Line(points = {{-70, 74}, {-86, 74}, {-86, 80}, {-90, 80}}));
   connect(L12to13.terminalAC_b, bus13.terminalAC) annotation(
-    Line(points = {{-50, 72}, {-36, 72}, {-36, 80}, {-30, 80}}));
+    Line(points = {{-50, 74}, {-36, 74}, {-36, 80}, {-30, 80}}));
   connect(L6to12.terminalAC_a, bus6.terminalAC) annotation(
     Line(points = {{-50, 60}, {-36, 60}, {-36, 0}, {-30, 0}, {-30, 0}}));
   connect(L6to13.terminalAC_a, bus6.terminalAC) annotation(
@@ -498,13 +498,13 @@ equation
   connect(L6to11.terminalAC_b, bus11.terminalAC) annotation(
     Line(points = {{-10, 30}, {-10, 30}, {-10, 40}, {-10, 40}}));
   connect(L13to14.terminalAC_a, bus13.terminalAC) annotation(
-    Line(points = {{-10, 72}, {-24, 72}, {-24, 80}, {-30, 80}}));
+    Line(points = {{-10, 74}, {-24, 74}, {-24, 80}, {-30, 80}}));
   connect(L13to14.terminalAC_b, bus14.terminalAC) annotation(
-    Line(points = {{10, 72}, {24, 72}, {24, 80}, {30, 80}}));
+    Line(points = {{10, 74}, {24, 74}, {24, 80}, {30, 80}}));
   connect(L9to14.terminalAC_b, bus14.terminalAC) annotation(
-    Line(points = {{60, 72}, {36, 72}, {36, 80}, {30, 80}}));
+    Line(points = {{60, 74}, {36, 74}, {36, 80}, {30, 80}}));
   connect(L9to14.terminalAC_a, bus9.terminalAC) annotation(
-    Line(points = {{80, 72}, {102, 72}, {102, 40}, {110, 40}}));
+    Line(points = {{80, 74}, {102, 74}, {102, 40}, {110, 40}}));
   connect(L10to11.terminalAC_b, bus11.terminalAC) annotation(
     Line(points = {{10, 30}, {-4, 30}, {-4, 40}, {-10, 40}, {-10, 40}}));
   connect(L10to11.terminalAC_a, bus10.terminalAC) annotation(
@@ -564,15 +564,15 @@ equation
   connect(Tgen1.terminalAC_b, bus1.terminalAC) annotation(
     Line(points = {{-130, 10}, {-130, 0}}));
   connect(Load12.terminalAC, bus12.terminalAC) annotation(
-    Line(points = {{-90, 94}, {-90, 80}}));
+    Line(points = {{-90, 86}, {-90, 80}}));
   connect(bus13.terminalAC, Load13.terminalAC) annotation(
-    Line(points = {{-30, 80}, {-30, 94}}));
+    Line(points = {{-30, 80}, {-30, 86}}));
   connect(Load14.terminalAC, bus14.terminalAC) annotation(
-    Line(points = {{30, 94}, {30, 80}}));
+    Line(points = {{30, 86}, {30, 80}}));
   connect(Load11.terminalAC, bus11.terminalAC) annotation(
-    Line(points = {{-10, 54}, {-10, 40}}));
+    Line(points = {{-10, 46}, {-10, 40}}));
   connect(Load10.terminalAC, bus10.terminalAC) annotation(
-    Line(points = {{40, 54}, {40, 40}}));
+    Line(points = {{40, 46}, {40, 40}}));
   connect(Cbank9.terminalAC, bus9.terminalAC) annotation(
     Line(points = {{110, 54}, {110, 40}}));
   connect(Load9.terminalAC, bus9.terminalAC) annotation(
