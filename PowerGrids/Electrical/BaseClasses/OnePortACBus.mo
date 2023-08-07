@@ -3,7 +3,7 @@ within PowerGrids.Electrical.BaseClasses;
 partial model OnePortACBus
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Boolean showDataOnDiagram = systemPowerGrids.showDataOnDiagram "=true, P,Q,V and phase are shown in the diagram";
-  parameter Integer dataOnDiagramDigit = systemPowerGrids.dataOnDiagramDigit "number of digit for data on diagrams";  
+  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";  
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
@@ -68,12 +68,12 @@ equation
         visible=showDataOnDiagram,
         origin={-60,-27},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("U", if port.U > 0 then "U="+String(port.U/1e3, significantDigits=dataOnDiagramDigit)
-                                                      else "P=("+String(port.U/1e3, significantDigits=dataOnDiagramDigit)+")")),
+        textString = DynamicSelect("U", if port.U > 0 then "U="+String(port.U/1e3, significantDigits=dataOnDiagramDigits)
+                                                      else "P=("+String(port.U/1e3, significantDigits=dataOnDiagramDigits)+")")),
        Text(
         visible=showDataOnDiagram,
         origin={-60,-51},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("Uph", if port.UPhase > 0 then "UPh="+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigit)
-                                                             else "UPh=("+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigit)+")"))}));
+        textString = DynamicSelect("Uph", if port.UPhase > 0 then "UPh="+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)
+                                                             else "UPh=("+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)+")"))}));
 end OnePortACBus;

@@ -3,7 +3,7 @@ within PowerGrids.Electrical.BaseClasses;
 partial model OnePortAC "Base class for AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Boolean showDataOnDiagram = systemPowerGrids.showDataOnDiagram "=true, P,Q,V and phase are shown in the diagram";
-  parameter Integer dataOnDiagramDigit = systemPowerGrids.dataOnDiagramDigit "number of digit for data on diagrams";
+  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
@@ -71,12 +71,12 @@ equation
         visible=showDataOnDiagram,
         origin={-60,13},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("P", if port.P > 0 then "P="+String(port.P/1e6, significantDigits=dataOnDiagramDigit)
-                                                      else "P=("+String(port.P/1e6, significantDigits=dataOnDiagramDigit)+")")),
+        textString = DynamicSelect("P", if port.P > 0 then "P="+String(port.P/1e6, significantDigits=dataOnDiagramDigits)
+                                                      else "P=("+String(port.P/1e6, significantDigits=dataOnDiagramDigits)+")")),
        Text(
         visible=showDataOnDiagram,
         origin={-60,-11},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("Q", if port.Q > 0 then "Q="+String(port.Q/1e6, significantDigits=dataOnDiagramDigit)
-                                                      else "Q=("+String(port.Q/1e6, significantDigits=dataOnDiagramDigit)+")"))}));
+        textString = DynamicSelect("Q", if port.Q > 0 then "Q="+String(port.Q/1e6, significantDigits=dataOnDiagramDigits)
+                                                      else "Q=("+String(port.Q/1e6, significantDigits=dataOnDiagramDigits)+")"))}));
 end OnePortAC;

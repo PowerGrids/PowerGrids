@@ -2,7 +2,7 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model TwoPortAC "Base class for two-port AC components"
   parameter Boolean showDataOnDiagram = systemPowerGrids.showDataOnDiagram "=true, P,Q,V and phase are shown in the diagram";
-  parameter Integer dataOnDiagramDigit = systemPowerGrids.dataOnDiagramDigit "number of digit for data on diagrams";
+  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
   parameter Types.Voltage UNomA(start = 400e3) "Nominal/rated voltage, port A, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.Voltage UNomB = UNomA "Nominal/rated voltage, port B, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.Power SNom(start = 100e6) "Nominal/rated power, also used as p.u. base" annotation(Evaluate = true);
@@ -73,24 +73,24 @@ equation
         visible=showDataOnDiagram,
         origin={-100,-29},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("P", if portA.P > 0 then "P="+String(portA.P/1e6,significantDigits=dataOnDiagramDigit) 
-                                                       else "P=("+String(portA.P/1e6,significantDigits=dataOnDiagramDigit)+")")),
+        textString = DynamicSelect("P", if portA.P > 0 then "P="+String(portA.P/1e6,significantDigits=dataOnDiagramDigits) 
+                                                       else "P=("+String(portA.P/1e6,significantDigits=dataOnDiagramDigits)+")")),
        Text(
         visible=showDataOnDiagram,
         origin={-100,-53},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("Q", if portA.Q > 0 then "Q="+String(portA.Q/1e6,significantDigits=dataOnDiagramDigit) 
-                                                       else "Q=("+String(portA.Q/1e6,significantDigits=dataOnDiagramDigit)+")")),
+        textString = DynamicSelect("Q", if portA.Q > 0 then "Q="+String(portA.Q/1e6,significantDigits=dataOnDiagramDigits) 
+                                                       else "Q=("+String(portA.Q/1e6,significantDigits=dataOnDiagramDigits)+")")),
        Text(
         visible=showDataOnDiagram,
         origin={100,-29},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("P", if portB.P > 0 then "P="+String(portB.P/1e6,significantDigits=dataOnDiagramDigit) 
-                                                       else "P=("+String(portB.P/1e6,significantDigits=dataOnDiagramDigit)+")")),
+        textString = DynamicSelect("P", if portB.P > 0 then "P="+String(portB.P/1e6,significantDigits=dataOnDiagramDigits) 
+                                                       else "P=("+String(portB.P/1e6,significantDigits=dataOnDiagramDigits)+")")),
        Text(
         visible=showDataOnDiagram,
         origin={100,-53},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("Q", if portB.Q > 0 then "Q="+String(portB.Q/1e6,significantDigits=dataOnDiagramDigit) 
-                                                       else "Q=("+String(portB.Q/1e6,significantDigits=dataOnDiagramDigit)+")"))}));
+        textString = DynamicSelect("Q", if portB.Q > 0 then "Q="+String(portB.Q/1e6,significantDigits=dataOnDiagramDigits) 
+                                                       else "Q=("+String(portB.Q/1e6,significantDigits=dataOnDiagramDigits)+")"))}));
 end TwoPortAC;
