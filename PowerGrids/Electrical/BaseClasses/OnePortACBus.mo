@@ -2,7 +2,8 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortACBus
   import PowerGrids.Types.Choices.LocalInitializationOption;
-  parameter Boolean showDataOnDiagram = systemPowerGrids.showDataOnDiagram "=true, P,Q,V and phase are shown in the diagram";
+  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format";
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, WVAR)";  
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";  
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
@@ -65,15 +66,23 @@ equation
 </html>"),
      Icon(graphics={  
        Text(
-        visible=showDataOnDiagram,
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={-60,-27},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("U", if port.U > 0 then "U="+String(port.U/1e3, significantDigits=dataOnDiagramDigits)
-                                                      else "P=("+String(port.U/1e3, significantDigits=dataOnDiagramDigits)+")")),
+        textColor = {28,108,200},
+        textString = DynamicSelect("P", if (port.U>=0) and showDataOnDiagramsPu then String(port.VPu, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.U>=0) and showDataOnDiagramsSI then String(port.U/1e3, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.U>=0) then ""
+                                        elseif (port.U<0) and showDataOnDiagramsPu then "("+String(port.VPu, significantDigits=dataOnDiagramDigits)+")"
+                                        elseif (port.U<0) and showDataOnDiagramsSI then "("+String(port.U/1e3, significantDigits=dataOnDiagramDigits)+")"
+                                        else "")),        
+        
+
        Text(
-        visible=showDataOnDiagram,
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={-60,-51},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("Uph", if port.UPhase > 0 then "UPh="+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)
-                                                             else "UPh=("+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)+")"))}));
+        textColor = {0,0,255},
+        textString = DynamicSelect("Uph", if port.UPhase > 0 then String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)+"°"
+                                                             else "("+String(port.UPhase*180/3.14159265359, significantDigits=dataOnDiagramDigits)+"°)"))}));
 end OnePortACBus;

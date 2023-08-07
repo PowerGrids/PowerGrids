@@ -2,7 +2,8 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortAC "Base class for AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
-  parameter Boolean showDataOnDiagram = systemPowerGrids.showDataOnDiagram "=true, P,Q,V and phase are shown in the diagram";
+  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, WVAR)";
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
@@ -68,15 +69,25 @@ equation
 </html>"), 
      Icon(graphics={  
        Text(
-        visible=showDataOnDiagram,
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={-60,13},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("P", if port.P > 0 then "P="+String(port.P/1e6, significantDigits=dataOnDiagramDigits)
-                                                      else "P=("+String(port.P/1e6, significantDigits=dataOnDiagramDigits)+")")),
+        textColor = {238,46,47},
+        textString = DynamicSelect("P", if (port.P>=0) and showDataOnDiagramsPu then String(port.PPu, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.P>=0) and showDataOnDiagramsSI then String(port.P/1e6, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.P>=0) then ""
+                                        elseif (port.P<0) and showDataOnDiagramsPu then "("+String(port.PPu, significantDigits=dataOnDiagramDigits)+")"
+                                        elseif (port.P<0) and showDataOnDiagramsSI then "("+String(port.P/1e6, significantDigits=dataOnDiagramDigits)+")"
+                                        else "")),
        Text(
-        visible=showDataOnDiagram,
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={-60,-11},
         extent={{-76,15},{76,-15}},
-        textString = DynamicSelect("Q", if port.Q > 0 then "Q="+String(port.Q/1e6, significantDigits=dataOnDiagramDigits)
-                                                      else "Q=("+String(port.Q/1e6, significantDigits=dataOnDiagramDigits)+")"))}));
+        textColor={217,67,180},
+        textString = DynamicSelect("Q", if (port.Q>=0) and showDataOnDiagramsPu then String(port.QPu, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.Q>=0) and showDataOnDiagramsSI then String(port.Q/1e6, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.Q>=0) then ""
+                                        elseif (port.Q<0) and showDataOnDiagramsPu then "("+String(port.QPu, significantDigits=dataOnDiagramDigits)+")"
+                                        elseif (port.Q<0) and showDataOnDiagramsSI then "("+String(port.Q/1e6, significantDigits=dataOnDiagramDigits)+")"
+                                        else ""))}));
 end OnePortAC;
