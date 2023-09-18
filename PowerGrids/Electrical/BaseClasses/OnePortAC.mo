@@ -3,7 +3,7 @@ within PowerGrids.Electrical.BaseClasses;
 partial model OnePortAC "Base class for AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
-  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, WVAR)";
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar";
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
@@ -76,8 +76,8 @@ equation
         textString = DynamicSelect("P", if (port.P>=0) and showDataOnDiagramsPu then String(port.PPu, significantDigits=dataOnDiagramDigits)
                                         elseif (port.P>=0) and showDataOnDiagramsSI then String(port.P/1e6, significantDigits=dataOnDiagramDigits)
                                         elseif (port.P>=0) then ""
-                                        elseif (port.P<0) and showDataOnDiagramsPu then "("+String(port.PPu, significantDigits=dataOnDiagramDigits)+")"
-                                        elseif (port.P<0) and showDataOnDiagramsSI then "("+String(port.P/1e6, significantDigits=dataOnDiagramDigits)+")"
+                                        elseif (port.P<0) and showDataOnDiagramsPu then String(port.PPu, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.P<0) and showDataOnDiagramsSI then String(port.P/1e6, significantDigits=dataOnDiagramDigits)
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
@@ -87,7 +87,7 @@ equation
         textString = DynamicSelect("Q", if (port.Q>=0) and showDataOnDiagramsPu then String(port.QPu, significantDigits=dataOnDiagramDigits)
                                         elseif (port.Q>=0) and showDataOnDiagramsSI then String(port.Q/1e6, significantDigits=dataOnDiagramDigits)
                                         elseif (port.Q>=0) then ""
-                                        elseif (port.Q<0) and showDataOnDiagramsPu then "("+String(port.QPu, significantDigits=dataOnDiagramDigits)+")"
-                                        elseif (port.Q<0) and showDataOnDiagramsSI then "("+String(port.Q/1e6, significantDigits=dataOnDiagramDigits)+")"
+                                        elseif (port.Q<0) and showDataOnDiagramsPu then String(port.QPu, significantDigits=dataOnDiagramDigits)
+                                        elseif (port.Q<0) and showDataOnDiagramsSI then String(port.Q/1e6, significantDigits=dataOnDiagramDigits)
                                         else ""))}));
 end OnePortAC;
