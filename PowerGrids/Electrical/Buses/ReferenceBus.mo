@@ -1,7 +1,9 @@
 within PowerGrids.Electrical.Buses;
 
 model ReferenceBus "Reference bus for an isolated grid"
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus;
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final PStart = 0,
+    final QStart = 0);
   extends Icons.Bus;
   import PowerGrids.Types.Choices.InitializationOption;
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
