@@ -1,6 +1,6 @@
 within PowerGrids.Interfaces;
 
-connector TerminalACBus "Terminal for phasor-based AC connections"
+connector TerminalACBus "Terminal for phasor-based buses"
   extends TerminalACBase;
   output Types.Voltage UStart "Start value of phase-to-phase voltage";
   output Types.Angle UPhaseStart "Start value of phase-to-phase voltage angle";  
