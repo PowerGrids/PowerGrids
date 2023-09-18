@@ -2,6 +2,7 @@ within PowerGrids.Examples.Tutorial.GridOperation.Controlled;
 
 model ControlledGenerator "Model of a synchronous generator with governor, AVR, and PSS"
   extends Icons.Machine;
+  outer PowerGrids.Electrical.System systemPowerGrids;
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, Mvar)";
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";  
