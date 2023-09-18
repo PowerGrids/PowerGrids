@@ -1,7 +1,11 @@
 within PowerGrids.Electrical.PowerFlow;
 
 model SlackBus "Slack Bus"
-  extends BaseClasses.OnePortACBus(UStart = U, UPhaseStart = theta);  
+  extends BaseClasses.OnePortACBus(
+    final UStart = U, 
+    final UPhaseStart = theta,
+    final PStart = 0,
+    final QStart = 0);  
   extends Icons.Bus;
   parameter Types.Voltage U = UNom "Voltage magnitude, phase-to-phase";
   parameter Types.Angle theta = 0 "Phase of voltage phasor";
