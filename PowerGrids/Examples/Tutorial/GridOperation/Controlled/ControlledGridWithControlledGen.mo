@@ -12,7 +12,7 @@ model ControlledGridWithControlledGen "System under automatic control with high-
   PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRefConst = 4.75e+08, QRefConst = 7.6e+07, SNom = 5e+08, UNom = 380000, URef = 1.05 * 380e3, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {56, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator ctrlGEN(AVR(Ka = 150)) annotation(
-    Placement(visible = true, transformation(origin = {-64, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {-64, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Electrical.Faults.ThreePhaseFault FAULT(R = 0.05,SNom = 5e+08, UNom = 380000, portVariablesPhases = true, startTime = 2, stopTime = 2.1) annotation(
     Placement(visible = true, transformation(origin = {74, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation

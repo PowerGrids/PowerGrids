@@ -446,7 +446,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     P = -232.36955e6,
     U = 25.4068e3
   ) annotation(
-    Placement(visible = true, transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+    Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(
     portVariablesPhases = true,
     SNom = 1120e6,
