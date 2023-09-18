@@ -1,11 +1,14 @@
 within PowerGrids.Electrical;
 model System "System object"
   import PowerGrids.Types.Choices.InitializationOption;
+  parameter Boolean showDataOnDiagramsPu = true "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
+  parameter Boolean showDataOnDiagramsSI = true "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar";
+  parameter Integer dataOnDiagramDigits = 3 "number of digits for data on diagrams";
   parameter SI.Frequency fNom = 50 "Nominal system frequency";
   parameter InitializationOption initOpt = 
     InitializationOption.globalSteadyStateFixedSetPoints "Initialization option";
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads shall work as a fixed-impedances at low-voltage conditions" annotation(Evaluate = true);
-  parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
+  parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes only, it can be locally overridden" annotation(Evaluate = true);
   final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
 
 annotation (

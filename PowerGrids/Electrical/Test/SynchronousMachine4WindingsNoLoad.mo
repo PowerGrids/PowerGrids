@@ -5,7 +5,7 @@ model SynchronousMachine4WindingsNoLoad
   PowerGrids.Electrical.Buses.InfiniteBus bus(PStart = 0,SNom = 5.5e+08, UNom = 24000, UStart = 24000, X = 0, portVariablesPhases = true, theta = 0) annotation(
     Placement(visible = true, transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine(H = 6, PStart = 0, QStart = 0, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad, portVariablesPhases = true, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76) annotation(
-    Placement(visible = true, transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}})));
   inner PowerGrids.Electrical.System systemPowerGrids(fNom = 50) annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step PmPu(height = 0.0, offset = 0.0, startTime = 50) annotation(
@@ -14,9 +14,9 @@ model SynchronousMachine4WindingsNoLoad
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(ufPu.y, machine.ufPuIn) annotation(
-    Line(points = {{-38, -30}, {-24, -30}, {-24, -14}, {-10, -14}, {-10, -14}}, color = {0, 0, 127}));
+    Line(points = {{-38, -30}, {-24, -30}, {-24, -18}, {-6, -18}}, color = {0, 0, 127}));
   connect(PmPu.y, machine.PmPu) annotation(
-    Line(points = {{-38, 10}, {-24, 10}, {-24, -6}, {-10, -6}, {-10, -6}}, color = {0, 0, 127}));
+    Line(points = {{-38, 10}, {-24, 10}, {-24, -12}, {-6, -12}}, color = {0, 0, 127}));
   connect(bus.terminalAC, machine.terminalAC) annotation(
     Line(points = {{0, 20}, {0, -10}}));
   annotation(
