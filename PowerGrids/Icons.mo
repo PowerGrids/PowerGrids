@@ -25,13 +25,38 @@ package Icons "Icons for the PowerGrids library"
   equation
 
   annotation(
-      Icon(graphics = {Line(origin = {0, -20}, points = {{0, 20}, {0, -20}, {0, -20}}), Polygon(origin = {0, -70}, fillPattern = FillPattern.Solid, points = {{-40, 30}, {40, 30}, {0, -30}, {-40, 30}}), Text(origin = {-1, -116}, textColor = {0, 0, 255}, extent = {{-81, 10}, {81, -10}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Load;
+      Icon(graphics = {Line(origin = {0, -20}, points = {{0, 20}, {0, -20}, {0, -20}}), Polygon(origin = {0, -70}, fillPattern = FillPattern.Solid, points = {{-40, 30}, {40, 30}, {0, -30}, {-40, 30}}), Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Load;
 
   model Machine
   equation
 
   annotation(
-      Icon(graphics = {Ellipse(origin = {0, -1}, extent = {{-60, 61}, {60, -59}}), Text(origin = {-4, -98}, textColor = {0, 0, 255}, extent = {{-80, 10}, {80, -10}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Machine;
+      Icon(graphics = {Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name"), 
+        Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
+        Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
+        Line(origin = {0.00014, -50.5485},points = 
+          {{-20, 0}, 
+          {-15.375,13.3},
+          {-13.8,16.6},
+          {-12.35,18.65},
+          {-10.95,19.775},
+          {-9.8,19.95},
+          {-8.15,19.15},
+          {-6.725,17.425},
+          {-5.325,14.85},
+          {-3.725,11.025},
+          {-1.7075,5.3},
+          {1.7075,-5.3},
+          {3.725,-11.025},
+          {5.325,-14.85},
+          {6.725,-17.425},
+          {8.15,-19.15},
+          {9.8,-19.95},
+          {10.95,-19.775},
+          {12.35,-18.65},
+          {13.8,-16.6},
+          {15.375,-13.3},
+          {20,0}}, smooth = Smooth.Bezier)}, coordinateSystem(initialScale = 0.1)));end Machine;
 
   model CapacitorBank
   equation
