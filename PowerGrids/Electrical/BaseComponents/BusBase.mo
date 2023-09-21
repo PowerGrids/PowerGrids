@@ -1,7 +1,7 @@
-within PowerGrids.Electrical.Buses.BaseClasses;
+within PowerGrids.Electrical.BaseComponents;
 
-model BusBase
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus;
+partial model BusBase
+  extends PowerGrids.Electrical.BaseClasses.OnePortACVI;
   input Types.ComplexVoltage e(re(nominal = port.VNom), im(nominal = port.VNom)) "Voltage of ideal generator, phase-to-ground";
   input Types.ComplexImpedance Z "Internal impedance";
   Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
