@@ -11,15 +11,23 @@ partial model OnePortAC "Base class for AC components with one port"
     Dialog(tab = "Initialization"));
   final parameter Types.Angle UPhaseStart(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStart = SNom "Start value of active power flowing into the port" annotation(
+  parameter Types.ActivePower PStart = if computePF then PStartPF else SNom "Start value of active power flowing into the port" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ReactivePower QStart = 0 "Start value of reactive power flowing into the port" annotation(
+  parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
     Dialog(tab = "Initialization"));
+  parameter Boolean hasSubPF = false "= true, if the model contains a sub-network with its own embedded PF";
 
+  final parameter Types.ActivePower PStartPF(fixed = false) "Start value of active power flowing into the port, computed by the embedded PF";
+  final parameter Types.ReactivePower QStartPF(fixed = false) "Start value of reactive power flowing into the port, computed by the embedded PF";
+
+  Types.ComplexVoltage vPF "Phase-to-ground voltage phasor of embedded power flow model";
+  Types.ComplexCurrent iPF "Line current phasor of embedded power flow model";
+    
   extends OnePortACVI(
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC(
       v(re(start = port.vStart.re), im(start = port.vStart.im)),
-      i(re(start = port.iStart.re), im(start = port.iStart.im))),
+      i(re(start = port.iStart.re), im(start = port.iStart.im)),
+      terminalACPF(v = vPF, i = iPF)),
     port(final UNom = UNom, final SNom = SNom,
          final portVariablesPhases = portVariablesPhases,
          final generatorConvention = generatorConvention,
@@ -27,15 +35,31 @@ partial model OnePortAC "Base class for AC components with one port"
          final UPhaseStart = UPhaseStart,
          final PStart = PStart,
          final QStart = QStart));
-  replaceable OnePortACPF componentPF if computePF "component to be used to compute the embedded PF";
+  replaceable OnePortACPF componentPF if computePF and not hasSubPF "component to be used to compute the embedded PF";
   outer Electrical.System systemPowerGrids "Reference to system object";
 
 initial equation
   UStart = terminalAC.UStart;
   UPhaseStart = terminalAC.UPhaseStart;
-
+  
+  if computePF then
+    // set values of initialization parameters based on EPF solution
+    PStartPF = 3*CM.real(vPF*CM.conj(iPF));
+    QStartPF = 3*CM.imag(vPF*CM.conj(iPF));
+  else
+    // set dummy values (not used)
+    PStartPF = 0;
+    QStartPF = 0;
+  end if;  
+  
 equation
-  connect(terminalAC.terminalACPF, componentPF.terminalAC);
+  if not computePF then
+     vPF = Complex(0) "Dummy value";
+     iPF = Complex(0) "Dummy value";
+  elseif not hasSubPF then
+    connect(terminalAC.terminalACPF, componentPF.terminalAC);
+  end if;
+  
   if initial() and localInit == LocalInitializationOption.PV then
     // During local initialization, P,V is enforced at the connector towards
     // the grid, while Q,phase(V) is enforced at the port towards the component
