@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseComponents;
 
-partial model BusBase
+partial model BusBaseVI
   extends PowerGrids.Electrical.BaseClasses.OnePortACVI;
   input Types.ComplexVoltage e(re(nominal = port.VNom), im(nominal = port.VNom)) "Voltage of ideal generator, phase-to-ground";
   input Types.ComplexImpedance Z "Internal impedance";
@@ -14,4 +14,4 @@ equation
     Documentation(info = "<html><head></head><body><p>This is the base class for bus components that can be represented as the series connection of an ideal voltage generator and an internal impedance Z. In general the generator voltage and the internal impedance are time-varying variables.</p>
 <p>This model can be specialized to describe an infinite bus with fixed or variable reference voltage.</p>
 </body></html>"));
-end BusBase;
+end BusBaseVI;

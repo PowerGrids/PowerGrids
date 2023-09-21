@@ -1,6 +1,7 @@
-within PowerGrids.Electrical.Branches.BaseClasses;
-partial model PiNetwork "Generic Pi-Network base model"
-  extends Electrical.BaseClasses.TwoPortAC;
+within PowerGrids.Electrical.BaseComponents;
+
+partial model PiNetworkVI "Generic Pi-Network base model"
+  extends Electrical.BaseClasses.TwoPortACVI;
   Types.ComplexAdmittance Y "Series admittance";
   Types.ComplexAdmittance YA "Shunt admittance at port a";
   Types.ComplexAdmittance YB "Shunt admittance at port b";
@@ -35,4 +36,5 @@ equation
 </figure>
 <p>In general the impedances and transformer complex ratio are time-varying variables.&nbsp;</p><p>The model can be specialized to describe a transmission line with fixed or variable impedances, a transmission line with embedded circuit breakers, transformers with fixed or variable transformer ratio, transformers with tap changer/phase shifter, etc.</p>
 </html>"));
-end PiNetwork;
+
+end PiNetworkVI;

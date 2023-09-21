@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.BaseComponents;
 
 partial model InfiniteBusVI
-  extends BusBase(
+  extends BusBaseVI(
       e = CM.fromPolar(ERef, theta),
       Z = Complex(R, X));
   extends Icons.Bus;
@@ -10,14 +10,7 @@ partial model InfiniteBusVI
   parameter Types.Angle theta = 0 "Voltage phase angle of ideal voltage generator";
   parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
   final parameter Types.Voltage ERef = URef/sqrt(3) "Phase-to-ground voltage of ideal voltage generator";
-
-equation
-  // Overconstrained connector
-  Connections.potentialRoot(terminalAC.omegaRefPu);
-  if Connections.isRoot(terminalAC.omegaRefPu) then
-     terminalAC.omegaRefPu = 1;
-  end if;
-  
+ 
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
