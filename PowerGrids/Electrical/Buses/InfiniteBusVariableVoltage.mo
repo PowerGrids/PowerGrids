@@ -16,8 +16,8 @@ model InfiniteBusVariableVoltage
     Z = Complex(R, X),
     redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Bus;
-  parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase";
-  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage";
+  parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase, always used as Reference Voltage by the embedded PF";
+  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage, always used as reference angle for by the embedded PF";
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
@@ -57,5 +57,6 @@ equation
 <p>Infinite bus model with voltage e. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.</p>
 <p>The magnitude and angle of the voltage e can provided by external input connectors. If useUin = true, the UIn input is used to set the magnitude of voltage e, otherwise the constant value UFixed is used.</p>
 <p>Similarly, if useThetaIn = true, the thetaIn input is used to set the phase angle of voltage e, otherwise the constant value thetaFixed is used.</p>
+<p>If the embedded PF is active, the UFixed and thetaFixed values are used as reference for the embedded PF computation, so they should be set accordingly to the initial values of UIn and ThetaIn respectively.</p>
 </html>"));
 end InfiniteBusVariableVoltage;
