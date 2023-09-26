@@ -1,10 +1,17 @@
 within PowerGrids.Electrical.Buses;
 
 model EquivalentGrid "Equivalent grid model characterized by short circuit capacity"
-  extends PowerGrids.Electrical.Buses.BaseClasses.BusBase(
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final hasSubPF = false,
+    redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(
+      SNom = SNom, 
+      UNom = UNom,
+      U = URef,
+      theta = UPhaseRef));
+  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
     e = eSource,
     Z = ZGrid,
-    UStart = URef, UPhaseStart = 0);
+    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Grid; 
   import Modelica.ComplexMath;
   
