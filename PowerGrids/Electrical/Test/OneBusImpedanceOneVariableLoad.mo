@@ -5,15 +5,16 @@ model OneBusImpedanceOneVariableLoad
   PowerGrids.Electrical.Buses.InfiniteBus bus1(PStart = -1e+07,R = 0.04,SNom = 1e+08, UNom = 10000, X = 0.4, generatorConvention = true, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence load1(
+    PRefConst = 10e6,
     PRef = if time < 1 then 10e6 else 20e6, PStart = 1e+07,
-    QRef = if time < 2 then 0 else 30e6, QStart = 0, SNom = 1e+08, portVariablesPhases = true, URef = 10000)
+    QRef = if time < 2 then 0 else 30e6, SNom = 1e+08, portVariablesPhases = true, URef = 10000)
     annotation(
     Placement(visible = true, transformation(origin = {-50,0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.InfiniteBus bus2(PStart = -1e+07,R = 0.04, SNom = 1e+08, UNom = 10000, X = 0.4, generatorConvention = true, portVariablesPhases = true)  annotation(
     Placement(visible = true, transformation(origin = {50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load2(PStart = 1e+07, SRef = 1e+08, URef = 10000, portVariablesPhases = true)  annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load2(PStart = 1e+07, SRef = 1e+08, URef = 10000, portVariablesPhases = true, PRefConst = 10000000)  annotation(
     Placement(visible = true, transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step PSignal(height = 10e6, offset = 10e6, startTime = 1)  annotation(
     Placement(visible = true, transformation(origin = {10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

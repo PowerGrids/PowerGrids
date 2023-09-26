@@ -4,10 +4,6 @@ model LoadPQVoltageDependenceInputs "Load model with voltage dependent P and Q s
   extends LoadPQVoltageDependence(
     final PRef = PRefIn, 
     final QRef = QRefIn,
-    final PRefConst = 0,
-    final QRefConst = 0,
-    PStart = 0,
-    QStart = 0,
     SNom = SRef);
   parameter Types.Power SRef "Reference power";
   Modelica.Blocks.Interfaces.RealInput PRefIn(unit="W", displayUnit="MW") "Active reference power at VPu = 1, W" annotation(
