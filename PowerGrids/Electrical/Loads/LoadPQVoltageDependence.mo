@@ -2,10 +2,12 @@ within PowerGrids.Electrical.Loads;
 
 model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    PStart = PRefConst,
-    QStart = QRefConst,
+    PStart = if computePF then PStartPF else PRefConst,
+    QStart = if computePF then QStartPF else QRefConst,
     UNom = URef,
-    SNom = sqrt(PRefConst^2+QRefConst^2));
+    SNom = sqrt(PRefConst^2+QRefConst^2),
+    final hasSubPF = false,
+    redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(P = PRefConst, Q = QRefConst));
   extends Icons.Load;
 
   parameter Boolean lowVoltageAsImpedance = systemPowerGrids.loadLowVoltageAsImpedance "true, if the load shall work as a fixed-impedance at low-voltage condition" annotation(Evaluate = true);
