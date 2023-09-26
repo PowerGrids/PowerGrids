@@ -2,7 +2,8 @@ within PowerGrids.Electrical.Faults;
 
 model ThreePhaseFault
   extends Icons.Fault;
-  extends Electrical.BaseClasses.OnePortAC;
+  extends Electrical.BaseClasses.OnePortAC(
+    redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(UNom = UNom));
   parameter Types.Resistance R = 0 "Series resistance to ground during fault" annotation(Dialog(group="Fault data"));
   parameter Types.Reactance X = 0 "Series reactance to ground during fault" annotation(Dialog(group="Fault data"));
   parameter SI.Time startTime "Start time of the fault" annotation(Dialog(group="Fault data"));
