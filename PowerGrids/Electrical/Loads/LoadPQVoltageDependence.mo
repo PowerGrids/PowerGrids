@@ -7,7 +7,11 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
     UNom = URef,
     SNom = sqrt(PRefConst^2+QRefConst^2),
     final hasSubPF = false,
-    redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(P = PRefConst, Q = QRefConst));
+    redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
+      SNom = SNom,
+      UNom = UNom,
+      P = PRefConst, 
+      Q = QRefConst));
   extends Icons.Load;
 
   parameter Boolean lowVoltageAsImpedance = systemPowerGrids.loadLowVoltageAsImpedance "true, if the load shall work as a fixed-impedance at low-voltage condition" annotation(Evaluate = true);

@@ -5,7 +5,12 @@ model LineConstantImpedance "Transmission line with constant impedance"
     final UNomB = UNom,
     SNom = UNom^2/X,
     final hasSubPF = false,
-    redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF componentPF);
+    redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF componentPF(
+      UNom = UNom,
+      R = R,
+      G = G,
+      B = B,
+      X = X));
   extends PowerGrids.Electrical.BaseComponents.LineConstantImpedanceVI(
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_a,
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_b);  
