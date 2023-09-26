@@ -10,14 +10,16 @@ partial model OnePortACBus
     Dialog(tab = "Initialization"));
   parameter Types.Angle UPhaseStart = if computePF then UPhaseStartPF else 0 "Start value of phase-to-phase voltage phasor, phase angle" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStart = SNom "Start value of active power flowing into the port" annotation(
+  parameter Types.ActivePower PStart = if computePF then PStartPF else  SNom "Start value of active power flowing into the port" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ReactivePower QStart = 0 "Start value of reactive power flowing into the port" annotation(
+  parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
     Dialog(tab = "Initialization"));
   parameter Boolean hasSubPF = false "= true, if the model contains a sub-network with its own embedded PF";
   
   parameter Types.Voltage UStartPF(fixed = false) "Start value of phase-to-phase voltage phasor, absolute value, computed by the EPF";
   parameter Types.Angle UPhaseStartPF(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle, computed by the EPF";
+  final parameter Types.ActivePower PStartPF(fixed = false) "Start value of active power flowing into the port, computed by the embedded PF";
+  final parameter Types.ReactivePower QStartPF(fixed = false) "Start value of reactive power flowing into the port, computed by the embedded PF";
 
   Types.ComplexVoltage vPF "Phase-to-ground voltage phasor of embedded power flow model";
   Types.ComplexCurrent iPF "Line current phasor of embedded power flow model";
@@ -43,10 +45,14 @@ initial equation
     // set values of initialization parameters based on EPF solution
     UStartPF = CM.abs(vPF)*sqrt(3);
     UPhaseStartPF = CM.arg(vPF);
+    PStartPF = 3*CM.real(vPF*CM.conj(iPF));
+    QStartPF = 3*CM.imag(vPF*CM.conj(iPF));    
   else
     // set dummy values (not used)
     UStartPF = 0;
     UPhaseStartPF = 0;
+    PStartPF = 0;
+    QStartPF = 0;    
   end if;
     
 equation
