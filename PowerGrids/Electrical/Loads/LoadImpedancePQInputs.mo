@@ -4,8 +4,6 @@ model LoadImpedancePQInputs "Load model with impedance specified by PRefIn and Q
   extends LoadImpedancePQ(
     final PRef = PRefIn, 
     final QRef = QRefIn,
-    final PRefConst = 0,
-    final QRefConst = 0,
     SNom = SRef);
   parameter Types.Power SRef "Reference power";
   Modelica.Blocks.Interfaces.RealInput PRefIn(unit="W", displayUnit="MW") "Active reference power at VPu = 1, W" annotation(
@@ -17,5 +15,6 @@ model LoadImpedancePQInputs "Load model with impedance specified by PRefIn and Q
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html><head></head><body>
 <p>Model of a variable impedance load, whose value is specified by the reference values <code>PRefin</code> and <code>QRefIn</code> inputs and by the <code>URef</code> parameter.</p>
+<p>If the embedded PF is active, the PRefConst and QRefConst values are used as reference for the embedded PF computation, so they should be set accordingly to the initial values of PRefIn and QRefIn respectively.</p>
 </body></html>"));
 end LoadImpedancePQInputs;
