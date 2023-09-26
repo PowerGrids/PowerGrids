@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Test;
 
 model TestTransformerWithTapChangerMax
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage infiniteBus(R = 0, SNom = 1e+06, UNom = 1000, X = 0, useUIn = true) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage infiniteBus(R = 0, SNom = 1e+06, UNom = 1000, X = 0, useUIn = true, UFixed (displayUnit = "V")= 501) annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.TransformerWithTapChangerMax trafo(B = 0, G = 0, K = {1, 2, 3, 4, 5}, Ntap = 5, R = 1, SNom = 1e+06, UMax = 4500, UNomA = 1000, UNomB = 1000, UStop = 2600, X = 1, actionSel = PowerGrids.Electrical.Branches.TransformerWithTapChangerInterval.ActionType.direct, t1st = 1, tNext = 2, tapStart = 5) annotation(
     Placement(visible = true, transformation(origin = {2.66454e-15, 1.55431e-15}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
