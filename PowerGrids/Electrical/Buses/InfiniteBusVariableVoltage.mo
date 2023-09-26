@@ -1,12 +1,23 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBusVariableVoltage
-  extends BaseClasses.BusBase(e = CM.fromPolar(UAux/sqrt(3), thetaAux), Z = Complex(R, X));
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final hasSubPF = false,
+    redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
+      UNom = UNom,
+      SNom = SNom,
+      URef = UFixed,
+      theta = thetaFixed,
+      R = R,
+      X = X));
+  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
+    e = CM.fromPolar(UAux/sqrt(3), 
+    thetaAux), 
+    Z = Complex(R, X),
+    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Bus;
-  parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase" annotation(
-    Dialog(enable = not useThetaIn));
-  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage" annotation(
-    Dialog(enable = not useThetaIn));
+  parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase";
+  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage";
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
