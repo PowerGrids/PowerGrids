@@ -11,7 +11,7 @@ model OnePortACPF
          final generatorConvention = generatorConvention,
          final UStart = UNom,
          final UPhaseStart = 0,
-         final PStart = SNom,
+         final PStart = 0,
          final QStart = 0),
     final computePF = false);
   annotation(

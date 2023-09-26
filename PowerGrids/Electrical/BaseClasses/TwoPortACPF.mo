@@ -14,7 +14,7 @@ model TwoPortACPF
           final generatorConvention = false,
           final UStart = UNomA,
           final UPhaseStart = 0,
-          final PStart = SNom,
+          final PStart = 0,
           final QStart = 0) "AC port - terminalAC_a",
     portB(final v = terminalAC_b.v, final i = terminalAC_b.i,
           final UNom = UNomB, final SNom = SNom,
@@ -22,7 +22,7 @@ model TwoPortACPF
           final generatorConvention = false,
           final UStart = UNomB,
           final UPhaseStart = 0,
-          final PStart = SNom,
+          final PStart = 0,
           final QStart = 0) "AC port - terminalAC_b",
     final computePF = false);
   annotation(
