@@ -16,8 +16,8 @@ model InfiniteBusVariableVoltage
     Z = Complex(R, X),
     redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Bus;
-  parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase, always used as Reference Voltage by the embedded PF";
-  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage, always used as reference angle for by the embedded PF";
+  parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase, reference Voltage for the embedded PF";
+  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage, reference angle for the embedded PF";
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
