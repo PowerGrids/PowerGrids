@@ -4,7 +4,7 @@ model InfiniteBus "Infinite bus with internal impedance"
     final hasSubPF = false,
     redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(SNom = SNom, UNom = UNom));
   extends PowerGrids.Electrical.BaseComponents.InfiniteBusVI(
-    redeclare PowerGrids.Interfaces.TerminalAC terminalAC);
+    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
 
 equation
   // Overconstrained connector
