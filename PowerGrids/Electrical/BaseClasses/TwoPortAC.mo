@@ -10,17 +10,17 @@ partial model TwoPortAC "Base class for two-port AC components"
     Dialog(tab = "Initialization"));
   final parameter Types.Angle UPhaseStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, phase angle" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStartA = SNom "Start value of active power flowing into port A" annotation(
+  parameter Types.ActivePower PStartA = if computePF then PStartAPF else SNom "Start value of active power flowing into port A" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ReactivePower QStartA = 0 "Start value of reactive power flowing into port A" annotation(
+  parameter Types.ReactivePower QStartA = if computePF then QStartAPF else 0 "Start value of reactive power flowing into port A" annotation(
     Dialog(tab = "Initialization"));
   final parameter Types.Voltage UStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, absolute value" annotation(
     Dialog(tab = "Initialization"));
   final parameter Types.Angle UPhaseStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, phase angle" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStartB = -SNom "Start value of active power flowing into port B" annotation(
+  parameter Types.ActivePower PStartB = if computePF then PStartBPF else -SNom "Start value of active power flowing into port B" annotation(
     Dialog(tab = "Initialization"));
-  parameter Types.ReactivePower QStartB = 0 "Start value of reactive power flowing into port B" annotation(
+  parameter Types.ReactivePower QStartB = if computePF then QStartBPF else 0 "Start value of reactive power flowing into port B" annotation(
     Dialog(tab = "Initialization"));
   parameter Boolean hasSubPF = false "= true if the model contains a sub-network with its own embedded PF";
 
