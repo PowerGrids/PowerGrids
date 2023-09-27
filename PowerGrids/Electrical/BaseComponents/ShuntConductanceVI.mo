@@ -1,10 +1,10 @@
-within PowerGrids.Electrical.BaseClasses;
+within PowerGrids.Electrical.BaseComponents;
 
-model ShuntConductance "Connects the port to ground via a conductor"
-  extends OnePortAC;
+partial model ShuntConductanceVI
+  extends PowerGrids.Electrical.BaseClasses.OnePortACVI;
   input Types.ComplexAdmittance Y "Shunt admittance";
   Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v;
   Types.ComplexCurrent i(re(nominal = port.INom), im(nominal = port.INom)) = port.i;
 equation
   i = Y*v;
-end ShuntConductance;
+end ShuntConductanceVI;

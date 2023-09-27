@@ -1,4 +1,5 @@
 BusBaseVI
 PiNetworkVI
+ShuntConductanceVI
 InfiniteBusVI
 LineConstantImpedanceVI
