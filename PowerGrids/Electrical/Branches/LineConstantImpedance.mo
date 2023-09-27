@@ -3,7 +3,7 @@ model LineConstantImpedance "Transmission line with constant impedance"
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final UNomA = UNom,
     final UNomB = UNom,
-    SNom = UNom^2/X,
+    SNom = UNom^2/CM.abs(Complex(R,X)),
     final hasSubPF = false,
     redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF componentPF(
       UNom = UNom,
@@ -17,6 +17,6 @@ model LineConstantImpedance "Transmission line with constant impedance"
 annotation(
     Documentation(info = "<html>
 <p>Transmission line with constant series impedance R+jX and constant shunt admittance G+jB. </p>
-<p>Implemented as a child class of <a href=\"modelica://PowerGrids.Electrical.Branches.BaseClasses.PiNetwork\">PiNetwork</a>, where Ya=Yb=(G+jB)/2 and k = 1, see the corresponding documentation.</p>
+<p>Implemented as a child class of <a href=\"modelica://PowerGrids.Electrical.BaseComponents.PiNetworkVI\">PiNetworkVI</a>, where Ya=Yb=(G+jB)/2 and k = 1, see the corresponding documentation.</p>
 </html>"));
 end LineConstantImpedance;

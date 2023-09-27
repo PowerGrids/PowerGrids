@@ -4,7 +4,7 @@ model LineConstantImpedanceVI "Transmission line with constant impedance"
   extends PiNetworkVI(
     final UNomA = UNom,
     final UNomB = UNom,
-    SNom = UNom^2/X);
+    SNom = UNom^2/CM.abs(Complex(R,X)));
   extends Icons.Line;
 
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
