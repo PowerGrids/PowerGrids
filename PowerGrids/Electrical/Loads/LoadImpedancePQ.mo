@@ -10,7 +10,7 @@ model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"
     redeclare PowerGrids.Electrical.PowerFlow.ZLoad componentPF(
       UNom = UNom,
       SNom = SNom,
-      Z = URef^2/Complex(PRefConst, -QRefConst)));
+      Z = 1/ComplexMath.conj(Complex(PRefConst,QRefConst)/URef^2)));
     
   extends Icons.Load;
   import Modelica.ComplexMath;
