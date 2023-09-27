@@ -36,10 +36,12 @@ partial model TwoPortAC "Base class for two-port AC components"
     
   extends TwoPortACVI(
     redeclare PowerGrids.Interfaces.TerminalAC_a terminalAC_a(
+      final computePF = computePF,
       v(re(start = portA.vStart.re), im(start = portA.vStart.im)),
       i(re(start = portA.iStart.re), im(start = portA.iStart.im)),
       terminalACPF(v = vPF_a, i = iPF_a)),
     redeclare PowerGrids.Interfaces.TerminalAC_b terminalAC_b(
+      final computePF = computePF,
       v(re(start = portB.vStart.re), im(start = portB.vStart.im)),
       i(re(start = portB.iStart.re), im(start = portB.iStart.im)),
       terminalACPF(v = vPF_b, i = iPF_b)),
@@ -90,10 +92,9 @@ equation
      iPF_a = Complex(0) "Dummy value";
      vPF_b = Complex(0) "Dummy value";
      iPF_b = Complex(0) "Dummy value";
-  elseif not hasSubPF then
-    connect(terminalAC_a.terminalACPF, componentPF.terminalAC_a);
-    connect(terminalAC_b.terminalACPF, componentPF.terminalAC_b);
   end if;
+  connect(terminalAC_a.terminalACPF, componentPF.terminalAC_a);
+  connect(terminalAC_b.terminalACPF, componentPF.terminalAC_b);
   
   // Overconstrained connectors
   terminalAC_a.omegaRefPu = terminalAC_b.omegaRefPu;

@@ -25,6 +25,7 @@ partial model OnePortAC "Base class for AC components with one port"
     
   extends OnePortACVI(
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC(
+      final computePF = computePF,
       v(re(start = port.vStart.re), im(start = port.vStart.im)),
       i(re(start = port.iStart.re), im(start = port.iStart.im)),
       terminalACPF(v = vPF, i = iPF)),
@@ -54,11 +55,10 @@ initial equation
   
 equation
   if not computePF then
-     vPF = Complex(0) "Dummy value";
-     iPF = Complex(0) "Dummy value";
-  elseif not hasSubPF then
-    connect(terminalAC.terminalACPF, componentPF.terminalAC);
+    vPF = Complex(0) "Dummy value";
+    iPF = Complex(0) "Dummy value";
   end if;
+  connect(terminalAC.terminalACPF, componentPF.terminalAC);
   
   if initial() and localInit == LocalInitializationOption.PV then
     // During local initialization, P,V is enforced at the connector towards

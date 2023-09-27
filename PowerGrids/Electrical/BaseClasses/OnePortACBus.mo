@@ -26,6 +26,7 @@ partial model OnePortACBus
   
   extends OnePortACVI(
     redeclare PowerGrids.Interfaces.TerminalACBus terminalAC(
+      final computePF = computePF,
       UStart = UStart, UPhaseStart = UPhaseStart,
       v(re(start = port.vStart.re), im(start = port.vStart.im)),
       i(re(start = port.iStart.re), im(start = port.iStart.im)),
@@ -56,12 +57,11 @@ initial equation
   end if;
     
 equation
-  if not computePF then
-     vPF = Complex(0) "Dummy value";
-     iPF = Complex(0) "Dummy value";
-  elseif not hasSubPF then
-    connect(terminalAC.terminalACPF, componentPF.terminalAC);
+  if not computePF or hasSubPF then
+    vPF = Complex(0) "Dummy value";
+    iPF = Complex(0) "Dummy value";
   end if;
+  connect(terminalAC.terminalACPF, componentPF.terminalAC);
 
   if initial() and localInit == LocalInitializationOption.PV then
     // During local initialization, P,V is enforced at the connector towards
