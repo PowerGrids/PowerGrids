@@ -1,11 +1,20 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
-  extends BaseClasses.OnePortACdqPU(final generatorConvention = true, localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none);
+  extends BaseClasses.OnePortACdqPU(
+    final generatorConvention = true, 
+    localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
+    final hasSubPF = false,
+    redeclare PowerGrids.Electrical.PowerFlow.PVBus componentPF(
+      UNom = UNom,
+      SNom = SNom,
+      P = -PPF,
+      U = UNom));
   extends Icons.Machine;
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
+  parameter Types.ActivePower PPF = SNom "Nominal active (turbine) power to be used for the embedded PF calculation";
   parameter Types.PerUnit raPu "Armature resistance in p.u.";
   parameter Types.PerUnit LdPu "Direct axis stator leakage in p.u.";
   parameter Types.PerUnit MdPu "Direct axis mutual inductance in p.u.";
