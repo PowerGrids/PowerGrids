@@ -6,7 +6,7 @@ model SynchronousMachine4WindingsNoLoad
     Placement(visible = true, transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine(H = 6, PStart = 0, QStart = 0, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad, portVariablesPhases = true, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76) annotation(
     Placement(transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}})));
-  inner PowerGrids.Electrical.System systemPowerGrids(fNom = 50) annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(fNom = 50, final computePF = false) annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step PmPu(height = 0.0, offset = 0.0, startTime = 50) annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
