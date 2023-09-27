@@ -3,3 +3,4 @@ PiNetworkVI
 ShuntConductanceVI
 InfiniteBusVI
 LineConstantImpedanceVI
+LineConstantImpedanceWithBreakersVI
