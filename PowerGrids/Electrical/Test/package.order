@@ -35,3 +35,4 @@ TestTransformerFixedRatio
 TestTransformerFixedRatioWithBreaker
 SynchronousMachine4WindingsPF
 TestTransmissionLineWithBreakersPF
+TestTransformerFixedRatioWithBreakersPF

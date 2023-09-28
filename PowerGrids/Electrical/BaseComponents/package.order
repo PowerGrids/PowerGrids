@@ -4,3 +4,5 @@ ShuntConductanceVI
 InfiniteBusVI
 LineConstantImpedanceVI
 LineConstantImpedanceWithBreakersVI
+TransformerFixedRatioVI
+TransformerFixedRatioWithBreakerVI

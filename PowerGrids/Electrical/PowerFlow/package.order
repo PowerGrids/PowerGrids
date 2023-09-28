@@ -6,5 +6,7 @@ PQBus
 ZLoad
 LineConstantImpedancePF
 LineConstantImpedanceWithBreakersPF
+TransformerFixedRatioPF
+TransformerFixedRatioWithBreakerPF
 CapacitorBankFixedPF
 Test
