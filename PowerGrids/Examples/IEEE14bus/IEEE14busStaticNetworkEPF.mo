@@ -8,6 +8,7 @@ model IEEE14busStaticNetworkEPF "Dynamic model of the IEEE 14-bus system, operat
 // Buses
   PowerGrids.Electrical.Buses.ReferenceBus bus1(
     SNom = 100e6,
+    UPF = 69e3*1.0598,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -475,6 +476,7 @@ model IEEE14busStaticNetworkEPF "Dynamic model of the IEEE 14-bus system, operat
       PNom = 1090e6,
       SNom = 1211e6,
       UNom = 24e3,
+      UPF = 25.4068e3,
       PPF = -232.37e6
     )
   ) annotation(
@@ -498,6 +500,7 @@ model IEEE14busStaticNetworkEPF "Dynamic model of the IEEE 14-bus system, operat
       PNom = 1008e6,
       SNom = 1120e6,
       UNom = 24e3,
+      UPF = 25.1608e3,
       PPF = -40e6
     )
   ) annotation(
@@ -519,7 +522,9 @@ model IEEE14busStaticNetworkEPF "Dynamic model of the IEEE 14-bus system, operat
       xppqPu = 0.377,
       xqPu = 2.62,
       PNom = 1485e6,
-      SNom = 1650e6
+      SNom = 1650e6,
+      UNom = 20e3,
+      UPF = 20.229e3
     )
   ) annotation(
     Placement(visible = true, transformation(origin = {184, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -541,7 +546,8 @@ model IEEE14busStaticNetworkEPF "Dynamic model of the IEEE 14-bus system, operat
       xqPu = 0.45,
       PNom = 71.8e6,
       SNom = 80.0e6,
-      UNom = 13.8e3
+      UNom = 13.8e3,
+      UPF = 14.7347e3
     )  
   ) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -563,7 +569,8 @@ model IEEE14busStaticNetworkEPF "Dynamic model of the IEEE 14-bus system, operat
       xqPu = 0.99,
       PNom = 242e6,
       SNom = 250e6,
-      UNom = 18e3
+      UNom = 18e3,
+      UPF = 19.6461e3
     )
   ) annotation(
     Placement(visible = true, transformation(origin = {180, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
