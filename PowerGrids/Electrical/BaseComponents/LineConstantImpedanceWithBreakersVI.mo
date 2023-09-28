@@ -34,7 +34,7 @@ model LineConstantImpedanceWithBreakersVI
   Types.ComplexAdmittance Y_actual "Actual series admittance";
   Types.ComplexAdmittance YA_actual "Actual shunt admittance at port A";
   Types.ComplexAdmittance YB_actual "Actual shunt admittance at port B";
-  BreakersState breakerStatus(start = BreakersState.AcBc) "Breakers current status";
+  BreakersState breakerStatus "Breakers current status";
 
   Modelica.Blocks.Interfaces.BooleanInput breakerStatusA if useBreakerA "Breaker status at port A - true means breaker closed" annotation(
     Placement(visible = true, transformation(origin = {-70, 20}, extent = {{-20, -20}, {20, 20}}, rotation = -90), iconTransformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
