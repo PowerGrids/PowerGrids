@@ -2,7 +2,8 @@ within PowerGrids.Examples.Tutorial.GridOperation.Controlled;
 
 model ControlledGenerator "Model of a synchronous generator with governor, AVR, and PSS"
   extends Icons.Machine;
-  outer PowerGrids.Electrical.System systemPowerGrids;
+  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
+    final hasSubPF = true);
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, Mvar)";
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";  
@@ -16,8 +17,6 @@ model ControlledGenerator "Model of a synchronous generator with governor, AVR, 
     Placement(visible = true, transformation(origin = {-36, -52}, extent = {{-12, -10}, {12, 10}}, rotation = 0)));
   PowerGrids.Electrical.Controls.PowerSystemStabilizers.IEEE_PSS2A PSS(Ks1 = 10, Ks2 = 0.1564, M = 0, N = 0, T1 = 0.25, T2 = 0.03, T3 = 0.15, T4 = 0.015, T7 = 2, T8 = 0.5, T9 = 0.1, Tw1 = 2, Tw2 = 2, Tw3 = 2, Tw4 = 0, VstMax = 0.1, VstMin = -0.1) annotation(
     Placement(visible = true, transformation(origin = {-32, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Interfaces.TerminalAC terminalAC annotation(
-    Placement(visible = true, transformation(origin = {40, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FreeOffset RefLPu annotation(
     Placement(visible = true, transformation(origin = {-32, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FreeOffset VrefPu annotation(
@@ -35,8 +34,6 @@ equation
     Line(points = {{-21, 0}, {-14, 0}, {-14, -10}, {-6, -10}}, color = {0, 0, 127}));
   connect(PSS.Vsi2Pu, GEN.PPu) annotation(
     Line(points = {{-42, -6}, {-58, -6}, {-58, 48}, {90, 48}, {90, 5}, {46, 5}}, color = {0, 0, 127}));
-  connect(GEN.terminalAC, terminalAC) annotation(
-    Line(points = {{40, 0}, {40, -50}}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-21, 24}, {-6, 24}}, color = {0, 0, 127}));
   connect(VrefPu.y, AVR.VrefPu) annotation(
@@ -49,6 +46,8 @@ equation
     Line(points = {{46, 3}, {86, 3}, {86, 44}, {-52, 44}, {-52, 6}, {-42, 6}}, color = {0, 0, 127}));
   connect(GEN.omega, omega) annotation(
     Line(points = {{46, 1}, {54, 1}, {54, -4}, {64, -4}}, color = {0, 0, 127}));
+  connect(GEN.terminalAC, terminalAC) annotation (
+    Line(points={{40,0},{40,-10},{105.5,-10},{105.5,75},{57,75},{-0.5,75},{-0.5,100},{0,100}}, color={0,0,0}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), 
       graphics = {
