@@ -9,9 +9,9 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
     redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedanceWithBreakersPF componentPF(
       UNom = UNom,
       R = R,
+      X = X,
       G = G,
       B = B,
-      X = X,
       final useBreakerA = false,
       final useBreakerB = false,
       final breakerAStatusStart = breakerAStatusStart,

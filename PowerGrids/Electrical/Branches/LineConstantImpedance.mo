@@ -8,9 +8,9 @@ model LineConstantImpedance "Transmission line with constant impedance"
     redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF componentPF(
       UNom = UNom,
       R = R,
+      X = X,
       G = G,
-      B = B,
-      X = X));
+      B = B));
   extends PowerGrids.Electrical.BaseComponents.LineConstantImpedanceVI(
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_a,
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_b);  
