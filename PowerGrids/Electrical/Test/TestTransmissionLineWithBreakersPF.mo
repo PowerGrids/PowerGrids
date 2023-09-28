@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Test;
 
-model TestOneBusTransmissionLineWithBreakersOneLoadPF
+model TestTransmissionLineWithBreakersPF
   extends Modelica.Icons.Example;
   PowerGrids.Electrical.Buses.InfiniteBus IB1(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {-70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -109,4 +109,4 @@ equation
     experiment(StopTime = 1, Interval = 0.02),
     Documentation(info = "<html><head></head><body><p>Same behaviour as <a href=\"modelica://PowerGrids.Electrical.Test.OneBusTransmissionLineShuntOneLoad\">OneBusTransmissionLineShuntOneLoad</a>, but this time the line has two breakers, one for each port. The breakers are kept closed and all electrical quantities are the same of the OneBusTransmissionLineShuntOneLoad test.
 </body></html>"));
-end TestOneBusTransmissionLineWithBreakersOneLoadPF;
+end TestTransmissionLineWithBreakersPF;
