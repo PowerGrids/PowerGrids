@@ -3,7 +3,7 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   extends Electrical.BaseClasses.TwoPortAC(
     final UNomA = UNom,
     final UNomB = UNom,
-    SNom = UNom^2/X,
+    SNom = UNom^2/CM.abs(Complex(R,X)),
     final hasSubPF = true);
   extends Icons.Line;
   
