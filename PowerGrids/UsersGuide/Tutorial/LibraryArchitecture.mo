@@ -43,8 +43,7 @@ comment to the parameter. No need of xxRef. For transformer we will have
  as the ones from which p.u. impedances are computed from the 
 corresponding ohm values. xxNom values are asked only once and used for 
 both ports, contrary to transformers that have one SNom but two separate
- UNomA and UNomB. We can give a default value for SNom = UNom^2/X, which
- corresponds to the maximum power transfer when neglecting the losses, 
+ UNomA and UNomB. We can give a default value for SNom = UNom^2/CM.abs(Complex(R,X)), 
 which is probably good enough in most cases, but can always be changed.</li>
 <li><b>Constant impedance loads described through P and Q:</b> the user will be
  asked in the components' mask for PRefConst, QRefConst and URef 
