@@ -505,6 +505,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       PNom = 1090e6,
       SNom = 1211e6,
       UNom = 24e3,
+      PPF = -232.37e6,
       PStart = -232.37e6,
       QStart = 15.7473e6
     )
@@ -529,6 +530,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       PNom = 1008e6,
       SNom = 1120e6,
       UNom = 24e3,
+      PPF = -40e6,
       PStart = -40e6,
       QStart = -42.7306e6
     )
@@ -553,7 +555,6 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       PNom = 1485e6,
       SNom = 1650e6,
       UNom = 20e3,
-      PStart = 0.0,
       QStart = -25.3998e6
     )
   ) annotation(
@@ -577,7 +578,6 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       PNom = 71.8e6,
       SNom = 80.0e6,
       UNom = 13.8e3,
-      PStart = 0,
       QStart = -15.0186e6
     )  
   ) annotation(
@@ -601,7 +601,6 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       PNom = 242e6,
       SNom = 250e6,
       UNom = 18e3,
-      PStart = 0,
       QStart = -16.2253e6
     )
   ) annotation(
