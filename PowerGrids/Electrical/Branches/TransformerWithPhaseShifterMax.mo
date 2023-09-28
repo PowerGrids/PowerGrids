@@ -1,6 +1,21 @@
 within PowerGrids.Electrical.Branches;
 model TransformerWithPhaseShifterMax
-  extends BaseClasses.TapChangerPhaseShifterCommon;
+  extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
+    SNom = UNomB^2/CM.abs(Complex(R,X)),
+    final hasSubPF = false,
+    redeclare PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF componentPF(
+      UNomA = UNomA,
+      UNomB = UNomB,
+      SNom = SNom,
+      rFixed = 1,
+      thetaFixed = kPhase[tapStart],      
+      R = R,
+      X = X,
+      G = G,
+      B = B));  
+  extends BaseClasses.TapChangerPhaseShifterCommon(
+    redeclare PowerGrids.Interfaces.TerminalAC terminalAC_a,
+    redeclare PowerGrids.Interfaces.TerminalAC terminalAC_b);
   extends BaseClasses.TapChangerPhaseShifterLogicMax;
 
   parameter Types.Angle kPhase[Ntap] "Angle of transformer complex ratio for each tap";
