@@ -4,7 +4,8 @@ model Bus "Bus model"
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
     final SNom = 1,
     final hasSubPF = false,
-    redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(UNom = UNom));
+    redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
+      UNom = UNom));
   extends Icons.Bus;
 
 equation
