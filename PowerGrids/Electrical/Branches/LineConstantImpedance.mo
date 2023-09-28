@@ -7,6 +7,7 @@ model LineConstantImpedance "Transmission line with constant impedance"
     final hasSubPF = false,
     redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF componentPF(
       UNom = UNom,
+      SNom = SNom,
       R = R,
       X = X,
       G = G,

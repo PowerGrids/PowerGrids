@@ -7,6 +7,7 @@ model TransformerFixedRatio "Transformer with fixed voltage ratio"
     redeclare PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF componentPF(
       UNomA = UNomA,
       UNomB = UNomB,
+      SNom = SNom,
       rFixed = rFixed,
       thetaFixed = thetaFixed,
       R = R,

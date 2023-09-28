@@ -8,6 +8,7 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
     final hasSubPF = false,
     redeclare PowerGrids.Electrical.PowerFlow.LineConstantImpedanceWithBreakersPF componentPF(
       UNom = UNom,
+      SNom = SNom,
       R = R,
       X = X,
       G = G,
