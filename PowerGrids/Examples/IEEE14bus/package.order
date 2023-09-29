@@ -8,3 +8,6 @@ IEEE14busShort4
 IEEE14busStaticNetworkEPF
 ControlledGeneratorIEEE
 SynchronousCondenser
+IEEE14busPFnoUinit
+IEEE14busStaticNetworkPFnoUinit
+IEEE14busPFUgUrn
