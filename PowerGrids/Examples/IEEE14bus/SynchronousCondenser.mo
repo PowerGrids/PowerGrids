@@ -8,6 +8,7 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, Mvar)";
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(
+    SNom = SNom, UNom = UNom,
     final PPF = 0,
     final PStart = 0,
     portVariablesPhases = true) annotation(
