@@ -8,7 +8,7 @@ model PowerFlow
     Placement(transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.BusPF NTLV(UNom = 21000)  annotation(
     Placement(transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  Electrical.PowerFlow.TransformerFixedRatioPF TGEN(UNomA = 21000, UNomB = 419000, SNom = 500000000, rFixed = 419/21, R = 0.15e-2*419^2/500, X = 16e-2*419^2/500)  annotation(
+  Electrical.PowerFlow.TransformerFixedRatioPF TGEN(UNomA = 21000, UNomB = 419000, SNom = 500000000, R = 0.15e-2*419^2/500, X = 16e-2*419^2/500)  annotation(
     Placement(transformation(origin = {20, -20}, extent = {{-10, -10}, {10, 10}})));
   Electrical.PowerFlow.SlackBus GRID(UNom = 380000, SNom = 500000000, U = 1.05*380e3)  annotation(
     Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));

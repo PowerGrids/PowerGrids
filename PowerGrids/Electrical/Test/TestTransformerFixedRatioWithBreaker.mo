@@ -8,7 +8,7 @@ model TestTransformerFixedRatioWithBreaker
     Placement(visible = true, transformation(origin = {30, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker transformer(B = 1e-6, G = 1e-6,R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5, rFixed = 2, useBreaker = true) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker transformer(B = 1e-6, G = 1e-6,R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5, useBreaker = true) annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression breakerState(y = time < 2)  annotation(
     Placement(visible = true, transformation(origin = {-30, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

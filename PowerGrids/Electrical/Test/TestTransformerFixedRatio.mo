@@ -9,7 +9,7 @@ model TestTransformerFixedRatio
     Placement(visible = true, transformation(origin = {20, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio transformer(R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5, rFixed = 2) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio transformer(R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5) annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus busLoad(UNom = 10000)  annotation(
     Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

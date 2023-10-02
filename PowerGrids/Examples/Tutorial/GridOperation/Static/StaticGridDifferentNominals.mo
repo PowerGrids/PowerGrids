@@ -9,7 +9,7 @@ model StaticGridDifferentNominals "Systems operating in steady-state with differ
     Placement(transformation(origin = {-76, 48}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.Bus NTLV_1(UPhaseStart = 0.161156, UStart = 21e3*0.9917, UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-48, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_1(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2*419^2/500, portVariablesPhases = true, rFixed = 419/21) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_1(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2*419^2/500, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-24, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID_1(R_X = 1/10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05*380e3, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {26, 48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -24,7 +24,7 @@ model StaticGridDifferentNominals "Systems operating in steady-state with differ
     Placement(transformation(origin = {-76, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.Bus NTLV_2(UPhaseStart = 0.161156, UStart = 21e3*0.9917, UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-48, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_2(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 100000, X = 16e-2*419^2/500, portVariablesPhases = true, rFixed = 419/21) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_2(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 100000, X = 16e-2*419^2/500, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-24, -2}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID_2(R_X = 1/10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05*380e3, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {26, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -39,7 +39,7 @@ model StaticGridDifferentNominals "Systems operating in steady-state with differ
     Placement(transformation(origin = {-76, -56}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.Bus NTLV_3(UPhaseStart = 0.161156, UStart = 21e3*0.9917, UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-48, -58}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_3(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2*419^2/500, portVariablesPhases = true, rFixed = 419/21) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN_3(R = 0.15e-2*419^2/500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2*419^2/500, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-24, -58}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID_3(R_X = 1/10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05*380e3, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {26, -54}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

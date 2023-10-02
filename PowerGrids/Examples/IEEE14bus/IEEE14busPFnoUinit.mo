@@ -358,7 +358,6 @@ model IEEE14busPFnoUinit
     X = 0.398248,
     B = 0,
     G = 0,
-    rFixed = 0.204082,
     SNom = 100e6,
     UNomA = 69e3,
     UNomB = 13.8e3
@@ -370,7 +369,6 @@ model IEEE14busPFnoUinit
     X = 1.05919,
     B = 0,
     G = 0,
-    rFixed = 0.208333,
     SNom = 100e6,
     UNomA = 69.0e3,
     UNomB = 13.8e3    
@@ -382,7 +380,6 @@ model IEEE14busPFnoUinit
     X = 0.479948,
     B = 0,
     G = 0,
-    rFixed = 0.212766,
     SNom = 100e6,
     UNomA = 69e3,
     UNomB = 13.8e3
@@ -394,7 +391,6 @@ model IEEE14busPFnoUinit
     X = 0.393146, 
     B = 0,
     G = 0,
-    rFixed = 2.875,
     SNom = 1211e6, 
     UNomA = 24e3, 
     UNomB = 69e3
@@ -406,7 +402,6 @@ model IEEE14busPFnoUinit
     X = 0.425089, 
     B = 0,
     G = 0,
-    rFixed = 2.875,
     SNom = 1120e6, 
     UNomA = 24e3, 
     UNomB = 69e3
@@ -418,7 +413,6 @@ model IEEE14busPFnoUinit
     X = 0.288545, 
     B = 0,
     G = 0,
-    rFixed = 3.45,
     SNom = 1650e6, 
     UNomA = 20e3, 
     UNomB = 69e3
@@ -430,7 +424,6 @@ model IEEE14busPFnoUinit
     X = 0.076176, 
     B = 0,
     G = 0,
-    rFixed = 0.766667,
     SNom = 250e6, 
     UNomA = 18e3, 
     UNomB = 13.8e3
@@ -442,7 +435,7 @@ model IEEE14busPFnoUinit
     portVariablesPhases = true,
     SNom = 1211e6,
     UNom = 24e3,
-    P = -232.36955e6
+    P = -230e6
   ) annotation(
     Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(
