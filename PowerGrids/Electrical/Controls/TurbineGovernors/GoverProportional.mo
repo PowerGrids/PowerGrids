@@ -29,11 +29,12 @@ block GoverProportional "Simple proportional governor"
     Placement(visible = true, transformation(origin = {-90, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   Modelica.Blocks.Math.Gain gain(k = KGover)  annotation(
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiter(uMax = PMaxPu, uMin = PMinPu)  annotation(
+  PowerGrids.Controls.LimiterInitNoLimits limiter(uMax = PMaxPu, uMin = PMinPu)  annotation(
     Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput PPu "Generator Active Power p.u." annotation(
     Placement(visible = true, transformation(origin = {74, 118}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {60, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 90)));
-initial equation
+
+// initial equation
   /* The following equation could be written as
  
      if fixInitialControlledVariable then
@@ -49,13 +50,17 @@ initial equation
       avoid the need of explicitly initializing all the internal controller
       variables. This is only possible by writing those equations in implicit form
   */
-  if fixInitialControlledVariable then
-    0 = homotopy(
-      actual = if limiter.u > limiter.uMax then limiter.u - (limiter.uMax + delta)
-               else if limiter.u < limiter.uMin then limiter.u - (limiter.uMin - delta)
-               else PPu - PPuStart,
-      simplified = PPu - PPuStart);
-  end if;
+
+  /*
+    if fixInitialControlledVariable then
+      0 = homotopy(
+        actual = if limiter.u > limiter.uMax then limiter.u - (limiter.uMax + delta)
+                 else if limiter.u < limiter.uMin then limiter.u - (limiter.uMin - delta)
+                 else PPu - PPuStart,
+        simplified = PPu - PPuStart);
+    end if;
+  */
+  
 equation
   connect(omegaRefPu.y, deltaOmegaPu.u2) annotation(
     Line(points = {{-90, -58}, {-90, -58}, {-90, -38}, {-90, -38}}, color = {0, 0, 127}));
