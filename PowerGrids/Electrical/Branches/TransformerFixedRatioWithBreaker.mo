@@ -15,7 +15,7 @@ model TransformerFixedRatioWithBreaker
       final useBreaker = false,
       final breakerStatusStart = breakerStatusStart));
   extends PowerGrids.Electrical.BaseComponents.TransformerFixedRatioWithBreakerVI(
-    final rFixed = UNomB/UNomA,
+    rFixed = UNomB/UNomA,
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_a,
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_b);    
 end TransformerFixedRatioWithBreaker;
