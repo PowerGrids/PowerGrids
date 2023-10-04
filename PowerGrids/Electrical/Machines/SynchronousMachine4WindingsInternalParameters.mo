@@ -13,7 +13,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   extends Icons.Machine;
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
-  parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)";  
+  parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
   parameter Types.PerUnit raPu "Armature resistance in p.u.";
   parameter Types.PerUnit LdPu "Direct axis stator leakage in p.u.";
   parameter Types.PerUnit MdPu "Direct axis mutual inductance in p.u.";
@@ -37,8 +37,9 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     Evaluate = true);
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
-  parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power" annotation(
-    Dialog(group = "Embedded PF", enable = computePF));
+  parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)" annotation(
+    Dialog(group = "Embedded PF", enable = computePF));  
+
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
   final parameter Types.PerUnit kuf(fixed = false) "Scaling factor for excitation p.u. voltage";
   constant Types.PerUnit omegaNomPu = 1 "Nominal frequency in p.u.";
