@@ -8,14 +8,14 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     redeclare PowerGrids.Electrical.PowerFlow.PVBus componentPF(
       UNom = UNom,
       SNom = SNom,
-      P = -PPF,
+      P = PPF,
       U = UPF));
   extends Icons.Machine;
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF";
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
-  parameter Types.ActivePower PPF = 0 "Active (turbine) power to be used to compute the embedded PF";  
+  parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)";  
   parameter Types.PerUnit raPu "Armature resistance in p.u.";
   parameter Types.PerUnit LdPu "Direct axis stator leakage in p.u.";
   parameter Types.PerUnit MdPu "Direct axis mutual inductance in p.u.";
