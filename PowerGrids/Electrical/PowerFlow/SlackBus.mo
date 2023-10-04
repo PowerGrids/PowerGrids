@@ -4,10 +4,22 @@ model SlackBus "Slack Bus"
   extends BaseClasses.OnePortACPF;  
   extends Icons.Bus;
   parameter Types.Voltage U = UNom "Voltage magnitude, phase-to-phase";
-  parameter Types.Angle theta = 0 "Phase of voltage phasor";
+  parameter Types.Angle UPhase = 0 "Phase of voltage phasor";
+  parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
+  final parameter Types.ComplexPerUnit nStart = CM.fromPolar(1, UPhase) "Unit phasor with angle UPhaseStart";
+  Types.ActivePower PSlack "slack active power leaving system through bus";
+  Types.ReactivePower QSlack "slack reactive power leaving system through bus";
+    
 equation
-  port.u = CM.fromPolar(U, theta) "Voltage of ideal generator, phase-to-ground";
-  
+  if not setPhaseOnly then
+    port.u = CM.fromPolar(U, UPhase) "Set initial bus voltage, phase-to-phase";
+  else
+    port.u.re*nStart.im = port.u.im*nStart.re "port.u has the same phase as nStart";
+    QSlack = 0 "No reactive power leaving system through bus";
+  end if;
+
+  port.P = PSlack;
+  port.Q = QSlack;  
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {84, 42}, extent = {{-26, 20}, {34, -40}}, textString = "S")}),
     Documentation(info = "<html>

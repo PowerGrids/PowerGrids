@@ -7,10 +7,12 @@ model ReferenceBus "Reference bus for an isolated grid"
       UNom = UNom,
       SNom = SNom,
       U = UPF,
-      theta = 0));
+      UPhase = UPhasePF,
+      setPhaseOnly = setPhaseOnly));
   extends Icons.Bus;
   import PowerGrids.Types.Choices.InitializationOption;
-  parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF";
+  parameter Types.Voltage UPF = UNom "Phase-to-phase voltage to be used to compute the embedded PF";
+  parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF";
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
   final parameter Types.ComplexPerUnit nStart = CM.fromPolar(1, UPhaseStart) "Unit phasor with angle UPhaseStart";
