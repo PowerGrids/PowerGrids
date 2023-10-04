@@ -48,8 +48,6 @@ equation
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {-1, -1}, extent = {{-99, 101}, {101, -99}}), Text(origin = {37, -9}, extent = {{-105, 67}, {31, -47}}, textString = "GOV
 PROP"), Text(origin = {0, 120}, lineColor = {0, 0, 255}, extent = {{-80, 12}, {80, -12}}, textString = "%name")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html><head></head><body><p>The class implements a model of a simple proportional governor with saturation.</p>
-<p>If <code>fixInitialControlledVariable = true</code>, an initial equation is added to ensure that the mechanical power output <code>PMechPu</code> is equal to its start value <code>PMechPuStart</code>. In order to fulfill this condition, the initial value of the reference signal should be free, so that the Modelica tool can back-compute it automatically. For this purpose, the <a href=\"modelica://PowerGrids.Controls.FreeOffset\">PowerGrids.Controls.FreeOffset</a> block should be used to generate the reference signal to be connected to the <code>VrefPu</code> input.</p>
-<p>In case the condition <code>PMechPu = PMechPuStart</code> cannot be fulfilled without violating the controller saturations, then an alternative initial condition is enforced, which prescribes the saturation block input so as to obtain a certain degree of oversaturation <code>oversaturationPu</code>. This allows to back-compute a unique initial value of the reference signal, which is of course dependent on <code>oversaturationPu</code> and hence somewhat arbitrary.</p>
-</body></html>"));
+  Documentation(info = "<html><head></head><body><p>The class implements a model of a simple proportional governor with saturation.
+  During the initialization phase the saturation is removed.</p></body></html>"));
 end GoverProportional;
