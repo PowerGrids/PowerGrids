@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Branches;
 model TransformerWithPhaseShifterInterval
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     SNom = UNomB^2/CM.abs(Complex(R,X)),
-    final hasSubPF = false,
+    final hasSubPF,
     redeclare PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF componentPF(
       UNomA = UNomA,
       UNomB = UNomB,

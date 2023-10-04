@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Buses;
 
 model ReferenceBus "Reference bus for an isolated grid"
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
-    final hasSubPF = false,
+    final hasSubPF,
     redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(
       UNom = UNom,
       SNom = SNom,
@@ -11,10 +11,12 @@ model ReferenceBus "Reference bus for an isolated grid"
       setPhaseOnly = setPhaseOnly));
   extends Icons.Bus;
   import PowerGrids.Types.Choices.InitializationOption;
-  parameter Types.Voltage UPF = UNom "Phase-to-phase voltage to be used to compute the embedded PF";
-  parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF";
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
+  parameter Types.Voltage UPF = UNom "Phase-to-phase voltage to be used to compute the embedded PF" annotation(
+    Dialog(group = "Embedded PF", enable = computePF));
+  parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF" annotation(
+    Dialog(group = "Embedded PF", enable = computePF));
   final parameter Types.ComplexPerUnit nStart = CM.fromPolar(1, UPhaseStart) "Unit phasor with angle UPhaseStart";
   final parameter Types.ActivePower PSlack(fixed = false) "Constant slack active power leaving system through bus";
   final parameter Types.ReactivePower QSlack(fixed = false) "Constant slack reactive power leaving system through bus";

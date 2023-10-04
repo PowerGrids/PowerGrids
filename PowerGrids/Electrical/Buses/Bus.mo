@@ -5,7 +5,7 @@ model Bus "Bus model"
     final SNom = 1,
     final PStart = 0,
     final QStart = 0,
-    final hasSubPF = false,
+    final hasSubPF,
     redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
       UNom = UNom));
   extends Icons.Bus;

@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Banks;
 model CapacitorBankFixed "Capacitor bank with fixed capacitance"
   extends Icons.CapacitorBank;
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    final hasSubPF = false,
+    final hasSubPF,
     redeclare PowerGrids.Electrical.PowerFlow.CapacitorBankFixedPF componentPF(
       SNom = SNom, 
       UNom = UNom,

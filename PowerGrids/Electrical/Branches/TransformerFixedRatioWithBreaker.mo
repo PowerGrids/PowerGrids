@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Branches;
 model TransformerFixedRatioWithBreaker
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     SNom = UNomB^2/CM.abs(Complex(R,X)),
-    final hasSubPF = false,
+    final hasSubPF,
     redeclare PowerGrids.Electrical.PowerFlow.TransformerFixedRatioWithBreakerPF componentPF(
       UNomA = UNomA,
       UNomB = UNomB,
