@@ -6,8 +6,6 @@ block GoverProportional "Simple proportional governor"
   parameter SI.PerUnit KGover "Mechanical power sensitivity to frequency";
   parameter SI.PerUnit PMaxPu = 1 "Maximum mechanical power p.u.";
   parameter SI.PerUnit PMinPu = 0 "Minimum mechanical power p.u.";
-  parameter SI.PerUnit PPuStart = 1 "Required start value of PPu when fixInitialControlledVariable = true" annotation(
-  Dialog(enable = fixInitialControlledVariable));
   parameter SI.PerUnit oversaturationPu = 0.1 "abs(u-usat)/(Vmax-Vmin) in case of saturated initial condition" annotation(
   Dialog(enable = fixInitialControlledVariable));
   final parameter Real delta = (limiter.uMax-limiter.uMin)*oversaturationPu "Actuator saturation margin";
@@ -20,7 +18,6 @@ block GoverProportional "Simple proportional governor"
     Placement(visible = true, transformation(origin = {-140, -30}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput PMechPu "Mechanical turbine power [pu]" annotation(
     Placement(visible = true, transformation(origin = {130,50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {100, 3.55271e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  
   Modelica.Blocks.Math.Feedback errPu annotation(
     Placement(visible = true, transformation(origin = {0, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback deltaOmegaPu annotation(
@@ -31,35 +28,6 @@ block GoverProportional "Simple proportional governor"
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.LimiterInitNoLimits limiter(uMax = PMaxPu, uMin = PMinPu)  annotation(
     Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput PPu "Generator Active Power p.u." annotation(
-    Placement(visible = true, transformation(origin = {74, 118}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {60, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 90)));
-
-// initial equation
-  /* The following equation could be written as
- 
-     if fixInitialControlledVariable then
-       if limiter.u > limiter.uMax then
-         limiter.u = limiter.uMax + delta;
-       elseif limiter.u < limiter.uMin then
-         limiter.u = limiter.uMin - delta;
-       else
-         PPu = PPuStart;
-      end if;
-      
-      However, we need to use homotopy with a simplified linear model, to
-      avoid the need of explicitly initializing all the internal controller
-      variables. This is only possible by writing those equations in implicit form
-  */
-
-  /*
-    if fixInitialControlledVariable then
-      0 = homotopy(
-        actual = if limiter.u > limiter.uMax then limiter.u - (limiter.uMax + delta)
-                 else if limiter.u < limiter.uMin then limiter.u - (limiter.uMin - delta)
-                 else PPu - PPuStart,
-        simplified = PPu - PPuStart);
-    end if;
-  */
   
 equation
   connect(omegaRefPu.y, deltaOmegaPu.u2) annotation(
