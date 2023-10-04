@@ -1,5 +1,6 @@
 Info
 IEEE14busPowerFlow
+IEEE14busStaticNetworkEPF
 IEEE14busStaticNetwork
 IEEE14busGen2Disconnection
 IEEE14busLine1to5Opening
@@ -7,5 +8,3 @@ IEEE14busLoad2Variation
 IEEE14busShort4
 ControlledGeneratorIEEE
 SynchronousCondenser
-IEEE14busPFnoUinit
-IEEE14busStaticNetworkPFnoUinit
