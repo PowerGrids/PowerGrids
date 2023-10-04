@@ -5,38 +5,64 @@ partial model OnePortACBus
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format";
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar";  
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";  
-  parameter Types.Voltage UNom(start = 400e3) "Nominal/rated line-to-line voltage, also used as p.u. base" annotation(Evaluate = true);
-  parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(Evaluate = true);
-  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
-  constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
-  parameter LocalInitializationOption localInit = LocalInitializationOption.none
-    "Initialize the component locally in steady state from port start values"
-    annotation(Evaluate = true);
-  parameter Types.Voltage UStart = UNom "Start value of phase-to-phase voltage phasor, absolute value"
-    annotation(Dialog(tab = "Initialization"));
-  parameter Types.Angle UPhaseStart = 0 "Start value of phase-to-phase voltage phasor, phase angle"
-    annotation(Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStart = SNom "Start value of active power flowing into the port"
-    annotation(Dialog(tab = "Initialization"));
-  parameter Types.ReactivePower QStart = 0 "Start value of reactive power flowing into the port"
-    annotation(Dialog(tab = "Initialization"));
-
-  PowerGrids.Interfaces.TerminalACBus terminalAC
-    (UStart = UStart, UPhaseStart = UPhaseStart,
-     v(re(start = port.vStart.re), im(start = port.vStart.im)),
-     i(re(start = port.iStart.re), im(start = port.iStart.im))) annotation(
-    Placement(visible = true, transformation(origin = {-1.42109e-14, 98}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-1.42109e-14, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PortAC port(final UNom = UNom, final SNom = SNom,
-              final portVariablesPhases = portVariablesPhases,
-              final generatorConvention = generatorConvention,
-              final UStart = UStart,
-              final UPhaseStart = UPhaseStart,
-              final PStart = PStart,
-              final QStart = QStart)
-              "AC port of node";
-  outer Electrical.System systemPowerGrids "Reference to system object";
+  parameter LocalInitializationOption localInit = LocalInitializationOption.none "Initialize the component locally in steady state from port start values" annotation(Evaluate = true);
+  parameter Types.Voltage UStart = if computePF then UStartPF else UNom "Start value of phase-to-phase voltage phasor, absolute value" annotation(
+    Dialog(tab = "Initialization"));
+  parameter Types.Angle UPhaseStart = if computePF then UPhaseStartPF else 0 "Start value of phase-to-phase voltage phasor, phase angle" annotation(
+    Dialog(tab = "Initialization"));
+  parameter Types.ActivePower PStart = if computePF then PStartPF else  SNom "Start value of active power flowing into the port" annotation(
+    Dialog(tab = "Initialization"));
+  parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
+    Dialog(tab = "Initialization"));
+  parameter Boolean hasSubPF = false "= true, if the model contains a sub-network with its own embedded PF";
   
+  final parameter Types.Voltage UStartPF(fixed = false) "Start value of phase-to-phase voltage phasor, absolute value, computed by the EPF";
+  final parameter Types.Angle UPhaseStartPF(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle, computed by the EPF";
+  final parameter Types.ActivePower PStartPF(fixed = false) "Start value of active power flowing into the port, computed by the embedded PF";
+  final parameter Types.ReactivePower QStartPF(fixed = false) "Start value of reactive power flowing into the port, computed by the embedded PF";
+
+  Types.ComplexVoltage vPF "Phase-to-ground voltage phasor of embedded power flow model";
+  Types.ComplexCurrent iPF "Line current phasor of embedded power flow model";
+  
+  extends OnePortACVI(
+    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC(
+      final computePF = computePF,
+      UStart = UStart, UPhaseStart = UPhaseStart,
+      v(re(start = port.vStart.re), im(start = port.vStart.im)),
+      i(re(start = port.iStart.re), im(start = port.iStart.im)),
+      terminalACPF(v = vPF, i = iPF)),
+    port(final UNom = UNom, final SNom = SNom,
+         final portVariablesPhases = portVariablesPhases,
+         final generatorConvention = generatorConvention,
+         final UStart = UStart,
+         final UPhaseStart = UPhaseStart,
+         final PStart = PStart,
+         final QStart = QStart));
+  replaceable OnePortACPF componentPF if computePF and not hasSubPF "component to be used to compute the embedded PF";
+  outer Electrical.System systemPowerGrids "Reference to system object";
+
+initial equation
+  if computePF then
+    // set values of initialization parameters based on EPF solution
+    UStartPF = CM.abs(vPF)*sqrt(3);
+    UPhaseStartPF = CM.arg(vPF);
+    PStartPF = 3*CM.real(vPF*CM.conj(iPF));
+    QStartPF = 3*CM.imag(vPF*CM.conj(iPF));    
+  else
+    // set dummy values (not used)
+    UStartPF = 0;
+    UPhaseStartPF = 0;
+    PStartPF = 0;
+    QStartPF = 0;    
+  end if;
+    
 equation
+  if not computePF or hasSubPF then
+    vPF = Complex(0) "Dummy value";
+    iPF = Complex(0) "Dummy value";
+  end if;
+  connect(terminalAC.terminalACPF, componentPF.terminalAC);
+
   if initial() and localInit == LocalInitializationOption.PV then
     // During local initialization, P,V is enforced at the connector towards
     // the grid, while Q,phase(V) is enforced at the port towards the component

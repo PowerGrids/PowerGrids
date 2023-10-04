@@ -2,7 +2,7 @@ within PowerGrids.Examples.ENTSOE;
 
 model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of the model for the synchronous generator and its governor"
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(computePF = false) annotation(
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, PStart = -3.8e+08, QStart = 0, SNom = 4.75e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, portVariablesPhases = true, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
     Placement(transformation(origin = {-26, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));

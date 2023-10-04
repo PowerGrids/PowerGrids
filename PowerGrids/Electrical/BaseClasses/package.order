@@ -1,6 +1,9 @@
 PortAC
+OnePortACVI
+TwoPortACVI
+OnePortACPF
+TwoPortACPF
 OnePortAC
 OnePortACdqPU
-TwoPortAC
-ShuntConductance
 OnePortACBus
+TwoPortAC

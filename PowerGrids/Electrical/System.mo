@@ -1,6 +1,7 @@
 within PowerGrids.Electrical;
 model System "System object"
   import PowerGrids.Types.Choices.InitializationOption;
+  parameter Boolean computePF = true "= true, computes the start value with the embedded power flow";
   parameter Boolean showDataOnDiagramsPu = true "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
   parameter Boolean showDataOnDiagramsSI = true "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar";
   parameter Integer dataOnDiagramDigits = 3 "number of digits for data on diagrams";

@@ -8,81 +8,81 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
 // Buses
   PowerGrids.Electrical.PowerFlow.SlackBus bus1(
     SNom = 100e6,
-    U = 69e3*1.0598,
-    UNom = 69000
+    UNom = 69000,
+    setPhaseOnly = true
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus2(
+  PowerGrids.Electrical.PowerFlow.BusPF bus2(
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus3(
+  PowerGrids.Electrical.PowerFlow.BusPF bus3(
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus4(
+  PowerGrids.Electrical.PowerFlow.BusPF bus4(
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {114, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus5(
+  PowerGrids.Electrical.PowerFlow.BusPF bus5(
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus6(
+  PowerGrids.Electrical.PowerFlow.BusPF bus6(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus7(
+  PowerGrids.Electrical.PowerFlow.BusPF bus7(
     UNom = 13.8e3  
   ) annotation(
     Placement(visible = true, transformation(origin = {120, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus8(
+  PowerGrids.Electrical.PowerFlow.BusPF bus8(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {160, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus bus9(
+  PowerGrids.Electrical.PowerFlow.BusPF bus9(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus10(
+  PowerGrids.Electrical.PowerFlow.BusPF bus10(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus11(
+  PowerGrids.Electrical.PowerFlow.BusPF bus11(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus12(
+  PowerGrids.Electrical.PowerFlow.BusPF bus12(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus13(
+  PowerGrids.Electrical.PowerFlow.BusPF bus13(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus bus14(
+  PowerGrids.Electrical.PowerFlow.BusPF bus14(
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {30, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus busGEN1(
+  PowerGrids.Electrical.PowerFlow.BusPF busGEN1(
     UNom = 24e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus busGEN2(
+  PowerGrids.Electrical.PowerFlow.BusPF busGEN2(
     UNom = 24e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-150, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Buses.Bus busGEN3(
+  PowerGrids.Electrical.PowerFlow.BusPF busGEN3(
     UNom = 20e3
   ) annotation(
     Placement(visible = true, transformation(origin = {170, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Buses.Bus busGEN8(
+  PowerGrids.Electrical.PowerFlow.BusPF busGEN8(
     UNom = 18e3  
   ) annotation(
     Placement(visible = true, transformation(origin = {180, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // Lines
-  PowerGrids.Electrical.Branches.LineConstantImpedance L1to2(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L1to2(
     portVariablesPhases = true,
     R = 0.922682, 
     X = 2.81708, 
@@ -92,7 +92,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-132, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedanceWithBreakers L1to5(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L1to5(
     portVariablesPhases = true,
     R = 2.57237,
     X = 10.6189,
@@ -102,7 +102,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3 
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L2to3(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to3(
     portVariablesPhases = true,
     R = 2.23719, 
     X = 9.42535, 
@@ -112,7 +112,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {0, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L2to4(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to4(
     portVariablesPhases = true,
     R = 2.76662, 
     X = 8.3946, 
@@ -122,7 +122,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L2to5(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to5(
     portVariablesPhases = true,
     R = 2.71139, 
     X = 8.27843, 
@@ -132,7 +132,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L3to4(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L3to4(
     portVariablesPhases = true,
     R = 3.19035, 
     X = 8.14274, 
@@ -142,7 +142,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -60}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L4to5(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L4to5(
     portVariablesPhases = true,
     R = 0.635593, 
     X = 2.00486, 
@@ -152,7 +152,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, -52}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L6to11(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L6to11(
     portVariablesPhases = true,
     R = 0.18088, 
     X = 0.378785, 
@@ -162,7 +162,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 20}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L6to12(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L6to12(
     portVariablesPhases = true,
     R = 0.23407, 
     X = 0.487165, 
@@ -172,7 +172,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3 
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, 60}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L6to13(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L6to13(
     portVariablesPhases = true,
     R = 0.125976, 
     X = 0.248086, 
@@ -182,7 +182,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 62}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L7to8(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L7to8(
     portVariablesPhases = true,
     R = 0, 
     X = 0.33546, 
@@ -192,7 +192,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {140, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L7to9(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L7to9(
     portVariablesPhases = true,
     R = 0, 
     X = 0.209503, 
@@ -202,7 +202,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {114, 20}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L9to10(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L9to10(
     portVariablesPhases = true,
     R = 0.060579, 
     X = 0.160922, 
@@ -212,7 +212,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {60, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L9to14(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L9to14(
     portVariablesPhases = true,
     R = 0.242068, 
     X = 0.514912, 
@@ -222,7 +222,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {70, 74}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L10to11(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L10to11(
     portVariablesPhases = true,
     R = 0.156256, 
     X = 0.365778, 
@@ -232,7 +232,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {20, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L12to13(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L12to13(
     portVariablesPhases = true,
     R = 0.42072, 
     X = 0.380651, 
@@ -242,7 +242,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance L13to14(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L13to14(
     portVariablesPhases = true,
     R = 0.325519, 
     X = 0.662763, 
@@ -344,7 +344,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     Placement(visible = true, transformation(origin = {30, 86}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
 
 // Capacitor bank
-  PowerGrids.Electrical.Banks.CapacitorBankFixed Cbank9(
+  PowerGrids.Electrical.PowerFlow.CapacitorBankFixedPF Cbank9(
     portVariablesPhases = true,
     B = 0.099769,
     SNom = 100e6,
@@ -353,85 +353,78 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     Placement(visible = true, transformation(origin = {110, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
 
 // Transformers
-  PowerGrids.Electrical.Branches.TransformerFixedRatio T4to7(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF T4to7(
     portVariablesPhases = true,
     R = 0,
     X = 0.398248,
     B = 0,
     G = 0,
-    rFixed = 0.204082,
     SNom = 100e6,
     UNomA = 69e3,
     UNomB = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -18}, extent = {{10, 10}, {-10, -10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio T4to9(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF T4to9(
     portVariablesPhases = true,
     R = 0,
     X = 1.05919,
     B = 0,
     G = 0,
-    rFixed = 0.208333,
     SNom = 100e6,
     UNomA = 69.0e3,
     UNomB = 13.8e3    
   ) annotation(
     Placement(visible = true, transformation(origin = {108, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio T5to6(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF T5to6(
     portVariablesPhases = true,
     R = 0,
     X = 0.479948,
     B = 0,
     G = 0,
-    rFixed = 0.212766,
     SNom = 100e6,
     UNomA = 69e3,
     UNomB = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen1(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen1(
     portVariablesPhases = true,
     R = 0, 
     X = 0.393146, 
     B = 0,
     G = 0,
-    rFixed = 2.875,
     SNom = 1211e6, 
     UNomA = 24e3, 
     UNomB = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker Tgen2(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen2(
     portVariablesPhases = true,
     R = 0, 
     X = 0.425089, 
     B = 0,
     G = 0,
-    rFixed = 2.875,
     SNom = 1120e6, 
     UNomA = 24e3, 
     UNomB = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen3(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen3(
     portVariablesPhases = true,
     R = 0, 
     X = 0.288545, 
     B = 0,
     G = 0,
-    rFixed = 3.45,
     SNom = 1650e6, 
     UNomA = 20e3, 
     UNomB = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {150, -90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen8(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen8(
     portVariablesPhases = true,
     R = 0, 
     X = 0.076176, 
     B = 0,
     G = 0,
-    rFixed = 0.766667,
     SNom = 250e6, 
     UNomA = 18e3, 
     UNomB = 13.8e3
@@ -443,15 +436,13 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     portVariablesPhases = true,
     SNom = 1211e6,
     UNom = 24e3,
-    P = -232.36955e6,
-    U = 25.4068e3
+    P = -230e6
   ) annotation(
     Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(
     portVariablesPhases = true,
     SNom = 1120e6,
     UNom = 24e3,
-    U = 25.1608e3,
     P = -40e6
   ) annotation(
     Placement(visible = true, transformation(origin = {-170, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -459,7 +450,6 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     portVariablesPhases = true,
     SNom = 1650e6,
     UNom = 20e3,
-    U = 20.229e3,
     P = 0.0
   ) annotation(
     Placement(visible = true, transformation(origin = {190, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -467,7 +457,6 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     portVariablesPhases = true,
     SNom = 80.0e6,
     UNom = 13.8e3,
-    U = 14.7347e3,
     P = 0
   ) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -475,7 +464,6 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     portVariablesPhases = true,
     SNom = 250e6,
     UNom = 18e3,
-    U = 19.6461e3,
     P = 0
   ) annotation(
     Placement(visible = true, transformation(origin = {180, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -615,6 +603,5 @@ equation
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -110}, {200, 110}}, grid = {0.5, 0.5})),
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
-    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"));
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing");
 end IEEE14busPowerFlow;

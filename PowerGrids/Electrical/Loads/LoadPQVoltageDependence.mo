@@ -2,10 +2,16 @@ within PowerGrids.Electrical.Loads;
 
 model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    PStart = PRefConst,
-    QStart = QRefConst,
+    PStart = if computePF then PStartPF else PRefConst,
+    QStart = if computePF then QStartPF else QRefConst,
     UNom = URef,
-    SNom = sqrt(PRefConst^2+QRefConst^2));
+    SNom = sqrt(PRefConst^2+QRefConst^2),
+    final hasSubPF,
+    redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
+      SNom = SNom,
+      UNom = UNom,
+      P = PRefConst, 
+      Q = QRefConst));
   extends Icons.Load;
 
   parameter Boolean lowVoltageAsImpedance = systemPowerGrids.loadLowVoltageAsImpedance "true, if the load shall work as a fixed-impedance at low-voltage condition" annotation(Evaluate = true);
@@ -13,9 +19,9 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   parameter Types.PerUnit alpha = 0 "Exponential of voltage ratio for actual P calculation";
   parameter Types.PerUnit beta = 0 "Exponential of voltage ratio for actual Q calculation";
   
-  parameter Types.ActivePower PRefConst = 0 "Constant active power entering the load at reference voltage";
-  parameter Types.ReactivePower QRefConst = 0 "Constant reactive power entering the load at reference voltage";
-  parameter Types.Voltage URef "Reference value of phase-to-phase voltage";
+  parameter Types.ActivePower PRefConst = 0 "Constant active power entering the load at reference voltage, reference P for the embedded PF";
+  parameter Types.ReactivePower QRefConst = 0 "Constant reactive power entering the load at reference voltage, reference Q for the embedded PF";
+  parameter Types.Voltage URef = UNom "Reference value of phase-to-phase voltage";
 
   Types.ActivePower PRef(nominal = SNom) =  PRefConst "Active power at reference voltage, the default binding can be changed when instantiating";
   Types.ActivePower QRef(nominal = SNom) =  QRefConst "Reactive power at reference voltage, the default binding can be changed when instantiating";

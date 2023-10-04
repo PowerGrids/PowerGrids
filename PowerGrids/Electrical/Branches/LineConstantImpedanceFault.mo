@@ -3,7 +3,8 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   extends Electrical.BaseClasses.TwoPortAC(
     final UNomA = UNom,
     final UNomB = UNom,
-    SNom = UNom^2/X);
+    SNom = UNom^2/CM.abs(Complex(R,X)),
+    final hasSubPF = true);
   extends Icons.Line;
   
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
@@ -16,14 +17,48 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   parameter SI.Time stopTime "End time of the fault" annotation(Dialog(group="Fault data"));
   parameter Types.Resistance RFault "Fault resistance" annotation(Dialog(group="Fault data"));
   parameter Types.Reactance XFault "Fault reactance" annotation(Dialog(group="Fault data"));
-  PowerGrids.Electrical.Branches.LineConstantImpedance lineA(B = faultLocationPu * B, G = faultLocationPu * G, PStartA = PStartA, PStartB = (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, QStartA = QStartA, QStartB = (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, R = faultLocationPu*R,SNom = SNom, UNom = UNom, X = faultLocationPu * X)  annotation(
+
+  PowerGrids.Electrical.Branches.LineConstantImpedance lineA(
+    B = faultLocationPu * B, 
+    G = faultLocationPu * G, 
+    PStartA = PStartA, 
+    PStartB = if computePF then lineA.PStartBPF else (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, 
+    QStartA = QStartA, 
+    QStartB = if computePF then lineA.QStartBPF else (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, 
+    R = faultLocationPu*R,
+    SNom = SNom, 
+    UNom = UNom, 
+    X = faultLocationPu * X)  annotation(
     Placement(visible = true, transformation(origin = {-40, 2.44249e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance lineB(B = (1 - faultLocationPu) * B, G = (1 - faultLocationPu) * G, PStartA = (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, PStartB = PStartB, QStartA = (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, QStartB = QStartA, R = (1 - faultLocationPu) * R,SNom = SNom, UNom = UNom, X = (1 - faultLocationPu) * X) annotation(
+
+  PowerGrids.Electrical.Branches.LineConstantImpedance lineB(
+    B = (1 - faultLocationPu) * B, 
+    G = (1 - faultLocationPu) * G, 
+    PStartA = if computePF then lineB.PStartAPF else (1 - faultLocationPu) * PStartA + faultLocationPu * PStartB, 
+    PStartB = PStartB,
+    QStartA = if computePF then lineB.QStartAPF else (1 - faultLocationPu) * QStartA + faultLocationPu * QStartB, 
+    QStartB = QStartB, 
+    R = (1 - faultLocationPu) * R,
+    SNom = SNom, 
+    UNom = UNom, 
+    X = (1 - faultLocationPu) * X) annotation(
     Placement(visible = true, transformation(origin = {40, 1.77636e-15}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  PowerGrids.Electrical.Faults.ThreePhaseFault threePhaseFault(R = RFault, SNom = SNom, UNom = UNom, X = XFault, startTime = startTime, stopTime = stopTime) annotation(
+
+  PowerGrids.Electrical.Faults.ThreePhaseFault threePhaseFault(
+    R = RFault, 
+    SNom = SNom, 
+    UNom = UNom, 
+    X = XFault, 
+    startTime = startTime, 
+    stopTime = stopTime) annotation(
     Placement(visible = true, transformation(origin = {0, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Buses.Bus busFault(UNom=UNom, UStart = (1 - faultLocationPu) * UStartA + faultLocationPu * UStartB, UPhaseStart = (1 - faultLocationPu) * UPhaseStartA + faultLocationPu * UPhaseStartB) annotation(
+
+  Buses.Bus busFault(
+    UNom=UNom, 
+    UStart = if computePF then busFault.UStartPF else (1 - faultLocationPu) * UStartA + faultLocationPu * UStartB, 
+    UPhaseStart = if computePF then busFault.UPhaseStartPF else (1 - faultLocationPu) * UPhaseStartA + faultLocationPu * UPhaseStartB) annotation(
     Placement(visible = true, transformation(origin = {0, -12}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+
 equation
   connect(lineB.terminalAC_b, terminalAC_b) annotation(
     Line(points = {{60, 0}, {96, 0}, {96, 0}, {100, 0}}));

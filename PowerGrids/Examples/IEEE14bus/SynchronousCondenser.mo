@@ -2,14 +2,17 @@ within PowerGrids.Examples.IEEE14bus;
 
 model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus system"
   extends Icons.Machine;
-  outer PowerGrids.Electrical.System systemPowerGrids;
+  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
+    final hasSubPF = true);
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, Mvar)";
   parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(
+    SNom = SNom, UNom = UNom,
+    final PPF = 0,
+    final PStart = 0,
+    portVariablesPhases = true) annotation(
     Placement(transformation(origin = {-26, -18}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
-  PowerGrids.Interfaces.TerminalAC terminalAC annotation(
-    Placement(visible = true, transformation(origin = {-26, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart/GEN.UNom, VrMax = 5, VrMin = -5) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Controls.FreeOffset VrefPu(use_u = true) annotation(
@@ -21,8 +24,6 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   Modelica.Blocks.Interfaces.RealOutput omega annotation(
     Placement(transformation(origin = {10, -26}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -10}, extent = {{-10, -10}, {10, 10}})));
 equation
-  connect(GEN.terminalAC, terminalAC) annotation(
-    Line(points = {{-26, -18}, {-26, -50}}));
   connect(AVR.VcPu, GEN.VPu) annotation(
     Line(points = {{-80, -4}, {-172, -4}, {-172, 70}, {40, 70}, {40, -11}, {-20, -11}}, color = {0, 0, 127}));
   connect(AVR.efdPu, GEN.ufPuIn) annotation(
@@ -35,6 +36,8 @@ equation
     Line(points = {{-20, -17}, {-8, -17}, {-8, -26}, {10, -26}}, color = {0, 0, 127}));
   connect(PmPu.y, GEN.PmPu) annotation(
     Line(points = {{-59, -32}, {-50, -32}, {-50, -16}, {-32, -16}}, color = {0, 0, 127}));
+  connect(GEN.terminalAC, terminalAC) annotation (
+    Line(points = {{-26, -8}, {-26, -36}, {47, -36}, {47, 80.5}, {-0.5, 80.5}, {-0.5, 100}, {0, 100}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), 
       graphics = {

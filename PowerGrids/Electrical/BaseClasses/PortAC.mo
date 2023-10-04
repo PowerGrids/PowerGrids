@@ -67,6 +67,12 @@ model PortAC "AC port computing auxiliary quantities"
   Types.ComplexPerUnit iGenPu(re(start = -iStart.re/IBase),im(start = -iStart.im/IBase)) = -iPu "Complex current flowing out of the port in p.u. (base IBase)";
   SI.PerUnit IGenPu(start = IStart/IBase) = if generatorConvention then I/IBase else 0 "Absolute value of current flowing out of the port in p.u. (base IBase)" annotation(
   HideResult = not generatorConvention);
+
+initial equation
+  assert(VPu > 0.8, 
+         "inital value of VPu = " + String(VPu) + " is too low, probably the initial solver converges to a wrong solution",
+         level = AssertionLevel.warning);
+
   annotation(
     Documentation(info = "<html><head></head><body><p>This model computes quantities associated to an AC port that can be useful or relevant for modelling and monitoring purposes, such as the complex power flow, the absolute value of the phase-to-phase voltage, the angle of the current, or various per-unit quantities. The phase-to-ground voltage and line current phasors must be assigned as inputs.</p>
 

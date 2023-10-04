@@ -1,14 +1,16 @@
 within PowerGrids.Electrical.Buses;
 model InfiniteBus "Infinite bus with internal impedance"
-  extends BaseClasses.BusBase(
-      e = CM.fromPolar(ERef, theta),
-      Z = Complex(R, X));
-  extends Icons.Bus;
-  parameter Types.Resistance R = 0 "Series resistance";
-  parameter Types.Reactance X = 0 "Series reactance";
-  parameter Types.Angle theta = 0 "Voltage phase angle of ideal voltage generator";
-  parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
-  final parameter Types.Voltage ERef = URef/sqrt(3) "Phase-to-ground voltage of ideal voltage generator";
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final hasSubPF,
+    redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
+      SNom = SNom, 
+      UNom = UNom,
+      URef = URef,
+      theta = theta,
+      R = R,
+      X = X));
+  extends PowerGrids.Electrical.BaseComponents.InfiniteBusVI(
+    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
 
 equation
   // Overconstrained connector

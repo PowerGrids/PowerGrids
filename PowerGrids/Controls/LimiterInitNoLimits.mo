@@ -6,14 +6,13 @@ model LimiterInitNoLimits
   parameter Real uMin "Lower limits of input signals";
 
 initial equation
-  assert(uMax >= uMin, "Limits must be consistent: uMax = " + String(uMax) + "; uMin = " + String(uMin));
-
+  assert(uMax > uMin, "Limits must be consistent: uMax = " + String(uMax) + "; uMin = " + String(uMin));
+  assert(u <= uMax, "u > uMax during initialiation phase", level = AssertionLevel.warning);
+  assert(u >= uMin, "u < uMin during initialiation phase", level = AssertionLevel.warning);
+    
 equation
   if initial() then
     y = u;
-    assert(u <= uMax, "u > uMax during initialiation phase", level = AssertionLevel.warning);
-    assert(u >= uMin, "u < uMin during initialiation phase", level = AssertionLevel.warning);
-
   else
     y = smooth(0, if u > uMax then uMax else (if u < uMin then uMin else u));
   end if;

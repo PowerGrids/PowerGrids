@@ -2,9 +2,12 @@ within PowerGrids.Electrical.Buses;
 
 model Bus "Bus model"
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final SNom = 1,
     final PStart = 0,
     final QStart = 0,
-    final SNom = 1);
+    final hasSubPF,
+    redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
+      UNom = UNom));
   extends Icons.Bus;
 
 equation

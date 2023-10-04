@@ -6,25 +6,25 @@ model PowerFlow
     Placement(transformation(origin = {-104, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(P = -4.5088e+08, SNom = 5e+08, U = 20825, UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {122, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL1(PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 5e+08, portVariablesPhases = true, URef = 380000) annotation(
+  PowerGrids.Electrical.PowerFlow.PQBus GRIDL1(P = 4.5e+08, Q = 200e6, SNom = 5e+08, portVariablesPhases = true, UNom = 380000) annotation(
     Placement(visible = true, transformation(origin = {-10, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 5e+08, portVariablesPhases = true, URef = 380000) annotation(
+  PowerGrids.Electrical.PowerFlow.PQBus GRIDL2(P = 4.5e+08, Q = 200e6, SNom = 5e+08, portVariablesPhases = true, UNom = 380000) annotation(
     Placement(visible = true, transformation(origin = {30, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV1(UNom = 21000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.PowerFlow.BusPF NTLV1(UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-80, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN1(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21) annotation(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF TGEN1(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.SlackBus NTHV1(SNom = 5e+08, UNom = 380000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-20, 0}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance LINE(R = 10, SNom = 5e+8, UNom = 380000, X = 100, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF LINE(R = 10, SNom = 5e+8, UNom = 380000, X = 100, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTHV2(UNom = 380000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.PowerFlow.BusPF NTHV2(UNom = 380000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN2(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21) annotation(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF TGEN2(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {70, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   inner Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV2(UNom = 21000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.PowerFlow.BusPF NTLV2(UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
 equation
   connect(NTLV1.terminalAC, TGEN1.terminalAC_a) annotation(

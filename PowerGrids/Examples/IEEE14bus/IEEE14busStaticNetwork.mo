@@ -1,7 +1,7 @@
 within PowerGrids.Examples.IEEE14bus;
 model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating in steady-state"
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow)  annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false)  annotation(
     Placement(visible = true, transformation(origin = {-150, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // Buses
@@ -487,6 +487,8 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
 
 // Generators
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN1(
+    SNom = 1211e6,
+    UNom = 24e3,
     GEN(
       DPu = 0.0,
       H = 5.4,
@@ -503,14 +505,14 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       xppqPu = 0.262,
       xqPu = 2.22,
       PNom = 1090e6,
-      SNom = 1211e6,
-      UNom = 24e3,
       PStart = -232.37e6,
       QStart = 15.7473e6
     )
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 56}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN2(
+    SNom = 1120e6,
+    UNom = 24e3,
     GEN(  
       DPu = 0.0,
       H = 5.4,
@@ -527,14 +529,14 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       xppqPu = 0.301,
       xqPu = 2.57,
       PNom = 1008e6,
-      SNom = 1120e6,
-      UNom = 24e3,
       PStart = -40e6,
       QStart = -42.7306e6
     )
   ) annotation(
     Placement(visible = true, transformation(origin = {-168, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Examples.IEEE14bus.SynchronousCondenser GEN3(
+    SNom = 1650e6,
+    UNom = 20e3,
     GEN( 
       DPu = 0.0,
       H = 5.625,
@@ -551,14 +553,13 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       xppqPu = 0.377,
       xqPu = 2.62,
       PNom = 1485e6,
-      SNom = 1650e6,
-      UNom = 20e3,
-      PStart = 0.0,
       QStart = -25.3998e6
     )
   ) annotation(
     Placement(visible = true, transformation(origin = {184, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Examples.IEEE14bus.SynchronousCondenser GEN6(
+    SNom = 80.0e6,
+    UNom = 13.8e3,
     GEN(
       xpqPu = 0.225,
       Tpq0 = 3.0,
@@ -575,14 +576,13 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       xppqPu = 0.154,
       xqPu = 0.45,
       PNom = 71.8e6,
-      SNom = 80.0e6,
-      UNom = 13.8e3,
-      PStart = 0,
       QStart = -15.0186e6
     )  
   ) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Examples.IEEE14bus.SynchronousCondenser GEN8(
+    SNom = 250e6,
+    UNom = 18e3,
     GEN(
       xpqPu = 0.31,
       Tpq0 = 8.4,
@@ -599,9 +599,6 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
       xppqPu = 0.346,
       xqPu = 0.99,
       PNom = 242e6,
-      SNom = 250e6,
-      UNom = 18e3,
-      PStart = 0,
       QStart = -16.2253e6
     )
   ) annotation(
@@ -741,5 +738,6 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -110}, {200, 110}}, grid = {0.5, 0.5})),
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002));
 end IEEE14busStaticNetwork;

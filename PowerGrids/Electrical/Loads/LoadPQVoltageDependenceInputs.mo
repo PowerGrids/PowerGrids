@@ -4,10 +4,6 @@ model LoadPQVoltageDependenceInputs "Load model with voltage dependent P and Q s
   extends LoadPQVoltageDependence(
     final PRef = PRefIn, 
     final QRef = QRefIn,
-    final PRefConst = 0,
-    final QRefConst = 0,
-    PStart = 0,
-    QStart = 0,
     SNom = SRef);
   parameter Types.Power SRef "Reference power";
   Modelica.Blocks.Interfaces.RealInput PRefIn(unit="W", displayUnit="MW") "Active reference power at VPu = 1, W" annotation(
@@ -20,5 +16,6 @@ model LoadPQVoltageDependenceInputs "Load model with voltage dependent P and Q s
   Documentation(info = "<html><head></head><body><p>Model of a PQ load with voltage dependence.</p>
 <p><code style=\"font-size: 12px;\">port.P = PRefIn*(port.U/URef)^alpha;</code><span style=\"font-size: 12px;\">&nbsp;</span><br style=\"font-size: 12px;\"><code style=\"font-size: 12px;\">port.Q = QRefIn*(port.U/URef)^beta;</code></p>
 <p>The reference active and reactive powers are provided by input connectors.</p><p>By default <code>alpha = 0</code> and <code>beta = 0</code>, so there is no voltage dependence.</p>
+<p>If the embedded PF is active, the PRefConst and QRefConst values are used as reference for the embedded PF computation, so they should be set accordingly to the initial values of PRefIn and QRefIn respectively.</p>
 </body></html>"));
 end LoadPQVoltageDependenceInputs;
