@@ -4,7 +4,7 @@ model TransformerFixedRatioVI
   extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(SNom = UNomB^2/CM.abs(Complex(R,X)));
   extends Icons.Transformer;
 
-  parameter SI.PerUnit rFixed = 1 "Fixed transformer ratio VB/VA";
+  parameter SI.PerUnit rFixed = UNomB/UNomA "Fixed transformer ratio VB/VA";
   parameter SI.Angle thetaFixed = 0 "Fixed phase lead of VB w.r.t. VA";
   parameter Types.Resistance R = 0 "Series resistance on B side";
   parameter Types.Reactance X = 0 "Series reactance on B side";

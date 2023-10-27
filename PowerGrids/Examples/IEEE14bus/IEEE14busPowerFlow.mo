@@ -92,14 +92,18 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-132, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L1to5(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedanceWithBreakersPF L1to5(
     portVariablesPhases = true,
     R = 2.57237,
     X = 10.6189,
     B = 0.0010334, 
     G = 0, 
     SNom = 100e6, 
-    UNom = 69e3 
+    UNom = 69e3,
+    useBreakerA = false,
+    useBreakerB = false,
+    breakerAStatusStart = true,
+    breakerBStatusStart = true
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to3(
@@ -397,7 +401,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNomB = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen2(
+  PowerGrids.Electrical.PowerFlow.TransformerFixedRatioWithBreakerPF Tgen2(
     portVariablesPhases = true,
     R = 0, 
     X = 0.425089, 
@@ -405,7 +409,9 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     G = 0,
     SNom = 1120e6, 
     UNomA = 24e3, 
-    UNomB = 69e3
+    UNomB = 69e3,
+    useBreaker = false,
+    breakerStatusStart = true
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen3(
@@ -436,7 +442,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     portVariablesPhases = true,
     SNom = 1211e6,
     UNom = 24e3,
-    P = -230e6
+    P = -229.29e6
   ) annotation(
     Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(

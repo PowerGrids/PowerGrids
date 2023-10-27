@@ -15,7 +15,6 @@ model TransformerFixedRatio "Transformer with fixed voltage ratio"
       G = G,
       B = B));
   extends PowerGrids.Electrical.BaseComponents.TransformerFixedRatioVI(
-    rFixed = UNomB/UNomA,
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_a,
     redeclare PowerGrids.Interfaces.TerminalAC terminalAC_b);    
 end TransformerFixedRatio;
