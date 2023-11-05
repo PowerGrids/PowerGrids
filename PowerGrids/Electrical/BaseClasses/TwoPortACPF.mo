@@ -2,10 +2,10 @@ within PowerGrids.Electrical.BaseClasses;
 
 model TwoPortACPF
   extends TwoPortACVI(
-    redeclare PowerGrids.Interfaces.TerminalACPF terminalAC_a(
+    redeclare PowerGrids.Interfaces.TerminalACPF_a terminalAC_a(
       v(re(start = portA.vStart.re), im(start = portA.vStart.im)),
       i(re(start = portA.iStart.re), im(start = portA.iStart.im))),
-    redeclare PowerGrids.Interfaces.TerminalACPF terminalAC_b(
+    redeclare PowerGrids.Interfaces.TerminalACPF_b terminalAC_b(
       v(re(start = portB.vStart.re), im(start = portB.vStart.im)),
       i(re(start = portB.iStart.re), im(start = portB.iStart.im))),
     portA(final v = terminalAC_a.v, final i = terminalAC_a.i,
