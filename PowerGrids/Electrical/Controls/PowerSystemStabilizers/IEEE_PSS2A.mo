@@ -45,7 +45,7 @@ model IEEE_PSS2A "Power System Stabilizer IEEE type PSS2B"
     Placement(visible = true, transformation(origin = {80, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.LeadLag leadLag2(T1 = T3, T2 = T4, initType = Modelica.Blocks.Types.Init.SteadyState, k = 1, yStart = 0)  annotation(
     Placement(visible = true, transformation(origin = {110, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiterVst(limitsAtInit = true, uMax = VstMax, uMin = VstMin)  annotation(
+  Modelica.Blocks.Nonlinear.Limiter limiterVst(uMax = VstMax, uMin = VstMin)  annotation(
     Placement(visible = true, transformation(origin = {142, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.FirstOrder firstOrderVsi2(T = T7, initType = Modelica.Blocks.Types.Init.SteadyState, k = Ks2, y_start = 0)  annotation(
     Placement(visible = true, transformation(origin = {-70, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

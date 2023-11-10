@@ -2,31 +2,35 @@ within PowerGrids.Electrical.Test;
 
 model TestTransformerFixedRatioWithBreaker
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus1(SNom = 1e+07, UNom = 5000, portVariablesPu = true, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus1(SNom = 1e+07, UNom = 5000, theta = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ(PRefConst = 1e+07, QRefConst = 0, SNom = 1e+07, UNom = 10000, alpha = 0, beta = 0, portVariablesPhases = true) annotation(
-    Placement(visible = true, transformation(origin = {20, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ(PRefConst = 1e+07, QRefConst = 0, SNom = 1e+07, alpha = 0, beta = 0, portVariablesPhases = true, URef = 10000) annotation(
+    Placement(visible = true, transformation(origin = {30, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker transformer(B = 1e-6, G = 1e-6,R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5, portVariablesPu = true, rFixed = 2, useBreaker = true) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker transformer(B = 1e-6, G = 1e-6,R = 0.3, SNom = 1e+07, UNomA = 5000, UNomB = 10000, X = 1.5, rFixed = 2, useBreaker = true) annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression breakerState(y = time < 2)  annotation(
     Placement(visible = true, transformation(origin = {-30, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus2(SNom = 1e+07, UNom = 10000, portVariablesPu = true, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus2(SNom = 1e+07, UNom = 10000, theta = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {80, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   Branches.LineConstantImpedance line(R = 0.06, SNom = 1e+7, UNom = 10000, X = 1.5)  annotation(
     Placement(visible = true, transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  PowerGrids.Electrical.Buses.Bus transformerBus(UNom = 10000)  annotation(
+    Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 equation
-  connect(infiniteBus1.terminal, transformer.terminalA) annotation(
+  connect(infiniteBus1.terminalAC, transformer.terminalAC_a) annotation(
     Line(points = {{-40, 0}, {-20, 0}}));
-  connect(transformer.terminalB, loadPQ.terminal) annotation(
-    Line(points = {{0, 0}, {20, 0}}));
   connect(breakerState.y, transformer.breakerStatusIn) annotation(
     Line(points = {{-18, 28}, {-4, 28}, {-4, 2}, {-2, 2}}, color = {255, 0, 255}));
-  connect(loadPQ.terminal, line.terminalA) annotation(
-    Line(points = {{20, 0}, {38, 0}, {38, 0}, {40, 0}}));
-  connect(line.terminalB, infiniteBus2.terminal) annotation(
+  connect(line.terminalAC_b, infiniteBus2.terminalAC) annotation(
     Line(points = {{60, 0}, {80, 0}, {80, 0}, {80, 0}}));
+  connect(transformer.terminalAC_b, transformerBus.terminalAC) annotation(
+    Line(points = {{0, 0}, {10, 0}}));
+  connect(transformerBus.terminalAC, loadPQ.terminalAC) annotation(
+    Line(points = {{10, 0}, {30, 0}, {30, -4}}));
+  connect(transformerBus.terminalAC, line.terminalAC_a) annotation(
+    Line(points = {{10, 0}, {40, 0}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),

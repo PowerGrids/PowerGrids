@@ -2,9 +2,9 @@ within PowerGrids.Electrical.Test;
 
 model OneBusImpedanceVariableVoltageOneLoad
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage bus1(PStart = -1e+07, R = 0.04, SNom = 1e+08, UNom = 10000, X = 0.4, generatorConvention = true, portVariablesPhases = true, portVariablesPu = true, useThetaIn = true, useUIn = true) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage bus1(PStart = -1e+07, R = 0.04, SNom = 1e+08, UNom = 10000, UFixed = 10e3, X = 0.4, generatorConvention = true, portVariablesPhases = true, useThetaIn = true, useUIn = true) annotation(
     Placement(visible = true, transformation(origin = {0, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence load1(PRefConst = 1e+07,PStart = 1e+07, QRefConst = 0, QStart = 0, SNom = 1e+08, UNom = 10000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence load1(PRefConst = 1e+07,PStart = 1e+07, QRefConst = 0, QStart = 0, SNom = 1e+08, portVariablesPhases = true, URef = 10000) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -17,7 +17,7 @@ equation
     Line(points = {{-38, -10}, {-20, -10}, {-20, 6}, {-10, 6}, {-10, 6}}, color = {0, 0, 127}));
   connect(UMod.y, bus1.UIn) annotation(
     Line(points = {{-38, 30}, {-20, 30}, {-20, 14}, {-10, 14}, {-10, 14}}, color = {0, 0, 127}));
-  connect(bus1.terminal, load1.terminal) annotation(
+  connect(bus1.terminalAC, load1.terminalAC) annotation(
     Line(points = {{0, 10}, {0, 4}, {-1.33227e-15, 4}, {-1.33227e-15, 1}, {0, 1}, {0, 0}}));
   annotation(
     experiment(StopTime = 3.0, Interval = 0.01),

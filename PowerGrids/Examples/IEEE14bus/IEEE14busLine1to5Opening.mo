@@ -12,5 +12,6 @@ annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5})),
     experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-6, Interval = 0.04),
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(homotopyOnFirstTry="()"));
 end IEEE14busLine1to5Opening;

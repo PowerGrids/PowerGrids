@@ -1,11 +1,22 @@
 within PowerGrids.Electrical.Buses;
 
 model ReferenceBus "Reference bus for an isolated grid"
-  extends PowerGrids.Electrical.BaseClasses.OnePortAC;
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final hasSubPF,
+    redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(
+      UNom = UNom,
+      SNom = SNom,
+      U = UPF,
+      UPhase = UPhasePF,
+      setPhaseOnly = setPhaseOnly));
   extends Icons.Bus;
   import PowerGrids.Types.Choices.InitializationOption;
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
+  parameter Types.Voltage UPF = UNom "Phase-to-phase voltage to be used to compute the embedded PF" annotation(
+    Dialog(group = "Embedded PF", enable = computePF));
+  parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF" annotation(
+    Dialog(group = "Embedded PF", enable = computePF));
   final parameter Types.ComplexPerUnit nStart = CM.fromPolar(1, UPhaseStart) "Unit phasor with angle UPhaseStart";
   final parameter Types.ActivePower PSlack(fixed = false) "Constant slack active power leaving system through bus";
   final parameter Types.ReactivePower QSlack(fixed = false) "Constant slack reactive power leaving system through bus";
@@ -33,5 +44,5 @@ equation
 <li>Absorb the excess active power <code>PSlack</code> and reactive power <code>QSlack</code> that allow to balance the power flows at the nominal value of frequency. These two values correspond to the active and reactive power flows into the slack node of the power flow model. <code>PSlack</code> and <code>QSlack</code> then remain constant throughout the simulation. If the power flow is correcty balanced, those two values are nearly zero, so the Reference Bus is not absorbing any significant active or reactive power during the simulation.</li>
 </ul>
 If <code>setPhaseOnly</code> is set to true, then only the initial phase of the bus voltage is set to the same value of the power flow, i.e., <code>UPhaseStart</code>. The initial voltage magnitude is computed to ensure zero reactive power flow <code>QSlack</code>.</body></html>"),
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {130, 10}, extent = {{-30, 20}, {30, -40}}, textString = "R")}));
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {84, 42}, extent = {{-30, 20}, {30, -40}}, textString = "R")}));
 end ReferenceBus;

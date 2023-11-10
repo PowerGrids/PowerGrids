@@ -17,7 +17,7 @@ model LeadLagWithNonWindupLimiter "Lead-lag filter with non-windup limiter"
     Dialog(tab = "Advanced"));
   Modelica.Blocks.Math.Gain gain_dir(k = k * T1 / T2) annotation(
     Placement(visible = true, transformation(origin = {-4, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Nonlinear.Limiter limiter_y(limitsAtInit = true, strict = strict, uMax = yMax, uMin = yMin) annotation(
+  Modelica.Blocks.Nonlinear.Limiter limiter_y(strict = strict, uMax = yMax, uMin = yMin) annotation(
     Placement(visible = true, transformation(origin = {32, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback feedback_y annotation(
     Placement(visible = true, transformation(origin = {46, -52}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));

@@ -1,8 +1,7 @@
 within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortACdqPU "Base class for one-port AC components with p.u. Park's transformation"
-  extends OnePortAC(
-    final portVariablesPu = true);
+  extends OnePortAC;
 
   parameter SI.Angle thetaStart = UPhaseStart "Start value of rotation between machine rotor frame and port phasor frame";
   final parameter Types.PerUnit udPuStart(fixed = false) "Start value of udPu";
