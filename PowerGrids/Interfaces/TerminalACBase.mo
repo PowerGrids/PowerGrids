@@ -1,6 +1,6 @@
 within PowerGrids.Interfaces;
 
-connector TerminalACBase "Base class for connectors of components including optional embedded power flow"
+partial connector TerminalACBase "Base class for connectors of components including optional embedded power flow"
   extends TerminalACVI;
   Types.ReferenceAngularVelocityPu omegaRefPu "Reference angular speed in PerUnit";
   parameter Boolean computePF = false;
