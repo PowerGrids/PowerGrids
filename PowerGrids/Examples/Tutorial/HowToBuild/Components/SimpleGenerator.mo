@@ -13,17 +13,11 @@ model SimpleGenerator
   import Modelica.ComplexMath;
   
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF";
-  parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)";  
-  
-
-  
-equation
-
-
-  // Overconstrained connector
+  parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)";  equation
+// Overconstrained connector
   Connections.potentialRoot(terminalAC.omegaRefPu, 1);
   if Connections.isRoot(terminalAC.omegaRefPu) then
     terminalAC.omegaRefPu = 1;
   end if;
-
-end SimpleGenerator;
+  annotation(
+    Documentation);end SimpleGenerator;
