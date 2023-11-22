@@ -9,10 +9,10 @@ model LoadPQ "Load model with prescribed P and Q values"
   parameter Types.ActivePower PPF = SNom "Initial active power to compute the embedded PF (positive entering)" annotation(Dialog(enable = computePF));
   parameter Types.ActivePower QPF = 0 "Initial reactive power to compute the embedded PF (positive entering)" annotation(Dialog(enable = computePF));
 
-  Modelica.Blocks.Interfaces.RealInput P "Active power, W"
+  Modelica.Blocks.Interfaces.RealInput P(unit = "W", displayUnit = "MW") "Active power, W"
     annotation(
     Placement(visible = true, transformation(origin = {-100, 36}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput Q "Reactive power, var"
+  Modelica.Blocks.Interfaces.RealInput Q(unit = "W", displayUnit = "Mvar") "Reactive power, var"
     annotation(
     Placement(visible = true, transformation(origin = {-100, -44}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -100}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 equation

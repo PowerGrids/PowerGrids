@@ -21,17 +21,17 @@ model SimpleGenerator
   constant Types.PerUnit ePu = 1 "Constant induced e.m.f";
   
   Types.PerUnit omegaPu "Per-unit rotational speed";
-  Modelica.Blocks.Interfaces.RealInput Pm "Input mechanical power in W" annotation(
+  Modelica.Blocks.Interfaces.RealInput Pm(unit = "W", displayUnit = "MW") "Input mechanical power in W" annotation(
     Placement(transformation(origin = {-68, -54}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-65, -59}, extent = {{-15, -15}, {15, 15}})));
 initial equation
   // Steady-state conditions
-  der(theta) = 0;
+  omegaPu = 1;
   der(omegaPu) = 0;
   
 equation
   // Swing equation
   der(theta) = (omegaPu - terminalAC.omegaRefPu)*systemPowerGrids.omegaNom;
-  2*H*der(omegaPu) = (Pm - port.P)/PNom;
+  2*H*der(omegaPu) = (Pm + port.P)/PNom;
 
   // Electrical equations in Park's coordinates
   ePu + rPu*idPu = udPu;
