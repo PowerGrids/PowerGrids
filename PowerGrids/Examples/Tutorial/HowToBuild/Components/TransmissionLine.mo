@@ -33,8 +33,4 @@ equation
   
   // Ohm's law equations
   vz = Z*iA;
-  
-  // Propagation of the reference frame
-  Connections.branch(terminalAC_a.omegaRefPu, terminalAC_b.omegaRefPu);
-  terminalAC_a.omegaRefPu = terminalAC_b.omegaRefPu;
 end TransmissionLine;
