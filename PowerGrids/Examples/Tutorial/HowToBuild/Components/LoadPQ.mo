@@ -4,8 +4,11 @@ model LoadPQ "Load model with prescribed P and Q values"
   extends Icons.Load;
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
-      SNom = SNom, UNom = UNom, P = PStart, Q = QStart),
+      SNom = SNom, UNom = UNom, P = PPF, Q = QPF),
     final hasSubPF);
+  parameter Types.ActivePower PPF = SNom "Initial active power to compute the embedded PF (positive entering)" annotation(Dialog(enable = computePF));
+  parameter Types.ActivePower QPF = 0 "Initial reactive power to compute the embedded PF (positive entering)" annotation(Dialog(enable = computePF));
+
   Modelica.Blocks.Interfaces.RealInput P "Active power, W"
     annotation(
     Placement(visible = true, transformation(origin = {-100, 36}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
