@@ -1,4 +1,4 @@
 TestLoadPQ
-TestLine
+TestTransmissionLine
+TestSimpleGenerator
 SimpleGrid
-TestBus
