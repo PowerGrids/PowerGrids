@@ -8,7 +8,7 @@ model SimpleGrid
     Placement(transformation(origin = {-74, 0}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Examples.Tutorial.HowToBuild.Components.LoadPQ GRIDL(PStart = 4.75e8, QStart = 0, SNom = 5e+08, UNom = 21000, PPF = 4.75e8) annotation(
     Placement(transformation(origin = {-14, -28}, extent = {{-10, -10}, {10, 10}})));
-  Components.TransmissionLine line(UNom = 21000, R = 0.001, X = 0.01) annotation(
+  Components.TransmissionLine line(UNom = 21000, R = 0.01, X = 0.1) annotation(
     Placement(transformation(origin = {22, 0}, extent = {{-10, -10}, {10, 10}})));
   Electrical.Buses.Bus bus(UNom = 21000) annotation(
     Placement(transformation(origin = {-38, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
