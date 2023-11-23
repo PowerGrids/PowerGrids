@@ -1,20 +1,8 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBusVariableVoltage
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
-    final hasSubPF,
-    redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
-      UNom = UNom,
-      SNom = SNom,
-      URef = UFixed,
-      theta = thetaFixed,
-      R = R,
-      X = X));
-  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
-    e = CM.fromPolar(UAux/sqrt(3), 
-    thetaAux), 
-    Z = Complex(R, X),
-    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(final hasSubPF, redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(UNom = UNom, SNom = SNom, URef = UFixed, theta = thetaFixed, R = R, X = X));
+  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(e = CM.fromPolar(UAux/sqrt(3), thetaAux), Z = Complex(R, X), redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Bus;
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
@@ -53,7 +41,7 @@ equation
     terminalAC.omegaRefPu = 1;
   end if;
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {-79, 0}, extent = {{-1, 60}, {1, -60}})}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {-79, 0}, extent = {{-1, 60}, {1, -60}}), Text(origin = {84, 32}, extent = {{-20, 28}, {20, -28}}, textString = "", fontName = "Symbol")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Documentation(info = "<html>
 <p>Infinite bus model with voltage e. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.</p>
