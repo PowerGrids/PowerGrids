@@ -1,6 +1,6 @@
 within PowerGrids.Examples.Tutorial.IslandOperation;
 
-model TwoGeneratorsOneReferenceGenerator
+model TwoGenerators
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow) annotation(
     Placement(visible = true, transformation(origin = {130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -53,4 +53,4 @@ annotation(
     __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"),
     Diagram(coordinateSystem(extent = {{-160, -100}, {160, 100}})));
-end TwoGeneratorsOneReferenceGenerator;
+end TwoGenerators;
