@@ -6,7 +6,7 @@ partial model OnePortACVI "Base class for AC components with one port"
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(
     Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(
-    Evaluate = true);
+    Evaluate = true, Dialog(tab = "Visualization"));
   constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
 
   replaceable PowerGrids.Interfaces.TerminalACVI terminalAC annotation(
