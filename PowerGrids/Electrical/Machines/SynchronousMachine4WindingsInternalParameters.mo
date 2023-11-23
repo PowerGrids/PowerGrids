@@ -38,7 +38,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     Evaluate = true);
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(
     Dialog(tab = "Initialization", enable = computePF));
-  parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)" annotation(
+  parameter Types.ActivePower PPF = -SNom "Active power to be used to compute the embedded PF (positive entering)" annotation(
     Dialog(tab = "Initialization", enable = computePF));
 
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
