@@ -8,7 +8,7 @@ model OneSlackOneLoadWithOneLine
     Placement(visible = true, transformation(origin = {0, 20}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus load(P = 3e+07, Q = 0, SNom = 3e+07, UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -42}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line(R = 200, SNom = 3e+07, UNom = 400000, X = 2000)  annotation(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF line(R = 200, SNom = 3e+07, UNom = 400000, X = 2000)  annotation(
     Placement(visible = true, transformation(origin = {0, -10}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
 equation
   connect(line.terminalAC_b, load.terminalAC) annotation(
@@ -16,4 +16,5 @@ equation
   connect(line.terminalAC_a, slack.terminalAC) annotation(
     Line(points = {{0, 0}, {0, 20}}));
 annotation(
+    experiment(StopTime = 1),
     Documentation(info = "<html><head></head><body>Simple test case with one slack bus and one PQ bus connected through a <a href=\"modelica://PowerGrids.Electrical.Branches.LineConstantImpedance\"> LineConstantImpedance </a> line. Adds a line between the slack and the PQ buses compared to <a href=\"modelica://PowerGrids.Electrical.PowerFlow.Test.OneSlackOneLoad\"> OneSlackOneLoad </a> test.</body></html>"));end OneSlackOneLoadWithOneLine;

@@ -6,11 +6,11 @@ model SmallSystem
       Placement(visible = true, transformation(origin = {50, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PVBus bus2(P = -1e+08,SNom = 1e+08, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {60, -30}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line1(R = 100, SNom = 1e+08, UNom = 400000, X = 1000)  annotation(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF line1(R = 50, SNom = 1e+08, UNom = 400000, X = 500)  annotation(
       Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line2(R = 100, SNom = 1e+08, UNom = 400000, X = 1000)  annotation(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF line2(R = 50, SNom = 1e+08, UNom = 400000, X = 500)  annotation(
       Placement(visible = true, transformation(origin = {30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance line3(R = 100, SNom = 1e+08, UNom = 400000, X = 1000)  annotation(
+  PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF line3(R = 50, SNom = 1e+08, UNom = 400000, X = 500)  annotation(
       Placement(visible = true, transformation(origin = {0, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.PQBus load1(P = 3e+07, SNom = 3e+07, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {-60, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -22,7 +22,7 @@ model SmallSystem
       Placement(visible = true, transformation(origin = {20, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.SlackBus slack(SNom = 1e+08, UNom = 400000)  annotation(
       Placement(visible = true, transformation(origin = {-60, 10}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  Buses.Bus bus(UNom = 400000)  annotation(
+  PowerFlow.BusPF bus(UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(load1.terminalAC, line1.terminalAC_a) annotation(
@@ -44,4 +44,5 @@ equation
   connect(load3.terminalAC, bus.terminalAC) annotation(
     Line(points = {{0, -50}, {0, -50}, {0, -30}, {0, -30}}));
 annotation(
-    Documentation(info = "<html><head></head><body>Small system with a few PQ buses, one PV bus and one slack bus connected through constant impedant lines.</body></html>"));end SmallSystem;
+    experiment(StopTime = 1),
+    Documentation(info = "<html><head></head><body>Small system with a few PQ buses, one PV bus and one slack bus connected through constant impedance lines.</body></html>"));end SmallSystem;

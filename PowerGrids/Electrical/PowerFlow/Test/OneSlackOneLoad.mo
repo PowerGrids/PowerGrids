@@ -12,4 +12,5 @@ equation
   connect(load.terminalAC, slack.terminalAC) annotation(
     Line(points = {{0, -4}, {0, 20}}));
 annotation(
+    experiment(StopTime = 1),
     Documentation(info = "<html><head></head><body>Simple test case with one slack bus connected to a PQ bus.</body></html>"));end OneSlackOneLoad;
