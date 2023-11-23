@@ -32,13 +32,13 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   parameter SI.Time H "Kinetic constant = kinetic energy / rated power";
   parameter Types.Choices.ExcitationPuType excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad "Choice of excitation base voltage";
   parameter Boolean neglectTransformerTerms = true "Neglect the transformer terms in the Park equations";
-  parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
+  parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option" annotation(Dialog(tab = "Initialization"));
   parameter Integer priority = integer(100 - 10*log10(PNom)) "Priority level used to select the machine to be used as frrequency reference (0=higher priority)" annotation(
     Evaluate = true);
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(
-    Dialog(group = "Embedded PF", enable = computePF));
+    Dialog(tab = "Initialization", enable = computePF));
   parameter Types.ActivePower PPF = 0 "Active power to be used to compute the embedded PF (positive entering)" annotation(
-    Dialog(group = "Embedded PF", enable = computePF));  
+    Dialog(tab = "Initialization", enable = computePF));
 
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
   final parameter Types.PerUnit kuf(fixed = false) "Scaling factor for excitation p.u. voltage";
