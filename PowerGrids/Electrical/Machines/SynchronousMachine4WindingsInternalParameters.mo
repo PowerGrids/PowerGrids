@@ -5,6 +5,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     final generatorConvention = true, 
     localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
     final hasSubPF,
+    PStart = if computePF then PStartPF else -SNom,
     redeclare PowerGrids.Electrical.PowerFlow.PVBus componentPF(
       UNom = UNom,
       SNom = SNom,
