@@ -7,7 +7,6 @@ model LineConstantImpedanceWithBreakersPF
     SNom = UNom^2/CM.abs(Complex(R,X)));
   extends PowerGrids.Electrical.BaseComponents.LineConstantImpedanceWithBreakersVI(
     redeclare PowerGrids.Interfaces.TerminalACPF terminalAC_a,
-    redeclare PowerGrids.Interfaces.TerminalACPF terminalAC_b,
-    final computePF = false);
+    redeclare PowerGrids.Interfaces.TerminalACPF terminalAC_b);
 
 end LineConstantImpedanceWithBreakersPF;

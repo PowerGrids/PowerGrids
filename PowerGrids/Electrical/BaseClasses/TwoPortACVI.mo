@@ -9,8 +9,6 @@ partial model TwoPortACVI "Base class for two-port AC components"
     Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(
     Evaluate = true);
-  parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
-    Evaluate = true);  
   parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component";
 
   replaceable PowerGrids.Interfaces.TerminalACVI terminalAC_a annotation(

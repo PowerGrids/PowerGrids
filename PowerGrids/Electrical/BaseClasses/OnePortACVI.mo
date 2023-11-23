@@ -7,8 +7,6 @@ partial model OnePortACVI "Base class for AC components with one port"
     Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(
     Evaluate = true);
-  parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
-    Evaluate = true);  
   constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
 
   replaceable PowerGrids.Interfaces.TerminalACVI terminalAC annotation(

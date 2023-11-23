@@ -12,8 +12,7 @@ model OnePortACPF
          final UStart = UNom,
          final UPhaseStart = 0,
          final PStart = 0,
-         final QStart = 0),
-    final computePF = false);
+         final QStart = 0));
   annotation(
     Documentation(info = "<html>
 <p>This is the base class for all the PF components with an AC terminal.</p>

@@ -5,7 +5,6 @@ model CapacitorBankFixedPF
   extends PowerGrids.Electrical.BaseClasses.OnePortACPF;
   extends PowerGrids.Electrical.BaseComponents.ShuntConductanceVI(
     Y = Complex(0,B),
-    redeclare PowerGrids.Interfaces.TerminalACPF terminalAC,
-    final computePF = false);
+    redeclare PowerGrids.Interfaces.TerminalACPF terminalAC);
   parameter Types.Susceptance B = 0 "Capacitor bank susceptance";
 end CapacitorBankFixedPF;

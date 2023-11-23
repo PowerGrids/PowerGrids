@@ -23,8 +23,7 @@ model TwoPortACPF
           final UStart = UNomB,
           final UPhaseStart = 0,
           final PStart = 0,
-          final QStart = 0) "AC port - terminalAC_b",
-    final computePF = false);
+          final QStart = 0) "AC port - terminalAC_b");
   annotation(
     Documentation(info = "<html>
 <p>This is the base class for all the PW components with two AC terminals.</p>

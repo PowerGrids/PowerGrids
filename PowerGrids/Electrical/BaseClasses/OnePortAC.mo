@@ -15,6 +15,8 @@ partial model OnePortAC "Base class for AC components with one port"
     Dialog(tab = "Initialization"));
   parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
     Dialog(tab = "Initialization"));
+  parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
+    Evaluate = true);  
   parameter Boolean hasSubPF = false "= true, if the model contains a sub-network with its own embedded PF";
 
   final parameter Types.ActivePower PStartPF(fixed = false) "Start value of active power flowing into the port, computed by the embedded PF";
