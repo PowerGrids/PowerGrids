@@ -12,7 +12,7 @@ model PortAC "AC port computing auxiliary quantities"
   parameter Types.Angle UPhaseStart = 0 "Start value of voltage phase";
   
   parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
-  constant Boolean generatorConvention = false "Add currents with generator convention (i > 0 when exiting the device) to model";
+  constant Boolean generatorConvention = false "Also compute currents and power variables with generator convention (positive when exiting the device)";
 
 // Computed parameters
   final parameter Types.Voltage VNom = UNom/sqrt(3) "Nominal phase-to-ground voltage";
@@ -59,13 +59,21 @@ model PortAC "AC port computing auxiliary quantities"
   Types.Angle IPhase(start = CM.arg(iStart)) = atan2(i.im, i.re) if portVariablesPhases "Phase of current into the port";
   
   Types.ComplexCurrent iGen(re(nominal = INom, start = -iStart.re),
-                            im(nominal = INom, start = -iStart.im)) = -i "Port current, generator convention";
-  Types.ActivePower PGen(nominal = SNom, start = -PStart) = -S.re "Active power flowing out of the port";
-  Types.ReactivePower QGen(nominal = SNom, start = -QStart) = -S.im "Reactive power flowing out of the port";
-  Types.PerUnit PGenPu(start = -PStart/SBase) = -PPu "Active power flowing out of the port in p.u. (base SBase)";
-  Types.PerUnit QGenPu(start = -QStart/SBase) = -QPu "Reactive power flowing out of the port in p.u. (base SBase)";
-  Types.ComplexPerUnit iGenPu(re(start = -iStart.re/IBase),im(start = -iStart.im/IBase)) = -iPu "Complex current flowing out of the port in p.u. (base IBase)";
-  SI.PerUnit IGenPu(start = IStart/IBase) = if generatorConvention then I/IBase else 0 "Absolute value of current flowing out of the port in p.u. (base IBase)" annotation(
+                            im(nominal = INom, start = -iStart.im)) = if generatorConvention then  -i else Complex(0)
+                             "Port current, generator convention";
+  Types.ActivePower PGen(nominal = SNom, start = -PStart) = if generatorConvention then -S.re else 0
+                             "Active power flowing out of the port";
+  Types.ReactivePower QGen(nominal = SNom, start = -QStart) = if generatorConvention then -S.im else 0
+                             "Reactive power flowing out of the port";
+  Types.PerUnit PGenPu(start = -PStart/SBase) = if generatorConvention then -PPu else 0
+                             "Active power flowing out of the port in p.u. (base SBase)";
+  Types.PerUnit QGenPu(start = -QStart/SBase) = if generatorConvention then -QPu else 0
+                             "Reactive power flowing out of the port in p.u. (base SBase)";
+  Types.ComplexPerUnit iGenPu(re(start = -iStart.re/IBase),
+                              im(start = -iStart.im/IBase)) = if generatorConvention then -iPu else Complex(0)
+                               "Complex current flowing out of the port in p.u. (base IBase)";
+  SI.PerUnit IGenPu(start = IStart/IBase) = if generatorConvention then I/IBase else 0
+                               "Absolute value of current flowing out of the port in p.u. (base IBase)" annotation(
   HideResult = not generatorConvention);
 
 initial equation
