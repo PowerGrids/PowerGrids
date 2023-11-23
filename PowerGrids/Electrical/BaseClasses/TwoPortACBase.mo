@@ -22,7 +22,7 @@ partial model TwoPortACBase "Base class for two-port AC components"
     Dialog(tab = "Initialization"));
   parameter Types.ReactivePower QStartB = if computePF then QStartBPF else 0 "Start value of reactive power flowing into port B" annotation(
     Dialog(tab = "Initialization"));
-  parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
+  final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
     Evaluate = true);  
   parameter Boolean hasSubPF = false "= true if the model contains a sub-network with its own embedded PF";
 
