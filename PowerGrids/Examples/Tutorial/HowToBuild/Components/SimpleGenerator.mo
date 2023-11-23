@@ -16,8 +16,8 @@ model SimpleGenerator
   parameter Types.Power PNom "Nominal active power";
   parameter Types.Time H "Time constant of generator";
   parameter Types.PerUnit rPu "Per unit stator resistance";
-  parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF";
-  parameter Types.ActivePower PPF = -PNom "Active power to be used to compute the embedded PF (positive entering)";
+  parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(Dialog(tab = "Initialization", enable = computePF));
+  parameter Types.ActivePower PPF = -PNom "Active power to be used to compute the embedded PF (positive entering)" annotation(Dialog(tab = "Initialization", enable = computePF));
   constant Types.PerUnit ePu = 1 "Constant induced e.m.f";
   
   Types.PerUnit omegaPu "Per-unit rotational speed";
