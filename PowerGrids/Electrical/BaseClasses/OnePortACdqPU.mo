@@ -4,6 +4,7 @@ partial model OnePortACdqPU "Base class for one-port AC components with p.u. Par
   extends OnePortAC;
 
   parameter SI.Angle thetaStart = UPhaseStart "Start value of rotation between machine rotor frame and port phasor frame" annotation(Dialog(tab="Initialization"));
+
   final parameter Types.PerUnit udPuStart(fixed = false) "Start value of udPu";
   final parameter Types.PerUnit uqPuStart(fixed = false) "Start value of uqPu";
   final parameter Types.PerUnit idPuStart(fixed = false) "Start value of idPu";

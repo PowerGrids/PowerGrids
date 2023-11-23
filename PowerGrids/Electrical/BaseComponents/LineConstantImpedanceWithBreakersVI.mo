@@ -1,11 +1,11 @@
 within PowerGrids.Electrical.BaseComponents;
 
 model LineConstantImpedanceWithBreakersVI
+  extends Icons.Line;
   extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(
     final UNomA = UNom,
     final UNomB = UNom,
     SNom = UNom^2/CM.abs(Complex(R,X)));
-  extends Icons.Line;
   encapsulated type BreakersState = enumeration(
     AcBc "Both breakers at port A and at port B closed", 
     AcBo "Breaker at port A closed, breaker at port B open", 

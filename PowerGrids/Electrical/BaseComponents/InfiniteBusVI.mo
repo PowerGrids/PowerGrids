@@ -1,10 +1,10 @@
 within PowerGrids.Electrical.BaseComponents;
 
 partial model InfiniteBusVI
+  extends Icons.Bus;
   extends BusBaseVI(
       e = CM.fromPolar(ERef, theta),
       Z = Complex(R, X));
-  extends Icons.Bus;
   parameter Types.Resistance R = 0 "Series resistance";
   parameter Types.Reactance X = 0 "Series reactance";
   parameter Types.Angle theta = 0 "Voltage phase angle of ideal voltage generator";

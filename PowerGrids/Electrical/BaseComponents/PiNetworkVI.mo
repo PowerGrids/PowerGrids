@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseComponents;
 
-partial model PiNetworkVI "Generic Pi-Network base model"
+partial model PiNetworkVI "Generic Pi-Network base VI model"
   extends Electrical.BaseClasses.TwoPortACVI;
   Types.ComplexAdmittance Y "Series admittance";
   Types.ComplexAdmittance YA "Shunt admittance at port a";
@@ -34,7 +34,7 @@ equation
 <figure>
  <img src=\"modelica://PowerGrids/Resources/Images/Branches/PiNetwork.png\">
 </figure>
-<p>In general the impedances and transformer complex ratio are time-varying variables.&nbsp;</p><p>The model can be specialized to describe a transmission line with fixed or variable impedances, a transmission line with embedded circuit breakers, transformers with fixed or variable transformer ratio, transformers with tap changer/phase shifter, etc.</p>
+<p>In general the impedances and transformer complex ratio are time-varying variables.&nbsp;</p><p>The model can be specialized to describe a transmission line with fixed or variable impedances, a transmission line with embedded circuit breakers, transformers with fixed or variable transformer ratio, transformers with tap changer/phase shifter, etc. It can also be specialized both for power flow models and for dynamic simulation models, see Section 5.6 of the <a href=\"modelica://PowerGrids.UsersGuide.Tutorial.LibraryArchitecture\">Library Architecture Tutorial</a> for more information.</p>
 </html>"));
 
 end PiNetworkVI;

@@ -1,8 +1,8 @@
 within PowerGrids.Electrical.BaseComponents;
 
 model TransformerFixedRatioWithBreakerVI
-  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(SNom = UNomB^2/CM.abs(Complex(R,X)));
   extends Icons.Transformer;
+  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(SNom = UNomB^2/CM.abs(Complex(R,X)));
 
   encapsulated type BreakersState = enumeration(
     Bc "breaker closed",

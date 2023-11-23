@@ -1,41 +1,6 @@
 within PowerGrids.Electrical.BaseClasses;
 
 partial model TwoPortACBase "Base class for two-port AC components"
-  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
-  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true, Dialog(tab = "Visualization"));
-  parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component" annotation(Dialog(tab = "Visualization"));
-  final parameter Types.Voltage UStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, absolute value" annotation(
-    Dialog(tab = "Initialization"));
-  final parameter Types.Angle UPhaseStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, phase angle" annotation(
-    Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStartA = if computePF then PStartAPF else SNom "Start value of active power flowing into port A" annotation(
-    Dialog(tab = "Initialization", enable = not computePF));
-  parameter Types.ReactivePower QStartA = if computePF then QStartAPF else 0 "Start value of reactive power flowing into port A" annotation(
-    Dialog(tab = "Initialization", enable = not computePF));
-  final parameter Types.Voltage UStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, absolute value" annotation(
-    Dialog(tab = "Initialization"));
-  final parameter Types.Angle UPhaseStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, phase angle" annotation(
-    Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStartB = if computePF then PStartBPF else -SNom "Start value of active power flowing into port B" annotation(
-    Dialog(tab = "Initialization", enable = not computePF));
-  parameter Types.ReactivePower QStartB = if computePF then QStartBPF else 0 "Start value of reactive power flowing into port B" annotation(
-    Dialog(tab = "Initialization", enable = not computePF));
-  final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
-    Evaluate = true);  
-  parameter Boolean hasSubPF = false "= true if the model contains a sub-network with its own embedded PF";
-
-  final parameter Types.ActivePower PStartAPF(fixed = false) "Start value of active power flowing into the portA, computed by the embedded PF";
-  final parameter Types.ReactivePower QStartAPF(fixed = false) "Start value of reactive power flowing into the portA, computed by the embedded PF";
-  final parameter Types.ActivePower PStartBPF(fixed = false) "Start value of active power flowing into the portB, computed by the embedded PF";
-  final parameter Types.ReactivePower QStartBPF(fixed = false) "Start value of reactive power flowing into the portB, computed by the embedded PF";
-
-  Types.ComplexVoltage vPF_a "Phase-to-ground voltage phasor of embedded power flow model - portA";
-  Types.ComplexCurrent iPF_a "Line current phasor of embedded power flow model - portA";
-  Types.ComplexVoltage vPF_b "Phase-to-ground voltage phasor of embedded power flow model - portB";
-  Types.ComplexCurrent iPF_b "Line current phasor of embedded power flow model - PortB";
-    
   extends TwoPortACVI(
     redeclare PowerGrids.Interfaces.TerminalAC_a terminalAC_a(
       final computePF = computePF,
@@ -63,6 +28,42 @@ partial model TwoPortACBase "Base class for two-port AC components"
           final UPhaseStart = UPhaseStartB,
           final PStart = PStartB,
           final QStart = QStartB));
+
+  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format" annotation(Dialog(tab = "Visualization"));
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
+  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams" annotation(Dialog(tab = "Visualization"));
+  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true, Dialog(tab = "Visualization"));
+  parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component" annotation(Dialog(tab = "Visualization"));
+  parameter Types.ActivePower PStartA = if computePF then PStartAPF else SNom "Start value of active power flowing into port A" annotation(
+    Dialog(tab = "Initialization", enable = not computePF));
+  parameter Types.ReactivePower QStartA = if computePF then QStartAPF else 0 "Start value of reactive power flowing into port A" annotation(
+    Dialog(tab = "Initialization", enable = not computePF));
+  parameter Types.ActivePower PStartB = if computePF then PStartBPF else -SNom "Start value of active power flowing into port B" annotation(
+    Dialog(tab = "Initialization", enable = not computePF));
+  parameter Types.ReactivePower QStartB = if computePF then QStartBPF else 0 "Start value of reactive power flowing into port B" annotation(
+    Dialog(tab = "Initialization", enable = not computePF));
+
+  final parameter Types.Voltage UStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, absolute value" annotation(
+    Dialog(tab = "Initialization"));
+  final parameter Types.Angle UPhaseStartA(fixed = false) "Start value of phase-to-phase voltage phasor at port A, phase angle" annotation(
+    Dialog(tab = "Initialization"));
+  final parameter Types.Voltage UStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, absolute value" annotation(
+    Dialog(tab = "Initialization"));
+  final parameter Types.Angle UPhaseStartB(fixed = false) "Start value of phase-to-phase voltage phasor at port B, phase angle" annotation(
+    Dialog(tab = "Initialization"));
+  final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
+    Evaluate = true);
+  parameter Boolean hasSubPF = false "= true if the model contains a sub-network with its own embedded PF";
+
+  final parameter Types.ActivePower PStartAPF(fixed = false) "Start value of active power flowing into the portA, computed by the embedded PF";
+  final parameter Types.ReactivePower QStartAPF(fixed = false) "Start value of reactive power flowing into the portA, computed by the embedded PF";
+  final parameter Types.ActivePower PStartBPF(fixed = false) "Start value of active power flowing into the portB, computed by the embedded PF";
+  final parameter Types.ReactivePower QStartBPF(fixed = false) "Start value of reactive power flowing into the portB, computed by the embedded PF";
+
+  Types.ComplexVoltage vPF_a "Phase-to-ground voltage phasor of embedded power flow model - portA";
+  Types.ComplexCurrent iPF_a "Line current phasor of embedded power flow model - portA";
+  Types.ComplexVoltage vPF_b "Phase-to-ground voltage phasor of embedded power flow model - portB";
+  Types.ComplexCurrent iPF_b "Line current phasor of embedded power flow model - PortB";
 
   replaceable TwoPortACPF componentPF if computePF and not hasSubPF "component to be used to compute the embedded PF";
   Types.ComplexPower Sbal = portA.S + portB.S if computePowerBalance "Complex power balance";
