@@ -96,7 +96,7 @@ equation
      Icon(graphics={  
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-184, 17},
+        origin={-174, 17},
         extent={{-76,15},{76,-15}},
         textColor = {28,108,200},
         textString = DynamicSelect("V",
@@ -108,10 +108,10 @@ equation
           else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-184, -17},
+        origin={-156, -17},
         extent={{-76,15},{76,-15}},
         textColor = {0,0,255},
         textString = DynamicSelect("Uph",
-          if port.UPhase > 0 then String(port.UPhase*180/3.14159265359, format = "6.3f")+"°"
-          else String(port.UPhase*180/3.14159265359, format = "6.3f")+"°"))}));
+          if port.UPhase > 0 then String(port.UPhase*180/3.14159265359, format = "4.1f")+"°"
+          else String(port.UPhase*180/3.14159265359, format = "4.1f")+"°"))}));
 end OnePortACBus;
