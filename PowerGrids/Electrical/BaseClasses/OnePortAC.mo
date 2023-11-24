@@ -96,21 +96,15 @@ equation
         origin={0,-145},
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
-        textString = DynamicSelect("P", if (port.P>=0) and showDataOnDiagramsPu then String(port.PPu, format = "6.3f")
-                                        elseif (port.P>=0) and showDataOnDiagramsSI then String(port.P/1e6, format = "6.3f")
-                                        elseif (port.P>=0) then ""
-                                        elseif (port.P<0) and showDataOnDiagramsPu then String(port.PPu, format = "9.3f")
-                                        elseif (port.P<0) and showDataOnDiagramsSI then String(port.P/1e6, format = "6.3f")
+        textString = DynamicSelect("P", if showDataOnDiagramsPu then String(port.PPu, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(port.P/1e6, format = "9.3f")
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={0,-179},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
-        textString = DynamicSelect("Q", if (port.Q>=0) and showDataOnDiagramsPu then String(port.QPu, format = "6.3f")
-                                        elseif (port.Q>=0) and showDataOnDiagramsSI then String(port.Q/1e6, format = "9.3f")
-                                        elseif (port.Q>=0) then ""
-                                        elseif (port.Q<0) and showDataOnDiagramsPu then String(port.QPu, format = "6.3f")
-                                        elseif (port.Q<0) and showDataOnDiagramsSI then String(port.Q/1e6, format = "9.3f")
+        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(port.QPu, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(port.Q/1e6, format = "9.3f")
                                         else ""))}));
 end OnePortAC;

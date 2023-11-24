@@ -100,11 +100,8 @@ equation
         extent={{-76,15},{76,-15}},
         textColor = {28,108,200},
         textString = DynamicSelect("V",
-          if (port.U>=0) and showDataOnDiagramsPu then String(port.VPu, format = "6.3f")
-          elseif (port.U>=0) and showDataOnDiagramsSI then String(port.U/1e3, format = "9.3f")
-          elseif (port.U>=0) then ""
-          elseif (port.U<0) and showDataOnDiagramsPu then String(port.VPu, format = "6.3f")
-          elseif (port.U<0) and showDataOnDiagramsSI then String(port.U/1e3, format = "9.3f")
+          if showDataOnDiagramsPu then String(port.VPu, format = "6.3f")
+          elseif showDataOnDiagramsSI then String(port.U/1e3, format = "9.3f")
           else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
@@ -112,6 +109,7 @@ equation
         extent={{-76,15},{76,-15}},
         textColor = {0,0,255},
         textString = DynamicSelect("Uph",
-          if port.UPhase > 0 then String(port.UPhase*180/3.14159265359, format = "4.1f")+"°"
-          else String(port.UPhase*180/3.14159265359, format = "4.1f")+"°"))}));
+          if showDataOnDiagramsPu or showDataOnDiagramSI
+          then String(port.UPhase*180/3.14159265359, format = "4.1f")+"°"
+          else ""))}));
 end OnePortACBus;
