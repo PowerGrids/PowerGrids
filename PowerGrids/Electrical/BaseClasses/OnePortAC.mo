@@ -104,7 +104,7 @@ equation
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={0,-173},
+        origin={0,-179},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if (port.Q>=0) and showDataOnDiagramsPu then String(port.QPu, significantDigits=dataOnDiagramDigits)
