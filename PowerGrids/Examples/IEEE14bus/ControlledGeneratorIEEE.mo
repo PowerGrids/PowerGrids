@@ -40,6 +40,29 @@ equation
   connect(GEN.omega, omega) annotation(
     Line(points = {{40, 33}, {44, 33}, {44, 20}, {56, 20}}, color = {0, 0, 127}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1, extent = {{-100, -100}, {100, 100}}), graphics = {Text(visible = (showDataOnDiagramsPu or showDataOnDiagramsSI), origin = {0, -144}, textColor = {238, 46, 47}, extent = {{-76, 15}, {76, -15}}, textString = DynamicSelect("P", if ((GEN.port.P >= 0) and showDataOnDiagramsPu) then String(GEN.port.PPu, dataOnDiagramDigits, 0, true) else if ((GEN.port.P >= 0) and showDataOnDiagramsSI) then String((GEN.port.P/1e+06), dataOnDiagramDigits, 0, true) else if (GEN.port.P >= 0) then "" else if ((GEN.port.P < 0) and showDataOnDiagramsPu) then String(GEN.port.PPu, dataOnDiagramDigits, 0, true) else if ((GEN.port.P < 0) and showDataOnDiagramsSI) then String((GEN.port.P/1e+06), dataOnDiagramDigits, 0, true) else "")), Text(visible = (showDataOnDiagramsPu or showDataOnDiagramsSI), origin = {0, -173}, textColor = {217, 67, 180}, extent = {{-76, 15}, {76, -15}}, textString = DynamicSelect("Q", if ((GEN.port.Q >= 0) and showDataOnDiagramsPu) then String(GEN.port.QPu, dataOnDiagramDigits, 0, true) else if ((GEN.port.Q >= 0) and showDataOnDiagramsSI) then String((GEN.port.Q/1e+06), dataOnDiagramDigits, 0, true) else if (GEN.port.Q >= 0) then "" else if ((GEN.port.Q < 0) and showDataOnDiagramsPu) then String(GEN.port.QPu, dataOnDiagramDigits, 0, true) else if ((GEN.port.Q < 0) and showDataOnDiagramsSI) then String((GEN.port.Q/1e+06), dataOnDiagramDigits, 0, true) else "")), Rectangle(origin = {0, -50}, extent = {{-48, 48}, {48, -48}}), Rectangle(origin = {0, -50}, lineThickness = 0.5, extent = {{-50, 50}, {50, -50}})}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1, extent = {{-100, -100}, {100, 100}}),
+     graphics = {
+       Text(visible = (showDataOnDiagramsPu or showDataOnDiagramsSI),
+            origin = {0, -144}, textColor = {238, 46, 47},
+            extent = {{-76, 15}, {76, -15}},
+            textString = DynamicSelect("P",
+              if ((GEN.port.P >= 0) and showDataOnDiagramsPu) then String(GEN.port.PPu, format = "6.3f")
+              else if ((GEN.port.P >= 0) and showDataOnDiagramsSI) then String((GEN.port.P/1e+06), format = "6.3f")
+              else if (GEN.port.P >= 0) then ""
+              else if ((GEN.port.P < 0) and showDataOnDiagramsPu) then String(GEN.port.PPu, format = "6.3f")
+              else if ((GEN.port.P < 0) and showDataOnDiagramsSI) then String((GEN.port.P/1e+06), format = "6.3f")
+              else "")),
+       Text(visible = (showDataOnDiagramsPu or showDataOnDiagramsSI),
+            origin = {0, -173}, textColor = {217, 67, 180},
+            extent = {{-76, 15}, {76, -15}},
+            textString = DynamicSelect("Q",
+              if ((GEN.port.Q >= 0) and showDataOnDiagramsPu) then String(GEN.port.QPu, format = "6.3f")
+              else if ((GEN.port.Q >= 0) and showDataOnDiagramsSI) then String((GEN.port.Q/1e+06), format = "6.3f")
+              else if (GEN.port.Q >= 0) then ""
+              else if ((GEN.port.Q < 0) and showDataOnDiagramsPu) then String(GEN.port.QPu, format = "6.3f")
+              else if ((GEN.port.Q < 0) and showDataOnDiagramsSI) then String((GEN.port.Q/1e+06), format = "6.3f")
+              else "")),
+          Rectangle(origin = {0, -50}, extent = {{-48, 48}, {48, -48}}),
+          Rectangle(origin = {0, -50}, lineThickness = 0.5, extent = {{-50, 50}, {50, -50}})}),
     Diagram(coordinateSystem(extent = {{-100, 120}, {80, -20}}, grid = {0.5, 0.5})));
 end ControlledGeneratorIEEE;
