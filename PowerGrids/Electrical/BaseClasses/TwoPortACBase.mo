@@ -129,10 +129,10 @@ equation
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if (portB.P>=0) and showDataOnDiagramsPu then String(portB.PPu, format = "6.3f")
-                                        elseif (portB.P>=0) and showDataOnDiagramsSI then String(portB.P/1e6, format = "6.3f")
+                                        elseif (portB.P>=0) and showDataOnDiagramsSI then String(portB.P/1e6, format = "9.3f")
                                         elseif (portB.P>=0) then ""
                                         elseif (portB.P<0) and showDataOnDiagramsPu then String(portB.PPu, format = "6.3f")
-                                        elseif (portB.P<0) and showDataOnDiagramsSI then String(portB.P/1e6, format = "6.3f")
+                                        elseif (portB.P<0) and showDataOnDiagramsSI then String(portB.P/1e6, format = "9.3f")
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
@@ -140,9 +140,9 @@ equation
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if (portB.Q>=0) and showDataOnDiagramsPu then String(portB.QPu, format = "6.3f")
-                                        elseif (portB.Q>=0) and showDataOnDiagramsSI then String(portB.Q/1e6, format = "6.3f")
+                                        elseif (portB.Q>=0) and showDataOnDiagramsSI then String(portB.Q/1e6, format = "9.3f")
                                         elseif (portB.Q>=0) then ""
                                         elseif (portB.Q<0) and showDataOnDiagramsPu then String(portB.QPu, format = "6.3f")
-                                        elseif (portB.Q<0) and showDataOnDiagramsSI then String(portB.Q/1e6, format = "6.3f")
+                                        elseif (portB.Q<0) and showDataOnDiagramsSI then String(portB.Q/1e6, format = "9.3f")
                                         else ""))}));
 end TwoPortACBase;

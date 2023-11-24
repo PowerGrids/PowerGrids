@@ -101,10 +101,10 @@ equation
         textColor = {28,108,200},
         textString = DynamicSelect("V",
           if (port.U>=0) and showDataOnDiagramsPu then String(port.VPu, format = "6.3f")
-          elseif (port.U>=0) and showDataOnDiagramsSI then String(port.U/1e3, format = "6.3f")
+          elseif (port.U>=0) and showDataOnDiagramsSI then String(port.U/1e3, format = "9.3f")
           elseif (port.U>=0) then ""
           elseif (port.U<0) and showDataOnDiagramsPu then String(port.VPu, format = "6.3f")
-          elseif (port.U<0) and showDataOnDiagramsSI then String(port.U/1e3, format = "6.3f")
+          elseif (port.U<0) and showDataOnDiagramsSI then String(port.U/1e3, format = "9.3f")
           else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
