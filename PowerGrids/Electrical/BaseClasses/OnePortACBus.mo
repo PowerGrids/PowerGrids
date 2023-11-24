@@ -109,7 +109,7 @@ equation
         extent={{-76,15},{76,-15}},
         textColor = {0,0,255},
         textString = DynamicSelect("Uph",
-          if showDataOnDiagramsPu or showDataOnDiagramSI
+          if showDataOnDiagramsPu or showDataOnDiagramsSI
           then String(port.UPhase*180/3.14159265359, format = "4.1f")+"°"
           else ""))}));
 end OnePortACBus;
