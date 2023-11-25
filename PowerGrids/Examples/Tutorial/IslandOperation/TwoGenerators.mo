@@ -2,9 +2,9 @@ within PowerGrids.Examples.Tutorial.IslandOperation;
 
 model TwoGenerators
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow) annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false) annotation(
     Placement(visible = true, transformation(origin = {130, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV1(UNom = 21000, portVariablesPhases = true, UStart = 20.825e3, UPhaseStart = 9.1746/180*3.14159) annotation(
+  PowerGrids.Electrical.Buses.Bus NTLV1(UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-80, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Buses.ReferenceBus NTHV1(SNom = 5e+08, UNom = 380000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {-20, 20}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
@@ -12,11 +12,11 @@ model TwoGenerators
     Placement(visible = true, transformation(origin = {-50, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN2( R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, portVariablesPhases = true, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {70, 20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN1(UNom = 21e3, SNom = 500e6, GEN(PStart = -450.88e6, QStart = -294.351e6), TGOV(R = 0.05)) annotation(
+  PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN1(UNom = 21e3, SNom = 500e6, TGOV(R = 0.05)) annotation(
     Placement(visible = true, transformation(origin = {-104, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance LINE( R = 10, SNom = 5e+8, UNom = 380000, X = 100, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN2(UNom = 21e3, SNom = 500e6, GEN(PStart = -450.88e6, QStart = -294.351e6), TGOV(R = 0.05)) annotation(
+  PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN2(UNom = 21e3, SNom = 500e6, TGOV(R = 0.05)) annotation(
     Placement(visible = true, transformation(origin = {120, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus NTHV2(UNom = 380000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {40, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -24,7 +24,7 @@ model TwoGenerators
     Placement(visible = true, transformation(origin = {-10, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence GRIDL2(PRefConst = 4.5e+08, QRefConst = 200e6, SNom = 500e6, portVariablesPhases = true, URef = 380000) annotation(
     Placement(visible = true, transformation(origin = {30, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.Bus NTLV2(UNom = 21000, portVariablesPhases = true, UStart = 20.825e3, UPhaseStart = 9.1746/180*3.14159) annotation(
+  PowerGrids.Electrical.Buses.Bus NTLV2(UNom = 21000, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {100, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
 equation
   connect(NTLV1.terminalAC, TGEN1.terminalAC_a) annotation(
