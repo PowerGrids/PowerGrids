@@ -13,7 +13,7 @@ model OneBusImpedanceVariableVoltageOneLoad
   Modelica.Blocks.Sources.Step UPhase(height = 30 / 180 * Modelica.Constants.pi, startTime = 2)  annotation(
     Placement(visible = true, transformation(origin = {-50, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(UPhase.y, bus1.thetaIn) annotation(
+  connect(UPhase.y, bus1.UPhaseIn) annotation(
     Line(points = {{-38, -10}, {-20, -10}, {-20, 6}, {-10, 6}, {-10, 6}}, color = {0, 0, 127}));
   connect(UMod.y, bus1.UIn) annotation(
     Line(points = {{-38, 30}, {-20, 30}, {-20, 14}, {-10, 14}, {-10, 14}}, color = {0, 0, 127}));

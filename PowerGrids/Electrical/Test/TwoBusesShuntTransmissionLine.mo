@@ -2,13 +2,13 @@ within PowerGrids.Electrical.Test;
 
 model TwoBusesShuntTransmissionLine
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBusA(SNom = 1e+07, UNom = 10000, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBusA(SNom = 1e+07, UNom = 10000, UPhase = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {-54, 32}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance transmissionLine(B = 0.01, G = 0.01, R = 1e8, SNom = 1e+07, UNom = 10000, X = 0, portVariablesPhases = true) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBusB(SNom = 1e+07, UNom = 10000, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBusB(SNom = 1e+07, UNom = 10000, UPhase = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));
 equation
   connect(infiniteBusA.terminalAC, transmissionLine.terminalAC_a) annotation(

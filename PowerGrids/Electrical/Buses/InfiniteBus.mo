@@ -6,7 +6,7 @@ model InfiniteBus "Infinite bus with internal impedance"
       SNom = SNom, 
       UNom = UNom,
       URef = URef,
-      theta = theta,
+      UPhase = UPhase,
       R = R,
       X = X));
   extends PowerGrids.Electrical.BaseComponents.InfiniteBusVI(

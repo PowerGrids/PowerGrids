@@ -3,12 +3,12 @@ within PowerGrids.Electrical.BaseComponents;
 partial model InfiniteBusVI
   extends Icons.Bus;
   extends BusBaseVI(
-      e = CM.fromPolar(ERef, theta),
+      e = CM.fromPolar(ERef, UPhase),
       Z = Complex(R, X));
   parameter Types.Resistance R = 0 "Series resistance";
   parameter Types.Reactance X = 0 "Series reactance";
-  parameter Types.Angle theta = 0 "Voltage phase angle of ideal voltage generator";
   parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
+  parameter Types.Angle UPhase = 0 "Voltage phase angle of ideal voltage generator";
   final parameter Types.Voltage ERef = URef/sqrt(3) "Phase-to-ground voltage of ideal voltage generator";
  
   annotation(

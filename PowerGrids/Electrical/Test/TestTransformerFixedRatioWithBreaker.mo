@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Test;
 
 model TestTransformerFixedRatioWithBreaker
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus1(SNom = 1e+07, UNom = 5000, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus1(SNom = 1e+07, UNom = 5000, UPhase = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ(PRefConst = 1e+07, QRefConst = 0, SNom = 1e+07, alpha = 0, beta = 0, portVariablesPhases = true, URef = 10000) annotation(
     Placement(visible = true, transformation(origin = {30, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -12,7 +12,7 @@ model TestTransformerFixedRatioWithBreaker
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.BooleanExpression breakerState(y = time < 2)  annotation(
     Placement(visible = true, transformation(origin = {-30, 28}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus2(SNom = 1e+07, UNom = 10000, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus2(SNom = 1e+07, UNom = 10000, UPhase = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {80, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   Branches.LineConstantImpedance line(R = 0.06, SNom = 1e+7, UNom = 10000, X = 1.5)  annotation(
     Placement(visible = true, transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

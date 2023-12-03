@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Test;
 
 model TestTransformerFixedRatio
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus(SNom = 1e+07, UNom = 5000, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus(SNom = 1e+07, UNom = 5000, UPhase = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ(PRefConst = 1e+07, QRefConst = 0, SNom = 1e+07, alpha = 0, beta = 0, portVariablesPhases = true, URef = 10000) 
   annotation(

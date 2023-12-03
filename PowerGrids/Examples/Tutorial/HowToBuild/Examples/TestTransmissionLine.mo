@@ -14,7 +14,7 @@ model TestTransmissionLine
     Placement(transformation(origin = {-70, -56}, extent = {{-10, -10}, {10, 10}})));
   Electrical.Buses.InfiniteBus bus3(UNom = 1000, SNom = 1e6)  annotation(
     Placement(transformation(origin = {-98, -34}, extent = {{-10, -10}, {10, 10}})));
-  Electrical.Buses.InfiniteBus bus4(UNom = 1000, SNom = 1e6, theta = 0.09948376736367678)  annotation(
+  Electrical.Buses.InfiniteBus bus4(UNom = 1000, SNom = 1e6, UPhase = 0.09948376736367678)  annotation(
     Placement(transformation(origin = {-48, -34}, extent = {{-10, -10}, {10, 10}})));
 equation
   connect(bus1.terminalAC, line1.terminalAC_a) annotation(

@@ -1,38 +1,38 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBusVariableVoltage
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(final hasSubPF, redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(UNom = UNom, SNom = SNom, URef = UFixed, theta = thetaFixed, R = R, X = X));
-  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(e = CM.fromPolar(UAux/sqrt(3), thetaAux), Z = Complex(R, X), redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(final hasSubPF, redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(UNom = UNom, SNom = SNom, URef = UFixed, UPhase = UPhaseFixed, R = R, X = X));
+  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(e = CM.fromPolar(UAux/sqrt(3), UPhaseAux), Z = Complex(R, X), redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Bus;
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
-  parameter Boolean useThetaIn = false "Use external input for source voltage angle" annotation(
+  parameter Boolean usePhaseIn = false "Use external input for source voltage angle" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
   parameter Types.Resistance R = 0 "Series resistance";
   parameter Types.Reactance X = 0 "Series reactance";
   parameter Types.Voltage UFixed = UNom "Fixed source voltage modulus, phase-to-phase, reference Voltage for the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
-  parameter Types.Angle thetaFixed = 0 "Fixed angle of source voltage, reference angle for the embedded PF" annotation(
+  parameter Types.Angle UPhaseFixed = 0 "Fixed angle of source voltage, reference angle for the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
   Modelica.Blocks.Interfaces.RealInput UIn(unit = "V", displayUnit = "kV") if useUIn "Source voltage modulus input, phase-to-phase, V" annotation(
     Placement(visible = true, transformation(origin = {-98, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  Modelica.Blocks.Interfaces.RealInput thetaIn(unit = "rad", displayUnit = "deg") if useThetaIn "Source voltage phase angle input, rad" annotation(
+  Modelica.Blocks.Interfaces.RealInput UPhaseIn(unit = "rad", displayUnit = "deg") if useUPhaseIn "Source voltage phase angle input, rad" annotation(
     Placement(visible = true, transformation(origin = {-98, -26}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
 protected
   // Auxiliary hidden connectors to manage the conditional connectors
   Modelica.Blocks.Interfaces.RealInput UAux "Source voltage modulus, phase-to-phase";
-  Modelica.Blocks.Interfaces.RealInput thetaAux "Source voltage phase angle";
+  Modelica.Blocks.Interfaces.RealInput UPhaseAux "Source voltage phase angle";
 equation
 // Conditional connectors
   connect(UIn, UAux);
   if not useUIn then
     UAux = UFixed;
   end if;
-  connect(thetaIn, thetaAux);
-  if not useThetaIn then
-    thetaAux = thetaFixed;
+  connect(UPhaseIn, UPhaseAux);
+  if not useUPhaseIn then
+    UPhaseAux = UPhaseFixed;
   end if;
   assert(UAux >= 0, "Magnitude must be positive");
 // Overconstrained connector
