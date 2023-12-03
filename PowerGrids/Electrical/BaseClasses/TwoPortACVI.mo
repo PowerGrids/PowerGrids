@@ -7,7 +7,7 @@ partial model TwoPortACVI "Base class for two-port AC components"
     Evaluate = true);
   parameter Types.Power SNom(start = 100e6) "Nominal/rated power, also used as p.u. base" annotation(
     Evaluate = true);
-  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes only" annotation(
+  parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes" annotation(
     Evaluate = true, Dialog(tab = "Visualization"));
   parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component" annotation(Dialog(tab = "Visualization"));
 
