@@ -4,8 +4,6 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   extends Icons.Machine;
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF = true);
-  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
-  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, Mvar)";
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(
     SNom = SNom, UNom = UNom,
     final PPF = 0,
