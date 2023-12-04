@@ -19,7 +19,6 @@ partial model OnePortACBus
 
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));  
-  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams" annotation(Dialog(tab = "Visualization"));  
   parameter LocalInitializationOption localInit = LocalInitializationOption.none "Initialize the component locally in steady state from port start values" annotation(Evaluate = true);
   parameter Types.Voltage UStart = if computePF then UStartPF else UNom "Start value of phase-to-phase voltage phasor, absolute value" annotation(
     Dialog(tab = "Initialization", enable = not computePF));

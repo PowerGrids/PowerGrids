@@ -18,7 +18,6 @@ partial model OnePortAC "Base class for AC components with one port"
 
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
-  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams" annotation(Dialog(tab = "Visualization"));
   parameter LocalInitializationOption localInit = LocalInitializationOption.none "Initialize the component locally in steady state from port start values" annotation(
     Evaluate = true, Dialog(tab = "Initialization"));
   parameter Types.ActivePower PStart = if computePF then PStartPF else SNom "Start value of active power flowing into the port" annotation(

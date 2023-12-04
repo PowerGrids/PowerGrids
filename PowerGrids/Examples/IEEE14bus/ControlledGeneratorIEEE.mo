@@ -5,7 +5,6 @@ model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(final hasSubPF = true);
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in multiple of SI (kV, MW, Mvar)";
-  parameter Integer dataOnDiagramDigits = systemPowerGrids.dataOnDiagramDigits "number of digits for data on diagrams";
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(SNom = SNom, UNom = UNom, portVariablesPhases = true) annotation(
     Placement(transformation(origin = {34, 32}, extent = {{-10, 10}, {10, -10}})));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart/GEN.UNom, VrMax = 5, VrMin = -5) annotation(
