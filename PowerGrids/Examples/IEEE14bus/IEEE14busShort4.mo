@@ -16,7 +16,7 @@ equation
     Line(points = {{114, -40}, {154, -40}, {154, -50}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
-    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5}, initialScale = 0.1)),
+    Diagram(coordinateSystem(extent = {{-200, 120}, {200, -120}}, grid = {0.5, 0.5}, initialScale = 0.1)),
     experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.04),
   __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing");
 end IEEE14busShort4;
