@@ -90,7 +90,7 @@ equation
   annotation (
      experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(nls="kinsol", lv="LOG_INIT_HOMOTOPY"),
+    __OpenModelica_simulationFlags(lv="LOG_INIT_HOMOTOPY"),
     Diagram(coordinateSystem(extent={{-120,-100},{120,80}},      grid={2,2}),        graphics={Text(origin = {100.5, 28}, extent = {{-33, 4}, {17, -6}}, textString = "generator parameters:
 time constant"), Text(origin = {108.5, -58}, extent = {{-37, 4}, {5, -16}}, textString = "generator parameters:
 physical"), Text(origin = {118.5, -12}, extent = {{-49, 4}, {-3, -26}}, textString = "generator parameters:
