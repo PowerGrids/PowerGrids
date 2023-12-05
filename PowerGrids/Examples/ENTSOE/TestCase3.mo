@@ -23,11 +23,11 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 475/500*0.05) annotation(
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom = 500000000, UNom = 380000, URef = 1.05*380e3, portVariablesPhases = true) annotation(
-    Placement(visible = true, transformation(origin = {110, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {90, -50}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1/10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050*380e3, portVariablesPhases = true) annotation(
-    Placement(visible = true, transformation(origin = {110, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {90, -10}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Faults.ThreePhaseFault FAULT(R = 0.05, SNom = 5e+08, UNom = 380000, X = 0, portVariablesPhases = true, startTime = 0.1, stopTime = 0.2) annotation(
-    Placement(visible = true, transformation(origin = {132, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {112, -50}, extent = {{-10, -10}, {10, 10}})));
   Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.7, terminal voltage";
   Types.PerUnit AA_02_GEN_efd = GEN.ufPuIn "Fig. 5.8, excitation voltage";
   Types.PerUnit AA_03_GEN_Ppu = GEN.port.PGenPu/0.95 "Fig. 5.9, active power of the synchronous machine";
@@ -40,9 +40,9 @@ equation
   connect(VrefPu.y, AVR.VrefPu) annotation(
     Line(points = {{-88.8, -31}, {-89.3, -31}, {-89.3, -31}, {-85.8, -31}, {-85.8, -18}, {-79.8, -18}, {-79.8, -18}, {-71.8, -18}}, color = {0, 0, 127}));
   connect(GEN.PPu, PSS.Vsi2Pu) annotation(
-    Line(points = {{-20, 5}, {0, 5}, {0, 56}, {-130, 56}, {-130, -6}, {-108, -6}}, color = {0, 0, 127}));
+    Line(points = {{-20, 5}, {0, 5}, {0, 56}, {-128, 56}, {-128, -6}, {-108, -6}}, color = {0, 0, 127}));
   connect(GEN.VPu, AVR.VcPu) annotation(
-    Line(points = {{-20, 7}, {10, 7}, {10, 66}, {-138, 66}, {-138, -14}, {-72, -14}}, color = {0, 0, 127}));
+    Line(points = {{-20, 7}, {10, 7}, {10, 66}, {-134, 66}, {-134, -14}, {-72, -14}}, color = {0, 0, 127}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-87, 24}, {-72, 24}}, color = {0, 0, 127}));
   connect(zero.y, AVR.VuelPu) annotation(
@@ -62,13 +62,13 @@ equation
   connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-26, 0}, {-26, -20}, {24, -20}}));
   connect(TGEN.terminalAC_b, GRID.terminalAC) annotation(
-    Line(points = {{64, -20}, {110, -20}, {110, -10}}));
+    Line(points = {{64, -20}, {90, -20}, {90, -10}, {90, -10}}));
   connect(GRIDL.terminalAC, GRID.terminalAC) annotation(
-    Line(points = {{110, -50}, {110, -10}}));
+    Line(points = {{90, -50}, {90, -10}}));
   connect(FAULT.terminalAC, GRID.terminalAC) annotation(
-    Line(points = {{132, -50}, {132, -20}, {110, -20}, {110, -10}}));
+    Line(points = {{112, -50}, {112, -20}, {90, -20}, {90, -10}}));
   annotation(
-    Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),
+    Diagram(coordinateSystem(extent = {{-140, 80}, {140, -80}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(nls = "kinsol", lv = "LOG_INIT_HOMOTOPY", homotopyOnFirstTry = "()"));
