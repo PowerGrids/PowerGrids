@@ -3,7 +3,7 @@ within PowerGrids.Examples.ENTSOE;
 model TestCase1 "Test Case 1, Section 5.1, focuses on the dynamic behavior of the model for the synchronous generator machine and its AVR"
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(computePF = false) annotation(
-    Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(transformation(origin = {42, 62}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
     Placement(transformation(origin = {-26, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.ReferenceBus NTLV(SNom = 5e+08, UNom = 21000) annotation(
@@ -26,7 +26,7 @@ equation
   connect(GEN.PPu, PSS.Vsi2Pu) annotation(
     Line(points = {{-20, 5}, {0, 5}, {0, 56}, {-130, 56}, {-130, -6}, {-108, -6}}, color = {0, 0, 127}));
   connect(GEN.VPu, AVR.VcPu) annotation(
-    Line(points = {{-20, 7}, {10, 7}, {10, 66}, {-138, 66}, {-138, -14}, {-72, -14}}, color = {0, 0, 127}));
+    Line(points = {{-20, 7}, {10, 7}, {10, 64}, {-138, 64}, {-138, -14}, {-72, -14}}, color = {0, 0, 127}));
   connect(RefLPu.y, TGOV.RefLPu) annotation(
     Line(points = {{-87, 24}, {-72, 24}}, color = {0, 0, 127}));
   connect(VrefPu.y, AVR.VrefPu) annotation(
@@ -46,7 +46,7 @@ equation
   connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-26, 0}, {-26, -20}, {24, -20}}));
   annotation(
-    Diagram(coordinateSystem(extent = {{-180, -100}, {180, 100}})),
+    Diagram(coordinateSystem(extent = {{-160, 80}, {60, -60}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     __OpenModelica_simulationFlags(nls = "kinsol", lv = "LOG_INIT_HOMOTOPY", homotopyOnFirstTry = "()"));

@@ -3,7 +3,7 @@ within PowerGrids.Examples.ENTSOE;
 model PowerFlow
   extends Modelica.Icons.Example;
   inner Electrical.System systemPowerGrids annotation(
-    Placement(transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}})));
+    Placement(transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.PowerFlow.PVBus GEN(UNom = 21000, SNom = 500000000, P = -475000000)  annotation(
     Placement(transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.BusPF NTLV(UNom = 21000)  annotation(
@@ -13,7 +13,7 @@ model PowerFlow
   Electrical.PowerFlow.SlackBus GRID(UNom = 380000, SNom = 500000000, U = 1.05*380e3)  annotation(
     Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));
   Electrical.PowerFlow.PQBus GRIDL(UNom = 380000, SNom = 500000000, P = 475000000, Q = 76000000)  annotation(
-    Placement(transformation(origin = {50, -28}, extent = {{-10, -10}, {10, 10}})));equation
+    Placement(transformation(origin = {50, -30}, extent = {{-10, -10}, {10, 10}})));equation
   connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-30, 0}, {-30, -20}, {0, -20}}));
   connect(NTLV.terminalAC, TGEN.terminalAC_a) annotation(
@@ -21,5 +21,7 @@ model PowerFlow
   connect(TGEN.terminalAC_b, GRID.terminalAC) annotation(
     Line(points = {{30, -20}, {50, -20}, {50, 0}}));
   connect(GRIDL.terminalAC, GRID.terminalAC) annotation(
-    Line(points = {{50, -28}, {50, 0}}));
+    Line(points = {{50, -30}, {50, 0}}));
+annotation(
+    Diagram(coordinateSystem(extent = {{-40, 60}, {80, -60}})));
 end PowerFlow;
