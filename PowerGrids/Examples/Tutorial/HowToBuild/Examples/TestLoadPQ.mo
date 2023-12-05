@@ -12,7 +12,7 @@ model TestLoadPQ
     Placement(transformation(origin = {-44, 20}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression P(y = 1e6)  annotation(
     Placement(transformation(origin = {-106, -16}, extent = {{-10, -10}, {10, 10}})));
-  Components.LoadPQ LOAD2(UNom = 1000, SNom = 1e6, PStart = 0, QStart = 1e6, PPF = 0, QPF = 1e6)  annotation(
+  Components.LoadPQ LOAD2(UNom = 1000, SNom = 1e6, PPF = 0, QPF = 1e6)  annotation(
     Placement(transformation(origin = {-10, -12}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression Q(y = 1e6)  annotation(
     Placement(transformation(origin = {-44, -36}, extent = {{-10, -10}, {10, 10}})));
