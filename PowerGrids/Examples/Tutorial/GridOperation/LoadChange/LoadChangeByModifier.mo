@@ -34,7 +34,7 @@ equation
   annotation(
     experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.008),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(nls = "kinsol", lv = "LOG_INIT_HOMOTOPY"),
+    __OpenModelica_simulationFlags(lv = "LOG_INIT_HOMOTOPY"),
     Diagram(coordinateSystem(extent = {{-80, -60}, {80, 40}}), graphics = {Text(origin = {-2.2, -48}, extent = {{-59.8, 8}, {70.2, -12}}, textString = "To see load change in OpenModelica look at text view")}),
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, grid = {2, 2})));
 end LoadChangeByModifier;
