@@ -7,7 +7,7 @@ model InfiniteBusVariableVoltage
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
-  parameter Boolean usePhaseIn = false "Use external input for source voltage angle" annotation(
+  parameter Boolean useUPhaseIn = false "Use external input for source voltage angle" annotation(
     Dialog(group = "external inputs"),
     choices(checkBox = true));
   parameter Types.Resistance R = 0 "Series resistance";
