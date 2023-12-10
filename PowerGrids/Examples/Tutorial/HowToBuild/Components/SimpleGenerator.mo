@@ -3,7 +3,7 @@ within PowerGrids.Examples.Tutorial.HowToBuild.Components;
 model SimpleGenerator
   import Modelica.ComplexMath;
   extends PowerGrids.Icons.Machine;  
-  extends PowerGrids.Electrical.BaseClasses.OnePortACdqPU(
+  extends PowerGrids.Electrical.BaseClasses.OnePortACdqPu(
     redeclare PowerGrids.Electrical.PowerFlow.PVBus componentPF(
       UNom = UNom,
       SNom = SNom,

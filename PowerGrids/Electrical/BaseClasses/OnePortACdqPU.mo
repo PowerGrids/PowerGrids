@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseClasses;
 
-partial model OnePortACdqPU "Base class for one-port AC components with p.u. Park's transformation"
+partial model OnePortACdqPu "Base class for one-port AC components with p.u. Park's transformation"
   extends OnePortAC;
 
   parameter SI.Angle thetaStart = UPhaseStart "Start value of rotation between machine rotor frame and port phasor frame" annotation(Dialog(tab="Initialization"));
@@ -35,4 +35,5 @@ equation
 annotation(
     Documentation(info = "<html>
 This model provides a base class for all one-port AC components that use Park's transformation with per-unit currents and voltages.
-</html>"));end OnePortACdqPU;
+</html>"));
+end OnePortACdqPu;
