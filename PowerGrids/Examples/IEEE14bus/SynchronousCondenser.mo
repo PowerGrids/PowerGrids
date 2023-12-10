@@ -7,8 +7,7 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(
     SNom = SNom, UNom = UNom,
     final PPF = 0,
-    final PStart = 0,
-    portVariablesPhases = true) annotation(
+    final PStart = 0) annotation(
     Placement(transformation(origin = {-26, -18}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart/GEN.UNom, VrMax = 5, VrMin = -5) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

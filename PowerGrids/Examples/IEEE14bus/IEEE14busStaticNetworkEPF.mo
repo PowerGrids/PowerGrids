@@ -83,7 +83,6 @@ model IEEE14busStaticNetworkEPF
 
 // Lines
   PowerGrids.Electrical.Branches.LineConstantImpedance L1to2(
-    portVariablesPhases = true,
     R = 0.922682, 
     X = 2.81708, 
     G = 0, 
@@ -93,7 +92,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-132, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedanceWithBreakers L1to5(
-    portVariablesPhases = true,
     R = 2.57237, 
     X = 10.6189, 
     G = 0, 
@@ -103,7 +101,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L2to3(
-    portVariablesPhases = true,
     R = 2.23719, 
     X = 9.42535, 
     G = 0, 
@@ -113,7 +110,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {0, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L2to4(
-    portVariablesPhases = true,
     R = 2.76662, 
     X = 8.3946, 
     G = 0, 
@@ -123,7 +119,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {40, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L2to5(
-    portVariablesPhases = true,
     R = 2.71139, 
     X = 8.27843, 
     G = 0, 
@@ -133,7 +128,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, -60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L3to4(
-    portVariablesPhases = true,
     R = 3.19035, 
     X = 8.14274, 
     G = 0, 
@@ -143,7 +137,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -60}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L4to5(
-    portVariablesPhases = true,
     R = 0.635593, 
     X = 2.00486, 
     G = 0, 
@@ -153,7 +146,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {40, -52}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L6to11(
-    portVariablesPhases = true,
     R = 0.18088, 
     X = 0.378785, 
     G = 0, 
@@ -164,7 +156,6 @@ model IEEE14busStaticNetworkEPF
     Placement(visible = true, transformation(origin = {-10, 20}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L6to12(
     R = 0.23407, 
-    portVariablesPhases = true,
     X = 0.487165, 
     G = 0, 
     B = 0, 
@@ -173,7 +164,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, 60}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L6to13(
-    portVariablesPhases = true,
     R = 0.125976, 
     X = 0.248086, 
     G = 0, 
@@ -183,7 +173,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 62}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L7to8(
-    portVariablesPhases = true,
     R = 0, 
     X = 0.33546, 
     G = 0, 
@@ -193,7 +182,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {140, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L7to9(
-    portVariablesPhases = true,
     R = 0, 
     X = 0.209503, 
     G = 0, 
@@ -203,7 +191,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {114, 20}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L9to10(
-    portVariablesPhases = true,
     R = 0.060579, 
     X = 0.160922, 
     G = 0, 
@@ -213,7 +200,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {60, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L9to14(
-    portVariablesPhases = true,
     R = 0.242068, 
     X = 0.514912, 
     G = 0, 
@@ -223,7 +209,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {70, 72}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L10to11(
-    portVariablesPhases = true,
     R = 0.156256, 
     X = 0.365778, 
     G = 0, 
@@ -233,7 +218,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {20, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L12to13(
-    portVariablesPhases = true,
     R = 0.42072, 
     X = 0.380651, 
     G = 0, 
@@ -243,7 +227,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, 74}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.LineConstantImpedance L13to14(
-    portVariablesPhases = true,
     R = 0.325519, 
     X = 0.662763, 
     G = 0, 
@@ -394,7 +377,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen1(
-    portVariablesPhases = true,
     R = 0, 
     X = 0.393146, 
     B = 0,
@@ -405,7 +387,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker Tgen2(
-    portVariablesPhases = true,
     R = 0, 
     X = 0.425089, 
     B = 0,
@@ -416,7 +397,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen3(
-    portVariablesPhases = true,
     R = 0, 
     X = 0.288545, 
     B = 0,
@@ -427,7 +407,6 @@ model IEEE14busStaticNetworkEPF
   ) annotation(
     Placement(visible = true, transformation(origin = {150, -90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen8(
-    portVariablesPhases = true,
     R = 0, 
     X = 0.076176, 
     B = 0,

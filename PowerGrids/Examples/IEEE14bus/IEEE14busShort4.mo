@@ -7,7 +7,6 @@ model IEEE14busShort4 "Bus 4 shorted to ground in the time interval [1, 1.2] sec
     SNom=100000000,
     UNom=69000,
     X=0,
-    portVariablesPhases=true,
     startTime=1,
     stopTime=1.2) annotation(
     Placement(visible = true, transformation(origin = {154, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

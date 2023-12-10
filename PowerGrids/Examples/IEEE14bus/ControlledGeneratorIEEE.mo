@@ -3,7 +3,7 @@ within PowerGrids.Examples.IEEE14bus;
 model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus benchmark - synchronous machine with proportional regulations"
   extends Icons.Machine;
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(final hasSubPF = true);
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(SNom = SNom, UNom = UNom, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(SNom = SNom, UNom = UNom) annotation(
     Placement(transformation(origin = {34, 32}, extent = {{-10, 10}, {10, -10}})));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart/GEN.UNom, VrMax = 5, VrMin = -5) annotation(
     Placement(transformation(origin = {-10, 30}, extent = {{-10, -10}, {10, 10}})));

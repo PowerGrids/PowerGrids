@@ -22,11 +22,11 @@ model TestCase3 "Test Case 3, Section 5.3, focuses on the dynamic behavior of th
     Placement(visible = true, transformation(origin = {-102, -31}, extent = {{-12, -11}, {12, 11}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 475/500*0.05) annotation(
     Placement(visible = true, transformation(origin = {-98, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom = 500000000, UNom = 380000, URef = 1.05*380e3, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQ GRIDL(PRef = 4.75e+08, QRef = 7.6e+07, SNom = 500000000, UNom = 380000, URef = 1.05*380e3) annotation(
     Placement(transformation(origin = {90, -50}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1/10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050*380e3, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1/10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050*380e3) annotation(
     Placement(transformation(origin = {90, -10}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Faults.ThreePhaseFault FAULT(R = 0.05, SNom = 5e+08, UNom = 380000, X = 0, portVariablesPhases = true, startTime = 0.1, stopTime = 0.2) annotation(
+  PowerGrids.Electrical.Faults.ThreePhaseFault FAULT(R = 0.05, SNom = 5e+08, UNom = 380000, X = 0, startTime = 0.1, stopTime = 0.2) annotation(
     Placement(transformation(origin = {112, -50}, extent = {{-10, -10}, {10, 10}})));
   Types.PerUnit AA_01_GEN_Upu = GEN.port.VPu "Fig. 5.7, terminal voltage";
   Types.PerUnit AA_02_GEN_efd = GEN.ufPuIn "Fig. 5.8, excitation voltage";
