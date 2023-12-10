@@ -8,6 +8,8 @@ model System "System object"
   parameter Boolean showDataOnDiagramsSI = false "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(group = "Visualization"));
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads shall work as a fixed-impedances at low-voltage conditions" annotation(Evaluate = true);
   parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes" annotation(Evaluate = true, Dialog(group = "Visualization"));
+  parameter Boolean computePowerBalance = true "Compute net balance of complex power entering two-port components" annotation(Dialog(group = "Visualization"));
+
   final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
 
 annotation (

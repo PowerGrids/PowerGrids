@@ -9,7 +9,7 @@ partial model TwoPortACVI "Base class for two-port AC components"
     Evaluate = true);
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes" annotation(
     Evaluate = true, Dialog(tab = "Visualization"));
-  parameter Boolean computePowerBalance = true "Compute net balance of complex power entering the component" annotation(Dialog(tab = "Visualization"));
+  parameter Boolean computePowerBalance = systemPowerGrids.computePowerBalance "Compute net balance of complex power entering the component" annotation(Dialog(tab = "Visualization"));
 
   replaceable PowerGrids.Interfaces.TerminalACVI terminalAC_a annotation(
     Placement(visible = true, transformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
