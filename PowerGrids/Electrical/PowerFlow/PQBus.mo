@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.PowerFlow;
 
 model PQBus "PQ bus"
-  extends BaseClasses.OnePortACPF(portVariablesPhases = true);
+  extends BaseClasses.OnePortACPF(final portVariablesPhases = true);
   extends Icons.Load;
   parameter Types.ActivePower P = SNom "Active power entering the bus";
   parameter Types.ReactivePower Q = 0 "Reactive power entering the bus";
