@@ -2,6 +2,7 @@ within PowerGrids.Electrical.Buses;
 
 model EquivalentGrid "Equivalent grid model characterized by short circuit capacity"
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    generatorConvention = true,
     final hasSubPF,
     redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(
       SNom = SNom, 
@@ -9,6 +10,7 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
       U = URef,
       UPhase = UPhaseRef));
   extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
+    generatorConvention = true,
     e = eSource,
     Z = ZGrid,
     redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);

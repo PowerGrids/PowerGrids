@@ -5,13 +5,13 @@ model TestEquivalentGrid "Test case EquivalentGrid model"
   import Modelica.ComplexMath;
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {34, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.InfiniteBus voltageSource( SNom = 5e+08, UNom = 380000, URef = 380000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus voltageSource( SNom = 5e+08, UNom = 380000, URef = 380000) annotation(
     Placement(visible = true, transformation(origin = {40, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance equivalentLine(R = 6.32207, SNom = 5e+08, UNom = 380000, X = 63.2207, portVariablesPhases = true)  annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance equivalentLine(R = 6.32207, SNom = 5e+08, UNom = 380000, X = 63.2207)  annotation(
     Placement(visible = true, transformation(origin = {10, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.EquivalentGrid equivalentGrid(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050 * 380e3, portVariablesPhases = true)  annotation(
+  PowerGrids.Electrical.Buses.EquivalentGrid equivalentGrid(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.050 * 380e3)  annotation(
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Loads.LoadPQVoltageDependence load(PRefConst = 1e+07, QRefConst = 2e+07, SNom = 5e+08, portVariablesPhases = true, URef = 380000)  annotation(
+  Loads.LoadPQVoltageDependence load(PRefConst = 1e+07, QRefConst = 2e+07, SNom = 5e+08, URef = 380000)  annotation(
     Placement(visible = true, transformation(origin = {-20, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus busLine(UNom = 380000)  annotation(
     Placement(visible = true, transformation(origin = {-20, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

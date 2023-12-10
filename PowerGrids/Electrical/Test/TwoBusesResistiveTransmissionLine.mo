@@ -6,7 +6,7 @@ model TwoBusesResistiveTransmissionLine
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.LineConstantImpedance transmissionLine(R = 1, SNom = 1e+07, UNom = 10000, X = 0, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Branches.LineConstantImpedance transmissionLine(R = 1, SNom = 1e+07, UNom = 10000, X = 0) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.InfiniteBus infiniteBusB(SNom = 1e+07, UNom = 9000, UPhase = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {38, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -90)));

@@ -1,8 +1,16 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBusVariableVoltage
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(final hasSubPF, redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(UNom = UNom, SNom = SNom, URef = UFixed, UPhase = UPhaseFixed, R = R, X = X));
-  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(e = CM.fromPolar(UAux/sqrt(3), UPhaseAux), Z = Complex(R, X), redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
+  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+    final hasSubPF,
+    generatorConvention = true,
+    redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
+      UNom = UNom, SNom = SNom, URef = UFixed, UPhase = UPhaseFixed, R = R, X = X));
+  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
+    generatorConvention = true,
+    e = CM.fromPolar(UAux/sqrt(3), UPhaseAux),
+    Z = Complex(R, X),
+    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
   extends Icons.Bus;
   parameter Boolean useUIn = false "Use external input for source voltage magnitude" annotation(
     Dialog(group = "external inputs"),
