@@ -10,7 +10,8 @@ model SimpleGenerator
       P = PPF,
       U = UPF),
     final generatorConvention = true, 
-    final hasSubPF);
+    final hasSubPF,
+    final localInit);
   
   outer Electrical.System systemPowerGrids "reference to global system setup object";
   parameter Types.Power PNom "Nominal active power";

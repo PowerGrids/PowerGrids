@@ -5,7 +5,8 @@ model LoadPQ "Load model with prescribed P and Q values"
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
       SNom = SNom, UNom = UNom, P = PPF, Q = QPF),
-    final hasSubPF);
+    final hasSubPF,
+    final localInit);
   parameter Types.ActivePower PPF = SNom "Initial active power to compute the embedded PF (positive entering)" annotation(Dialog(tab = "Initialization", enable = computePF));
   parameter Types.ActivePower QPF = 0 "Initial reactive power to compute the embedded PF (positive entering)" annotation(Dialog(tab = "Initialization", enable = computePF));
 
