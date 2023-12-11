@@ -3,6 +3,7 @@ model InfiniteBus "Infinite bus with internal impedance"
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
     generatorConvention = true,
     final hasSubPF,
+    final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
       SNom = SNom, 
       UNom = UNom,

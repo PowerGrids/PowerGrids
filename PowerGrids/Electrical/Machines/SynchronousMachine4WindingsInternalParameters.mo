@@ -3,7 +3,7 @@ within PowerGrids.Electrical.Machines;
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
   extends BaseClasses.OnePortACdqPu(
     final generatorConvention = true, 
-    localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
+    final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
     final hasSubPF,
     PStart = if computePF then PStartPF else -SNom,
     redeclare PowerGrids.Electrical.PowerFlow.PVBus componentPF(

@@ -6,6 +6,7 @@ model Bus "Bus model"
     final PStart = 0,
     final QStart = 0,
     final hasSubPF,
+    final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
       UNom = UNom));
   extends Icons.Bus;

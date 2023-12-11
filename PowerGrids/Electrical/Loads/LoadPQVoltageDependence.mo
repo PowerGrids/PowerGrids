@@ -7,6 +7,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
     UNom = URef,
     SNom = sqrt(PRefConst^2+QRefConst^2),
     final hasSubPF,
+    final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
       SNom = SNom,
       UNom = UNom,

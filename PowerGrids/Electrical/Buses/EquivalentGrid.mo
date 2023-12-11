@@ -4,6 +4,7 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
     generatorConvention = true,
     final hasSubPF,
+    final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(
       SNom = SNom, 
       UNom = UNom,
