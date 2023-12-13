@@ -7,6 +7,7 @@ equation
   connect(BreakerStatus.y, transmissionLine2.breakerStatusA) annotation(
     Line(points = {{22, 10}, {22, 10}, {22, 2}, {24, 2}}, color = {255, 0, 255}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StopTime = 20, Interval = 0.04, StartTime = 0, Tolerance = 1e-06),

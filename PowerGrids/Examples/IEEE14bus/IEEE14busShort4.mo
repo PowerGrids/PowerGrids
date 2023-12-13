@@ -14,8 +14,8 @@ equation
   connect(bus4.terminalAC, FAULT4.terminalAC) annotation(
     Line(points = {{114, -40}, {154, -40}, {154, -50}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, 120}, {200, -120}}, grid = {0.5, 0.5}, initialScale = 0.1)),
-    experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.04),
-  __OpenModelica_commandLineOptions = "--tearingMethod=minimalTearing");
+    experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.04));
 end IEEE14busShort4;

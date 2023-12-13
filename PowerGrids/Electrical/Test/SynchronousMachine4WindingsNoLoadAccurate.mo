@@ -20,6 +20,7 @@ equation
   connect(bus.terminalAC, machine.terminalAC) annotation(
     Line(points = {{0, 20}, {0, -10}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.02),
     __OpenModelica_simulationFlags(homotopyOnFirstTry = "()"),
     Documentation(info = "<html><head></head><body><p>This test case validates the NoLoad choice of base excitation voltage of the SynchronousMachine4Windings model.</p>

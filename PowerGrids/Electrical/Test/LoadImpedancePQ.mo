@@ -32,6 +32,7 @@ equation
   connect(infiniteBus1.terminalAC, load1.terminalAC) annotation(
     Line(points = {{-70, 0}, {-71, 0}, {-71, 0}, {-68, 0}, {-68, -20}, {-68, -20}, {-68, -20}, {-70, -20}, {-70, -20}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Documentation(info = "<html><head></head><body><p>Test case for <a href=\"modelica://PowerGrids.Electrical.Loads.LoadImpedancePQ\">Electrical.Loads.LoadImpedancePQ</a>.</p>
 <p>A load with reference voltage 400 kV is connected to an infinite bus with the same voltage. The impedance Z is computed so as to obtain the required values of P = 80 MW and Q = 40 MVA in the reference conditions.</p>
 </body></html>"),

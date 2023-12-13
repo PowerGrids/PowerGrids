@@ -29,6 +29,6 @@ equation
   annotation(
     Diagram,
     Icon,
-    __OpenModelica_commandLineOptions = "",
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
   Documentation(info = "<html><head></head><body><p>This model tests the&nbsp;<a href=\"modelica://PowerGrids.Electrical.Buses.EquivalentGrid\">Electrical.Buses.EquivalentGrid</a>&nbsp;model. The internal voltage source is initialized to provide the required initial modulus and phase of the port voltage.</p><p>The equivalent grid model computes an internal impedance of 6.323+j*63.23 Ohm, corresponding to a short circuit power SSC of 2272 MVA, which gives the rated 2500 MVA.</p><p>This verification is carried out by the equivalent circuit in the lower part of the diagram.</p></body></html>"));
 end TestEquivalentGrid;

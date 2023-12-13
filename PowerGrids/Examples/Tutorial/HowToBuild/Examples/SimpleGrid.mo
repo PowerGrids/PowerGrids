@@ -38,6 +38,5 @@ equation
   annotation(
     Diagram(coordinateSystem(extent = {{-120, 60}, {60, -80}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-06, Interval = 0.004),
-    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(lv = "LOG_INIT_HOMOTOPY", homotopyOnFirstTry = "()"));
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing");
 end SimpleGrid;

@@ -16,6 +16,7 @@ equation
   connect(transmissionLine.terminalAC_b, infiniteBusB.terminalAC) annotation(
     Line(points = {{10, 0}, {40, 0}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StopTime = 1, Interval = 0.02),

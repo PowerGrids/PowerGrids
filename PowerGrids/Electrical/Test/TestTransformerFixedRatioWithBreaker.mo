@@ -32,6 +32,7 @@ equation
   connect(transformerBus.terminalAC, line.terminalAC_a) annotation(
     Line(points = {{10, 0}, {40, 0}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StopTime = 4, Interval = 0.08, StartTime = 0, Tolerance = 1e-6),

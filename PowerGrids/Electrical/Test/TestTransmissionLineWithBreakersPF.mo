@@ -104,6 +104,7 @@ equation
   connect(CloseCommand.y, LineAoBo.breakerStatusB) annotation(
     Line(points = {{-90, 60}, {-90, -46}, {-32, -46}, {-32, -58}}, color = {255, 0, 255}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StopTime = 1, Interval = 0.02),

@@ -30,6 +30,7 @@ equation
   connect(bus1.terminalAC, load1.terminalAC) annotation(
     Line(points = {{-48, 10}, {-48, 5}, {-50, 5}, {-50, 0}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StopTime = 3.0, Interval = 0.01),
     Documentation(info = "<html><head></head><body><p>This model demonstrates both ways of implementing a time-varying load.</p>
 The model is similar to <a href=\"modelica://PowerGrids.Electrical.Test.OneBusImpedanceOneLoad\">OneBusImpedanceOneLoad</a>, except that the active power P of the load is increased from 10 MW to 20 MW at time = 1 and the reactive power is increased from 0 to 30 MW at time = 2.<p></p>

@@ -20,6 +20,7 @@ equation
   connect(bus.terminalAC, machine.terminalAC) annotation(
     Line(points = {{0, 20}, {0, -10}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-06, Interval = 0.02),
     Documentation(info = "<html><head></head><body><p>Test case for the conversion of external parameter to internal parameters taken from Kundur, Power System Stability and Control, example 4.1. Note that the system frequency for this example is 60 Hz.</p>
 <p>The machine is directly connected to an ideal bus with UNom = 24 kV and phase = 0 and initialized in steady-state with PmPu = 0.9, ufPu = 0.000939, using the Kundur base excitation voltage.</p>

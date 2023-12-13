@@ -48,8 +48,8 @@ equation
   connect(NTLV2.terminalAC, GEN2.terminalAC) annotation(
     Line(points = {{100, 0}, {122, 0}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-160, -100}, {160, 100}}, grid = {0.5, 0.5})),
-    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.002),
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", outputFormat = "mat", s = "dassl"));
+    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.002));
 end PowerFlow;

@@ -70,6 +70,5 @@ equation
   annotation(
     Diagram(coordinateSystem(extent = {{-140, 80}, {140, -80}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
-    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(lv = "LOG_INIT_HOMOTOPY", homotopyOnFirstTry = "()"));
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing");
 end TestCase3;

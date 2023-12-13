@@ -23,5 +23,7 @@ model PowerFlow
   connect(GRIDL.terminalAC, GRID.terminalAC) annotation(
     Line(points = {{50, -30}, {50, 0}}));
 annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
+    experiment(StopTime = 1),
     Diagram(coordinateSystem(extent = {{-40, 60}, {80, -60}})));
 end PowerFlow;

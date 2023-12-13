@@ -20,10 +20,10 @@ equation
   connect(infiniteBus.terminalAC, trafo.terminalAC_a) annotation(
     Line(points = {{-30, 0}, {-10, 0}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StartTime = 0, StopTime = 80, Tolerance = 1e-06, Interval = 0.16),
-    __OpenModelica_simulationFlags(lv = "LOG_STATS", s = "dassl", emit_protected = "()"),
   Documentation(info = "<html><head></head><body><span style=\"font-size: 12px;\">This model demonstrates the correct behaviour of a transformer with a tap-changer logic of type MAX.</span><div><span style=\"font-size: 12px;\"><br></span></div><div><span style=\"font-size: 12px;\">The test circuit is composed by a transformer whth a simple linear load. The transformer is supplied by an ideal infinte bus with variable voltage.&nbsp;</span><span style=\"font-size: 12px;\">The linear load is obtained using a real bus with fixed voltage, the internal impedance of the bus is used as linear load.</span></div><div><span style=\"font-size: 12px;\"><br></span></div><div><span style=\"font-size: 12px;\">The voltage applied at the transformer primary input has sinusoidal shape, the tap-changer logic follows the shape of said voltage.&nbsp;</span><span style=\"font-size: 12px;\">The tap position starts to decrease when the monitored voltage portB.U becomes higher than UMax threshold, and stops when said monitored voltage reaches and stays under the UStop threshold.</span></div><div><span style=\"font-size: 12px;\"><br></span></div><div><span style=\"font-size: 12px;\">Values of voltages and and transformer ratio for each tap position are not realistic, they are just to show the tap changer logic behaviour.</span></div><div><span style=\"font-size: 12px;\"><figure>
  <img src=\"modelica://PowerGrids/Resources/Images/Branches/TestTransformerTapChangerMaxTransient.png\">
 </figure>

@@ -20,6 +20,7 @@ equation
   connect(bus1.terminalAC, load1.terminalAC) annotation(
     Line(points = {{0, 10}, {0, 4}, {-1.33227e-15, 4}, {-1.33227e-15, 1}, {0, 1}, {0, 0}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StopTime = 3.0, Interval = 0.01),
     Documentation(info = "<html><head></head><body><p>This model demonstrates the usage of a variable-voltage infinite bus.</p>
 <p>The model is similar to <a href=\"modelica://PowerGrids.Electrical.Test.OneBusImpedanceOneLoad\">OneBusImpedanceOneLoad</a>, except that the bus reference voltage is reduced from 10 kV to 8 kV at time = 1 and the reference phase is increased from 0 to 30 deg at time = 2.</p>

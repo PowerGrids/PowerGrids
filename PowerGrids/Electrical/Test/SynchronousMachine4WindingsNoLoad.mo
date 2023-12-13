@@ -20,6 +20,7 @@ equation
   connect(bus.terminalAC, machine.terminalAC) annotation(
     Line(points = {{0, 20}, {0, -10}}));
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StartTime = 0, StopTime = 200, Tolerance = 1e-06, Interval = 0.02),
     Documentation(info = "<html><head></head><body><p>This test case validates the NoLoad choice of base excitation voltage of the SynchronousMachine4Windings model.</p>
 <p>By setting ufPuIn = 1 and PmPu = 0, one obtains machine.port.VPu = 1 and machine.port.IPu = 0, as &nbsp;required by the base voltage definition.</p><p>The extermal machine parameters are the same as in the  <a href=\"modelica://PowerGrids.Electrical.Test.SynchronousMachine4Windings\">SynchronousMachine4Windings</a> test, but with the system frequency set at 50 Hz. The internal parameter are computed with the classical approximation.</p>

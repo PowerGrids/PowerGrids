@@ -26,6 +26,5 @@ equation
     Icon(coordinateSystem(grid={2,2}, extent={{-100,-100},{100,100}})),
     Diagram(coordinateSystem(extent={{-60,-40},{80,40}},      grid={2,2})),
     experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-6, Interval = 0.002),
-    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(lv="LOG_INIT_HOMOTOPY"));
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing");
 end PowerFlow;

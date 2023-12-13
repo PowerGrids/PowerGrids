@@ -7,7 +7,6 @@ model LoadChangeByModifierUsingExtends "Load step response specified by modifier
 annotation (
     experiment(StartTime = 0, StopTime = 4, Tolerance = 1e-6, Interval = 0.008),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(lv="LOG_INIT_HOMOTOPY"),
     Diagram(coordinateSystem(extent={{-80,-60},
             {80,40}}), graphics={                                                               Text(origin={
               -10.2,-46},                                                                                                 extent={{

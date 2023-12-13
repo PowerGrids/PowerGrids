@@ -89,7 +89,6 @@ equation
   annotation(
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
-    __OpenModelica_simulationFlags(lv = "LOG_INIT_HOMOTOPY"),
     Diagram(coordinateSystem(extent = {{-140, 80}, {100, -80}}, grid = {2, 2}), graphics = {Text(origin = {65, 42}, extent = {{-21, 4}, {17, -6}}, textString = "reference grid"), Text(origin = {75, 6}, extent = {{-37, 4}, {21, -18}}, textString = "transformer
 nominal voltage changed"), Text(origin = {81, -50}, extent = {{-37, 4}, {17, -14}}, textString = "generator
 nominal voltage changed")}),

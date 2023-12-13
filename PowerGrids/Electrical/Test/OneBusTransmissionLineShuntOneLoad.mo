@@ -3,6 +3,7 @@ within PowerGrids.Electrical.Test;
 model OneBusTransmissionLineShuntOneLoad
   extends OneBusTransmissionLineOneLoad(transmissionLine.B = 0.02, transmissionLine.G = 0.01);
   annotation(
+    __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StopTime = 1, Interval = 0.02),
