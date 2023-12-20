@@ -1,6 +1,16 @@
 within PowerGrids.Electrical.Buses;
 
 model EquivalentGrid "Equivalent grid model characterized by short circuit capacity"
+  import Modelica.ComplexMath;
+  extends Icons.Grid;
+  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
+    redeclare connector TerminalAC = Interfaces.TerminalACBus,
+    terminalAC(
+      computePF = computePF,
+      terminalACPF(v = vPF, i = iPF)),
+    generatorConvention = true,
+    e = eSource,
+    Z = ZGrid);
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
     generatorConvention = true,
     final hasSubPF,
@@ -10,13 +20,6 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
       UNom = UNom,
       U = URef,
       UPhase = UPhaseRef));
-  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
-    generatorConvention = true,
-    e = eSource,
-    Z = ZGrid,
-    redeclare PowerGrids.Interfaces.TerminalACBus terminalAC);
-  extends Icons.Grid; 
-  import Modelica.ComplexMath;
   
   parameter Types.Voltage URef = UNom "Reference phase-to-phase voltage at connection terminal";
   parameter Types.Angle UPhaseRef = 0 "Voltage phase angle at connection terminal";

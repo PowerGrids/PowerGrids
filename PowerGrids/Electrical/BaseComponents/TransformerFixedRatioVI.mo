@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseComponents;
 
-model TransformerFixedRatioVI
+partial model TransformerFixedRatioVI
   extends Icons.Transformer;
   extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(SNom = UNomB^2/CM.abs(Complex(R,X)));
 

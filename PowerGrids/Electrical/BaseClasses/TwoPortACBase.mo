@@ -2,32 +2,24 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model TwoPortACBase "Base class for two-port AC components"
   extends TwoPortACVI(
-    redeclare PowerGrids.Interfaces.TerminalAC_a terminalAC_a(
+    redeclare replaceable connector TerminalAC_a = PowerGrids.Interfaces.TerminalAC_a,
+    redeclare replaceable connector TerminalAC_b = PowerGrids.Interfaces.TerminalAC_b,
+    terminalAC_a(
       final computePF = computePF,
-      v(re(start = portA.vStart.re), im(start = portA.vStart.im)),
-      i(re(start = portA.iStart.re), im(start = portA.iStart.im)),
       terminalACPF(v = vPF_a, i = iPF_a)),
-    redeclare PowerGrids.Interfaces.TerminalAC_b terminalAC_b(
+    terminalAC_b(
       final computePF = computePF,
-      v(re(start = portB.vStart.re), im(start = portB.vStart.im)),
-      i(re(start = portB.iStart.re), im(start = portB.iStart.im)),
       terminalACPF(v = vPF_b, i = iPF_b)),
-    portA(final v = terminalAC_a.v, final i = terminalAC_a.i,
-          final UNom = UNomA, final SNom = SNom,
-          final portVariablesPhases = portVariablesPhases,
-          final generatorConvention = false,
-          final UStart = UStartA,
-          final UPhaseStart = UPhaseStartA,
-          final PStart = PStartA,
-          final QStart = QStartA),
-    portB(final v = terminalAC_b.v, final i = terminalAC_b.i,
-          final UNom = UNomB, final SNom = SNom,
-          final portVariablesPhases = portVariablesPhases,
-          final generatorConvention = false,
-          final UStart = UStartB,
-          final UPhaseStart = UPhaseStartB,
-          final PStart = PStartB,
-          final QStart = QStartB));
+    portA(
+      final UStart = UStartA,
+      final UPhaseStart = UPhaseStartA,
+      final PStart = PStartA,
+      final QStart = QStartA),
+    portB(
+      final UStart = UStartB,
+      final UPhaseStart = UPhaseStartB,
+      final PStart = PStartB,
+      final QStart = QStartB));
 
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
@@ -57,12 +49,13 @@ partial model TwoPortACBase "Base class for two-port AC components"
   final parameter Types.ActivePower PStartBPF(fixed = false) "Start value of active power flowing into the portB, computed by the embedded PF";
   final parameter Types.ReactivePower QStartBPF(fixed = false) "Start value of reactive power flowing into the portB, computed by the embedded PF";
 
+  replaceable BaseComponents.OnePortACPFDummy componentPF if computePF and not hasSubPF constrainedby TwoPortACPF "component to be used to compute the embedded PF";
+
   Types.ComplexVoltage vPF_a "Phase-to-ground voltage phasor of embedded power flow model - portA";
   Types.ComplexCurrent iPF_a "Line current phasor of embedded power flow model - portA";
   Types.ComplexVoltage vPF_b "Phase-to-ground voltage phasor of embedded power flow model - portB";
   Types.ComplexCurrent iPF_b "Line current phasor of embedded power flow model - PortB";
 
-  replaceable TwoPortACPF componentPF if computePF and not hasSubPF "component to be used to compute the embedded PF";
   Types.ComplexPower Sbal = portA.S + portB.S if computePowerBalance "Complex power balance";
   outer Electrical.System systemPowerGrids "Reference to system object";
 initial equation
@@ -86,6 +79,12 @@ initial equation
   end if; 
   
 equation
+  // The port voltages and currents are the same as their corresponding connectors'
+  portA.v = terminalAC_a.v;
+  portA.i = terminalAC_a.i;
+  portB.v = terminalAC_b.v;
+  portB.i = terminalAC_b.i;
+
   if not computePF then
      vPF_a = Complex(0) "Dummy value";
      iPF_a = Complex(0) "Dummy value";

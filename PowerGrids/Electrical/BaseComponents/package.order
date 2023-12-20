@@ -6,3 +6,5 @@ LineConstantImpedanceVI
 LineConstantImpedanceWithBreakersVI
 TransformerFixedRatioVI
 TransformerFixedRatioWithBreakerVI
+OnePortACPFDummy
+TwoPortACPFDummy

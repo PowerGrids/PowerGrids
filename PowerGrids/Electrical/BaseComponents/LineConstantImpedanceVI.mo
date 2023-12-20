@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseComponents;
 
-model LineConstantImpedanceVI "Transmission line with constant impedance"
+partial model LineConstantImpedanceVI "Transmission line with constant impedance"
   extends Icons.Line;
   extends PiNetworkVI(
     final UNomA = UNom,

@@ -1,5 +1,14 @@
 within PowerGrids.Electrical.Branches;
 model TransformerFixedRatioWithBreaker
+  extends PowerGrids.Electrical.BaseComponents.TransformerFixedRatioWithBreakerVI(
+    redeclare connector TerminalAC_a = Interfaces.TerminalAC_a,
+    redeclare connector TerminalAC_b = Interfaces.TerminalAC_b,
+    terminalAC_a(
+      computePF = computePF,
+      terminalACPF(v = vPF_a, i = iPF_a)),
+    terminalAC_b(
+      computePF = computePF,
+      terminalACPF(v = vPF_b, i = iPF_b)));
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     SNom = UNomB^2/CM.abs(Complex(R,X)),
     final hasSubPF,
@@ -14,7 +23,4 @@ model TransformerFixedRatioWithBreaker
       B = B,
       final useBreaker = false,
       final breakerStatusStart = breakerStatusStart));
-  extends PowerGrids.Electrical.BaseComponents.TransformerFixedRatioWithBreakerVI(
-    redeclare PowerGrids.Interfaces.TerminalAC terminalAC_a,
-    redeclare PowerGrids.Interfaces.TerminalAC terminalAC_b);    
 end TransformerFixedRatioWithBreaker;

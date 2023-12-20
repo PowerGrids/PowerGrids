@@ -6,7 +6,7 @@ model PortAC "AC port computing auxiliary quantities"
   final parameter Types.Power   SBase = SNom "Base power";
   final parameter Types.Voltage UBase = UNom "Base phase-to-phase voltage";
 
-  parameter Types.Power PStart = SNom "Start value of active power flowing into port";
+  parameter Types.Power PStart = 0 "Start value of active power flowing into port";
   parameter Types.Power QStart = 0 "Start value of reactive power flowing into port";
   parameter Types.Voltage UStart = UNom "Start value of phase-to-phase voltage modulus";
   parameter Types.Angle UPhaseStart = 0 "Start value of voltage phase";

@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.BaseComponents;
 
-model LineConstantImpedanceWithBreakersVI
+partial model LineConstantImpedanceWithBreakersVI
   extends Icons.Line;
   extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(
     final UNomA = UNom,
