@@ -2,12 +2,9 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortACBus
   extends OnePortACBase(
-    redeclare connector TerminalAC = Interfaces.TerminalACBus,
-    UStart = if computePF then UStartPF else UNom,
-    UPhaseStart = if computePF then UPhaseStartPF else 0);
-
-  final parameter Types.Voltage UStartPF(fixed = false) "Start value of phase-to-phase voltage phasor, absolute value, computed by the embedded PF";
-  final parameter Types.Angle UPhaseStartPF(fixed = false) "Start value of phase-to-phase voltage phasor, phase angle, computed by the embedded PF";
+    final isOnePortAC = false,
+    final isOnePortACBus = true,
+    redeclare connector TerminalAC = Interfaces.TerminalACBus);
 
 initial equation
   if computePF then

@@ -6,36 +6,12 @@ partial model OnePortACBase "Base class for AC components with one port"
     redeclare replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACBase,
     terminalAC(
       final computePF = computePF,
-      terminalACPF(v = vPF, i = iPF)),
-    port(
-      final UStart = UStart,
-      final UPhaseStart = UPhaseStart,
-      final PStart = PStart,
-      final QStart = QStart));
-
-  parameter Types.Voltage UStart "Start value of phase-to-phase voltage phasor, absolute value" annotation(
-    Dialog(tab = "Initialization"));
-  parameter Types.Angle UPhaseStart "Start value of phase-to-phase voltage phasor, phase angle" annotation(
-    Dialog(tab = "Initialization"));
-  parameter Types.ActivePower PStart = if computePF then PStartPF else SNom "Start value of active power flowing into the port" annotation(
-    Dialog(tab = "Initialization", enable = not computePF));
-  parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
-    Dialog(tab = "Initialization", enable = not computePF));
-
-  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
+      terminalACPF(v = vPF, i = iPF)));
   parameter LocalInitializationOption localInit = LocalInitializationOption.none "Initialize the component locally in steady state from port start values" annotation(
     Evaluate = true, Dialog(tab = "Initialization"));
   parameter Boolean hasSubPF = false "= true, if the model contains a sub-network with its own embedded PF; set to final in usable components" annotation(Evaluate = true);
 
-  final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
-    Evaluate = true);  
-  final parameter Types.ActivePower PStartPF(fixed = false) "Start value of active power flowing into the port, computed by the embedded PF";
-  final parameter Types.ReactivePower QStartPF(fixed = false) "Start value of reactive power flowing into the port, computed by the embedded PF";
-
   replaceable BaseComponents.OnePortACPFDummy componentPF if computePF and not hasSubPF constrainedby OnePortACPF "component to be used to compute the embedded PF" ;
-
-  outer Electrical.System systemPowerGrids "Reference to system object";
 
   Types.ComplexVoltage vPF "Phase-to-ground voltage phasor of embedded power flow model";
   Types.ComplexCurrent iPF "Line current phasor of embedded power flow model";
