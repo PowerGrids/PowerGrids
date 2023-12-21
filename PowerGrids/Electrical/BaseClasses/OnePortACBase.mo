@@ -19,10 +19,14 @@ partial model OnePortACBase "Base class for AC components with one port"
 initial equation
   if computePF then
     // set default values for PStart and QStart based on embedded power flow solution
+    UStartPF = CM.abs(vPF)*sqrt(3);
+    UPhaseStartPF = CM.arg(vPF);
     PStartPF = 3*CM.real(vPF*CM.conj(iPF));
     QStartPF = 3*CM.imag(vPF*CM.conj(iPF));
   else
     // set dummy values for PStartPF and QStartPF which  (not used)
+    UStartPF = 0;
+    UPhaseStartPF = 0;
     PStartPF = 0;
     QStartPF = 0;
   end if;  

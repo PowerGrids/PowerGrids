@@ -2,8 +2,6 @@ within PowerGrids.Interfaces;
 
 connector TerminalACBus "Terminal for phasor-based buses"
   extends TerminalACBase;
-  output Types.Voltage UStart "Start value of phase-to-phase voltage";
-  output Types.Angle UPhaseStart "Start value of phase-to-phase voltage angle";  
   annotation(
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 1, grid = {2, 2}), graphics = {Rectangle(origin = {92, 3}, fillColor = {255, 0, 0}, fillPattern = FillPattern.Solid, extent = {{-192, 97}, {8, -103}})}),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 1, grid = {2, 2})),

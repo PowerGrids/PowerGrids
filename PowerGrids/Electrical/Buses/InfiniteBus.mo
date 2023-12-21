@@ -1,15 +1,12 @@
 within PowerGrids.Electrical.Buses;
 model InfiniteBus "Infinite bus with internal impedance"
   extends PowerGrids.Electrical.BaseComponents.InfiniteBusVI(
-    final isOnePortAC = false,
-    final isOnePortACBus = true,
-    generatorConvention = true,
-    redeclare connector TerminalAC = Interfaces.TerminalACBus,
+    redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
       computePF = computePF,
       terminalACPF(v = vPF, i = iPF)),
     generatorConvention = true);
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     generatorConvention = true,
     final hasSubPF,
     final localInit,

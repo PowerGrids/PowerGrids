@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Buses;
 
 model ReferenceBus "Reference bus for an isolated grid"
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF,
     final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(

@@ -1,26 +1,7 @@
 within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortACBus
-  extends OnePortACBase(
-    final isOnePortAC = false,
-    final isOnePortACBus = true,
-    redeclare connector TerminalAC = Interfaces.TerminalACBus);
-
-initial equation
-  if computePF then
-    // set values of initialization parameters based on embedded power flow solution
-    UStartPF = CM.abs(vPF)*sqrt(3);
-    UPhaseStartPF = CM.arg(vPF);
-  else
-    // set dummy values (not used)
-    UStartPF = 0;
-    UPhaseStartPF = 0;
-  end if;
-    
-equation
-  // Propagate voltage start values on the connector as outputs
-  terminalAC.UStart = UStart;
-  terminalAC.UPhaseStart = UPhaseStart;
+  extends OnePortAC;
   annotation(
     Documentation(info = "<html>
 <p>This is the base class for all the components with an AC terminal. It contains a corresponding <code>PortAC</code> component to compute useful quantities for modelling and monitoring purposes.</p>

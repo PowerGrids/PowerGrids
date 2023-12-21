@@ -2,9 +2,7 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortACPF
   extends OnePortACVI(
-    redeclare replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACPF,
-    final isOnePortAC = false,
-    final isOnePortACBus = false);
+    redeclare replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACPF);
 
 initial equation
   UStartPF = UNom;

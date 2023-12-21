@@ -8,11 +8,9 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
     terminalAC(
       computePF = computePF,
       terminalACPF(v = vPF, i = iPF)),
-    generatorConvention = true,
     e = eSource,
     Z = ZGrid);
   extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
-    generatorConvention = true,
     final hasSubPF,
     final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(

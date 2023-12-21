@@ -2,14 +2,7 @@ within PowerGrids.Electrical.BaseClasses;
 
 partial model OnePortAC "Base class for non-bus AC components with one port"
   extends OnePortACBase(
-    final isOnePortAC = true,
-    final isOnePortACBus = false,
     redeclare connector TerminalAC = Interfaces.TerminalAC);
-
-initial equation
-  // Get start values for voltage from the connected buses via input variables on terminalAC
-  UStartPF = terminalAC.UStart;
-  UPhaseStartPF = terminalAC.UPhaseStart;
 
   annotation (
     Documentation(info = "<html>
