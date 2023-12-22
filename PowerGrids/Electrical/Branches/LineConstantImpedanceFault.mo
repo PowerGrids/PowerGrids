@@ -2,10 +2,10 @@ within PowerGrids.Electrical.Branches;
 model LineConstantImpedanceFault "Transmission line with constant impedance and fault in intermediate position"
   extends Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
+    final hasSubPF = true,
     final UNomA = UNom,
     final UNomB = UNom,
-    SNom = UNom^2/CM.abs(Complex(R,X)),
-    final hasSubPF = true);
+    SNom = UNom^2/CM.abs(Complex(R,X)));
   extends Icons.Line;
   
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";

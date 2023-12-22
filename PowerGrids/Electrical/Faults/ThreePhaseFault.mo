@@ -3,6 +3,9 @@ within PowerGrids.Electrical.Faults;
 model ThreePhaseFault
   extends Icons.Fault;
   extends Electrical.BaseClasses.OnePortAC(
+    final hasSubPF,
+    final localInit,
+    final isLinear = true,
     redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
       UNom = UNom));
   parameter Types.Resistance R = 0 "Series resistance to ground during fault" annotation(Dialog(group="Fault data"));

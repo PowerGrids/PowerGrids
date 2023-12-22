@@ -13,6 +13,7 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
       terminalACPF(v = vPF_b, i = iPF_b)));
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
+    final hasSubPF,
     final UNomA = UNom,
     final UNomB = UNom,
     SNom = UNom^2/CM.abs(Complex(R,X)),

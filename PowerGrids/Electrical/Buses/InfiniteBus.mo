@@ -8,10 +8,10 @@ model InfiniteBus "Infinite bus with internal impedance"
       terminalACPF(v = vPF, i = iPF)),
     generatorConvention = true);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    final isLinear = true,
     generatorConvention = true,
     final hasSubPF,
     final localInit,
+    final isLinear = true,
     redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
       SNom = SNom, 
       UNom = UNom,

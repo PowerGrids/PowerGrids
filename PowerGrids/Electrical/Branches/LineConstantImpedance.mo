@@ -12,10 +12,10 @@ model LineConstantImpedance "Transmission line with constant impedance"
       terminalACPF(v = vPF_b, i = iPF_b)));
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
+    final hasSubPF,
     final UNomA = UNom,
     final UNomB = UNom,
     SNom = UNom^2/CM.abs(Complex(R,X)),
-    final hasSubPF,
     redeclare Electrical.PowerFlow.LineConstantImpedancePF componentPF(
       final UNom = UNom,
       final SNom = SNom,
