@@ -1,19 +1,9 @@
 within PowerGrids.Electrical.BaseClasses;
 
-model TwoPortACPF
+partial model TwoPortACPF
   extends TwoPortACVI(
     redeclare replaceable connector TerminalAC_a = PowerGrids.Interfaces.TerminalACPF_a,
-    redeclare replaceable connector TerminalAC_b = PowerGrids.Interfaces.TerminalACPF_b,
-    portA(
-      final UStart = UNomA,
-      final UPhaseStart = 0,
-      final PStart = 0,
-      final QStart = 0) "AC port - terminalAC_a",
-    portB(
-      final UStart = UNomB,
-      final UPhaseStart = 0,
-      final PStart = 0,
-      final QStart = 0) "AC port - terminalAC_b");
+    redeclare replaceable connector TerminalAC_b = PowerGrids.Interfaces.TerminalACPF_b);
   equation
     portA.v = terminalAC_a.v;
     portB.v = terminalAC_b.v;

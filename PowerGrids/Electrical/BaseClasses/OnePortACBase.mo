@@ -3,6 +3,7 @@ within PowerGrids.Electrical.BaseClasses;
 partial model OnePortACBase "Base class for AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
   extends OnePortACVI(
+    final isOnePortAC = true,
     redeclare replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACBase,
     terminalAC(
       final computePF = computePF,
