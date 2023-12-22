@@ -16,7 +16,7 @@ model SynchronousMachine4WindingsPF
     Placement(transformation(origin = {0, 36}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Branches.LineConstantImpedance line(SNom = 550000000, UNom = 24000, R = 0.01, X = 0.1)  annotation(
     Placement(transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Buses.Bus bus annotation(
+  Buses.Bus bus(UNom = 24000)  annotation(
     Placement(transformation(extent = {{-10, -10}, {10, 10}})));
 equation
   connect(ufPu.y, machine.ufPuIn) annotation(
