@@ -1,6 +1,7 @@
 within PowerGrids.Electrical.Branches;
 model TransformerWithPhaseShifterInterval
   extends BaseClasses.TapChangerPhaseShifterCommonVI(
+    final isTwoPortAC = true,
     redeclare connector TerminalAC_a = Interfaces.TerminalAC_a,
     redeclare connector TerminalAC_b = Interfaces.TerminalAC_b,
     terminalAC_a(
@@ -10,8 +11,9 @@ model TransformerWithPhaseShifterInterval
       computePF = computePF,
       terminalACPF(v = vPF_b, i = iPF_b)));
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
-    SNom = UNomB^2/CM.abs(Complex(R,X)),
+    final isLinear = true,
     final hasSubPF,
+    SNom = UNomB^2/CM.abs(Complex(R,X)),
     redeclare PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF componentPF(
       UNomA = UNomA,
       UNomB = UNomB,

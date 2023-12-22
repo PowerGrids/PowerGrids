@@ -8,23 +8,23 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
   parameter Types.Power SNom(start = 100e6) "Nominal/rated power, also used as p.u. base" annotation(
     Evaluate = true);
   parameter Boolean isTwoPortAC = false "= true for dynamic models extending TwoPortAC";
-  parameter Boolean linearModel = false "= true if the model is linear, no need of start values";
+  parameter Boolean isLinear = false "= true if the model is linear, no need of start values";
   parameter Types.Voltage UStartA = if computePF then UStartAPF else UNomA "Start value of phase-to-phase voltage phasor at port A, absolute value" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.Angle UPhaseStartA = if computePF then UPhaseStartAPF else 0 "Start value of phase-to-phase voltage phasor at port A, phase angle" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.Voltage UStartB = if computePF then UStartBPF else UNomB "Start value of phase-to-phase voltage phasor at port A, absolute value" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.Angle UPhaseStartB = if computePF then UPhaseStartBPF else 0 "Start value of phase-to-phase voltage phasor at port A, phase angle" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.ActivePower PStartA = if computePF then PStartAPF else SNom "Start value of active power flowing into port A" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.ReactivePower QStartA = if computePF then QStartAPF else 0 "Start value of reactive power flowing into port A" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.ActivePower PStartB = if computePF then PStartBPF else -SNom "Start value of active power flowing into port B" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Types.ReactivePower QStartB = if computePF then QStartBPF else 0 "Start value of reactive power flowing into port B" annotation(
-    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isTwoPortAC and not computePF and not isLinear));
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
   final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(

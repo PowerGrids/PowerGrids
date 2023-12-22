@@ -1,7 +1,8 @@
 within PowerGrids.Electrical.BaseComponents;
 
 partial model PiNetworkVI "Generic Pi-Network base VI model"
-  extends Electrical.BaseClasses.TwoPortACVI;
+  extends Electrical.BaseClasses.TwoPortACVI(
+    final isLinear = true);
   Types.ComplexAdmittance Y "Series admittance";
   Types.ComplexAdmittance YA "Shunt admittance at port a";
   Types.ComplexAdmittance YB "Shunt admittance at port b";

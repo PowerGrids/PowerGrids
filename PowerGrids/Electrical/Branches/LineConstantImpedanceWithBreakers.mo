@@ -2,6 +2,7 @@ within PowerGrids.Electrical.Branches;
 
 model LineConstantImpedanceWithBreakers "Transmission line with constant impedance and breakers"
   extends PowerGrids.Electrical.BaseComponents.LineConstantImpedanceWithBreakersVI(
+    final isTwoPortAC = true,
     redeclare connector TerminalAC_a = Interfaces.TerminalAC_a,
     redeclare connector TerminalAC_b = Interfaces.TerminalAC_b,
     terminalAC_a(
@@ -11,6 +12,7 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
       computePF = computePF,
       terminalACPF(v = vPF_b, i = iPF_b)));
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
+    final isLinear = true,
     final UNomA = UNom,
     final UNomB = UNom,
     SNom = UNom^2/CM.abs(Complex(R,X)),

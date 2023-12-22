@@ -6,15 +6,15 @@ partial model OnePortACVI "Base class for naked AC components with one port"
   parameter Types.ApparentPower SNom(start = 100e6) "Nominal/rated apparent power, also used as p.u. base" annotation(
     Evaluate = true);
   parameter Boolean isOnePortAC = false "= true for models extending OnePortAC";
-  parameter Boolean linearModel = false "= true if the model is linear, no need of start values";
+  parameter Boolean isLinear = false "= true if the model is linear, no need of start values";
   parameter Types.Voltage UStart = if computePF then UStartPF else UNom "Start value of phase-to-phase voltage modulus" annotation(
-    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not isLinear));
   parameter Types.Angle UPhaseStart = if computePF then UPhaseStartPF else 0 "Start value of voltage phase" annotation(
-    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not isLinear));
   parameter Types.ActivePower PStart = if computePF then PStartPF else 0 "Start value of active power flowing into the port" annotation(
-    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not isLinear));
   parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
-    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not linearModel));
+    Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not isLinear));
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes" annotation(
     Evaluate = true, Dialog(tab = "Visualization"));
   constant Boolean generatorConvention = false "Compute currents with generator convention (i > 0 when exiting the device) to model";

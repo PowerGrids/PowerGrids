@@ -4,13 +4,14 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
   import Modelica.ComplexMath;
   extends Icons.Grid;
   extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
-    redeclare connector TerminalAC = Interfaces.TerminalACBus,
+    final isOnePortAC = true,
+    redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
       computePF = computePF,
       terminalACPF(v = vPF, i = iPF)),
     e = eSource,
     Z = ZGrid);
-  extends PowerGrids.Electrical.BaseClasses.OnePortACBus(
+  extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF,
     final localInit,
     redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(

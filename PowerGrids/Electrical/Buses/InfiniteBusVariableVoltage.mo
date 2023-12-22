@@ -3,6 +3,7 @@ within PowerGrids.Electrical.Buses;
 model InfiniteBusVariableVoltage
   extends Icons.Bus;
   extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
+    final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
       computePF = computePF,
@@ -12,6 +13,7 @@ model InfiniteBusVariableVoltage
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF,
     final localInit,
+    final isLinear = true,
     redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
       UNom = UNom, SNom = SNom, URef = UFixed, UPhase = UPhaseFixed, R = R, X = X));
 
