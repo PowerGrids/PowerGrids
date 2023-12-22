@@ -1,7 +1,10 @@
 within PowerGrids.Interfaces;
 
 connector TerminalAC "Terminal for phasor-based AC connections"
-  extends TerminalACBase;
+  extends TerminalACVI;
+  Types.ReferenceAngularVelocityPu omegaRefPu "Reference angular speed in PerUnit";
+  parameter Boolean computePF = false "= true activates the sub-connector for embedded power flow computation";
+  TerminalACPF terminalACPF if computePF "Connector for embedded power flow";
   annotation(
     Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 1, grid = {2, 2}), graphics = {Rectangle(origin = {92, 3}, fillColor = {85, 170, 255}, fillPattern = FillPattern.Solid, extent = {{-192, 97}, {8, -103}})}),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 1, grid = {2, 2})),
