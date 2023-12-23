@@ -16,14 +16,16 @@ partial model OnePortACVI "Base class for naked AC components with one port"
   parameter Types.ReactivePower QStart = if computePF then QStartPF else 0 "Start value of reactive power flowing into the port" annotation(
     Dialog(tab = "Initialization", enable = isOnePortAC and not computePF and not isLinear));
   parameter Boolean portVariablesPhases = systemPowerGrids.portVariablesPhases "Compute voltage and current phases for monitoring purposes" annotation(
-    Evaluate = true, Dialog(tab = "Visualization"));
+    Evaluate = true,
+    Dialog(tab = "Visualization"));
   constant Boolean generatorConvention = false "Compute currents with generator convention (i > 0 when exiting the device) to model";
-  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
+  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(
+    Dialog(tab = "Visualization"));
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
+    Dialog(tab = "Visualization"));
 
   final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
     Evaluate = true);
-
   final parameter Types.Voltage UStartPF(fixed = false) "Start value of voltage magnitude obtained from bus or from the embedded PF";
   final parameter Types.Angle UPhaseStartPF(fixed = false) "Start value of voltage phase obtained from bus or from the embedded PF";
   final parameter Types.ActivePower PStartPF(fixed = false) "Start value of active power flowing into the port, computed by the embedded PF";
@@ -32,8 +34,8 @@ partial model OnePortACVI "Base class for naked AC components with one port"
   replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACVI;
 
   TerminalAC terminalAC(
-      v(re(start = port.vStart.re), im(start = port.vStart.im)),
-      i(re(start = port.iStart.re), im(start = port.iStart.im))) annotation(
+    v(re(start = port.vStart.re), im(start = port.vStart.im)),
+    i(re(start = port.iStart.re), im(start = port.iStart.im))) annotation(
     Placement(visible = true, transformation(origin = {0, 100}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PortAC port(
     final UNom = UNom,
@@ -44,9 +46,10 @@ partial model OnePortACVI "Base class for naked AC components with one port"
     final QStart = QStart,
     final portVariablesPhases = portVariablesPhases,
     final generatorConvention = generatorConvention) "AC port of component";
-
   outer Electrical.System systemPowerGrids "Reference to system object";
-  annotation(
+
+annotation(
+    Icon(graphics = {Text(visible = (showDataOnDiagramsPu or showDataOnDiagramsSI), origin = {-96, 33}, textColor = {238, 46, 47}, extent = {{-76, 15}, {76, -15}}, textString = DynamicSelect("P", if showDataOnDiagramsPu then String(port.PPu, "6.3f") else if showDataOnDiagramsSI then String((port.P/1000000), "9.3f") else "")), Text(visible = (showDataOnDiagramsPu or showDataOnDiagramsSI), origin = {-96, -37}, textColor = {217, 67, 180}, extent = {{-76, 15}, {76, -15}}, textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(port.QPu, "6.3f") else if showDataOnDiagramsSI then String((port.Q/1000000), "9.3f") else ""))}),
     Documentation(info = "<html><head></head><body><p>This is the base class for all the naked components with an AC terminal. It contains a corresponding <code>PortAC</code> component to compute useful quantities for modelling and monitoring purposes. No provision for guess values and embedded power flow, only voltage and currents on the connectors.</p>
 </body></html>"));
 end OnePortACVI;

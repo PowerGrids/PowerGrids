@@ -74,6 +74,39 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
 
   outer Electrical.System systemPowerGrids "Reference to system object";
   annotation(
+     Icon(graphics={
+       Text(
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+        origin={-100,-30},
+        extent={{-76,15},{76,-15}},
+        textColor = {238,46,47},
+        textString = DynamicSelect("P", if showDataOnDiagramsPu then String(portA.PPu, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(portA.P/1e6, format = "9.3f")
+                                        else "")),
+       Text(
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+        origin={-100,-64},
+        extent={{-76,15},{76,-15}},
+        textColor={217,67,180},
+        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(portA.QPu, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(portA.Q/1e6, format = "9.3f")
+                                        else "")),
+       Text(
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+        origin={100,-30},
+        extent={{-76,15},{76,-15}},
+        textColor = {238,46,47},
+        textString = DynamicSelect("P", if showDataOnDiagramsPu then String(portB.PPu, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(portB.P/1e6, format = "9.3f")
+                                        else "")),
+       Text(
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+        origin={100,-64},
+        extent={{-76,15},{76,-15}},
+        textColor={217,67,180},
+        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(portB.QPu, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(portB.Q/1e6, format = "9.3f")
+                                        else ""))}),
     Documentation(info = "<html><head></head><body><p>This is the base class for all the components with two AC terminals. It contains two corresponding <code>PortAC</code> components to compute useful quantities for modelling and monitoring purposes.&nbsp;<span style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">No provision for guess values and embedded power flow, only voltage and currents on the connectors.</span></p>
     </body></html>"));
 end TwoPortACVI;

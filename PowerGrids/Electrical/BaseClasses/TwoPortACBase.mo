@@ -63,38 +63,5 @@ equation
   connect(terminalAC_b.terminalACPF, componentPF.terminalAC_b);
   annotation (
     Documentation(info = "<html><head></head><body><p>This is the base class for all the components with two AC terminals. It contains two corresponding <code>PortAC</code> components to compute useful quantities for modelling and monitoring purposes.</p>
-    </body></html>"),
-     Icon(graphics={  
-       Text(
-        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-100,-30},
-        extent={{-76,15},{76,-15}},
-        textColor = {238,46,47},
-        textString = DynamicSelect("P", if showDataOnDiagramsPu then String(portA.PPu, format = "6.3f")
-                                        elseif showDataOnDiagramsSI then String(portA.P/1e6, format = "9.3f")
-                                        else "")),
-       Text(
-        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-100,-64},
-        extent={{-76,15},{76,-15}},
-        textColor={217,67,180},
-        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(portA.QPu, format = "6.3f")
-                                        elseif showDataOnDiagramsSI then String(portA.Q/1e6, format = "9.3f")
-                                        else "")),
-       Text(
-        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={100,-30},
-        extent={{-76,15},{76,-15}},
-        textColor = {238,46,47},
-        textString = DynamicSelect("P", if showDataOnDiagramsPu then String(portB.PPu, format = "6.3f")
-                                        elseif showDataOnDiagramsSI then String(portB.P/1e6, format = "9.3f")
-                                        else "")),
-       Text(
-        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={100,-64},
-        extent={{-76,15},{76,-15}},
-        textColor={217,67,180},
-        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(portB.QPu, format = "6.3f")
-                                        elseif showDataOnDiagramsSI then String(portB.Q/1e6, format = "9.3f")
-                                        else ""))}));
+    </body></html>"));
 end TwoPortACBase;
