@@ -26,12 +26,20 @@ partial model TwoPortACBase "Base class for two-port AC components"
 initial equation
   if computePF then
     // set values of initialization parameters based on EPF solution
+    UStartAPF = CM.abs(vPF_a)*sqrt(3);
+    UPhaseStartAPF = CM.arg(vPF_a);
+    UStartBPF = CM.abs(vPF_b)*sqrt(3);
+    UPhaseStartBPF = CM.arg(vPF_b);
     PStartAPF = 3*CM.real(vPF_a*CM.conj(iPF_a));
     QStartAPF = 3*CM.imag(vPF_a*CM.conj(iPF_a));
     PStartBPF = 3*CM.real(vPF_b*CM.conj(iPF_b));
     QStartBPF = 3*CM.imag(vPF_b*CM.conj(iPF_b));
   else
     // set dummy values (not used)
+    UStartAPF = 0;
+    UPhaseStartAPF = 0;
+    UStartBPF = 0;
+    UPhaseStartBPF = 0;
     PStartAPF = 0;
     QStartAPF = 0;
     PStartBPF = 0;
