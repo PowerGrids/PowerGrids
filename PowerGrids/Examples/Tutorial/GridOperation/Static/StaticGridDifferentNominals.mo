@@ -35,7 +35,7 @@ model StaticGridDifferentNominals "Systems operating in steady-state with differ
   Modelica.Blocks.Sources.RealExpression ufPuIn_2(y = GEN_2.ufPuInStart) annotation(
     Placement(transformation(origin = {-108, 8}, extent = {{-10, -10}, {10, 10}})));
   // Third System - Generator Nominal Voltage changed
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN_3(H = 4, PPF = -4.75e+08, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 10000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN_3(H = 4, PPF = -4.75e+08, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 10000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, UPF = 21000) annotation(
     Placement(transformation(origin = {-76, -56}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.Bus NTLV_3(UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {-48, -58}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
