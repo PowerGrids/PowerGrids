@@ -7,8 +7,8 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
-      computePF = computePF,
-      terminalACPF(v = vPF, i = iPF)),
+      final computePF = computePF,
+      terminalACPF(final v = vPF, final i = iPF)),
     e = eSource,
     Z = ZGrid);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(

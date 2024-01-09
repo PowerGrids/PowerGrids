@@ -6,11 +6,11 @@ model TransformerFixedRatio "Transformer with fixed voltage ratio"
     redeclare connector TerminalAC_a = Interfaces.TerminalAC_a,
     redeclare connector TerminalAC_b = Interfaces.TerminalAC_b,
     terminalAC_a(
-      computePF = computePF,
-      terminalACPF(v = vPF_a, i = iPF_a)),
+      final computePF = computePF,
+      terminalACPF(final v = vPF_a, final i = iPF_a)),
     terminalAC_b(
-      computePF = computePF,
-      terminalACPF(v = vPF_b, i = iPF_b)));
+      final computePF = computePF,
+      terminalACPF(final v = vPF_b, final i = iPF_b)));
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
     final hasSubPF,

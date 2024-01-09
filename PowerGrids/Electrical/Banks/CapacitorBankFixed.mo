@@ -5,8 +5,8 @@ model CapacitorBankFixed "Capacitor bank with fixed capacitance"
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
-      computePF = computePF,
-      terminalACPF(v = vPF, i = iPF)),
+      final computePF = computePF,
+      terminalACPF(final v = vPF, final i = iPF)),
     Y = Complex(0,B));
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF,

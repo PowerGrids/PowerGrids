@@ -7,7 +7,7 @@ partial model OnePortAC "Base class for non-bus AC components with one port"
     redeclare replaceable connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
       final computePF = computePF,
-      terminalACPF(v = vPF, i = iPF)));
+      terminalACPF(final v = vPF, final i = iPF)));
   parameter LocalInitializationOption localInit = LocalInitializationOption.none "Initialize the component locally in steady state from port start values" annotation(
     Evaluate = true, Dialog(tab = "Initialization"));
   parameter Boolean hasSubPF = false "= true, if the model contains a sub-network with its own embedded PF; set to final in usable components" annotation(Evaluate = true);

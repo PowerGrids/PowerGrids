@@ -4,8 +4,8 @@ model InfiniteBus "Infinite bus with internal impedance"
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
-      computePF = computePF,
-      terminalACPF(v = vPF, i = iPF)),
+      final computePF = computePF,
+      terminalACPF(final v = vPF, final i = iPF)),
     generatorConvention = true);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     generatorConvention = true,

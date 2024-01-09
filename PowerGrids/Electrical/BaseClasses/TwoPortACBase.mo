@@ -7,10 +7,10 @@ partial model TwoPortACBase "Base class for two-port AC components"
     redeclare replaceable connector TerminalAC_b = PowerGrids.Interfaces.TerminalAC_b,
     terminalAC_a(
       final computePF = computePF,
-      terminalACPF(v = vPF_a, i = iPF_a)),
+      terminalACPF(final v = vPF_a, final i = iPF_a)),
     terminalAC_b(
       final computePF = computePF,
-      terminalACPF(v = vPF_b, i = iPF_b)));
+      terminalACPF(final v = vPF_b, final i = iPF_b)));
 
   parameter Boolean hasSubPF = false "= true if the model contains a sub-network with its own embedded PF";
 

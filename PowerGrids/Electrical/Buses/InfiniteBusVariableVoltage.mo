@@ -6,8 +6,8 @@ model InfiniteBusVariableVoltage
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
-      computePF = computePF,
-      terminalACPF(v = vPF, i = iPF)),
+      final computePF = computePF,
+      terminalACPF(final v = vPF, final i = iPF)),
     e = CM.fromPolar(UAux/sqrt(3), UPhaseAux),
     Z = Complex(R, X));
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
