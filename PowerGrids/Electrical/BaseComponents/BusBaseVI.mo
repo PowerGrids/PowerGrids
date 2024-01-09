@@ -2,7 +2,7 @@ within PowerGrids.Electrical.BaseComponents;
 
 partial model BusBaseVI
   extends PowerGrids.Electrical.BaseClasses.OnePortACVI(
-    isLinear = true);
+    final isLinear = true);
   input Types.ComplexVoltage e(re(nominal = port.VNom), im(nominal = port.VNom)) "Voltage of ideal generator, phase-to-ground";
   input Types.ComplexImpedance Z "Internal impedance";
   Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
