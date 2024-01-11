@@ -13,7 +13,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
       UNom = UNom,
       P = PRefConst, 
       Q = QRefConst));
-  extends Icons.Load;
+  extends Icons.Load(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
 
   parameter Boolean lowVoltageAsImpedance = systemPowerGrids.loadLowVoltageAsImpedance "true, if the load shall work as a fixed-impedance at low-voltage condition" annotation(Evaluate = true);
   parameter Types.PerUnit VPuThr = 0.5 "Threshold of p.u. voltage for low-voltage fixed-impedance approximation";

@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.BaseComponents;
 
 partial model InfiniteBusVI
-  extends Icons.Bus;
+  extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
   extends BusBaseVI(
       e = CM.fromPolar(ERef, UPhase),
       Z = Complex(R, X));

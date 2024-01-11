@@ -2,7 +2,7 @@ within PowerGrids.Electrical.Buses;
 
 model EquivalentGrid "Equivalent grid model characterized by short circuit capacity"
   import Modelica.ComplexMath;
-  extends Icons.Grid;
+  extends Icons.Grid(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
   extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,

@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Banks;
 model CapacitorBankFixed "Capacitor bank with fixed capacitance"
-  extends Icons.CapacitorBank;
+  extends Icons.CapacitorBank(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseComponents.ShuntConductanceVI(
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,

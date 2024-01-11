@@ -14,7 +14,7 @@ model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"
       P = PRefConst, 
       Q = QRefConst));
     
-  extends Icons.Load;
+  extends Icons.Load(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   import Modelica.ComplexMath;
   
   parameter Types.ActivePower PRefConst = 0 "Active power consumption at reference voltage, reference P for the embedded PF";

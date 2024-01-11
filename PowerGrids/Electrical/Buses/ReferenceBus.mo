@@ -11,7 +11,7 @@ model ReferenceBus "Reference bus for an isolated grid"
       U = UPF,
       UPhase = UPhasePF,
       setPhaseOnly = setPhaseOnly));
-  extends Icons.Bus;
+  extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
   import PowerGrids.Types.Choices.InitializationOption;
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";

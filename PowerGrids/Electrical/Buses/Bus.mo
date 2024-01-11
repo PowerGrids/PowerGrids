@@ -10,7 +10,7 @@ model Bus "Bus model"
     final isLinear = true,
     redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
       UNom = UNom));
-  extends Icons.Bus;
+  extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
 
 equation
   port.i = Complex(0);
