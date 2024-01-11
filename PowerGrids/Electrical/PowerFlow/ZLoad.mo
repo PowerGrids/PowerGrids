@@ -2,7 +2,7 @@ within PowerGrids.Electrical.PowerFlow;
 
 model ZLoad "Load with constant impedance"
   extends BaseClasses.OnePortACPF(final portVariablesPhases = true);
-  extends Icons.Load;
+  extends Icons.Load(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   parameter Types.ActivePower PNom = SNom "Nominal active power";
   parameter Types.ActivePower QNom = 0 "Nominal reactive power";
     

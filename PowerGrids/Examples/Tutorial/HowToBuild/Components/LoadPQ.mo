@@ -1,7 +1,7 @@
 within PowerGrids.Examples.Tutorial.HowToBuild.Components;
 
 model LoadPQ "Load model with prescribed P and Q values"
-  extends Icons.Load;
+  extends Icons.Load(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
       SNom = SNom, UNom = UNom, P = PPF, Q = QPF),

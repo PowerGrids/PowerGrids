@@ -11,7 +11,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
       SNom = SNom,
       P = PPF,
       U = UPF));
-  extends Icons.Machine;
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";

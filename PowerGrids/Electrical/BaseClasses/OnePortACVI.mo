@@ -19,10 +19,6 @@ partial model OnePortACVI "Base class for naked AC components with one port"
     Evaluate = true,
     Dialog(tab = "Visualization"));
   constant Boolean generatorConvention = false "Compute currents with generator convention (i > 0 when exiting the device) to model";
-  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(
-    Dialog(tab = "Visualization"));
-  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
-    Dialog(tab = "Visualization"));
 
   final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
     Evaluate = true);
@@ -49,23 +45,6 @@ partial model OnePortACVI "Base class for naked AC components with one port"
   outer Electrical.System systemPowerGrids "Reference to system object";
 
 annotation(
-    Icon(graphics={
-      Text(
-        visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
-        origin={-96, 33},
-        textColor={238, 46, 47},
-        extent={{-76, 15}, {76, -15}},
-        textString=DynamicSelect("P", if showDataOnDiagramsPu then String(port.PPu, format = "6.3f")
-                                      else if showDataOnDiagramsSI then String((port.P/1000000), format = "9.3f")
-                                      else "")),
-      Text(
-        visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
-        origin={-96, -37},
-        textColor={217, 67, 180},
-        extent={{-76, 15}, {76, -15}},
-        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(port.QPu, format = "6.3f")
-                                        else if showDataOnDiagramsSI then String((port.Q/1000000), format = "9.3f")
-                                        else ""))}),
     Documentation(info = "<html><head></head><body><p>This is the base class for all the naked components with an AC terminal. It contains a corresponding <code>PortAC</code> component to compute useful quantities for modelling and monitoring purposes. No provision for guess values and embedded power flow, only voltage and currents on the connectors.</p>
 </body></html>"));
 end OnePortACVI;

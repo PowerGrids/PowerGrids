@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBusVariableVoltage
-  extends Icons.Bus;
+  extends Icons.Bus(VPuIcon=port.VPu, UIcon=port.U, UPhaseIcon=port.UPhase);
   extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
     final isOnePortAC = true,
     redeclare connector TerminalAC = Interfaces.TerminalAC,

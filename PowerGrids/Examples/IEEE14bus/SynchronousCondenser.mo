@@ -1,7 +1,7 @@
 within PowerGrids.Examples.IEEE14bus;
 
 model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus system"
-  extends Icons.Machine;
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF = true);
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(
@@ -35,27 +35,5 @@ equation
   connect(GEN.terminalAC, terminalAC) annotation (
     Line(points = {{-26, -8}, {-26, -36}, {47, -36}, {47, 80.5}, {-0.5, 80.5}, {-0.5, 100}, {0, 100}}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), 
-      graphics = {
-        Text(
-          visible = (showDataOnDiagramsPu or showDataOnDiagramsSI),
-          origin = {0, -145}, textColor = {238, 46, 47}, extent = {{-76, 15}, {76, -15}},
-          textString = DynamicSelect("P", if ((GEN.port.P >= 0) and showDataOnDiagramsPu) then String(GEN.port.PPu, format = "6.3f")
-                                          else if ((GEN.port.P >= 0) and showDataOnDiagramsSI) then String((GEN.port.P/1000000), format = "6.3f")
-                                          else if (GEN.port.P >= 0) then ""
-                                          else if ((GEN.port.P < 0) and showDataOnDiagramsPu) then String(GEN.port.PPu, format = "6.3f")
-                                          else if ((GEN.port.P < 0) and showDataOnDiagramsSI) then String((GEN.port.P/1000000), format = "6.3f")
-                                          else "")),
-        Text(
-          visible = (showDataOnDiagramsPu or showDataOnDiagramsSI), 
-          origin = {0, -173}, textColor = {217, 67, 180}, extent = {{-76, 15}, {76, -15}}, 
-          textString = DynamicSelect("Q", if ((GEN.port.Q >= 0) and showDataOnDiagramsPu) then String(GEN.port.QPu, format = "6.3f")
-                                          else if ((GEN.port.Q >= 0) and showDataOnDiagramsSI) then String((GEN.port.Q/1000000), format = "6.3f")
-                                          else if (GEN.port.Q >= 0) then ""
-                                          else if ((GEN.port.Q < 0) and showDataOnDiagramsPu) then String(GEN.port.QPu, format = "6.3f")
-                                          else if ((GEN.port.Q < 0) and showDataOnDiagramsSI) then String((GEN.port.Q/1000000), format = "6.3f")
-                                          else "")),
-         Rectangle(origin = {0, -50}, lineColor = {0, 85, 255}, lineThickness = 0.5, extent = {{-50, 50}, {50, -50}}),
-         Rectangle(origin = {0, -50}, lineColor = {0, 85, 255}, extent = {{-48, 48}, {48, -48}})}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5})));
 end SynchronousCondenser;
