@@ -84,8 +84,8 @@ package Icons "Icons for the PowerGrids library"
 
   model OnePortDynamicText
     outer Electrical.System systemPowerGrids "Reference to system object";
-    final parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
-    final parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar";
+    parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
+    parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
     input Types.ActivePower   PIcon "Active power flowing into the port";
     input Types.ReactivePower QIcon "Reactive power flowing into the port";
     input Types.PerUnit PPuIcon "Active power flowing into the port in p.u. (base SBase)";
@@ -113,8 +113,8 @@ annotation(
 
   model OnePortDynamicTextBus
     outer Electrical.System systemPowerGrids "Reference to system object";
-    final parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)";
-    final parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar";
+    parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
+    parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
     input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
     input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
     input Types.Angle UPhaseIcon "Phase of voltage across the port";
