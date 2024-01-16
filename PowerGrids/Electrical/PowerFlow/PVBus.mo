@@ -1,8 +1,8 @@
 within PowerGrids.Electrical.PowerFlow;
 
 model PVBus "PV bus"
-  extends BaseClasses.OnePortACPF(final portVariablesPhases = true);
   extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends BaseClasses.OnePortACPF(final portVariablesPhases = true);
   parameter Types.ActivePower P = SNom "Active power entering the bus";
   parameter Types.Voltage U = UNom "Absolute value of phase-to-phase voltage";
 equation

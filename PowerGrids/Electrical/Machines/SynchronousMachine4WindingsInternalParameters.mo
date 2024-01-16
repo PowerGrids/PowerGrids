@@ -1,6 +1,7 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends BaseClasses.OnePortACdqPu(
     generatorConvention = true,
     final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
@@ -11,7 +12,6 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
       SNom = SNom,
       P = PPF,
       U = UPF));
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
