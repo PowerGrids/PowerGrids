@@ -8,6 +8,12 @@ package Icons "Icons for the PowerGrids library"
 
   annotation(
       Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Bus;
+  
+  model BusPQ
+    extends OnePortDynamicTextBusPQ;
+  
+  annotation(
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end BusPQ;
 
   model Line
   equation
@@ -66,7 +72,7 @@ package Icons "Icons for the PowerGrids library"
   end CapacitorBank;
 
   model Grid
-    extends OnePortDynamicTextBus;
+    extends OnePortDynamicTextBusPQ;
 
     annotation(
       Icon(coordinateSystem(initialScale = 0.1), graphics = {Text(origin = {0, 150}, textColor = {0, 0, 255}, extent = {{-100, 12}, {100, -12}}, textString = "%name"), Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}), Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
@@ -137,4 +143,51 @@ annotation(
           textString = DynamicSelect("Uph", if showDataOnDiagramsPu or showDataOnDiagramsSI then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
                                             else ""))}));
   end OnePortDynamicTextBus;
+
+  model OnePortDynamicTextBusPQ
+    outer Electrical.System systemPowerGrids "Reference to system object";
+    parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
+    parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
+    input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
+    input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
+    input Types.Angle UPhaseIcon "Phase of voltage across the port";
+    input Types.ActivePower   PIcon "Active power flowing into the port";
+    input Types.ReactivePower QIcon "Reactive power flowing into the port";
+    input Types.PerUnit PPuIcon "Active power flowing into the port in p.u. (base SBase)";
+    input Types.PerUnit QPuIcon "Reactive power flowing into the port in p.u. (base SBase)";
+  
+  annotation(
+      Icon(graphics={
+        Text(
+          visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
+          origin={-174, -20},
+          textColor={238, 46, 47},
+          extent={{-76, 15}, {76, -15}},
+          textString=DynamicSelect("P", if showDataOnDiagramsPu then String(PPuIcon, format = "6.3f")
+                                        else if showDataOnDiagramsSI then String((PIcon/1000000), format = "9.3f")
+                                        else "")),
+        Text(
+          visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
+          origin={-174, -53},
+          textColor={217, 67, 180},
+          extent={{-76, 15}, {76, -15}},
+          textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(QPuIcon, format = "6.3f")
+                                          else if showDataOnDiagramsSI then String((QIcon/1000000), format = "9.3f")
+                                          else "")),
+        Text(
+          visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+          origin={-174, 53},
+          extent={{-76,15},{76,-15}},
+          textColor = {28,108,200},
+          textString = DynamicSelect("V", if showDataOnDiagramsPu then String(VPuIcon, format = "6.3f")
+                                          elseif showDataOnDiagramsSI then String(UIcon/1e3, format = "9.3f")
+                                          else "")),
+         Text(
+          visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+          origin={-174, 20},
+          extent={{-76,15},{76,-15}},
+          textColor = {0,0,255},
+          textString = DynamicSelect("Uph", if showDataOnDiagramsPu or showDataOnDiagramsSI then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
+                                            else ""))}));
+  end OnePortDynamicTextBusPQ;
 end Icons;
