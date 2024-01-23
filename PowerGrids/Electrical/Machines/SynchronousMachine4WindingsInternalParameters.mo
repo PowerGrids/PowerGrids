@@ -106,7 +106,7 @@ initial equation
 // No initial equations
   else
     omegaPu = omegaNomPu;
-    der(omega) = 0;
+    der(omegaPu) = 0;
     if not neglectTransformerTerms then
       der(lambdadPu) = 0;
       der(lambdaqPu) = 0;
