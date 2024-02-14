@@ -79,15 +79,11 @@ package Icons "Icons for the PowerGrids library"
   end Grid;
 
   model Fault
+  extends OnePortDynamicText;
   annotation (
-      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Line(origin = {3.23656, -70.242}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -15}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 25}, {20, -25}})}));
+      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name"), Line(origin = {3.23656, -70.242}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -15}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 25}, {20, -25}})}));
   end Fault;
   
-  model Short
-  annotation (
-      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {0, -46}, fillPattern = FillPattern.Solid, extent = {{-24, 6}, {24, -6}}), Line(origin = {0, -20}, points = {{0, 20}, {0, -20}}), Text(origin = {0, -72}, textColor = {0, 0, 255}, extent = {{-100, 8}, {100, -8}}, textString = "%name")}));
-  end Short;
-
   model OnePortDynamicText
     outer Electrical.System systemPowerGrids "Reference to system object";
     parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));

@@ -15,7 +15,7 @@ model TestEquivalentGrid "Test case EquivalentGrid model"
     Placement(visible = true, transformation(origin = {-20, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus busLine(UNom = 380000)  annotation(
     Placement(visible = true, transformation(origin = {-20, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Faults.ThreePhaseShort short annotation(
+  Faults.ThreePhaseFault short(fault(start=true), Y(re(start = 1e6), im(start = 0)),UNom= 3.8e5, SNom = 5e8, R = 1e-6, startTime = -1, stopTime=1e10)  annotation(
     Placement(visible = true, transformation(origin = {-40, -48}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(load.terminalAC, equivalentGrid.terminalAC) annotation(
