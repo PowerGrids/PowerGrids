@@ -77,7 +77,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
      Icon(graphics={
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-100,-30},
+        origin={-100,70},
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if showDataOnDiagramsPu then String(portA.PPu, format = "6.3f")
@@ -85,7 +85,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={-100,-64},
+        origin={-100,36},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(portA.QPu, format = "6.3f")
@@ -93,7 +93,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={100,-30},
+        origin={100,70},
         extent={{-76,15},{76,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if showDataOnDiagramsPu then String(portB.PPu, format = "6.3f")
@@ -101,7 +101,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
                                         else "")),
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-        origin={100,-64},
+        origin={100, 36},
         extent={{-76,15},{76,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(portB.QPu, format = "6.3f")

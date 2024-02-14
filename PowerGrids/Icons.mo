@@ -19,13 +19,13 @@ package Icons "Icons for the PowerGrids library"
   equation
 
   annotation(
-      Icon(graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-59, 11}, {61, -11}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, 29}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Line;
+      Icon(graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-59, 11}, {61, -11}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -29}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Line;
 
   model Transformer
   equation
 
   annotation(
-      Icon(graphics = {Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, 59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Transformer;
+      Icon(graphics = {Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Transformer;
 
   model Load
   extends OnePortDynamicText;
