@@ -136,7 +136,10 @@ annotation(
           origin={-174, -17},
           extent={{-76,15},{76,-15}},
           textColor = {0,0,255},
-          textString = DynamicSelect("Uph", if showDataOnDiagramsPu or showDataOnDiagramsSI then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
+          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases) 
+                                              then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
+                                            elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
+                                              then "----" 
                                             else ""))}));
   end OnePortDynamicTextBus;
 
@@ -183,7 +186,10 @@ annotation(
           origin={-174, 20},
           extent={{-76,15},{76,-15}},
           textColor = {0,0,255},
-          textString = DynamicSelect("Uph", if showDataOnDiagramsPu or showDataOnDiagramsSI then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
+          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases) 
+                                              then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
+                                            elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
+                                              then "----" 
                                             else ""))}));
   end OnePortDynamicTextBusPQ;
 end Icons;
