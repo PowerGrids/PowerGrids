@@ -19,6 +19,18 @@ partial model OnePortACVI "Base class for naked AC components with one port"
     Evaluate = true,
     Dialog(tab = "Visualization"));
   constant Boolean generatorConvention = false "Compute currents with generator convention (i > 0 when exiting the device) to model";
+  parameter Boolean enableAssertions = systemPowerGrids.enableAssertions "=true, enables asserts in order to check the validity of the numerical solution" annotation( 
+    Evaluate = true, Dialog(tab="Solution checking"));
+  parameter SI.PerUnit VPuMin = systemPowerGrids.VPuMin "min value of voltage in p.u at buses and sinchronous generators nodes" annotation( 
+    Dialog(tab="Solution checking"));
+  parameter SI.PerUnit VPuMax = systemPowerGrids.VPuMax "max value of voltage in p.u at buses and sinchronous generators nodes" annotation(
+    Dialog(tab="Solution checking"));
+  parameter SI.PerUnit IPuMax = systemPowerGrids.IPuMax "max value of current in p.u that flows through the loads" annotation(
+    Dialog(tab="Solution checking"));
+  parameter SI.PerUnit omegaPuMin = systemPowerGrids.omegaPuMin "min value of frequency in p.u at generators nodes" annotation(
+    Dialog(tab="Solution checking"));
+  parameter SI.PerUnit omegaPuMax = systemPowerGrids.omegaPuMax "max value of frequency in p.u at generators nodes" annotation(
+    Dialog(tab="Solution checking"));
 
   final parameter Boolean computePF = systemPowerGrids.computePF "= true, computes the start value with the embedded power flow" annotation(
     Evaluate = true);
