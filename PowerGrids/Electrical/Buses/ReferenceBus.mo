@@ -2,6 +2,7 @@ within PowerGrids.Electrical.Buses;
 
 model ReferenceBus "Reference bus for an isolated grid"
   extends Icons.BusPQ(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase, PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF,
     final localInit,

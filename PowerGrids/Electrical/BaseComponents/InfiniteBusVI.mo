@@ -2,6 +2,7 @@ within PowerGrids.Electrical.BaseComponents;
 
 partial model InfiniteBusVI
   extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
   extends BusBaseVI(
       e = CM.fromPolar(ERef, UPhase),
       Z = Complex(R, X));

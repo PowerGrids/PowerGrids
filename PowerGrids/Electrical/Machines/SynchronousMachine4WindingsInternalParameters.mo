@@ -2,6 +2,7 @@ within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
   extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
   extends BaseClasses.OnePortACdqPu(
     generatorConvention = true,
     final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
