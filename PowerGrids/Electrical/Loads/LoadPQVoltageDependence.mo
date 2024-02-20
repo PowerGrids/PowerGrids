@@ -2,6 +2,7 @@ within PowerGrids.Electrical.Loads;
 
 model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   extends Icons.Load(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     PStart = if computePF then PStartPF else PRefConst,
     QStart = if computePF then QStartPF else QRefConst,
@@ -37,8 +38,6 @@ equation
   else
     port.v = port.i/CM.conj(Complex(PRef*(UNom*VPuThr/URef)^alpha, QRef*(UNom*VPuThr/URef)^beta)/(UNom*VPuThr)^2);
   end if;
-
-  assert(port.IPu < 1.5, "Load current too high, check if the numerical solution is valid (very low VPu), consider setting lowVoltageAsImpedance=true");
   
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

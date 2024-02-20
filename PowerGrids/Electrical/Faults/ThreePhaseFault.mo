@@ -2,6 +2,7 @@ within PowerGrids.Electrical.Faults;
 
 model ThreePhaseFault
   extends Icons.Fault(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
   extends Electrical.BaseClasses.OnePortAC(
     final hasSubPF,
     final localInit,
