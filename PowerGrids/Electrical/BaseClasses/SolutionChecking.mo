@@ -27,15 +27,19 @@ protected
   Modelica.Blocks.Interfaces.RealInput omegaPuInt "internal Angular frequency in p.u.";
 
 equation
-  assert(VPuCheck < VPuMax, "Voltage too high (VPu="+String(VPuCheck)+" > "+String(VPuMax)+"), check if the numerical solution is valid", level=assertionLevel);
-  assert(VPuCheck > VPuMin, "Voltage too low (VPu="+String(VPuCheck)+" < "+String(VPuMin)+"), check if the numerical solution is valid", level=assertionLevel);
-  assert(IPuCheck < IPuMax, "Current too high (IPu="+String(IPuCheck)+" > "+String(IPuMax)+"), check if the numerical solution is valid", level=assertionLevel);
+  if enableAssertions then
+    assert(VPuCheck < VPuMax, "Voltage too high (VPu="+String(VPuCheck)+" > "+String(VPuMax)+"), check if the numerical solution is valid", level=assertionLevel);
+    assert(VPuCheck > VPuMin, "Voltage too low (VPu="+String(VPuCheck)+" < "+String(VPuMin)+"), check if the numerical solution is valid", level=assertionLevel);
+    assert(IPuCheck < IPuMax, "Current too high (IPu="+String(IPuCheck)+" > "+String(IPuMax)+"), check if the numerical solution is valid", level=assertionLevel);
+
+    if enableOmegaPuChecking then
+      assert(omegaPuInt < omegaPuMax, "frequency too high (omegaPu="+String(omegaPuInt)+" > "+String(omegaPuMax)+"), check if the numerical solution is valid", level=assertionLevel);
+      assert(omegaPuInt > omegaPuMin, "frequency too low (omegaPu="+String(omegaPuInt)+" < "+String(omegaPuMin)+"), check if the numerical solution is valid", level=assertionLevel);
+    end if;
+  end if;
 
   connect(omegaPuCheck, omegaPuInt);
-  if enableOmegaPuChecking then
-    assert(omegaPuInt < omegaPuMax, "frequency too high (omegaPu="+String(omegaPuInt)+" > "+String(omegaPuMax)+"), check if the numerical solution is valid", level=assertionLevel);
-    assert(omegaPuInt > omegaPuMin, "frequency too low (omegaPu="+String(omegaPuInt)+" < "+String(omegaPuMin)+"), check if the numerical solution is valid", level=assertionLevel);
-  else
+  if not enableOmegaPuChecking then
     omegaPuInt = 0 "not used";
   end if;
 
