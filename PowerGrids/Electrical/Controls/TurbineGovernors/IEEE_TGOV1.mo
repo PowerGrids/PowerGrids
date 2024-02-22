@@ -83,7 +83,7 @@ equation
   connect(omegaPu, deltaOmegaPu.u1) annotation(
     Line(points = {{-140, -30}, {-100, -30}, {-100, -30}, {-98, -30}}, color = {0, 0, 127}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {-1, -1}, extent = {{-99, 101}, {101, -99}}), Text(origin = {49, -25}, extent = {{-127, 27}, {33, -49}}, textString = "TGOV1"), Text(origin = {0, 120}, lineColor = {0, 0, 255}, extent = {{-80, 12}, {80, -12}}, textString = "%name"), Text(origin = {-6, 46}, extent = {{-60, 26}, {70, -40}}, textString = "IEEE")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-99, 101}, {101, -99}}), Text(origin = {49, -25}, extent = {{-127, 27}, {33, -49}}, textString = "TGOV1"), Text(origin = {0, 120}, textColor = {0, 0, 255}, extent = {{-80, 12}, {80, -12}}, textString = "%name"), Text(origin = {-6, 46}, extent = {{-60, 26}, {70, -40}}, textString = "IEEE")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html>
 <p>The class implements a model of a simple steam turbine governor according to the IEEE technical report PES-TR1 Jan 2013.</p>

@@ -45,8 +45,8 @@ equation
   connect(limiter.y, PMechPu) annotation(
     Line(points = {{62, 50}, {124, 50}, {124, 50}, {130, 50}}, color = {0, 0, 127}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {-1, -1}, extent = {{-99, 101}, {101, -99}}), Text(origin = {37, -9}, extent = {{-105, 67}, {31, -47}}, textString = "GOV
-PROP"), Text(origin = {0, 120}, lineColor = {0, 0, 255}, extent = {{-80, 12}, {80, -12}}, textString = "%name")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-99, 101}, {101, -99}}), Text(origin = {37, -9}, extent = {{-105, 67}, {31, -47}}, textString = "GOV
+PROP"), Text(origin = {0, 120}, textColor = {0, 0, 255}, extent = {{-80, 12}, {80, -12}}, textString = "%name")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html><head></head><body><p>The class implements a model of a simple proportional governor with saturation.
   During the initialization phase the saturation is removed.</p></body></html>"));
