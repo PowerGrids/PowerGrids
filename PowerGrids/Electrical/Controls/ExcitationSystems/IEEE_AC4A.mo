@@ -82,8 +82,8 @@ equation
   connect(VuelPu, variableLimiter.limit2) annotation(
     Line(points = {{-8, -40}, {22, -40}, {22, -8}, {30, -8}}, color = {0, 0, 127}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {0, 1}, extent = {{-100, 99}, {100, -101}}), Text(origin = {24, 4}, extent = {{-94, 70}, {56, -72}}, textString = "IEEE
-AC4A"), Text(origin = {0, 120}, lineColor = {0, 0, 255}, extent = {{-80, 14}, {80, -14}}, textString = "%name")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {0, 1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 99}, {100, -101}}), Text(origin = {24, 4}, extent = {{-94, 70}, {56, -72}}, textString = "IEEE
+AC4A"), Text(origin = {0, 120}, textColor = {0, 0, 255}, extent = {{-80, 14}, {80, -14}}, textString = "%name")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html>
 <p>The class implements a model of a static exictation system according to the IEEE Std 421.5TM-2005.</p>

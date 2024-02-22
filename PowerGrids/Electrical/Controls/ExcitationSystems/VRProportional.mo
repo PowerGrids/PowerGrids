@@ -65,8 +65,8 @@ equation
   connect(gain.y, limiterWithLag.u) annotation(
     Line(points = {{-38, -30}, {-12, -30}}, color = {0, 0, 127}));
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {0, 1}, extent = {{-100, 99}, {100, -101}}), Text(origin = {24, 4}, extent = {{-94, 70}, {56, -72}}, textString = "VR
-PROP"), Text(origin = {0, 120}, lineColor = {0, 0, 255}, extent = {{-80, 14}, {80, -14}}, textString = "%name")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {0, 1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 99}, {100, -101}}), Text(origin = {24, 4}, extent = {{-94, 70}, {56, -72}}, textString = "VR
+PROP"), Text(origin = {0, 120}, textColor = {0, 0, 255}, extent = {{-80, 14}, {80, -14}}, textString = "%name")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html><head></head><body><p>The class implements a simple model of a proportional static exictation with limiter.</p><p><span style=\"font-family: 'DejaVu Sans Mono'; font-size: 12px;\">The Limiter enforces saturations only after they were violated without interruption during a certain amount of time.</span>&nbsp;</p>
 <p>If <code>fixInitialControlledVariable = true</code>, an initial equation is added to ensure that the machine voltage <code>VcPu</code> is equal to its start value <code>VcPuStart</code>. In order to fulfill this condition, the initial value of the reference signal should be free, so that the Modelica tool can back-compute it automatically. For this purpose, the <a href=\"modelica://PowerGrids.Controls.FreeOffset\">PowerGrids.Controls.FreeOffset</a> block should be used to generate the reference signal to be connected to the <code>VrefPu</code> input.</p>
