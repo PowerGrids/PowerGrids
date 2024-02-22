@@ -4,7 +4,7 @@ partial model OnePortAC "Base class for non-bus AC components with one port"
   import PowerGrids.Types.Choices.LocalInitializationOption;
   extends OnePortACVI(
     final isOnePortAC = true,
-    redeclare replaceable connector TerminalAC = Interfaces.TerminalAC,
+    redeclare connector TerminalAC = Interfaces.TerminalAC,
     terminalAC(
       final computePF = computePF,
       terminalACPF(final v = vPF, final i = iPF)));
