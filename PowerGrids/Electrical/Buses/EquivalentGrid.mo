@@ -16,12 +16,17 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
     final hasSubPF,
     final localInit,
     final isLinear = true,
-    redeclare PowerGrids.Electrical.PowerFlow.SlackBus componentPF(
-      SNom = SNom, 
-      UNom = UNom,
-      U = URef,
-      UPhase = UPhaseRef));
-  
+    redeclare ComponentPF componentPF);
+
+  replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus(
+    SNom = SNom,
+    UNom = UNom,
+    U = URef,
+    UPhase = UPhaseRef)
+  constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF
+  annotation(choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.BusPF
+                              "to be used if the slack bus is embedded in another component")));
+
   parameter Types.Voltage URef = UNom "Reference phase-to-phase voltage at connection terminal";
   parameter Types.Angle UPhaseRef = 0 "Voltage phase angle at connection terminal";
   parameter Types.ApparentPower SSC "Short-circuit apparent power";
