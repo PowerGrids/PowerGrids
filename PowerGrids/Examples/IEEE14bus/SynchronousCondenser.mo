@@ -32,8 +32,8 @@ equation
     Line(points = {{-20, -17}, {-8, -17}, {-8, -26}, {10, -26}}, color = {0, 0, 127}));
   connect(PmPu.y, GEN.PmPu) annotation(
     Line(points = {{-59, -32}, {-50, -32}, {-50, -16}, {-32, -16}}, color = {0, 0, 127}));
-  connect(GEN.terminalAC, terminalAC) annotation (
-    Line(points = {{-26, -8}, {-26, -36}, {47, -36}, {47, 80.5}, {-0.5, 80.5}, {-0.5, 100}, {0, 100}}));
+  connect(GEN.terminalAC, terminalAC) annotation(
+    Line(points = {{-26, -18}, {-26, -40}, {48, -40}, {48, 80}, {0, 80}, {0, 100}}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5})));
 end SynchronousCondenser;
