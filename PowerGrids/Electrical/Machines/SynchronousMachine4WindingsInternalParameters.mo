@@ -8,11 +8,17 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
     final hasSubPF,
     PStart = if computePF then PStartPF else -SNom,
-    redeclare PowerGrids.Electrical.PowerFlow.PVBus componentPF(
-      UNom = UNom,
-      SNom = SNom,
-      P = PPF,
-      U = UPF));
+    redeclare ComponentPF componentPF);
+
+  replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PVBus(
+    UNom = UNom,
+    SNom = SNom,
+    P = PPF,
+    U = UPF)
+  constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF
+  annotation(choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus
+                              "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters")));
+
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
@@ -39,7 +45,9 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     Evaluate = true);
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(
     Dialog(tab = "Initialization", enable = computePF));
-  parameter Types.ActivePower PPF = -SNom "Active power to be used to compute the embedded PF (positive entering)" annotation(
+  parameter Types.ActivePower PPF = -SNom "Active power to be used to compute the embedded PF (positive entering), if the PVBus is used as embedded PF component" annotation(
+    Dialog(tab = "Initialization", enable = computePF));
+  parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF, if the slack node is used as embedded PF component" annotation(
     Dialog(tab = "Initialization", enable = computePF));
 
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
