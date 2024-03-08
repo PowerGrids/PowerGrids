@@ -3,7 +3,7 @@ within PowerGrids.Electrical.BaseClasses;
 partial model OnePortACPF
   extends OnePortACVI(
     redeclare replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACPF);
-
+  constant Boolean isSlackBus = false "=true, if the componentsPF is a slack bus";
 initial equation
   UStartPF = UNom;
   UPhaseStartPF = 0;

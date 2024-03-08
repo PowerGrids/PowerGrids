@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus=componentPF.isSlackBus);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
   extends BaseClasses.OnePortACdqPu(
     generatorConvention = true,
@@ -48,6 +48,8 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   parameter Types.ActivePower PPF = -SNom "Active power to be used to compute the embedded PF (positive entering), if the PVBus is used as embedded PF component" annotation(
     Dialog(tab = "Initialization", enable = computePF));
   parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF, if the slack node is used as embedded PF component" annotation(
+    Dialog(tab = "Initialization", enable = computePF));
+  parameter Boolean useEPFtoSetExternalOffset = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and Q calculated by the EPF"  annotation(
     Dialog(tab = "Initialization", enable = computePF));
 
   final parameter SI.AngularVelocity omegaBase = systemPowerGrids.omegaNom "Base angular frequency value";
@@ -125,6 +127,13 @@ initial equation
     der(lambdaQ1Pu) = 0;
     der(lambdaQ2Pu) = 0;
   end if;
+// Equations to calculate the external offset for PmPu and ufPu if the EPF is 
+// active and the flag useEPFtoSetExternalOffset is true, in order to
+// initialise the generator at the values P and Q calculated by the EPF
+  if computePF and useEPFtoSetExternalOffset then
+    port.P = PStart;
+    port.Q = QStart;
+  end if;
 equation
 // Flux linkages
   lambdadPu = (MdPu + LdPu)*idPu + MdPu*ifPu + MdPu*iDPu;
@@ -188,6 +197,7 @@ equation
 <li><code>Types.ExcitationPuType.nominalStatorVoltageNoLoad</code>: 1 p.u. of excitation voltage gives 1 p.u. of air-gap stator voltage at no-load conditions</li>
 <li><code>Types.ExcitationPuType.Kundur</code>: base voltage as in Kundur, Power Systems Stability and Control, Chapter 3. Note that in this case, typical p.u. values are less than 0.001</li>
 </ul>
+<p>If the Embedded Power-Flow (EPF) is active and the external offset <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> is used to calculate both PmPu and ufPu then the parameter <code>useEPFtoSetExternalOffset</code> can be set = <code>true</code> in order to activate the extra initial equations necessary to use them to initialise P and Q to the same values calculated by the EPF.</p>
 </body></html>"),
     Icon);
 end SynchronousMachine4WindingsInternalParameters;

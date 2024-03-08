@@ -3,7 +3,7 @@ within PowerGrids.Electrical.PowerFlow;
 model SlackBus "Slack Bus"
   extends Icons.BusPQ(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase, PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
-  extends BaseClasses.OnePortACPF;
+  extends BaseClasses.OnePortACPF(final isSlackBus = true);
   parameter Types.Voltage U = UNom "Voltage magnitude, phase-to-phase";
   parameter Types.Angle UPhase = 0 "Phase of voltage phasor";
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
