@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus=ComponentPF.isSlackBus);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
   extends BaseClasses.OnePortACdqPu(
     generatorConvention = true,

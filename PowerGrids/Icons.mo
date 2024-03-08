@@ -7,13 +7,13 @@ package Icons "Icons for the PowerGrids library"
     extends OnePortDynamicTextBus;
 
   annotation(
-      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Bus;
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Bus;
   
   model BusPQ
     extends OnePortDynamicTextBusPQ;
   
   annotation(
-      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end BusPQ;
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end BusPQ;
 
   model Line
   equation
@@ -35,9 +35,10 @@ package Icons "Icons for the PowerGrids library"
 
   model Machine
     extends OnePortDynamicText;
-
+  constant Boolean isSlackBus = false "=true, if componenPF is a slack bus";
   annotation(
-      Icon(graphics = {Text(origin = {0, -117}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name"), 
+      Icon(graphics = {Text(origin = {0, -117}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name"),
+        Text(origin = {35, 42}, extent = {{-30, 20}, {30, -40}}, textString = if isSlackBus then "S" else ""),
         Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
         Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
         Line(origin = {0.00014, -50.5485},points = 
@@ -120,21 +121,23 @@ annotation(
     input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
     input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
     input Types.Angle UPhaseIcon "Phase of voltage across the port";
-
+  
   annotation(
       Icon(graphics={
          Text(
           visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-          origin={-174, 17},
+          origin={-180, 17},
           extent={{-76,15},{76,-15}},
           textColor = {28,108,200},
+          horizontalAlignment = TextAlignment.Right,
           textString = DynamicSelect("V", if showDataOnDiagramsPu then String(VPuIcon, format = "6.3f")
                                           elseif showDataOnDiagramsSI then String(UIcon/1e3, format = "9.3f")
                                           else "")),
          Text(
           visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-          origin={-174, -17},
+          origin={-180, -17},
           extent={{-76,15},{76,-15}},
+          horizontalAlignment = TextAlignment.Right,
           textColor = {0,0,255},
           textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases) 
                                               then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
@@ -159,32 +162,36 @@ annotation(
       Icon(graphics={
         Text(
           visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
-          origin={-174, -20},
+          origin={-180, -20},
           textColor={238, 46, 47},
+          horizontalAlignment = TextAlignment.Right,
           extent={{-76, 15}, {76, -15}},
           textString=DynamicSelect("P", if showDataOnDiagramsPu then String(PPuIcon, format = "6.3f")
                                         else if showDataOnDiagramsSI then String((PIcon/1000000), format = "9.3f")
                                         else "")),
         Text(
           visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
-          origin={-174, -53},
+          origin={-180, -53},
           textColor={217, 67, 180},
+          horizontalAlignment = TextAlignment.Right,
           extent={{-76, 15}, {76, -15}},
           textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(QPuIcon, format = "6.3f")
                                           else if showDataOnDiagramsSI then String((QIcon/1000000), format = "9.3f")
                                           else "")),
         Text(
           visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-          origin={-174, 53},
+          origin={-180, 53},
           extent={{-76,15},{76,-15}},
+          horizontalAlignment = TextAlignment.Right,
           textColor = {28,108,200},
           textString = DynamicSelect("V", if showDataOnDiagramsPu then String(VPuIcon, format = "6.3f")
                                           elseif showDataOnDiagramsSI then String(UIcon/1e3, format = "9.3f")
                                           else "")),
          Text(
           visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-          origin={-174, 20},
+          origin={-180, 20},
           extent={{-76,15},{76,-15}},
+          horizontalAlignment = TextAlignment.Right,
           textColor = {0,0,255},
           textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases) 
                                               then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
