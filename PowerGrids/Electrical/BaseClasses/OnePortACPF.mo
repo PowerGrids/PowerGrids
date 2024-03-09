@@ -3,7 +3,8 @@ within PowerGrids.Electrical.BaseClasses;
 partial model OnePortACPF
   extends OnePortACVI(
     redeclare replaceable connector TerminalAC = PowerGrids.Interfaces.TerminalACPF);
-  constant Boolean isSlackBus = false "=true, if the componentsPF is a slack bus";
+  Boolean isSlackBus = false "=true, if the componentsPF is a slack bus";
+  final Modelica.Blocks.Interfaces.BooleanOutput isSlackBusOut = isSlackBus "output connector to propagate the value of the flag isSlackBus";
 initial equation
   UStartPF = UNom;
   UPhaseStartPF = 0;

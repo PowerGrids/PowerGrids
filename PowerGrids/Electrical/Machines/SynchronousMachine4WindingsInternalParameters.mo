@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus=componentPF.isSlackBus);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus=isSlackBusPF);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
   extends BaseClasses.OnePortACdqPu(
     generatorConvention = true,
@@ -95,6 +95,10 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     Placement(transformation(origin = {106, 20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -50}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Interfaces.RealOutput ifPuOut "Current of excitation winding in p.u." annotation(
     Placement(transformation(origin = {106, -60}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -90}, extent = {{-10, -10}, {10, 10}})));
+
+protected
+  Modelica.Blocks.Interfaces.BooleanInput isSlackBusPF "input to get the value of the isSlackBus flag from the PF component";
+
 initial equation
 // Scaling factor for excitation p.u. voltage
   if excitationPuType == Types.Choices.ExcitationPuType.Kundur then
@@ -167,6 +171,11 @@ equation
   VPu = port.VPu;
   PPu = -port.P/PNom;
   ifPuOut = ifPu;
+// isSlackBusPF connector
+  connect(isSlackBusPF, componentPF.isSlackBusOut);
+  if not computePF then
+    isSlackBusPF = false;
+  end if;
 // Overconstrained connector
   Connections.potentialRoot(terminalAC.omegaRefPu, integer(priority));
   if Connections.isRoot(terminalAC.omegaRefPu) then
@@ -197,7 +206,11 @@ equation
 <li><code>Types.ExcitationPuType.nominalStatorVoltageNoLoad</code>: 1 p.u. of excitation voltage gives 1 p.u. of air-gap stator voltage at no-load conditions</li>
 <li><code>Types.ExcitationPuType.Kundur</code>: base voltage as in Kundur, Power Systems Stability and Control, Chapter 3. Note that in this case, typical p.u. values are less than 0.001</li>
 </ul>
-<p>If the Embedded Power-Flow (EPF) is active and the external offset <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> is used to calculate both PmPu and ufPu then the parameter <code>useEPFtoSetExternalOffset</code> can be set = <code>true</code> in order to activate the extra initial equations necessary to use them to initialise P and Q to the same values calculated by the EPF.</p>
+<p><b>Embedded Power Flow (EPF)</b>
+<p>If the EPF is activated the generator uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a> as default EPF component in order to fix both the active power and the voltage at the generator node. The EPF component can be redeclared, the most common use of this feature is to place the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a> in the same node of a strong generator (proposed choice).</p> 
+<p>If the EPF component is redeclared then the user shall provide all the necessary parameters either by using the GUI or in textual form.</p>
+
+<p>If the EPF is active and the external offset <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> is used to calculate both PmPu and ufPu then the parameter <code>useEPFtoSetExternalOffset</code> can be set = <code>true</code> in order to activate the extra initial equations necessary to use them to initialise P and Q to the same values calculated by the EPF.</p>
 </body></html>"),
     Icon);
 end SynchronousMachine4WindingsInternalParameters;
