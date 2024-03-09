@@ -35,10 +35,10 @@ package Icons "Icons for the PowerGrids library"
 
   model Machine
     extends OnePortDynamicText;
-  constant Boolean isSlackBus = false "=true, if componenPF is a slack bus";
+    Boolean isSlackBus = false "=true, if componenPF is a slack bus";
   annotation(
       Icon(graphics = {Text(origin = {0, -117}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name"),
-        Text(origin = {35, 42}, extent = {{-30, 20}, {30, -40}}, textString = if isSlackBus then "S" else ""),
+        Text(origin = {20, 42}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Right, textString = DynamicSelect("_", if isSlackBus then "S" else "")),
         Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
         Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
         Line(origin = {0.00014, -50.5485},points = 
@@ -74,9 +74,12 @@ package Icons "Icons for the PowerGrids library"
 
   model Grid
     extends OnePortDynamicTextBusPQ;
-
+    Boolean isSlackBus = false "=true, if componenPF is a slack bus";
     annotation(
-      Icon(coordinateSystem(initialScale = 0.1), graphics = {Text(origin = {0, 150}, textColor = {0, 0, 255}, extent = {{-100, 12}, {100, -12}}, textString = "%name"), Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}), Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
+      Icon(graphics = {Text(origin = {0, 150}, textColor = {0, 0, 255}, extent = {{-100, 12}, {100, -12}}, textString = "%name"),
+        Text(origin = {70, 46}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Right, textString = DynamicSelect("_", if isSlackBus then "S" else "")),
+        Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}),
+        Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
   end Grid;
 
   model Fault
