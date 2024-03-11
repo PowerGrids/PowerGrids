@@ -107,11 +107,11 @@ equation
 <p>The numerical results are very near in the two cases, because both voltage and phase at the generator (slack) node in the second case has been set to be equal to the result of the first one (and actually is very near to it). Generally, the differences could be larger, because the initialization of the dynamic model is&nbsp;structurally&nbsp;different from the EPF's.</p><p>The example shows also a third model (red box) which is a variation of the second one: In this case, the slack node is still in the generator, but the load is constant power (as in the PF). Therefore the power absorbed by the load stays wautll to the one in the first example (gree box).</p>
 </body></html>"),
     Diagram(graphics={  Rectangle(origin={-80,11},    lineColor = {85, 170, 255}, lineThickness = 2, extent = {{-26, 53}, {26, -53}}), Rectangle(origin={2,11},     lineColor = {85, 170, 0}, lineThickness = 2, extent = {{-26, 53}, {26, -53}}),
-                                                                                                                                       Rectangle(
+        Rectangle(
           origin={84,13},
           lineColor={238,46,47},
           lineThickness=2,
           extent={{-26,53},{26,-53}})},                                                                                                                                                                                                        coordinateSystem(extent={{-120,
             -80},{120,80}})),
-    Icon(coordinateSystem(extent={{-120,-80},{120,80}})));
+    Icon(coordinateSystem(extent={{-100,-100},{100,100}})));
 end SynchronousMachine4WindingsPF;
