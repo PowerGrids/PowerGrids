@@ -9,7 +9,7 @@ model OneSlackOneLoad
   PowerGrids.Electrical.PowerFlow.PQBus load(P = 3e+07, Q = 0, SNom = 3e+07, UNom = 400000)  annotation(
     Placement(visible = true, transformation(origin = {0, -4}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(load.terminal, slack.terminal) annotation(
+  connect(load.terminalAC, slack.terminalAC) annotation(
     Line(points = {{0, -4}, {0, 20}}));
 annotation(
     Documentation(info = "<html><head></head><body>Simple test case with one slack bus connected to a PQ bus.</body></html>"));end OneSlackOneLoad;

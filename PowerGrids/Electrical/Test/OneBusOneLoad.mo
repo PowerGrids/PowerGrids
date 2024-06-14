@@ -2,14 +2,14 @@ within PowerGrids.Electrical.Test;
 
 model OneBusOneLoad
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus(SNom = 1e+07, UNom = 10000, portVariablesPu = true, theta = 0.523599) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus infiniteBus(SNom = 1e+07, UNom = 10000, theta = 0.523599) annotation(
     Placement(visible = true, transformation(origin = {0, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ(PRefConst = 1e+07, QRefConst = 0, SNom = 1e+07, UNom = 10000, portVariablesPhases = true) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ(PRefConst = 1e+07, QRefConst = 0, SNom = 1e+07, portVariablesPhases = true, URef = 10000) annotation(
     Placement(visible = true, transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(infiniteBus.terminal, loadPQ.terminal) annotation(
+  connect(infiniteBus.terminalAC, loadPQ.terminalAC) annotation(
     Line(points = {{0, 10}, {0, -10}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),

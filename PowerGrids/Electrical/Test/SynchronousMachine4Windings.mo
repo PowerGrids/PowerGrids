@@ -2,23 +2,23 @@ within PowerGrids.Electrical.Test;
 
 model SynchronousMachine4Windings
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBus bus(SNom = 5.5e+08, UNom = 24000, UStart = 24000, X = 0, portVariablesPhases = true, portVariablesPu = true, theta = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus bus(SNom = 5.5e+08, UNom = 24000, UStart = 24000, X = 0, portVariablesPhases = true, theta = 0) annotation(
     Placement(visible = true, transformation(origin = {0, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine(H = 6, PStart = -5.52e+08, QStart = -2.52e+08, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, UStart = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, portVariablesPhases = true, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76) annotation(
-    Placement(visible = true, transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner PowerGrids.Electrical.System systemPowerGrids(fNom = 60) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine(H = 6, PStart = -5.52e+08, QStart = -2.52e+08, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, portVariablesPhases = true, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76) annotation(
+    Placement(transformation(origin = {0, -10}, extent = {{-10, -10}, {10, 10}})));
+  inner PowerGrids.Electrical.System systemPowerGrids(fNom = 60, final computePF = false) annotation(
     Placement(visible = true, transformation(origin = {68, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step PmPu(height = 0.0, offset = 0.9, startTime = 50) annotation(
     Placement(visible = true, transformation(origin = {-50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step ufPu(height = 0, offset = 0.000939) annotation(
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
-  connect(bus.terminal, machine.terminal) annotation(
-    Line(points = {{0, 20}, {0, 0}}));
   connect(ufPu.y, machine.ufPuIn) annotation(
-    Line(points = {{-38, -30}, {-24, -30}, {-24, -14}, {-10, -14}, {-10, -14}}, color = {0, 0, 127}));
+    Line(points = {{-38, -30}, {-24, -30}, {-24, -18}, {-6, -18}}, color = {0, 0, 127}));
   connect(PmPu.y, machine.PmPu) annotation(
-    Line(points = {{-38, 10}, {-24, 10}, {-24, -6}, {-10, -6}, {-10, -6}}, color = {0, 0, 127}));
+    Line(points = {{-38, 10}, {-24, 10}, {-24, -12}, {-6, -12}}, color = {0, 0, 127}));
+  connect(bus.terminalAC, machine.terminalAC) annotation(
+    Line(points = {{0, 20}, {0, -10}}));
   annotation(
     experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-06, Interval = 0.02),
     Documentation(info = "<html><head></head><body><p>Test case for the conversion of external parameter to internal parameters taken from Kundur, Power System Stability and Control, example 4.1. Note that the system frequency for this example is 60 Hz.</p>

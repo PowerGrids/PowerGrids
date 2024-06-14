@@ -20,7 +20,41 @@ The PowerGrids library is designed around two fundamental principles.<p></p>
 
 <h3>Types for Physical Quantities</h3>
 <p>The <a href=\"modelica://PowerGrids.Types\">PowerGrids.Types</a> package defines the types for all physical variables, which use SI units, and for non-dimensional per-unit variables. Physical types include a default <code>nominal</code> attribute for proper scaling of variable in the generated simulation code, and default <code>displayUnit</code> attributes, which allow GUIs to provide parameter input and to display simulation results using more convenient units such as kV or MW. Note that the numerical values in the Modelica source code are always in SI units for consistency.
-</p>
+</p><h3>Name conventions</h3><div>The following conventions are used for the names of the parameters that define nominal/reference Voltages and/or Powers:</div><ul dir=\"auto\"><li><b>xxNom:</b> these parameters&nbsp;are always present in the input mask, possibly with some 
+default value (see below the PQ load case). They are used to set the Nominal/rated xx values and as p.u. base. They are also used in the library as&nbsp;<code>nominal</code>&nbsp;attribute for proper scaling of variable in the generated simulation code.<br><u>Exception to this rule:</u> SNom for the Bus component is declared as 
+final SNom = 1, so it is removed from the input mask, since SPu = 0 all 
+the time (no power flow through the port). As a consequence port.P, 
+port.Q, port.PPu, port.QPu etc. will all be zero, as they should, with 
+no divisions by zero.</li>
+<li><b>xxRef: </b>these&nbsp;parameters are used to define the behaviour of a components by
+ specifying a reference operating point. In this case, the default value
+ for <b>xxNom</b> is defined in terms of <b>xxRef</b> to avoid double input if one 
+wants to see 1 p.u. at the reference operating point, this can be 
+changed by explicitly inputting some different value for <b>xxNom</b>.</li>
+</ul><p>Some example are listed below,</p><p><!--StartFragment--><!--EndFragment--></p><ol dir=\"auto\">
+<li><b>Machines (Synchronous and transformer):</b> The user will be asked for 
+xxNom in the input mask, intended as the nominal, or rated values of the
+ machine, <em>but also</em> as the values from which p.u. impedances are
+ computed from the corresponding ohm values, as made it clear from the 
+comment to the parameter. No need of xxRef. For transformer we will have
+ one UNom per winding. xxNom will also be used for scaling, but we don't
+ mention that in the parameter input mask.</li>
+<li><b>Lines:</b> same as machines, will be asked for xxNom in the input mask, intended as the nominal, or rated values of the line, <em>but also</em>
+ as the ones from which p.u. impedances are computed from the 
+corresponding ohm values. xxNom values are asked only once and used for 
+both ports, contrary to transformers that have one SNom but two separate
+ UNomA and UNomB. We can give a default value for SNom = UNom^2/CM.abs(Complex(R,X)), 
+which is probably good enough in most cases, but can always be changed.</li>
+<li><b>Constant impedance loads described through P and Q:</b> the user will be
+ asked in the components' mask for PRefConst, QRefConst and URef 
+(intended as the value at which, from the inputed P and Q, the internal 
+impedances are computed). Regarding UNom and SNom, they will also appear
+ in the input mask, but they will have the defaults UNom = URef and SNom
+ = sqrt(PRefConst^2+ QRefConst^2) already set. One could always change 
+them if you want to see a value of p.u. different from 1 at the 
+reference operating point, which can be different from the nominal one 
+(e.g. you are working at 50% load, so you want to see 0.5 p.u.)</li>
+</ol>
 
 <h3>Connectors</h3>
 <p>AC connections are made through the <a href=\"modelica://PowerGrids.Interfaces.TerminalAC\">PowerGrids.Interfaces.TerminalAC</a> connectors, which carry a phase-to-ground voltage phasor and a line current phasor. Any two connectors belonging to the same synchronous system can be connected.</p>
@@ -66,14 +100,6 @@ The library was designed to initialize the system model according to three diffe
 Each system model needs to add an <code>inner</code> instance of the <code>System</code> object named <code>system</code> (you can get it in any Modelica GUI by simply dragging the system object into the top-level system diagram). The system objects holds system-wide defaults, e.g., the nominal frequency or the initialization option, and provides a frequency reference to all synchronous machines. All components can access the variables and parameters of the system object via the inner/outer mechanism, without the need of explicitly establishing connections.<p></p>
 
 <h3>Frequency reference</h3>
-<p>All phasor quantities on the component connectors are referred to a rotating frame of reference, according to the setting of the <code>referenceFrequency</code> parameter of the <code>system</code> object. There are three options:</p>
-<ul>
-<li><b>Nominal Frequency</b>: all phasors are referred to a common reference frame rotating at the fixed nominal system frequency. This option can be used in case of systems connected to an ideal bus, because the frequency of all the machines cannot significantly drift away from the nominal value for sustained amounts of time; hence, phasor angles will remain limited, and will become asymptotically constant as steady state operation is achieved, allowing variable step-size solvers to increase the step length.</li>
-
-<li><b>Fixed Reference Generator</b>: all phasors are referred to a common reference frame rotating at the frequency of a selected reference generator. This frequency is provided by connecting the frequency output of the reference generator to the system object's reference frequency input. This option is preferrably used when modelling islanded systems, where deviations from the nominal frequency can take place for long time intervals, even when the system has reached a steady-state operation regime. In this case, if the nominal frequency were used, all phasors would constantly rotate, forcing the variable step-size solver to take short steps to correctly describe their sinousoidal trajectories. If the frequency of a specific generator is used instead as a reference, since the system is synchronously connected, the phasors will asymptotically become constant when reaching a steady state, even in the presence of a nonzero frequency deviation from the nominal value, allowing the solver to take much longer time steps.</li>
-
-<li><b>Adaptive Reference Generators</b>: this option, which is currently not yet implemented, will allow to dynamically select the reference generators for different portions of the system that may form separate synchronous island due to the disconnection of strategically placed circuit breakers, or merge them when they are re-syncronized and the breaker closed. This feature will require to recompute a topological analysis of the grid structure at run time, each time a breaker is opened or closed. Currently there is no native support for this kind of analysis in Modelica 3.4, since <a href=\"https://specification.modelica.org/v3.4/Ch9.html#overconstrained-equation-operators-for-connection-graphs\">connection graphs</a> are assumed to be statically defined; hence, this feature will require the use of external C code and additional inputs-output or inner/outer connections to handle this information. Future versions of the Modelica language may introduce dynamically changing connection graph analysis natively, making the implementation of this feature much easier.</li>
-</ul>
-<p>Other Modelica libraries for power system simulations, e.g. Modelica.Electrical.QuasiStationary or PowerSystems, use overconstrained  connectors and the built-in static connection graph analysis of Modelica 3.4 to handle the distribution of the reference frequency information across connected synchronous systems. Unfortunately, this design precludes the possibility of handling dynamically splitting and merging synchronous islands, which is essential for the modelling of nation- or continental-sized transmission systems, which is one of the goals of PowerGrids. Hence, such a construct is not used in this library.</p>
+<p>PowerGrids uses overconstrained  connectors and the built-in static connection graph analysis of Modelica 3.4 to handle the distribution of the reference frequency information (in terms of rotational speed in PerUnit) across connected synchronous systems.</p>
 </body></html>"));
 end LibraryArchitecture;
