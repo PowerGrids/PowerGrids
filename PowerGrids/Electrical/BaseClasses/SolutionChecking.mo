@@ -6,7 +6,7 @@ model SolutionChecking
   parameter Boolean enableAssertions = systemPowerGrids.enableAssertions "=true, enables asserts in order to check the validity of the numerical solution" annotation(
     Evaluate = true, Dialog(tab="Solution checking"));
   parameter AssertionLevel assertionLevel = systemPowerGrids.assertionLevel "assertion level for the solution checking (error level stops the simulation)" annotation(
-  Evaluate = true, Dialog(group="Solution checking", enable=enableAssertions));
+  Evaluate = true, Dialog(tab="Solution checking", enable=enableAssertions));
   parameter SI.PerUnit VPuMin = systemPowerGrids.VPuMin "min value of voltage in p.u at buses and sinchronous generators nodes" annotation(
     Dialog(tab="Solution checking"));
   parameter SI.PerUnit VPuMax = systemPowerGrids.VPuMax "max value of voltage in p.u at buses and sinchronous generators nodes" annotation(
@@ -17,7 +17,9 @@ model SolutionChecking
     Dialog(tab="Solution checking"));
   parameter SI.PerUnit omegaPuMax = systemPowerGrids.omegaPuMax "max value of frequency in p.u at generators nodes" annotation(
     Dialog(tab="Solution checking"));
-  parameter Boolean enableOmegaPuChecking = false "=true, enables omegaPu checking";
+  parameter Boolean enableOmegaPuChecking = false "=true, enables omegaPu checking"annotation(
+    Dialog(tab="Solution checking"));
+
 
   input SI.PerUnit VPuCheck "Absolute value of voltage across the port in p.u. (base VBase)";
   input SI.PerUnit IPuCheck "Absolute value of complex current flowing into the port in p.u. (base IBase)";
