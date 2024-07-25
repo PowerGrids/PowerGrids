@@ -8,6 +8,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
     QStart = if computePF then QStartPF else QRefConst,
     final hasSubPF,
     final localInit,
+    final isLinear = false,
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
       SNom = SNom,
       UNom = UNom,

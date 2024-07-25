@@ -7,6 +7,7 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     generatorConvention = true,
     final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
     final hasSubPF,
+    final isLinear = false,
     PStart = if computePF then PStartPF else -SNom,
     redeclare ComponentPF componentPF);
 

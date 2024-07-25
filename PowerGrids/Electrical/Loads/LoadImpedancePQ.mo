@@ -8,6 +8,7 @@ model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"
     QStart = QRefConst,
     final hasSubPF,
     final localInit,
+    final isLinear = false,
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
       SNom = SNom,
       UNom = UNom,
