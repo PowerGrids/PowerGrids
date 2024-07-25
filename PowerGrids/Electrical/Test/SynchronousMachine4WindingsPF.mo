@@ -9,7 +9,7 @@ model SynchronousMachine4WindingsPF
     Placement(transformation(origin={-106,-54},   extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression ufPu1(y = 0.000939) annotation (
     Placement(transformation(origin={-106,-68},   extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ LoadPQ1(UNom = 24000, SNom = 550000000, PRefConst = 500000000, QRefConst = 300000000, URef = 24000) annotation (
+  PowerGrids.Electrical.Loads.LoadImpedancePQ LoadPQ1(UNom = 24000, SNom = 550000000, PRefConst = 500000000, QRefConst = 300000000) annotation (
     Placement(transformation(origin={-78,38},    extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Buses.ReferenceBus refBus1(UNom = 24000, SNom = 500000000) annotation (
     Placement(transformation(origin={-78,28},    extent = {{-10, -10}, {10, 10}})));
@@ -21,7 +21,7 @@ model SynchronousMachine4WindingsPF
       model ComponentPF =
         PowerGrids.Electrical.PowerFlow.SlackBus (                                                                                                                                                                                                        UNom = 24000, SNom = 5.5e8, U = 25.4e3, UPhase = 4.3*Modelica.Constants.pi/180)) annotation (
     Placement(transformation(origin={2,-20},     extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Loads.LoadImpedancePQ LoadPQ2(PRefConst = 500000000, QRefConst = 300000000, SNom = 550000000, UNom = 24000, URef = 24000) annotation (
+  PowerGrids.Electrical.Loads.LoadImpedancePQ LoadPQ2(PRefConst = 500000000, QRefConst = 300000000, SNom = 550000000, UNom = 24000) annotation (
     Placement(transformation(origin={2,38},     extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.Buses.ReferenceBus refBus2(SNom = 500000000, UNom = 24000, redeclare
       replaceable model ComponentPF =

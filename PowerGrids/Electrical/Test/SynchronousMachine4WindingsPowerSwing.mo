@@ -14,7 +14,7 @@ model SynchronousMachine4WindingsPowerSwing
     Placement(transformation(origin = {-50, 70}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Branches.LineConstantImpedance line(PStartA = 0, PStartB = 0, R = 0, SNom = 1e+08, UNom = 24000, X = 1) annotation(
     Placement(visible = true, transformation(origin = {30, -8}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load(PStart = 4.95e+08, QStart = 2.5e+08, SRef = 5.5e+08, URef = 24000, PRefConst = 495000000000000, QRefConst = 250000000000000) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load(PStart = 4.95e+08, QStart = 2.5e+08, SNom = 5.5e+08, UNom = 24000, PRefConst = 495000000000000, QRefConst = 250000000000000) annotation(
     Placement(visible = true, transformation(origin = {0, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step P(height = -10e6, offset = 495e6, startTime = 1) annotation(
     Placement(visible = true, transformation(origin = {-50, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

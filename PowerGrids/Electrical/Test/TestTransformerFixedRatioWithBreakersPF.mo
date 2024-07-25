@@ -4,7 +4,7 @@ model TestTransformerFixedRatioWithBreakersPF
   extends Modelica.Icons.Example;
   PowerGrids.Electrical.Buses.InfiniteBus IB1(SNom = 1e+07, UNom = 1000) annotation(
     Placement(transformation(origin = {-70, 30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadBc(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, URef = 10000, alpha = 0, beta = 0) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadBc(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, alpha = 0, beta = 0) annotation(
     Placement(transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}})));
   inner PowerGrids.Electrical.System systemPowerGrids(computePF = true) annotation(
     Placement(transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}})));
@@ -16,7 +16,7 @@ model TestTransformerFixedRatioWithBreakersPF
     Placement(transformation(origin = {20, 30}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Buses.InfiniteBus IBL2(R = 0, SNom = 1e+07, UNom = 10000, X = 0) annotation(
     Placement(transformation(origin = {50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadBo(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, URef = 10000, alpha = 0, beta = 0) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadBo(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, alpha = 0, beta = 0) annotation(
     Placement(transformation(origin = {-10, -40}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Buses.InfiniteBus IB2(SNom = 1e+07, UNom = 1000) annotation(
     Placement(transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));

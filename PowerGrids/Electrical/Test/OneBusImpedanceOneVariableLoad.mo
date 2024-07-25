@@ -14,7 +14,7 @@ model OneBusImpedanceOneVariableLoad
     Placement(visible = true, transformation(origin = {90, 90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.InfiniteBus bus2(PStart = -1e+07,R = 0.04, SNom = 1e+08, UNom = 10000, X = 0.4, generatorConvention = true)  annotation(
     Placement(visible = true, transformation(origin = {50, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load2(SRef = 1e+08, URef = 10000, PRefConst = 10000000)  annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependenceInputs load2(SNom = 1e+08, UNom = 10000, PRefConst = 10000000)  annotation(
     Placement(visible = true, transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Step PSignal(height = 10e6, offset = 10e6, startTime = 1)  annotation(
     Placement(visible = true, transformation(origin = {10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
