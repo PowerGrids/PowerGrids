@@ -25,5 +25,5 @@ model PowerFlow
 annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StopTime = 1),
-    Diagram(coordinateSystem(extent = {{-40, 60}, {80, -60}})));
+    Diagram(coordinateSystem(extent = {{-40, 40}, {80, -60}})));
 end PowerFlow;
