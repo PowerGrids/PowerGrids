@@ -18,7 +18,7 @@ model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of th
     Placement(transformation(origin = {-62, -31}, extent = {{-12, -11}, {12, 11}})));
   Modelica.Blocks.Sources.RealExpression RefLPu(y = 380/475*0.05) annotation(
     Placement(transformation(origin = {-56, 12}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Loads.LoadImpedancePQInputs LOAD(SNom = 475000000, UNom = 21000) annotation(
+  PowerGrids.Electrical.Loads.LoadImpedancePQInputs LOAD(SNom = 475e6, UNom = 21000) annotation(
     Placement(transformation(origin = {68, -44}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.Step PLoad(height = 23.75e6, offset = 380e6, startTime = 0.1) annotation(
     Placement(transformation(origin = {28, -40}, extent = {{-8, -8}, {8, 8}})));
