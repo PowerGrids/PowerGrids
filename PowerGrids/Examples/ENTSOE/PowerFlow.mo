@@ -4,7 +4,7 @@ model PowerFlow
   extends Modelica.Icons.Example;
   inner Electrical.System systemPowerGrids annotation(
     Placement(transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.PowerFlow.PVBus GEN(UNom = 21000, SNom = 500000000, P = -475000000)  annotation(
+  PowerGrids.Electrical.PowerFlow.PVBus GEN(UNom = 21000, SNom = 500000000, P = -475000000, U = 21000)  annotation(
     Placement(transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.BusPF NTLV(UNom = 21000)  annotation(
     Placement(transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
