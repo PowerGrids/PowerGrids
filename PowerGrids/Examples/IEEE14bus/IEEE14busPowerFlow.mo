@@ -405,31 +405,31 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
   PowerGrids.Electrical.PowerFlow.PVBus GEN1(
     SNom = 1211e6,
     UNom = 24e3,
-    P = -229.29e6
+    P = -229.29e6, U = 24000
   ) annotation(
     Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(
     SNom = 1120e6,
     UNom = 24e3,
-    P = -40e6
+    P = -40e6, U = 24000
   ) annotation(
     Placement(visible = true, transformation(origin = {-170, -90}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN3(
     SNom = 1650e6,
     UNom = 20e3,
-    P = 0.0
+    P = 0.0, U = 2e4
   ) annotation(
     Placement(visible = true, transformation(origin = {190, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN6(
     SNom = 80.0e6,
     UNom = 13.8e3,
-    P = 0
+    P = 0, U = 13800
   ) annotation(
     Placement(transformation(origin = {-70, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN8(
     SNom = 250e6,
     UNom = 18e3,
-    P = 0
+    P = 0, U = 18000
   ) annotation(
     Placement(visible = true, transformation(origin = {180, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
