@@ -4,15 +4,15 @@ model PowerFlow
   extends Modelica.Icons.Example;
   inner Electrical.System systemPowerGrids annotation(
     Placement(transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.PowerFlow.PVBus GEN(UNom = 21000, SNom = 500000000, P = -475000000)  annotation(
+  PowerGrids.Electrical.PowerFlow.PVBus GEN(UNom = 21000, SNom = 500e6, P = -475e6, U = 21000)  annotation(
     Placement(transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.BusPF NTLV(UNom = 21000)  annotation(
     Placement(transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  Electrical.PowerFlow.TransformerFixedRatioPF TGEN(UNomA = 21000, UNomB = 419000, SNom = 500000000, rFixed = 419/21, R = 0.15e-2*419^2/500, X = 16e-2*419^2/500)  annotation(
+  Electrical.PowerFlow.TransformerFixedRatioPF TGEN(UNomA = 21000, UNomB = 419000, SNom = 500e6, rFixed = 419/21, R = 0.15e-2*419^2/500, X = 16e-2*419^2/500)  annotation(
     Placement(transformation(origin = {20, -20}, extent = {{-10, -10}, {10, 10}})));
-  Electrical.PowerFlow.SlackBus GRID(UNom = 380000, SNom = 500000000, U = 1.05*380e3)  annotation(
+  Electrical.PowerFlow.SlackBus GRID(UNom = 380000, SNom = 500e6, U = 1.05*380e3)  annotation(
     Placement(transformation(origin = {50, 0}, extent = {{-10, -10}, {10, 10}})));
-  Electrical.PowerFlow.PQBus GRIDL(UNom = 380000, SNom = 500000000, P = 475000000, Q = 76000000)  annotation(
+  Electrical.PowerFlow.PQBus GRIDL(UNom = 380000, SNom = 500e6, P = 475e6, Q = 76e6)  annotation(
     Placement(transformation(origin = {50, -30}, extent = {{-10, -10}, {10, 10}})));equation
   connect(GEN.terminalAC, NTLV.terminalAC) annotation(
     Line(points = {{-30, 0}, {-30, -20}, {0, -20}}));
@@ -25,5 +25,5 @@ model PowerFlow
 annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StopTime = 1),
-    Diagram(coordinateSystem(extent = {{-40, 60}, {80, -60}})));
+    Diagram(coordinateSystem(extent = {{-40, 40}, {80, -60}})));
 end PowerFlow;
