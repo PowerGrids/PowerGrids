@@ -64,28 +64,28 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
     Placement(transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-60, -20}, extent = {{-20, -20}, {20, 20}})));
-  Modelica.Blocks.Interfaces.RealInput ufPuIn(unit = "1", start = ufPuInStart) "Input voltage of exciter winding in p.u. (user-selected base voltage)" annotation(
+  Modelica.Blocks.Interfaces.RealInput ufPuIn(unit = "1", final start = ufPuInStart) "Input voltage of exciter winding in p.u. (user-selected base voltage)" annotation(
     Placement(transformation(origin = {-104, -50}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-60, -80}, extent = {{-20, -20}, {20, 20}})));
   // Output variables
   Modelica.Blocks.Interfaces.RealOutput omega(unit = "rad/s") "Angular frequency in rad/s" annotation(
     Placement(transformation(origin = {106, -40}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -10}, extent = {{-10, -10}, {10, 10}})));
   // Other per-unit variables
-  Modelica.Blocks.Interfaces.RealOutput omegaPu(start = 1) "Angular frequency in p.u." annotation(
+  Modelica.Blocks.Interfaces.RealOutput omegaPu(final start = 1) "Angular frequency in p.u." annotation(
     Placement(transformation(origin = {106, -20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -30}, extent = {{-10, -10}, {10, 10}})));
-  Types.PerUnit iDPu(start = 0) "Current of direct axis damper in p.u";
-  Types.PerUnit ifPu(start = ifPuStart) "Current of excitation winding in p.u.";
-  Types.PerUnit iQ1Pu(start = 0) "Current of quadrature axis 1st damper in p.u.";
-  Types.PerUnit iQ2Pu(start = 0) "Current of quadrature axis 2nd damper in p.u.";
-  Types.PerUnit ufPu(start = ufPuStart) "Voltage of exciter winding in p.u. (base voltage as per Kundur)";
-  Types.PerUnit lambdadPu(start = lambdadPuStart) "Flux of direct axis in p.u.";
-  Types.PerUnit lambdaqPu(start = lambdaqPuStart) "Flux of quadrature axis in p.u.";
+  Types.PerUnit iDPu(final start = 0) "Current of direct axis damper in p.u";
+  Types.PerUnit ifPu(final start = ifPuStart) "Current of excitation winding in p.u.";
+  Types.PerUnit iQ1Pu(final start = 0) "Current of quadrature axis 1st damper in p.u.";
+  Types.PerUnit iQ2Pu(final start = 0) "Current of quadrature axis 2nd damper in p.u.";
+  Types.PerUnit ufPu(final start = ufPuStart) "Voltage of exciter winding in p.u. (base voltage as per Kundur)";
+  Types.PerUnit lambdadPu(final start = lambdadPuStart) "Flux of direct axis in p.u.";
+  Types.PerUnit lambdaqPu(final start = lambdaqPuStart) "Flux of quadrature axis in p.u.";
   Types.PerUnit lambdaDPu "Flux of direct axis damper in p.u";
   Types.PerUnit lambdafPu "Flux of excitation winding in p.u.";
   Types.PerUnit lambdaQ1Pu "Flux of quadrature axis 1st damper in p.u.";
   Types.PerUnit lambdaQ2Pu "Flux of quadrature axis 1st damper in p.u.";
-  Types.PerUnit CmPu(start = -PStart/SNom) "Mechanical torque in p.u. (base PNom/omegaBase)";
-  Types.PerUnit CePu(start = -PStart/SNom) "Electrical torque in p.u. (base SNom/omegaBase)";
-  Types.PerUnit PePu(start = -PStart/SNom) "Electrical power in p.u. (base SNom)";
+  Types.PerUnit CmPu(final start = -PStart/SNom) "Mechanical torque in p.u. (base PNom/omegaBase)";
+  Types.PerUnit CePu(final start = -PStart/SNom) "Electrical torque in p.u. (base SNom/omegaBase)";
+  Types.PerUnit PePu(final start = -PStart/SNom) "Electrical power in p.u. (base SNom)";
   Types.PerUnit PePuPNom = PePu*SNom/PNom "Electrical active power in p.u. (base PNom)";
   final Types.PerUnit omegaRefPu = terminalAC.omegaRefPu "Reference frequency in p.u.";
   // SI-unit variables
