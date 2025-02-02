@@ -1,20 +1,16 @@
 within PowerGrids.Electrical.BaseComponents;
 
-partial model InfiniteBusVI
+partial model InfiniteBusVI "Base models for infinite buses, prescribing the node voltage (modulus and phase)"
+  extends PowerGrids.Electrical.BaseClasses.OnePortACVI(final isLinear = true);
   extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
-  extends BusBaseVI(
-      e = CM.fromPolar(ERef, UPhase),
-      Z = Complex(R, X));
-  parameter Types.Resistance R = 0 "Series resistance";
-  parameter Types.Reactance X = 0 "Series reactance";
-  parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
-  parameter Types.Angle UPhase = 0 "Voltage phase angle of ideal voltage generator";
-  final parameter Types.Voltage ERef = URef/sqrt(3) "Phase-to-ground voltage of ideal voltage generator";
- 
+
+  Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
+  Types.ComplexCurrent i(re(nominal = port.INom), im(nominal = port.INom)) = port.i "Port current";
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html><head></head><body>Infinite bus model with constant voltage e and internal impedance Z. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.
+  Documentation(info = "<html><head></head><body>Infinite bus model with prescribed voltage v (modulus and phase).
 </body></html>"));
+
 end InfiniteBusVI;

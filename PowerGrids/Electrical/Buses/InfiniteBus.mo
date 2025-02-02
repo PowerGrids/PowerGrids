@@ -6,9 +6,9 @@ model InfiniteBus "Infinite bus with internal impedance"
     terminalAC(
       final computePF = computePF,
       terminalACPF(final v = vPF, final i = iPF)),
-    generatorConvention = true);
+    final generatorConvention = true);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    generatorConvention = true,
+    final generatorConvention = true,
     final hasSubPF,
     final localInit,
     final isLinear = true,
@@ -16,9 +16,7 @@ model InfiniteBus "Infinite bus with internal impedance"
       SNom = SNom, 
       UNom = UNom,
       URef = URef,
-      UPhase = UPhase,
-      R = R,
-      X = X));
+      UPhase = UPhase));
 
 equation
   // Overconstrained connector
