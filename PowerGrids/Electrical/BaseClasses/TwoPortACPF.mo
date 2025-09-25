@@ -37,6 +37,6 @@ initial equation
     portB.i = terminalAC_b.i + zero*Complex(PepfB+QepfB+UepfB+UPhepfB) "the part multiplied by zero is to force the EPF computation before to start the initialization";
   annotation(
     Documentation(info = "<html>
-<p>This is the base class for all the PW components with two AC terminals.</p>
+<p>This is the base class for all the PF components with two AC terminals.</p>
 </html>"));
 end TwoPortACPF;
