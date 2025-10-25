@@ -40,7 +40,7 @@ equation
     // Further two initial equations will be needed (e.g. in the controller)
     // to enforce P,V at the port or achieve actuator saturation if that is not possible
     CM.real(terminal.v*CM.conj(terminal.i)) = port.PStart;
-    CM.'abs'(terminal.v) = port.VStart;
+    CM.abs(terminal.v) = port.VStart;
     port.Q = port.QStart;
     port.v.re*port.vStart.im = port.v.im*port.vStart.re;
   elseif initial() and localInit == LocalInitializationOption.PQ then

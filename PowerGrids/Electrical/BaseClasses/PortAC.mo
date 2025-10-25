@@ -43,8 +43,8 @@ model PortAC "AC port computing auxiliary quantities"
   Types.ActivePower   P(nominal = SBase, start = PStart) = S.re "Active power flowing into the port";
   Types.ReactivePower Q(nominal = SBase, start = QStart) = S.im "Reactive power flowing into the port";
   
-  Types.Voltage U(nominal = UBase, start = UStart) = CM.'abs'(u) "Port voltage absolute value (phase-to-phase)";
-  Types.Current I(nominal = IBase, start = IStart) = CM.'abs'(i) "Port current (positive entering)";
+  Types.Voltage U(nominal = UBase, start = UStart) = CM.abs(u) "Port voltage absolute value (phase-to-phase)";
+  Types.Current I(nominal = IBase, start = IStart) = CM.abs(i) "Port current (positive entering)";
 
   Types.PerUnit        PPu(start = PStart/SBase) = if portVariablesPu then S.re/SBase else 0 "Active power flowing into the port in p.u. (base SBase)" annotation(
   HideResult = portVariablesPu);
