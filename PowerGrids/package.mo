@@ -1,7 +1,7 @@
 within ;
 package PowerGrids
   extends Modelica.Icons.Package;
-  import SI = Modelica.SIunits;
+  import SI = Modelica.Units.SI;
   import CM = Modelica.ComplexMath;
 
   annotation(
