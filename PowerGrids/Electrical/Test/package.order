@@ -1,9 +1,8 @@
 Info
 OneBusOneLoad
-OneBusImpedanceOneLoad
 OneBusTransmissionLineOneLoad
-OneBusImpedanceOneVariableLoad
-OneBusImpedanceVariableVoltageOneLoad
+OneBusOneVariableLoad
+OneBusVariableVoltageOneLoad
 OneBusTransmissionLineShuntOneLoad
 TwoBusesResistiveTransmissionLine
 TwoBusesInductiveTransmissionLine

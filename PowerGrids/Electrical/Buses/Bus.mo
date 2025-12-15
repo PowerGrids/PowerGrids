@@ -2,7 +2,6 @@ within PowerGrids.Electrical.Buses;
 
 model Bus "Bus model"
   extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
-  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final SNom = 1,
     final PStart = 0,
@@ -12,6 +11,7 @@ model Bus "Bus model"
     final isLinear = true,
     redeclare PowerGrids.Electrical.PowerFlow.BusPF componentPF(
       UNom = UNom));
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
 
 equation
   port.i = Complex(0);

@@ -10,11 +10,11 @@ model TestTransformerFixedRatioWithBreakersPF
     Placement(transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Buses.Bus BL1(UNom = 10000) annotation(
     Placement(transformation(origin = {-10, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  PowerGrids.Electrical.Buses.InfiniteBus IBL1(SNom = 1e+07, UNom = 10000, R = 0, X = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus IBL1(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedance Line1Bc(UNom = 10000, R = 0.01, X = 0.2, G = 0.001, B = 0.002) annotation(
     Placement(transformation(origin = {20, 30}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Buses.InfiniteBus IBL2(R = 0, SNom = 1e+07, UNom = 10000, X = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus IBL2(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadBo(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, alpha = 0, beta = 0) annotation(
     Placement(transformation(origin = {-10, -40}, extent = {{-10, -10}, {10, 10}})));

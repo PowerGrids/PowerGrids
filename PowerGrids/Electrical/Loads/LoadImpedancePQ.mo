@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Loads;
 
-model LoadImpedancePQ "Load model with impedance specified by PRef and QRef"   
+model LoadImpedancePQ "Load model with prescribed impedance specified by PRef and QRef"
   extends Icons.Load(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(

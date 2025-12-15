@@ -1,7 +1,6 @@
 BusBaseVI
 PiNetworkVI
 ShuntConductanceVI
-InfiniteBusVI
 LineConstantImpedanceVI
 LineConstantImpedanceWithBreakersVI
 TransformerFixedRatioVI
