@@ -7,6 +7,7 @@ model OneBusTransmissionLineShuntOneLoad
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-100, -100}, {100, 100}})),
     experiment(StopTime = 1, Interval = 0.02),
-    Documentation(info = "<html><head></head><body><p>This model is similar to<a href=\"modelica://PowerGrids.Electrical.Test.OneBusTransmissionLineOneLoad\">OneBusTransmissionLineOneLoad</a>, but also has nonzero shunt admittance.
-</body></html>"));
+    Documentation(info = "<html>
+<p>This model is similar to <a href=\"modelica://PowerGrids.Electrical.Test.OneBusTransmissionLineOneLoad\">OneBusTransmissionLineOneLoad</a>, but also has nonzero shunt admittance.</p>
+</html>"));
 end OneBusTransmissionLineShuntOneLoad;

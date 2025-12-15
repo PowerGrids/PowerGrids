@@ -12,11 +12,11 @@ model TestTransmissionLineWithBreakersPF
     Placement(transformation(origin = {-40, 70}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Buses.Bus BL1(UNom = 10000) annotation(
     Placement(transformation(origin = {-10, 66}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  PowerGrids.Electrical.Buses.InfiniteBus IBL1(SNom = 1e+07, UNom = 10000, R = 0, X = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus IBL1(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {50, 70}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.LineConstantImpedance Line1AcBc(UNom = 10000, R = 0.3, X = 1.5, G = 0.01, B = 0.02) annotation(
     Placement(transformation(origin = {20, 70}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Buses.InfiniteBus IBL2(R = 0, SNom = 1e+07, UNom = 10000, X = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus IBL2(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadAoBc(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, alpha = 0, beta = 0) annotation(
     Placement(transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}})));
@@ -30,7 +30,7 @@ model TestTransmissionLineWithBreakersPF
     Placement(transformation(origin = {-10, 26}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   Modelica.Blocks.Sources.BooleanExpression CloseCommand annotation(
     Placement(transformation(origin = {-90, 70}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Buses.InfiniteBus IBL3(R = 0, SNom = 1e+07, UNom = 10000, X = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus IBL3(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {50, -20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Loads.LoadPQVoltageDependence LoadAcBo(PRefConst = 1e+07, QRefConst = 1000000, SNom = 1e+07, UNom = 10000, alpha = 0, beta = 0) annotation(
     Placement(transformation(origin = {-10, -30}, extent = {{-10, -10}, {10, 10}})));
@@ -52,7 +52,7 @@ model TestTransmissionLineWithBreakersPF
     Placement(transformation(origin = {-40, -60}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Buses.Bus BL4(UNom = 10000) annotation(
     Placement(transformation(origin = {-10, -64}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  PowerGrids.Electrical.Buses.InfiniteBus IBL4(R = 0, SNom = 1e+07, UNom = 10000, X = 0) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus IBL4(SNom = 1e+07, UNom = 10000) annotation(
     Placement(transformation(origin = {50, -60}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 equation
   connect(IB1.terminalAC, LineAcBc.terminalAC_a) annotation(

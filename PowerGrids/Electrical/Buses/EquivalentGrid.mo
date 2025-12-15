@@ -51,7 +51,7 @@ equation
     isSlackBusPF = false;
   end if;
 
-  // Overconstrained connector
+  // Overconstrained connector: set omegaRefPu if selected as root node
   Connections.potentialRoot(terminalAC.omegaRefPu);
   if Connections.isRoot(terminalAC.omegaRefPu) then
      terminalAC.omegaRefPu = 1;

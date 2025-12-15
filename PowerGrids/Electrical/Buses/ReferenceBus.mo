@@ -9,17 +9,18 @@ model ReferenceBus "Reference bus for an isolated grid"
     final isLinear = true,
     redeclare ComponentPF componentPF);
 
+  import PowerGrids.Types.Choices.InitializationOption;
+
   replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus(
     UNom = UNom,
     SNom = SNom,
     U = UPF,
     UPhase = UPhasePF,
     setPhaseOnly = setPhaseOnly)
-  constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF
-  annotation(choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.BusPF
-                            "to be used if the slack bus is embedded in another component")));
+  constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF annotation(
+    choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.BusPF
+      "to be used if the slack bus is embedded in another component")));
 
-  import PowerGrids.Types.Choices.InitializationOption;
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
   parameter Types.Voltage UPF = UNom "Phase-to-phase voltage to be used to compute the embedded PF" annotation(

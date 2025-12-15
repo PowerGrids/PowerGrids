@@ -2,23 +2,27 @@ within PowerGrids.Electrical.Test;
 
 model TestTransformerWithTapChangerTarget
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage infiniteBus(R = 0, SNom = 1e+06, UNom = 1000, X = 0, useUIn = true, UFixed(displayUnit = "V") = 502) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage infiniteBus(SNom = 1e+06, UNom = 1000, useUIn = true, UFixed(displayUnit = "V") = 502, VPuMin = 0.2, VPuMax = 2) annotation(
     Placement(visible = true, transformation(origin = {-28, 0}, extent = {{-8, -8}, {8, 8}}, rotation = -90)));
   PowerGrids.Electrical.Branches.TransformerWithTapChangerTarget trafo(B = 0, G = 0, K = {2, 3, 4, 5, 6}, Ntap = 5, R = 1, SNom = 1e+06, UNomA = 1000, UNomB = 3000, X = 1, actionSel = PowerGrids.Electrical.Branches.TransformerWithTapChangerInterval.ActionType.direct, t1st = 1, tNext = 0.1, tapStart = 2, targetValue = 3000, deadBand = 400) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Buses.InfiniteBus busLoad(R = 1000, SNom = 1e+06, UNom = 1000, X = 0) annotation(
-    Placement(visible = true, transformation(origin = {30, -1.77636e-15}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  PowerGrids.Electrical.Buses.InfiniteBus busLoad(SNom = 1e+06, UNom = 1000) annotation(
+    Placement(transformation(origin = {68, -1.77636e-15}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   Modelica.Blocks.Sources.RealExpression Uset(y = 500*(sin(6.28*time/40) + 2)) annotation(
     Placement(visible = true, transformation(origin = {-50, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(visible = true, transformation(origin = {70, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Branches.LineConstantImpedance line(SNom = 1e6, UNom = 1000, R = 1000, X = 0)  annotation(
+    Placement(transformation(origin = {42, 0}, extent = {{-10, -10}, {10, 10}})));
 equation
   connect(Uset.y, infiniteBus.UIn) annotation(
     Line(points = {{-39, 30}, {-25, 30}, {-25, 8}}, color = {0, 0, 127}));
-  connect(trafo.terminalAC_b, busLoad.terminalAC) annotation(
-    Line(points = {{10, 0}, {30, 0}}));
   connect(infiniteBus.terminalAC, trafo.terminalAC_a) annotation(
     Line(points = {{-28, 0}, {-10, 0}}));
+  connect(line.terminalAC_b, busLoad.terminalAC) annotation(
+    Line(points = {{52, 0}, {68, 0}}));
+  connect(trafo.terminalAC_b, line.terminalAC_a) annotation(
+    Line(points = {{10, 0}, {32, 0}}));
   annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),

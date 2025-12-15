@@ -1,34 +1,27 @@
 within PowerGrids.Electrical.Buses;
-model InfiniteBus "Infinite bus with internal impedance"
-  extends PowerGrids.Electrical.BaseComponents.InfiniteBusVI(
-    final isOnePortAC = true,
-    redeclare connector TerminalAC = Interfaces.TerminalAC,
-    terminalAC(
-      final computePF = computePF,
-      terminalACPF(final v = vPF, final i = iPF)),
-    final generatorConvention = true);
+
+model InfiniteBus "Infinite bus with prescribed voltage"
+  extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final generatorConvention = true,
     final hasSubPF,
     final localInit,
     final isLinear = true,
     redeclare PowerGrids.Electrical.PowerFlow.InfiniteBusPF componentPF(
-      SNom = SNom, 
-      UNom = UNom,
-      URef = URef,
-      UPhase = UPhase));
-
+      SNom = SNom, UNom = UNom, URef = URef, UPhase = UPhase));
+  extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
+  parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
+  parameter Types.Angle UPhase = 0 "Voltage phase angle of ideal voltage generator";
 equation
-  // Overconstrained connector
+  port.v = CM.fromPolar(URef/sqrt(3), UPhase);
+  // Overconstrained connector: set omegaRefPu if selected as root node
   Connections.potentialRoot(terminalAC.omegaRefPu);
   if Connections.isRoot(terminalAC.omegaRefPu) then
-     terminalAC.omegaRefPu = 1;
+    terminalAC.omegaRefPu = 1;
   end if;
-  
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}),
-         graphics = {Text(origin = {84, 32}, extent = {{-20, 28}, {20, -28}}, textString = "", fontName = "Symbol")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Text(origin = {59, 48}, extent = {{-39, 68}, {39, -68}}, textString = "", fontName = "Symbol")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html><head></head><body>Infinite bus model with constant voltage e and internal impedance Z. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.
+    Documentation(info = "<html><head></head><body>Infinite bus model with constant voltage e and internal impedance Z. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.
 </body></html>"));
 end InfiniteBus;
