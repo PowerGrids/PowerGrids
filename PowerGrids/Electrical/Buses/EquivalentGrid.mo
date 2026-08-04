@@ -4,14 +4,7 @@ model EquivalentGrid "Equivalent grid model characterized by short circuit capac
   import Modelica.ComplexMath;
   extends Icons.Grid(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase, PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus=isSlackBusPF);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu);
-  extends PowerGrids.Electrical.BaseComponents.BusBaseVI(
-    final isOnePortAC = true,
-    redeclare connector TerminalAC = Interfaces.TerminalAC,
-    terminalAC(
-      final computePF = computePF,
-      terminalACPF(final v = vPF, final i = iPF)),
-    e = eSource,
-    Z = ZGrid);
+
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF,
     final localInit,
@@ -50,6 +43,9 @@ equation
   if not computePF then
     isSlackBusPF = false;
   end if;
+
+  // Equivalent grid equation
+  port.v = eSource + ZGrid*port.i;
 
   // Overconstrained connector: set omegaRefPu if selected as root node
   Connections.potentialRoot(terminalAC.omegaRefPu);
