@@ -2,8 +2,16 @@ within PowerGrids.Electrical.PowerFlow;
 
 model TransformerFixedRatioWithBreakerPF
   extends PowerGrids.Electrical.BaseComponents.TransformerFixedRatioWithBreakerVI(
-    redeclare connector TerminalAC_a = Interfaces.TerminalACPF_a,
-    redeclare connector TerminalAC_b = Interfaces.TerminalACPF_b);
+    rFixed = UNomB/UNomA,
+    VNomA = portA.VNom,
+    VNomB = portB.VNom,
+    INomA = portA.INom,
+    INomB = portB.INom,
+    vA = portA.v,
+    vB = portB.v,
+    iA = portA.i,
+    iB = portB.i);
+
   extends PowerGrids.Electrical.BaseClasses.TwoPortACPF(
     final isLinear = true,
     SNom = UNomB^2/CM.abs(Complex(R,X)));
