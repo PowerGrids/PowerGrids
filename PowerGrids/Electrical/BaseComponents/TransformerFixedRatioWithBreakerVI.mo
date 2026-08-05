@@ -2,7 +2,7 @@ within PowerGrids.Electrical.BaseComponents;
 
 partial model TransformerFixedRatioWithBreakerVI
   extends Icons.Transformer;
-  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(SNom = UNomB^2/CM.abs(Complex(R,X)));
+  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI;
 
   encapsulated type BreakersState = enumeration(
     Bc "breaker closed",
@@ -10,7 +10,7 @@ partial model TransformerFixedRatioWithBreakerVI
   parameter Boolean useBreaker = false "Use breaker (port b)" annotation(
     Dialog(group = "External Inputs"),
     choices(checkBox = true));
-  parameter SI.PerUnit rFixed = UNomB/UNomA "Fixed transformer ratio VB/VA";
+  parameter SI.PerUnit rFixed "Fixed transformer ratio VB/VA";
   parameter SI.Angle thetaFixed = 0 "Fixed phase lead of VB w.r.t. VA";
   parameter Types.Resistance R "Series resistance on B side";
   parameter Types.Reactance X "Series reactance on B side";
