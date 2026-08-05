@@ -1,15 +1,15 @@
 within PowerGrids.Electrical.Branches;
 model TransformerWithTapChangerInterval
   extends BaseClasses.TapChangerPhaseShifterCommonVI(
-    final isTwoPortAC = true,
-    redeclare connector TerminalAC_a = Interfaces.TerminalAC_a,
-    redeclare connector TerminalAC_b = Interfaces.TerminalAC_b,
-    terminalAC_a(
-      final computePF = computePF,
-      terminalACPF(final v = vPF_a, final i = iPF_a)),
-    terminalAC_b(
-      final computePF = computePF,
-      terminalACPF(final v = vPF_b, final i = iPF_b)));
+    VNomA = portA.VNom,
+    VNomB = portB.VNom,
+    INomA = portA.INom,
+    INomB = portB.INom,
+    vA = portA.v,
+    vB = portB.v,
+    iA = portA.i,
+    iB = portB.i);
+
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
     final hasSubPF,

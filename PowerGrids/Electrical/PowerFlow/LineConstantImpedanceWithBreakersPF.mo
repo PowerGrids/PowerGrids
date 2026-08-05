@@ -2,8 +2,15 @@ within PowerGrids.Electrical.PowerFlow;
 
 model LineConstantImpedanceWithBreakersPF
   extends PowerGrids.Electrical.BaseComponents.LineConstantImpedanceWithBreakersVI(
-    redeclare connector TerminalAC_a = Interfaces.TerminalACPF_a,
-    redeclare connector TerminalAC_b = Interfaces.TerminalACPF_b);
+    VNomA = portA.VNom,
+    VNomB = portB.VNom,
+    INomA = portA.INom,
+    INomB = portB.INom,
+    vA = portA.v,
+    vB = portB.v,
+    iA = portA.i,
+    iB = portB.i);
+
   extends PowerGrids.Electrical.BaseClasses.TwoPortACPF(
     final isLinear = true,
     final UNomA = UNom,

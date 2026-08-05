@@ -2,16 +2,15 @@ within PowerGrids.Electrical.BaseComponents;
 
 partial model LineConstantImpedanceWithBreakersVI
   extends Icons.Line;
-  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(
-    final UNomA = UNom,
-    final UNomB = UNom,
-    SNom = UNom^2/CM.abs(Complex(R,X)));
+  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI;
+
   encapsulated type BreakersState = enumeration(
-    AcBc "Both breakers at port A and at port B closed", 
-    AcBo "Breaker at port A closed, breaker at port B open", 
-    AoBc "Breaker at port A open, breaker at port B closed", 
+    AcBc "Both breakers at port A and at port B closed",
+    AcBo "Breaker at port A closed, breaker at port B open",
+    AoBc "Breaker at port A open, breaker at port B closed",
     AoBo "Both breakers at port A and at port B open"
   );
+
   parameter Boolean useBreakerA = false "Use breaker at port A" annotation(
     Dialog(group = "External Inputs"),
     choices(checkBox = true));
@@ -57,39 +56,39 @@ initial algorithm
       breakerStatus := BreakersState.AoBc;
     else
       breakerStatus := BreakersState.AoBo;
-    end if;  
-  end if;    
-      
+    end if;
+  end if;
+
 algorithm
-  when breakerStatus == BreakersState.AcBc 
+  when breakerStatus == BreakersState.AcBc
        and not pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AcBo "AcBc to AcBo";
-    
-  elsewhen breakerStatus == BreakersState.AcBc 
+
+  elsewhen breakerStatus == BreakersState.AcBc
            and not pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AoBc "AcBc to AoBc";
-  
-  elsewhen breakerStatus == BreakersState.AcBo 
+
+  elsewhen breakerStatus == BreakersState.AcBo
            and not pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AoBo "AcBo to AoBo";
-  
-  elsewhen breakerStatus == BreakersState.AoBc 
+
+  elsewhen breakerStatus == BreakersState.AoBc
            and not pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AoBo "AoBc to AoBo";
-  
-  elsewhen breakerStatus == BreakersState.AoBo 
+
+  elsewhen breakerStatus == BreakersState.AoBo
            and pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AcBo "AoBo to AcBo";
-  
-  elsewhen breakerStatus == BreakersState.AoBo 
+
+  elsewhen breakerStatus == BreakersState.AoBo
            and pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AoBc "AoBo to AoBc";
-    
-  elsewhen breakerStatus == BreakersState.AcBo 
+
+  elsewhen breakerStatus == BreakersState.AcBo
            and pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AcBc "AcBo to AcBc";
-    
-  elsewhen breakerStatus == BreakersState.AoBc 
+
+  elsewhen breakerStatus == BreakersState.AoBc
            and pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AcBc "AoBc to AcBc";
   end when;
@@ -99,23 +98,23 @@ equation
     Y_actual = Yseries;
     YA_actual = Yshunt;
     YB_actual = Yshunt;
-  
+
   elseif breakerStatus == BreakersState.AcBo then
     Y_actual = Complex(0);
     YB_actual = Complex(0);
     YA_actual = YbreakerOpen;
-  
+
   elseif breakerStatus == BreakersState.AoBc then
     Y_actual = Complex(0);
     YA_actual = Complex(0);
     YB_actual = YbreakerOpen;
-  
-  else 
+
+  else
     // AoBo
     Y_actual = Complex(0);
     YB_actual = Complex(0);
     YA_actual = Complex(0);
-  end if;  
+  end if;
 
   k = Complex(1);
   Y = Y_actual;

@@ -1,6 +1,6 @@
 within PowerGrids.Electrical.Branches.BaseClasses;
 partial model TapChangerPhaseShifterCommonVI "Common base class for tap-changer/phase shifter transformers"
-  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI(SNom = UNomB^2/CM.abs(Complex(R,X)));
+  extends PowerGrids.Electrical.BaseComponents.PiNetworkVI;
   extends Icons.Transformer;
 
   final constant Real NotUsed = Modelica.Constants.inf "Generic default value for not-used parameters";
