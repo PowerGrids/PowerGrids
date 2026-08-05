@@ -2,10 +2,7 @@ within PowerGrids.Electrical.BaseComponents;
 
 partial model LineConstantImpedanceVI "Transmission line with constant impedance"
   extends Icons.Line;
-  extends PiNetworkVI(
-    final UNomA = UNom,
-    final UNomB = UNom,
-    SNom = UNom^2/CM.abs(Complex(R,X)));
+  extends PiNetworkVI;
 
   parameter Types.Voltage UNom(start = 400e3) "Nominal/rated voltage";
   parameter Types.Resistance R "Series resistance";
