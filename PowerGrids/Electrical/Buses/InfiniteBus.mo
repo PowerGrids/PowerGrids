@@ -13,7 +13,7 @@ model InfiniteBus "Infinite bus with prescribed voltage"
   parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
   parameter Types.Angle UPhase = 0 "Voltage phase angle of ideal voltage generator";
 equation
-  port.v = CM.fromPolar(URef/sqrt(3), UPhase);
+  port.u = CM.fromPolar(URef, UPhase);
   // Overconstrained connector: set omegaRefPu if selected as root node
   Connections.potentialRoot(terminalAC.omegaRefPu);
   if Connections.isRoot(terminalAC.omegaRefPu) then

@@ -7,7 +7,7 @@ model InfiniteBusPF "Infinite bus with prescribed voltage"
   parameter Types.Voltage URef = UNom "Phase-to-phase voltage of ideal voltage generator";
   parameter Types.Angle UPhase = 0 "Voltage phase angle of ideal voltage generator";
 equation
-  port.v = CM.fromPolar(URef/sqrt(3), UPhase);
+  port.u = CM.fromPolar(URef, UPhase);
 annotation(
     Icon(graphics = {Text(origin = {84, 32}, extent = {{-20, 28}, {20, -28}}, textString = "", fontName = "Symbol")}));
 end InfiniteBusPF;
