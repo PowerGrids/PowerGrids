@@ -29,7 +29,7 @@ protected
   Modelica.Blocks.Interfaces.RealInput UAux "Source voltage modulus, phase-to-phase";
   Modelica.Blocks.Interfaces.RealInput UPhaseAux "Source voltage phase angle";
 equation
-  port.v = CM.fromPolar(UAux/sqrt(3), UPhaseAux);
+  port.u = CM.fromPolar(UAux, UPhaseAux);
   // Conditional connector handling
   connect(UIn, UAux);
   connect(UPhaseIn, UPhaseAux);
