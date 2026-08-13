@@ -19,19 +19,18 @@ model ReferenceBus "Reference bus for an isolated grid"
     setPhaseOnly = setPhaseOnly)
   constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF annotation(
     choices(
-      choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.BusPF
-      "to be used if the slack bus is embedded in another component"),
       choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF
       "to be used if the slack bus is embedded in another component but it does not prescribe the voltage")));
 
-  parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
+  parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set" annotation(
+    choices(checkBox = true));
   parameter InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option";
   parameter Types.Voltage UPF = UNom "Phase-to-phase voltage to be used to compute the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
   parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
   parameter Boolean forceSlackPowerToZero = false "=true, if PSlack and QSlack shall be forced to zero during the initialization"  annotation(
-    Dialog(tab = "Initialization", enable = computePF));
+    Dialog(tab = "Initialization", enable = computePF), choices(checkBox = true));
   final parameter Types.ComplexPerUnit nStart = CM.fromPolar(1, UPhaseStart) "Unit phasor with angle UPhaseStart";
   final parameter Types.ActivePower PSlack(fixed = false) "Constant slack active power leaving system through bus";
   final parameter Types.ReactivePower QSlack(fixed = false) "Constant slack reactive power leaving system through bus";
