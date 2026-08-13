@@ -4,11 +4,11 @@ model SynchronousMachine4WindingsPF2
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(fNom = 60, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true, initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow) annotation(
     Placement(transformation(origin = {110, -70}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine2(H = 6, PPF = 500000000, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus(UNom = 24000, SNom = 5e8, setVoltage = false) "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters") annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings machine2(H = 6, PPF = 500000000, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus(UNom = 24000, SNom = 5e8, setPhase = false) "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters") annotation(
     Placement(transformation(origin = {2, -20}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Loads.LoadImpedancePQ LoadPQ2(PRefConst = 500000000, QRefConst = 300000000, SNom = 550000000, UNom = 24000) annotation(
     Placement(transformation(origin = {2, 38}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  PowerGrids.Electrical.Buses.ReferenceBus refBus2(SNom = 500000000, UNom = 24000, forceSlackPowerToZero = true, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.VoltageReferenceBusPF(UNom = 24000, SNom = 5e8) "to be used if the slack bus is embedded in another component but it does not prescribe the voltage") annotation(
+  PowerGrids.Electrical.Buses.ReferenceBus refBus2(SNom = 500000000, UNom = 24000, forceSlackPowerToZero = true, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF(UNom = 24000, SNom = 5e8) "to be used if the slack bus is embedded in another component but it does not prescribe the voltage") annotation(
     Placement(transformation(origin = {2, 28}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Branches.LineConstantImpedance line2(R = 0.01, SNom = 550000000, UNom = 24000, X = 0.1) annotation(
     Placement(transformation(origin = {2, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -18,13 +18,13 @@ model SynchronousMachine4WindingsPF2
     Placement(transformation(origin = {-23, -55}, extent = {{-7, -7}, {7, 7}})));
   PowerGrids.Controls.FreeOffset ufPu2 annotation(
     Placement(transformation(origin = {-51, -65}, extent = {{-7, -7}, {7, 7}})));
-  Buses.ReferenceBus refBus3(SNom = 500000000, UNom = 24000, forceSlackPowerToZero = true, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.VoltageReferenceBusPF(UNom = 24000, SNom = 5e8) "to be used if the slack bus is embedded in another component but it does not prescribe the voltage") annotation(
+  Buses.ReferenceBus refBus3(SNom = 500000000, UNom = 24000, forceSlackPowerToZero = true, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF(UNom = 24000, SNom = 5e8) "to be used if the slack bus is embedded in another component but it does not prescribe the voltage") annotation(
     Placement(transformation(origin = {84, 30}, extent = {{-10, -10}, {10, 10}})));
   Branches.LineConstantImpedance line3(R = 0.01, SNom = 550000000, UNom = 24000, X = 0.1) annotation(
     Placement(transformation(origin = {84, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Buses.Bus bus3(UNom = 24000) annotation(
     Placement(transformation(origin = {84, -8}, extent = {{-10, -10}, {10, 10}})));
-  Machines.SynchronousMachine4Windings machine3(H = 6, PPF = 500000000, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus(UNom = 24000, SNom = 5e8, setVoltage = false) "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters") annotation(
+  Machines.SynchronousMachine4Windings machine3(H = 6, PPF = 500000000, SNom = 5.5e+08, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = PowerGrids.Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, redeclare model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus(UNom = 24000, SNom = 5e8, setPhase = false) "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters") annotation(
     Placement(transformation(origin = {84, -18}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Controls.FreeOffset PmPu3 annotation(
     Placement(transformation(origin = {51, -53}, extent = {{-7, -7}, {7, 7}})));
@@ -38,9 +38,9 @@ model SynchronousMachine4WindingsPF2
     Placement(transformation(origin = {-80, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerFlow.BusPF bus1(UNom = 24000) annotation(
     Placement(transformation(origin = {-80, -10}, extent = {{-10, -10}, {10, 10}})));
-  PowerFlow.SlackBus slackBus1(SNom = 5e8, UNom = 24000, UPhase(displayUnit = "rad"), setVoltage = false) annotation(
+  PowerFlow.SlackBus slackBus1(SNom = 5e8, UNom = 24000, UPhase(displayUnit = "rad"), setPhase = false) annotation(
     Placement(transformation(origin = {-80, -26}, extent = {{-10, -10}, {10, 10}})));
-  PowerFlow.VoltageReferenceBusPF VrefBus1(UNom = 24000, SNom = 5e8)  annotation(
+  PowerFlow.PhaseReferenceBusPF VrefBus1(UNom = 24000, SNom = 5e8)  annotation(
     Placement(transformation(origin = {-80, 28}, extent = {{-10, -10}, {10, 10}})));
 equation
   connect(LoadPQ2.terminalAC, refBus2.terminalAC) annotation(
