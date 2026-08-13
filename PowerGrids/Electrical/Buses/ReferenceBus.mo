@@ -21,7 +21,7 @@ model ReferenceBus "Reference bus for an isolated grid"
     choices(
       choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.BusPF
       "to be used if the slack bus is embedded in another component"),
-      choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.VoltageReferenceBusPF
+      choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF
       "to be used if the slack bus is embedded in another component but it does not prescribe the voltage")));
 
   parameter Boolean setPhaseOnly = false "= true if only the initial voltage phase is to be set";
@@ -71,17 +71,27 @@ equation
   end if;
 
   annotation(
-    Documentation(info = "<html><head></head><body><p>When an isolated synchronous grid is initialized in steady state, the reference angle remains undefined. In order to make the angles well defined, this ReferenceBus component should be used in the position where the power flow problem has the slack node.</p>
-<p>The purpose of this component when the grid is initialized in steady state is twofold:</p>
+    Documentation(info = "<html><head></head>
+<body><p>When an isolated synchronous grid is initialized in steady state, the reference angle remains undefined. In order to make the angles well defined, this ReferenceBus component should be used, for example, in the position where the power flow problem has the slack node.</p>
+<p>Generally, the purpose of this component when the grid is initialized in steady state is twofold:</p>
 <ul>
-<li>Set the initial voltage of the node to the same value as in the power flow model, i.e. with magnitude <code>UStart</code> and phase <code>UPhaseStart</code></li>
-<li>Absorb the excess active power <code>PSlack</code> and reactive power <code>QSlack</code> that allow to balance the power flows at the nominal value of frequency. These two values correspond to the active and reactive power flows into the slack node of the power flow model. <code>PSlack</code> and <code>QSlack</code> then remain constant throughout the simulation. If the power flow is correcty balanced, those two values are nearly zero, so the Reference Bus is not absorbing any significant active or reactive power during the simulation.</li>
+<li>Set the initial voltage of the reference node to the same value as in the power flow model, i.e. with magnitude <code>UStart</code> and phase <code>UPhaseStart</code></li>
+<li>Absorb the excess active power <code>PSlack</code> and reactive power <code>QSlack</code> that allow to balance the power flows at the nominal value of frequency. These two values correspond to the active and reactive power flows into the slack node of the power flow model. <code>PSlack</code> and <code>QSlack</code> then remain constant throughout the simulation. If the power flow is correcty balanced, those two values are nearly zero, so the Reference Bus is not absorbing any significant active or reactive power during the simulation. In some cases maybe useful to set the <i>slack</i> power to zero in the dynamic simulation and assign that power to a strong generator, this can be achived by setting the flag <code>forceSlackPowerToZero = true</code> and by adding two <a href=\"modelica://PowerGrids.Controls.FreeOffset\">free offset</a> in the generator control so that the <i>slack</i> power calculated by the power-flow can be transferred to said offset during the dynamic initialization.</li>
 </ul>
 <p>If <code>setPhaseOnly</code> is set to true, then only the initial phase of the bus voltage is set to the same value of the power flow, i.e., <code>UPhaseStart</code>. The initial voltage magnitude is computed to ensure zero reactive power flow <code>QSlack</code>.</p>
 <p><b>Embedded Power Flow (EPF)</b>
-<p>If the EPF is activated the refrence node uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">SlackBus</a> as default EPF component in order to fix both the voltage and the voltage phase at the reference node. The EPF component can be redeclared, the most common use of this feature is to move the slack node to another place, for example to the node of a strong generator, in this case the reference bus normally works as generic bus for the EPF calculation (proposed choice).</p>
-<p>If the slack bus is moved to another node than two extra initial equatons can be activated, by set the flag <code>forceSlackPowerToZero</code> = <code>true</code>, in order to force to zero both the <code>PSlack</code> and <code>QSlack</code> values. This requires that two degree of freedom for the initialisation system are provided by other components, for example by adding two <a href=\"modelica://PowerGrids.Controls.FreeOffset\">free offset</a> in order to calculate some generators set points.</p>
-<p>If the EPF component is redeclared then the user shall provide all the necessary parameters either by using the GUI or in textual form.</p>
-</body></html>"),
+<p>If the EPF is activated, the refrence node uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">SlackBus</a> as default EPF component, in order to fix both the voltage and the voltage phase at the reference node and to prescribe at the same node the necessary power to balance the network.</p>
+<p>The EPF component can be redeclared, the most common use of this feature is to move the slack node to another place, for example to the node of a strong generator, in this case we can have two different scenarios:
+<ul>
+    <li>the new <i>bus</i> in which the <i>slack</i> is placed can be also used as <i>reference</i> node for the angle, in this case the right PF component to be redeclared is the  <a href=\"modelica://PowerGrids.Electrical.PowerFlow.BusPF\">BusPF</a> </li>
+    <li>the new <i>bus</i> in which the <i>slack</i> is placed cannot be used as <i>reference</i> node for the angle (for example because a <i>generator</i> is connected to the same bus), in this case the right PF component to be redeclared is the  <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF\">PhaseReferenceBusPF</a>, which still prescribes the angle (but not the slack power) to the bus. In this case the <i>slack</i> bus cannot prescribe the angle so the flag <code>setPhase = false</code> must be set in the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">SlackBus</a></li>
+</ul>
+
+Note that in the second case one node prescribes the angle and the other node the <i>slack</i> power, so both the PF components result unbalanced by two equations  (two equations more in the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF\">PhaseReferenceBusPF</a> an two equations fewer in the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">SlackBus</a>) but the overall power-flow model is still balanced.
+</p>
+
+<p>If the EPF component is redeclared then the user shall provide all the necessary parameters either by using the GUI or in the textual form.</p>
+</body>    
+    </html>"),
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {60, 42}, extent = {{-40, 20}, {40, -40}}, horizontalAlignment = TextAlignment.Right, textString = DynamicSelect("R", if isSlackBusPFicon then "RS" else "R"))}));
 end ReferenceBus;
