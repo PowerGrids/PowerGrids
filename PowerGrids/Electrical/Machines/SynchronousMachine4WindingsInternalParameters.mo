@@ -58,6 +58,8 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   final parameter Types.PerUnit ufPuStart(fixed = false) "Start value of exciter voltage in p.u. (Kundur base)";
   final parameter Types.PerUnit ufPuInStart(fixed = false) "Start value of input exciter voltage in p.u. (user-selcted base";
   final parameter Types.PerUnit ifPuStart(fixed = false) "Start value of ifPu";
+  parameter Boolean useEPFtoSetExternalOffset = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and Q calculated by the EPF"  annotation(
+    Dialog(tab = "Initialization", enable = computePF), choices(checkBox = true));
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
     Placement(transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-60, -20}, extent = {{-20, -20}, {20, 20}})));
@@ -130,6 +132,14 @@ initial equation
     der(lambdaQ2Pu) = 0;
   end if;
 
+  // Equations to calculate the external offset for PmPu and ufPu if the EPF is
+  // active and the flag useEPFtoSetExternalOffset is true, in order to
+  // initialise the generator at the values P and Q calculated by the EPF
+  if computePF and useEPFtoSetExternalOffset then
+    port.P = PStart;
+    port.Q = QStart;
+  end if;
+
 equation
 // Flux linkages
   lambdadPu = (MdPu + LdPu)*idPu + MdPu*ifPu + MdPu*iDPu;
@@ -199,7 +209,8 @@ equation
 <li><code>Types.ExcitationPuType.Kundur</code>: base voltage as in Kundur, Power Systems Stability and Control, Chapter 3. Note that in this case, typical p.u. values are less than 0.001</li>
 </ul>
 <p><b>Embedded Power Flow (EPF)</b>
-<p>If the EPF is activated the generator uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a> as default EPF component in order to fix both the active power and the voltage at the generator node. The EPF component can be redeclared, the most common use of this feature is to place the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a> in the same node of a strong generator (proposed choice).</p> 
+<p>If the EPF is activated the generator uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a> as default EPF component in order to fix both the active power and the voltage at the generator node. The EPF component can be redeclared, the most common use of this feature is to place the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a> in the same node of a strong generator (proposed choice).</p>
+<p>If the EPF is active and the external offset <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> is used to calculate both PmPu and ufPu then the parameter <code>useEPFtoSetExternalOffset</code> can be set = <code>true</code> in order to activate the extra initial equations necessary to use them to initialise P and Q to the same values calculated by the EPF.</p>
 <p>If the EPF component is redeclared then the user shall provide all the necessary parameters either by using the GUI or in textual form.</p>
 </body></html>"),
     Icon);
