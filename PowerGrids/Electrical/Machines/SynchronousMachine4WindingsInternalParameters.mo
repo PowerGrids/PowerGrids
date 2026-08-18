@@ -1,25 +1,11 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus=isSlackBusPF);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus = isSlackBusPF);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
-  extends BaseClasses.OnePortACdqPu(
-    generatorConvention = true,
-    final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
-    final hasSubPF,
-    final isLinear = false,
-    PStart = if computePF then PStartPF else -SNom,
-    redeclare ComponentPF componentPF);
-
-  replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PVBus(
-    UNom = UNom,
-    SNom = SNom,
-    P = PPF,
-    U = UPF)
-  constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF
-  annotation(choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus
-                              "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters")));
-
+  extends BaseClasses.OnePortACdqPu(generatorConvention = true, final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none, final hasSubPF, final isLinear = false, PStart = if computePF then PStartPF else -SNom, redeclare ComponentPF componentPF);
+  replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PVBus(UNom = UNom, SNom = SNom, P = PPF, U = UPF) constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF annotation(
+     choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters")));
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
@@ -41,7 +27,8 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   parameter SI.Time H(min = 1e-6) "Kinetic constant = kinetic energy / rated power";
   parameter Types.Choices.ExcitationPuType excitationPuType = PowerGrids.Types.Choices.ExcitationPuType.nominalStatorVoltageNoLoad "Choice of excitation base voltage";
   parameter Boolean neglectTransformerTerms = true "Neglect the transformer terms in the Park equations";
-  parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option" annotation(Dialog(tab = "Initialization"));
+  parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option" annotation(
+    Dialog(tab = "Initialization"));
   parameter Integer priority = integer(100 - 10*log10(PNom)) "Priority level used to select the machine to be used as frrequency reference (0=higher priority)" annotation(
     Evaluate = true);
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(
@@ -58,8 +45,12 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   final parameter Types.PerUnit ufPuStart(fixed = false) "Start value of exciter voltage in p.u. (Kundur base)";
   final parameter Types.PerUnit ufPuInStart(fixed = false) "Start value of input exciter voltage in p.u. (user-selcted base";
   final parameter Types.PerUnit ifPuStart(fixed = false) "Start value of ifPu";
-  parameter Boolean useEPFtoSetExternalOffsetPQ = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and Q calculated by the EPF"  annotation(
-    Dialog(tab = "Initialization", enable = computePF), choices(checkBox = true));
+  parameter Boolean useEPFtoSetExternalOffsetPQ = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and Q calculated by the EPF" annotation(
+    Dialog(tab = "Initialization", enable = computePF and not useEPFtoSetExternalOffsetPV),
+    choices(checkBox = true));
+  parameter Boolean useEPFtoSetExternalOffsetPV = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and V calculated by the EPF" annotation(
+    Dialog(tab = "Initialization", enable = computePF and not useEPFtoSetExternalOffsetPQ),
+    choices(checkBox = true));
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
     Placement(transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-60, -20}, extent = {{-20, -20}, {20, 20}})));
@@ -95,10 +86,8 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
     Placement(transformation(origin = {106, 20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -50}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Interfaces.RealOutput ifPuOut "Current of excitation winding in p.u." annotation(
     Placement(transformation(origin = {106, -60}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -90}, extent = {{-10, -10}, {10, 10}})));
-
 protected
   Modelica.Blocks.Interfaces.BooleanInput isSlackBusPF "input to get the value of the isSlackBus flag from the PF component";
-
 initial equation
 // Scaling factor for excitation p.u. voltage
   if excitationPuType == Types.Choices.ExcitationPuType.Kundur then
@@ -131,15 +120,21 @@ initial equation
     der(lambdaQ1Pu) = 0;
     der(lambdaQ2Pu) = 0;
   end if;
-
-  // Equations to calculate the external offset for PmPu and ufPu if the EPF is
-  // active and the flag useEPFtoSetExternalOffsetPQ is true, in order to
-  // initialise the generator at the values P and Q calculated by the EPF
+// Equations to calculate the external offset for PmPu and ufPu if the EPF is
+// active and the flag useEPFtoSetExternalOffsetPQ is true, in order to
+// initialise the generator at the values P and Q calculated by the EPF
   if computePF and useEPFtoSetExternalOffsetPQ then
     port.P = PStart;
     port.Q = QStart;
   end if;
-
+// Equations to calculate the external offset for PmPu and ufPu if the EPF is
+// active and the flag useEPFtoSetExternalOffsetPV is true, in order to
+// initialise the generator at the values P and V calculated by the EPF
+  if computePF and useEPFtoSetExternalOffsetPV then
+    port.P = PStart;
+    port.VPu = UStart/UNom;
+  end if;
+  assert(not (useEPFtoSetExternalOffsetPQ and useEPFtoSetExternalOffsetPV), "only one flag between useEPFtoSetExternalOffsetPQ and useEPFtoSetExternalOffsetPV can be set at the same time", level = AssertionLevel.error);
 equation
 // Flux linkages
   lambdadPu = (MdPu + LdPu)*idPu + MdPu*ifPu + MdPu*iDPu;
@@ -209,8 +204,12 @@ equation
 <li><code>Types.ExcitationPuType.Kundur</code>: base voltage as in Kundur, Power Systems Stability and Control, Chapter 3. Note that in this case, typical p.u. values are less than 0.001</li>
 </ul>
 <p><b>Embedded Power Flow (EPF)</b>
-<p>If the EPF is activated the generator uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a> as default EPF component in order to fix both the active power and the voltage at the generator node. The EPF component can be redeclared, the most common use of this feature is to place the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a> in the same node of a strong generator (proposed choice).</p>
-<p>If the EPF is active and the external offset <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> is used to calculate both PmPu and ufPu then the parameter <code>useEPFtoSetExternalOffsetPQ</code> can be set = <code>true</code> in order to activate the extra initial equations necessary to use them to initialise P and Q to the same values calculated by the EPF.</p>
+</p><p>If the EPF is activated the generator uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a> as default EPF component in order to fix both the active power and the voltage at the generator node. The EPF component can be redeclared, the most common use of this feature is to place the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a> in the same node of a strong generator (proposed choice).</p>
+<p>If the EPF is active and two external <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> are used to calculate <code>PmPu</code> and <code>ufPu</code> then one of the following flags can be set in order to supply the necessary additional initial equations:</p>
+<ul>
+ <li><code>useEPFtoSetExternalOffsetPQ = true</code> to initialise P and Q to the same values calculated by the EPF.</li>
+ <li><code>useEPFtoSetExternalOffsetPV = true</code> to initialise P and V to the same values calculated by the EPF.</li>
+</ul>
 <p>If the EPF component is redeclared then the user shall provide all the necessary parameters either by using the GUI or in textual form.</p>
 </body></html>"),
     Icon);
