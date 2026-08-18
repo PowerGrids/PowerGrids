@@ -3,9 +3,23 @@ within PowerGrids.Electrical.Machines;
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
   extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus = isSlackBusPF);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
-  extends BaseClasses.OnePortACdqPu(generatorConvention = true, final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none, final hasSubPF, final isLinear = false, PStart = if computePF then PStartPF else -SNom, redeclare ComponentPF componentPF);
-  replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PVBus(UNom = UNom, SNom = SNom, P = PPF, U = UPF) constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF annotation(
-     choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters")));
+  extends BaseClasses.OnePortACdqPu(
+    generatorConvention = true,
+    final localInit = if initOpt == InitializationOption.localSteadyStateFixedPowerFlow then LocalInitializationOption.PV else LocalInitializationOption.none,
+    final hasSubPF,
+    final isLinear = false,
+    PStart = if computePF then PStartPF else -SNom,
+    redeclare ComponentPF componentPF);
+
+  replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PVBus(
+    UNom = UNom,
+    SNom = SNom,
+    P = PPF,
+    U = UPF) constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF
+    annotation(
+     choices(choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.SlackBus
+                      "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters")));
+
   import PowerGrids.Types.Choices.InitializationOption;
   import PowerGrids.Types.Choices.LocalInitializationOption;
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
