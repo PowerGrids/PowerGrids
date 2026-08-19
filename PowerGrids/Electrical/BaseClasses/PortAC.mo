@@ -10,7 +10,7 @@ model PortAC "AC port computing auxiliary quantities"
   parameter Types.Power QStart = 0 "Start value of reactive power flowing into port";
   parameter Types.Voltage UStart = UNom "Start value of phase-to-phase voltage modulus";
   parameter Types.Angle UPhaseStart = 0 "Start value of voltage phase";
-  
+
   parameter Boolean portVariablesPhases = false "Compute voltage and current phases for monitoring purposes only" annotation(Evaluate = true);
   constant Boolean generatorConvention = false "Also compute currents and power variables with generator convention (positive when exiting the device)";
 
@@ -20,7 +20,9 @@ model PortAC "AC port computing auxiliary quantities"
 
   final parameter Types.Voltage VBase = UBase/sqrt(3) "Base phase-to-ground voltage";
   final parameter Types.Current IBase = SBase/(3*VBase) "Base current";
-  
+  final parameter Types.Impedance ZBase = UBase^2/SBase "Base impedance";
+  final parameter Types.Admittance YBase = 1/ZBase "Base admittance";
+
   final parameter Types.Voltage VStart = UStart/sqrt(3) "Start value of phase-to ground voltage modulus";
   final parameter Types.Current IStart = sqrt(PStart^2 + QStart^2)/(3*VStart) "Start value of current modulus";
 
@@ -28,7 +30,7 @@ model PortAC "AC port computing auxiliary quantities"
     "Start value of phase-to-ground voltage phasor";
   final parameter Types.ComplexCurrent iStart = CM.conj(Complex(PStart,QStart)/(Complex(3)*vStart))
     "Start value of current phasor flowing into the port";
-  
+
   connector InputComplexVoltage = input Types.ComplexVoltage "Marks potential input for balancedness check without requiring binding equation";
   connector InputComplexCurrent = input Types.ComplexCurrent "Marks potential input for balancedness check without requiring binding equation";
 
@@ -44,7 +46,7 @@ model PortAC "AC port computing auxiliary quantities"
      "Complex power flowing into the port";
   Types.ActivePower   P(nominal = SNom, start = PStart) = S.re "Active power flowing into the port";
   Types.ReactivePower Q(nominal = SNom, start = QStart) = S.im "Reactive power flowing into the port";
-  
+
   Types.Voltage U(nominal = UNom, start = UStart) = CM.abs(u) "Port voltage absolute value (phase-to-phase)";
   Types.Current I(nominal = INom, start = IStart) = CM.abs(i) "Port current (positive entering)";
 
@@ -54,10 +56,10 @@ model PortAC "AC port computing auxiliary quantities"
   SI.PerUnit           VPu(start = VStart/VBase) = U/UBase "Absolute value of voltage across the port in p.u. (base VBase)";
   Types.ComplexPerUnit iPu(re(start = iStart.re/IBase), im(start = iStart.im/IBase)) = i*(1/IBase) "Complex current flowing into the port in p.u. (base IBase)";
   SI.PerUnit           IPu(start = IStart/IBase) = I/IBase "Absolute value of complex current flowing into the port in p.u. (base IBase)";
-  
+
   Types.Angle UPhase(start = UPhaseStart) = if portVariablesPhases then atan2(v.im, v.re) else 0 "Phase of voltage across the port";
   Types.Angle IPhase(start = CM.arg(iStart)) = if portVariablesPhases then atan2(i.im, i.re) else 0 "Phase of current into the port";
-  
+
   Types.ComplexCurrent iGen(re(nominal = INom, start = -iStart.re),
                             im(nominal = INom, start = -iStart.im)) = if generatorConvention then  -i else Complex(0)
                              "Port current, generator convention";
