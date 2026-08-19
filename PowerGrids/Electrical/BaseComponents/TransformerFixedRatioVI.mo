@@ -6,10 +6,19 @@ partial model TransformerFixedRatioVI
 
   parameter SI.PerUnit rFixed "Fixed transformer ratio VB/VA";
   parameter SI.Angle thetaFixed = 0 "Fixed phase lead of VB w.r.t. VA";
-  parameter Types.Resistance R = 0 "Series resistance on B side";
-  parameter Types.Reactance X = 0 "Series reactance on B side";
-  parameter Types.Conductance G = 0 "Shunt conductance on B side";
-  parameter Types.Susceptance B = 0 "Shunt susceptance on B side";
+
+  parameter SI.PerUnit RccPu = 0 "Series resistance on B side in p.u.";
+  parameter SI.PerUnit XccPu = 0 "Series reactance on B side in p.u.";
+  parameter SI.PerUnit GPu = 0 "Shunt conductance on B side in p.u.";
+  parameter SI.PerUnit BPu = 0 "Shunt susceptance on B side in p.u.";
+
+  parameter Types.Impedance ZBaseB "Base impedance at B side";
+  parameter Types.Admittance YBaseB "Base impedance at B side";
+
+  final parameter Types.Resistance R = RccPu*ZBaseB "Series resistance on B side";
+  final parameter Types.Reactance X = XccPu*ZBaseB "Series reactance on B side";
+  final parameter Types.Conductance G = GPu*YBaseB "Shunt conductance on B side";
+  final parameter Types.Susceptance B = BPu*YBaseB "Shunt susceptance on B side";
 
 equation
   k = CM.fromPolar(rFixed, thetaFixed);

@@ -8,7 +8,9 @@ model TransformerWithTapChangerInterval
     vA = portA.v,
     vB = portB.v,
     iA = portA.i,
-    iB = portB.i);
+    iB = portB.i,
+    final ZBaseB = portB.ZBase,
+    final YBaseB = portB.YBase);
 
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
@@ -19,11 +21,11 @@ model TransformerWithTapChangerInterval
       UNomB = UNomB,
       SNom = SNom,
       rFixed = K[tapStart],
-      thetaFixed = 0,      
-      R = R,
-      X = X,
-      G = G,
-      B = B));  
+      thetaFixed = 0,
+      RccPu = RccPu,
+      XccPu = XccPu,
+      GPu = GPu,
+      BPu = BPu));
   extends BaseClasses.TapChangerPhaseShifterLogicInterval;
 
   parameter Types.PerUnit K[Ntap] "Array of transformer ratios for each tap";

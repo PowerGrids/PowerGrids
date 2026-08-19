@@ -10,7 +10,9 @@ model TransformerFixedRatio "Transformer with fixed voltage ratio"
     vA = portA.v,
     vB = portB.v,
     iA = portA.i,
-    iB = portB.i);
+    iB = portB.i,
+    final ZBaseB = portB.ZBase,
+    final YBaseB = portB.YBase);
 
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
@@ -22,8 +24,8 @@ model TransformerFixedRatio "Transformer with fixed voltage ratio"
       SNom = SNom,
       rFixed = rFixed,
       thetaFixed = thetaFixed,
-      R = R,
-      X = X,
-      G = G,
-      B = B));
+      RccPu = RccPu,
+      XccPu = XccPu,
+      GPu = GPu,
+      BPu = BPu));
 end TransformerFixedRatio;

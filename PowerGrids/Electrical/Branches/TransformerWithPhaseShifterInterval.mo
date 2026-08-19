@@ -8,7 +8,9 @@ model TransformerWithPhaseShifterInterval
     vA = portA.v,
     vB = portB.v,
     iA = portA.i,
-    iB = portB.i);
+    iB = portB.i,
+    final ZBaseB = portB.ZBase,
+    final YBaseB = portB.YBase);
 
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
@@ -19,11 +21,11 @@ model TransformerWithPhaseShifterInterval
       UNomB = UNomB,
       SNom = SNom,
       rFixed = 1,
-      thetaFixed = kPhase[tapStart],      
-      R = R,
-      X = X,
-      G = G,
-      B = B));  
+      thetaFixed = kPhase[tapStart],
+      RccPu = RccPu,
+      XccPu = XccPu,
+      GPu = GPu,
+      BPu = BPu));
   extends BaseClasses.TapChangerPhaseShifterLogicInterval;
 
   parameter Types.Angle kPhase[Ntap] "Array with angle of transformer complex ratio for each tap";
@@ -36,7 +38,7 @@ model TransformerWithPhaseShifterInterval
   Dialog(enable = quantitySel == MonitoredQuantitySelection.activePower));
   parameter Types.ActivePower PMin = NotUsed "Minimum Active Power threshold for phase shifter logic" annotation(
   Dialog(enable = quantitySel == MonitoredQuantitySelection.activePower));
-  
+
 initial equation
   if quantitySel == MonitoredQuantitySelection.currentMagnitude then
     assert(IMax > IMin, "Wrong Current interval");
@@ -47,23 +49,23 @@ initial equation
     assert(PMax >= 0, "Active Power threshold PMax must be positive");
     assert(PMin >= 0, "Active Power threshold PMin must be positive");
   end if;
-  
+
 equation
 // Phase shifter applied on output port
   locked = false;
   running = true;
-  
+
   if quantitySel == MonitoredQuantitySelection.currentMagnitude then
     valueUnderMin = portB.I < IMin;
     valueAboveMax = portB.I > IMax;
   elseif quantitySel == MonitoredQuantitySelection.activePower then
     valueUnderMin = portB.P < PMin;
     valueAboveMax = portB.P > PMax;
-  end if;  
+  end if;
 
   k = CM.fromPolar(1, kPhase[pre(tap)])
       "pre() is required because k influences the triggering conditions
-       of the state machine so it should be computed before the event takes place";  
+       of the state machine so it should be computed before the event takes place";
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),

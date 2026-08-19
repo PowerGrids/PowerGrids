@@ -15,7 +15,8 @@ package Types "Domain-specific type definitions"
   type Reactance = SI.Reactance;
   type Conductance = SI.Conductance;
   type Susceptance = SI.Susceptance;
-  type Impedance = SI.Impedance;  
+  type Impedance = SI.Impedance;
+  type Admittance = SI.Admittance;
   type PerUnit = SI.PerUnit;
   type Time = SI.Time;
   operator record ComplexVoltage = SI.ComplexVoltage(re(nominal = 1e4, displayUnit="kV"), im(nominal = 1e4, displayUnit="kV"));
