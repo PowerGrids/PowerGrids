@@ -387,10 +387,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
 
 // Transformers
   PowerGrids.Electrical.Branches.TransformerFixedRatio T4to7(
-    R = 0,
-    X = 0.398248,
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.398248*100e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 0.204082,
     SNom = 100e6,
     UNomA = 69e3,
@@ -398,10 +398,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(transformation(origin = {124, -18}, extent = {{10, 10}, {-10, -10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio T4to9(
-    R = 0,
-    X = 1.05919,
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 1.05919*100e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 0.208333,
     SNom = 100e6,
     UNomA = 69.0e3,
@@ -409,10 +409,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(transformation(origin = {104, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio T5to6(
-    R = 0,
-    X = 0.479948,
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.479948*100e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 0.212766,
     SNom = 100e6,
     UNomA = 69e3,
@@ -420,10 +420,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen1(
-    R = 0, 
-    X = 0.393146, 
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.393146*1211e6/(69e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 2.875,
     SNom = 1211e6, 
     UNomA = 24e3, 
@@ -431,10 +431,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker Tgen2(
-    R = 0, 
-    X = 0.425089, 
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.425089*1120e6/(69e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 2.875,
     SNom = 1120e6, 
     UNomA = 24e3, 
@@ -442,10 +442,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen3(
-    R = 0, 
-    X = 0.288545, 
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.288545*1650e6/(69e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 3.45,
     SNom = 1650e6, 
     UNomA = 20e3, 
@@ -453,10 +453,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   ) annotation(
     Placement(visible = true, transformation(origin = {150, -90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Branches.TransformerFixedRatio Tgen8(
-    R = 0, 
-    X = 0.076176, 
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.076176*250e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     rFixed = 0.766667,
     SNom = 250e6, 
     UNomA = 18e3, 

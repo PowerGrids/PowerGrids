@@ -33,7 +33,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.BusPF bus7(
-    UNom = 13.8e3  
+    UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {124, 0}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.PowerFlow.BusPF bus8(
@@ -77,26 +77,26 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
   ) annotation(
     Placement(visible = true, transformation(origin = {170, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.BusPF busGEN8(
-    UNom = 18e3  
+    UNom = 18e3
   ) annotation(
     Placement(visible = true, transformation(origin = {180, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // Lines
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L1to2(
-    R = 0.922682, 
-    X = 2.81708, 
-    G = 0, 
-    B = 0.00110901, 
-    SNom = 100e6, 
+    R = 0.922682,
+    X = 2.81708,
+    G = 0,
+    B = 0.00110901,
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(transformation(origin = {-136, -30}, extent = {{10, -10}, {-10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedanceWithBreakersPF L1to5(
     R = 2.57237,
     X = 10.6189,
-    B = 0.0010334, 
-    G = 0, 
-    SNom = 100e6, 
+    B = 0.0010334,
+    G = 0,
+    SNom = 100e6,
     UNom = 69e3,
     useBreakerA = false,
     useBreakerB = false,
@@ -105,216 +105,216 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to3(
-    R = 2.23719, 
-    X = 9.42535, 
-    G = 0, 
-    B = 0.000919975, 
-    SNom = 100e6, 
+    R = 2.23719,
+    X = 9.42535,
+    G = 0,
+    B = 0.000919975,
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {0, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to4(
-    R = 2.76662, 
-    X = 8.3946, 
-    G = 0, 
-    B = 0.000714136, 
-    SNom = 100e6, 
+    R = 2.76662,
+    X = 8.3946,
+    G = 0,
+    B = 0.000714136,
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L2to5(
-    R = 2.71139, 
-    X = 8.27843, 
-    G = 0, 
-    B = 0.000726738, 
-    SNom = 100e6, 
+    R = 2.71139,
+    X = 8.27843,
+    G = 0,
+    B = 0.000726738,
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(transformation(origin = {-60, -64}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L3to4(
-    R = 3.19035, 
-    X = 8.14274, 
-    G = 0, 
-    B = 0.000268851, 
-    SNom = 100e6, 
+    R = 3.19035,
+    X = 8.14274,
+    G = 0,
+    B = 0.000268851,
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -60}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L4to5(
-    R = 0.635593, 
-    X = 2.00486, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.635593,
+    X = 2.00486,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, -52}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L6to11(
-    R = 0.18088, 
-    X = 0.378785, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.18088,
+    X = 0.378785,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {-10, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L6to12(
-    R = 0.23407, 
-    X = 0.487165, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
-    UNom = 13.8e3 
+    R = 0.23407,
+    X = 0.487165,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
+    UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-60, 60}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L6to13(
-    R = 0.125976, 
-    X = 0.248086, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.125976,
+    X = 0.248086,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {-30, 60}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L7to8(
-    R = 0, 
-    X = 0.33546, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0,
+    X = 0.33546,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {146, 20}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L7to9(
-    R = 0, 
-    X = 0.209503, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0,
+    X = 0.209503,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {118, 20}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L9to10(
-    R = 0.060579, 
-    X = 0.160922, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.060579,
+    X = 0.160922,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {70, 26}, extent = {{10, -10}, {-10, 10}})));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L9to14(
-    R = 0.242068, 
-    X = 0.514912, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.242068,
+    X = 0.514912,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {70, 76}, extent = {{10, -10}, {-10, 10}})));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L10to11(
-    R = 0.156256, 
-    X = 0.365778, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.156256,
+    X = 0.365778,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {16, 26}, extent = {{10, -10}, {-10, 10}})));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L12to13(
-    R = 0.42072, 
-    X = 0.380651, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.42072,
+    X = 0.380651,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {-60, 76}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF L13to14(
-    R = 0.325519, 
-    X = 0.662763, 
-    G = 0, 
-    B = 0, 
-    SNom = 100e6, 
+    R = 0.325519,
+    X = 0.662763,
+    G = 0,
+    B = 0,
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {0, 76}, extent = {{-10, -10}, {10, 10}})));
 
 // LOADS
   PowerGrids.Electrical.PowerFlow.PQBus Load2(
-    P = 21.7e6, 
+    P = 21.7e6,
     Q = 12.7e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-90, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus Load3(
-    P = 94.2e6, 
+    P = 94.2e6,
     Q = 19.1e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {120, -94}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus Load4(
-    P = 47.8e6, 
+    P = 47.8e6,
     Q = -3.9e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {136, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus Load5(
-    P = 7.6e6, 
+    P = 7.6e6,
     Q = 1.6e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-50, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load6(
-    P = 11.2e6, 
+    P = 11.2e6,
     Q = 7.5e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus Load9(
-    P = 29.5e6, 
+    P = 29.5e6,
     Q = 16.6e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {130, 54}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load10(
-    P = 9e6, 
+    P = 9e6,
     Q = 5.8e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {40, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load11(
-    P = 3.5e6, 
+    P = 3.5e6,
     Q = 1.8e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-10, 46}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load12(
-    P = 6.1e6, 
+    P = 6.1e6,
     Q = 1.6e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {-90, 96}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load13(
-    P = 13.8e6, 
+    P = 13.8e6,
     Q = 5.8e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {-30, 96}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   PowerGrids.Electrical.PowerFlow.PQBus Load14(
-    P = 14.9e6, 
+    P = 14.9e6,
     Q = 5e6,
-    SNom = 100e6, 
+    SNom = 100e6,
     UNom = 13.8e3
   ) annotation(
     Placement(transformation(origin = {30, 96}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
@@ -329,74 +329,74 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
 
 // Transformers
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF T4to7(
-    R = 0,
-    X = 0.398248,
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.398248*100e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     SNom = 100e6,
     UNomA = 69e3,
     UNomB = 13.8e3
   ) annotation(
     Placement(transformation(origin = {122, -18}, extent = {{10, 10}, {-10, -10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF T4to9(
-    R = 0,
-    X = 1.05919,
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 1.05919*100e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     SNom = 100e6,
     UNomA = 69.0e3,
-    UNomB = 13.8e3    
+    UNomB = 13.8e3
   ) annotation(
     Placement(transformation(origin = {104, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF T5to6(
-    R = 0,
-    X = 0.479948,
-    B = 0,
-    G = 0,
+    RccPu = 0,
+    XccPu = 0.479948*100e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
     SNom = 100e6,
     UNomA = 69e3,
     UNomB = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-30, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen1(
-    R = 0, 
-    X = 0.393146, 
-    B = 0,
-    G = 0,
-    SNom = 1211e6, 
-    UNomA = 24e3, 
+    RccPu = 0,
+    XccPu = 0.393146*1211e6/(69e3)^2,
+    BPu = 0,
+    GPu = 0,
+    SNom = 1211e6,
+    UNomA = 24e3,
     UNomB = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 20}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioWithBreakerPF Tgen2(
-    R = 0, 
-    X = 0.425089, 
-    B = 0,
-    G = 0,
-    SNom = 1120e6, 
-    UNomA = 24e3, 
+    RccPu = 0,
+    XccPu = 0.425089*1120e6/(69e3)^2,
+    BPu = 0,
+    GPu = 0,
+    SNom = 1120e6,
+    UNomA = 24e3,
     UNomB = 69e3,
     useBreaker = false,
     breakerStatusStart = true
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, -90}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen3(
-    R = 0, 
-    X = 0.288545, 
-    B = 0,
-    G = 0,
-    SNom = 1650e6, 
-    UNomA = 20e3, 
+    RccPu = 0,
+    XccPu = 0.288545*1650e6/(69e3)^2,
+    BPu = 0,
+    GPu = 0,
+    SNom = 1650e6,
+    UNomA = 20e3,
     UNomB = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {150, -90}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF Tgen8(
-    R = 0, 
-    X = 0.076176, 
-    B = 0,
-    G = 0,
-    SNom = 250e6, 
-    UNomA = 18e3, 
+    RccPu = 0,
+    XccPu = 0.076176*250e6/(13.8e3)^2,
+    BPu = 0,
+    GPu = 0,
+    SNom = 250e6,
+    UNomA = 18e3,
     UNomB = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {180, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
