@@ -21,9 +21,9 @@ model System "System object"
   parameter InitializationOption initOpt = InitializationOption.globalSteadyStateFixedSetPoints "Initialization type option"  annotation(
     Dialog(group = "Initialization"));
   parameter Boolean showDataOnDiagramsPu = true "=true, P,Q,V and phase are shown on the diagrams in per-unit (overrides the SI format)"  annotation(
-    Dialog(group = "Visualization"));
+    Dialog(group = "Visualization", enable = not showDataOnDiagramsSI), choices(checkBox = true));
   parameter Boolean showDataOnDiagramsSI = false "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
-    Dialog(group = "Visualization"));
+    Dialog(group = "Visualization", enable = not showDataOnDiagramsPu), choices(checkBox = true));
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads work as fixed impedances below their VPuThr voltage threshold" annotation(
     Evaluate = true);
   parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes" annotation(
