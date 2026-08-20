@@ -9,7 +9,9 @@ model TransformerFixedRatioWithBreaker
     vA = portA.v,
     vB = portB.v,
     iA = portA.i,
-    iB = portB.i);
+    iB = portB.i,
+    final ZBaseB = portB.ZBase,
+    final YBaseB = portB.YBase);
 
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
@@ -20,10 +22,10 @@ model TransformerFixedRatioWithBreaker
       UNomB = UNomB,
       SNom = SNom,
       rFixed = rFixed,
-      R = R,
-      X = X,
-      G = G,
-      B = B,
+      RccPu = RccPu,
+      XccPu = XccPu,
+      GPu = GPu,
+      BPu = BPu,
       final useBreaker = false,
       final breakerStatusStart = breakerStatusStart));
 end TransformerFixedRatioWithBreaker;

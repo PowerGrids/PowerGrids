@@ -8,7 +8,9 @@ model TransformerWithTapChangerMax
     vA = portA.v,
     vB = portB.v,
     iA = portA.i,
-    iB = portB.i);
+    iB = portB.i,
+    final ZBaseB = portB.ZBase,
+    final YBaseB = portB.YBase);
 
   extends PowerGrids.Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
@@ -19,11 +21,11 @@ model TransformerWithTapChangerMax
       UNomB = UNomB,
       SNom = SNom,
       rFixed = K[tapStart],
-      thetaFixed = 0,      
-      R = R,
-      X = X,
-      G = G,
-      B = B));  
+      thetaFixed = 0,
+      RccPu = RccPu,
+      XccPu = XccPu,
+      GPu = GPu,
+      BPu = BPu));
   extends PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterLogicMax;
 
   parameter Types.PerUnit K[Ntap] "Magnitude of transformer complex ratio for each tap";

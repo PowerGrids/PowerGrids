@@ -7,7 +7,7 @@ model LoadChangeByInputSignals "Load step response specified by input signals"
     Placement(transformation(origin = {-50, 24}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.Bus NTLV(UNom = 21000)  annotation (
     Placement(visible = true, transformation(origin={-30,4},     extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, rFixed = 419 / 21)  annotation (
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN(RccPu = 0.15e-2, SNom = 5e+08, UNomA = 21000, UNomB = 419000, XccPu = 16e-2, rFixed = 419 / 21)  annotation (
     Placement(visible = true, transformation(origin={-2,4},      extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.EquivalentGrid GRID(R_X = 1 / 10, SNom = 5e+08, SSC = (2.5e+09)/1.1, UNom = 380000, URef = 1.05 * 380e3)  annotation (
     Placement(visible = true, transformation(origin={56,14},      extent = {{-10, -10}, {10, 10}}, rotation = 0)));

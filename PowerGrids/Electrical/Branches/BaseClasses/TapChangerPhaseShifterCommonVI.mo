@@ -7,10 +7,18 @@ partial model TapChangerPhaseShifterCommonVI "Common base class for tap-changer/
   encapsulated type MonitoredQuantitySelection = enumeration(currentMagnitude "phase shifter monitors the port_b current magnitude",
                                                              activePower "phase shifter monitors the port_b active power");
 
-  parameter Types.Resistance R = 0 "Series resistance";
-  parameter Types.Reactance X = 0 "Series reactance";
-  parameter Types.Conductance G = 0 "Shunt conductance";
-  parameter Types.Susceptance B = 0 "Shunt susceptance";
+  parameter SI.PerUnit RccPu = 0 "Series resistance on B side in p.u.";
+  parameter SI.PerUnit XccPu = 0 "Series reactance on B side in p.u.";
+  parameter SI.PerUnit GPu = 0 "Shunt conductance on B side in p.u.";
+  parameter SI.PerUnit BPu = 0 "Shunt susceptance on B side in p.u.";
+
+  parameter Types.Impedance ZBaseB "Base impedance at B side";
+  parameter Types.Admittance YBaseB "Base impedance at B side";
+
+  final parameter Types.Resistance R = RccPu*ZBaseB "Series resistance on B side";
+  final parameter Types.Reactance X = XccPu*ZBaseB "Series reactance on B side";
+  final parameter Types.Conductance G = GPu*YBaseB "Shunt conductance on B side";
+  final parameter Types.Susceptance B = BPu*YBaseB "Shunt susceptance on B side";
 
 equation
   Y = 1/Complex(R, X);

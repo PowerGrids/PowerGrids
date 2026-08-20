@@ -34,7 +34,7 @@ model SynchronousMachine4WindingsPF3
     Placement(transformation(origin = {-124, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerFlow.BusPF busGen21(UNom = 24000) annotation(
     Placement(transformation(origin = {-114, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerFlow.TransformerFixedRatioPF TGEN21(X = 0.4, UNomA = 24000, SNom = 5e8) annotation(
+  PowerFlow.TransformerFixedRatioPF TGEN21(XccPu = 0.4*5e8/24000^2, UNomA = 24000, SNom = 5e8) annotation(
     Placement(transformation(origin = {-92, 10}, extent = {{10, -10}, {-10, 10}})));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN22(H = 6, PPF = -2e8, SNom = 5e8, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = Types.Choices.TimeConstantsApproximation.classicalDefinition, useEPFtoSetExternalOffsetPQ = false, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, useEPFtoSetExternalOffsetPV = true) annotation(
     Placement(transformation(origin = {20, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -42,7 +42,7 @@ model SynchronousMachine4WindingsPF3
     Placement(transformation(origin = {-1, 35}, extent = {{-7, -7}, {7, 7}}, rotation = -90)));
   PowerGrids.Electrical.Buses.Bus busGen22(UNom = 24000) annotation(
     Placement(transformation(origin = {30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  Branches.TransformerFixedRatio TGEN22(X = 0.4, UNomA = 24000, SNom = 5e8) annotation(
+  Branches.TransformerFixedRatio TGEN22(XccPu = 0.4*5e8/24000^2, UNomA = 24000, SNom = 5e8) annotation(
     Placement(transformation(origin = {50, 10}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
 equation
   connect(LoadPQ2.terminalAC, refBus2.terminalAC) annotation(

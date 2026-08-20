@@ -26,9 +26,9 @@ model TestTransformerFixedRatioWithBreakersPF
     Placement(transformation(origin = {-10, -34}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
   Modelica.Blocks.Sources.BooleanExpression CloseCommand annotation(
     Placement(transformation(origin = {-34, -10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker TRBc(UNomA = 1000, UNomB = 10000, rFixed = 10, R = 0.01, X = 0.2, G = 0.001, B = 0.002)  annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker TRBc(UNomA = 1000, UNomB = 10000, rFixed = 10, RccPu = 0.01*1e7/10000^2, XccPu = 0.2*1e7/10000^2, GPu = 0.001/(1e7/10000^2), BPu = 0.002/(1e7/10000^2), SNom = 1e13)  annotation(
     Placement(transformation(origin = {-40, 30}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker TRBo(B = 0.002, G = 0.001, R = 0.01, UNomA = 1000, UNomB = 10000, X = 0.2, rFixed = 10, useBreaker = true, breakerStatusStart = false) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatioWithBreaker TRBo(BPu = 0.002/(1e7/10000^2), GPu = 0.001/(1e7/10000^2), RccPu = 0.01*1e7/10000^2, UNomA = 1000, UNomB = 10000, XccPu = 0.2*1e7/10000^2, rFixed = 10, useBreaker = true, breakerStatusStart = false, SNom = 1e13) annotation(
     Placement(transformation(origin = {-40, -30}, extent = {{-10, -10}, {10, 10}})));
 equation
   connect(LoadBc.terminalAC, BL1.terminalAC) annotation(

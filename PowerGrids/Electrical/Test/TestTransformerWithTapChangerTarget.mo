@@ -4,7 +4,7 @@ model TestTransformerWithTapChangerTarget
   extends Modelica.Icons.Example;
   PowerGrids.Electrical.Buses.InfiniteBusVariableVoltage infiniteBus(SNom = 1e+06, UNom = 1000, useUIn = true, UFixed(displayUnit = "V") = 502, VPuMin = 0.2, VPuMax = 2) annotation(
     Placement(visible = true, transformation(origin = {-28, 0}, extent = {{-8, -8}, {8, 8}}, rotation = -90)));
-  PowerGrids.Electrical.Branches.TransformerWithTapChangerTarget trafo(B = 0, G = 0, K = {2, 3, 4, 5, 6}, Ntap = 5, R = 1, SNom = 1e+06, UNomA = 1000, UNomB = 3000, X = 1, actionSel = PowerGrids.Electrical.Branches.TransformerWithTapChangerInterval.ActionType.direct, t1st = 1, tNext = 0.1, tapStart = 2, targetValue = 3000, deadBand = 400) annotation(
+  PowerGrids.Electrical.Branches.TransformerWithTapChangerTarget trafo(K = {2, 3, 4, 5, 6}, Ntap = 5, RccPu = 1e6/3000^2, SNom = 1e+06, UNomA = 1000, UNomB = 3000, XccPu = 1e6/3000^2, actionSel = PowerGrids.Electrical.Branches.TransformerWithTapChangerInterval.ActionType.direct, t1st = 1, tNext = 0.1, tapStart = 2, targetValue = 3000, deadBand = 400) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.InfiniteBus busLoad(SNom = 1e+06, UNom = 1000) annotation(
     Placement(transformation(origin = {68, -1.77636e-15}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));

@@ -10,7 +10,9 @@ model TransformerFixedRatioPF
     vA = portA.v,
     vB = portB.v,
     iA = portA.i,
-    iB = portB.i);
+    iB = portB.i,
+    final ZBaseB = portB.ZBase,
+    final YBaseB = portB.YBase);
 
   extends PowerGrids.Electrical.BaseClasses.TwoPortACPF(
     final isLinear = true,

@@ -8,9 +8,9 @@ model TwoGenerators
     Placement(visible = true, transformation(origin = {-80, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Buses.ReferenceBus NTHV1(SNom = 5e+08, UNom = 380000) annotation(
     Placement(visible = true, transformation(origin = {-20, 20}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN1(R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, rFixed = 419 / 21) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN1(RccPu = 0.15e-2, SNom = 5e+08, UNomA = 21000, UNomB = 419000, XccPu = 16e-2, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {-50, 20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN2( R = 0.15e-2 * 419 ^ 2 / 500, SNom = 5e+08, UNomA = 21000, UNomB = 419000, X = 16e-2 * 419 ^ 2 / 500, rFixed = 419 / 21) annotation(
+  PowerGrids.Electrical.Branches.TransformerFixedRatio TGEN2( RccPu = 0.15e-2, SNom = 5e+08, UNomA = 21000, UNomB = 419000, XccPu = 16e-2, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {70, 20}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   PowerGrids.Examples.Tutorial.GridOperation.Controlled.ControlledGenerator GEN1(UNom = 21e3, SNom = 500e6, TGOV(R = 0.05), GEN(PPF = -450e6)) annotation(
     Placement(visible = true, transformation(origin = {-104, 6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
