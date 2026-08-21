@@ -38,7 +38,7 @@ package Icons "Icons for the PowerGrids library"
     Boolean isSlackBus = false "=true, if componenPF is a slack bus";
   annotation(
       Icon(graphics = {Text(origin = {0, -117}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name"),
-        Text(origin = {20, 42}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Right, textString = DynamicSelect("_", if isSlackBus then "S" else "")),
+        Text(origin = {40, 42}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Left, textString = DynamicSelect(" ", if isSlackBus then "RS" else "")),
         Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
         Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
         Line(origin = {0.00014, -50.5485},points = 
