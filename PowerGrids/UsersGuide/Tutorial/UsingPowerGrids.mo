@@ -14,9 +14,9 @@ annotation(preferredView = "info",
 
 <h3>2.1 Drag, drop and connect</h3>
 
-<p>After creating a new empty Modelica model, you should first drag and drop the System component from the Electrical package; this provides system-wide settings, such as the reference system frequency (50 or 60 Hz), the type of initialization, the minimum and maximum limits for currents and voltage, and various visualization options. Meaningful default values are provided for all parameters and options.</p>
+<p>After creating a new empty Modelica model, you should first drag and drop the System component from the Electrical package; this provides system-wide settings, such as the nominal system frequency (50 or 60 Hz), the type of initialization, the minimum and maximum limits for currents and voltage, and various visualization options. Meaningful default values are provided for all parameters and options.</p>
 
-<p>You can then add physical components taken from the various sub-packages of Electrical: Branches, Buses, Faults, Loads, Banks, and Machines. It is recommended that you connect different components through Bus components, which provide proper initialization support, as well as clear visualization of node voltages in the grid.</p>
+<p>You can then add physical components taken from the various sub-packages of Electrical: Branches, Buses, Faults, Loads, Banks, and Machines. It is recommended that you connect different components through Bus components which provide a clear visualization of node voltages in the grid.</p>
 
 <p>The Electrical.Controls sub-package contains some examples of control systems (governors, PSS, etc.) taken from IEEE standards. You can build your own control system models as block diagrams by using blocks from the <a href=\"modelica://PowerGrids.Controls\">PowerGrids.Controls</a> package and from the <a href=\"modelica://Modelica.Blocks\">Modelica.Blocks</a> package.</p>
 
@@ -30,7 +30,7 @@ annotation(preferredView = "info",
 
 <h3>2.3 Initialization</h3>
 
-<p>The dynamic system models are always initialized in steady state. This requires to solve large non-linear systems, using iterative Newton-Raphson solvers, whose nonlinear unknowns must be given a good enough initial guess to ensure solver convergence. To this purpose, all components with nonlinear equations have parameter to set start values (i.e. initial guesses) for the active and reactive power flows into their ports, while bus components provide start values for initial gusse of voltages. Initial guesses for the remaining nonlinear variables in componen models are automatically computed from the port values by means of initial equations in the components themselves.</p>
+<p>The dynamic system models are always initialized in steady state. This requires to solve large non-linear systems, using iterative Newton-Raphson solvers, whose nonlinear unknowns must be given a good enough initial guess to ensure solver convergence. To this purpose, all components with nonlinear equations have parameter to set start values (i.e. initial guesses) for the active power, the reactive power and the voltage (module and phase). Initial guesses for the remaining nonlinear variables in componen models are automatically computed from the port values by means of initial equations in the components themselves.</p>
 
 <p>By default, the <i>embedded power flow</i> option is activated in the system object. This option enables embedded static power flow models for each component, e.g. a PV bus for a synchronous machine or a PQ bus for a load, which form an embedded power flow problem. This is automatically solved as a first step of the initialization, providing appropriate initial guesses to the port quantities and hence to all nonlinear unknowns in the model.</p>
 
