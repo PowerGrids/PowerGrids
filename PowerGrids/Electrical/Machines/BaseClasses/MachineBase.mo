@@ -20,8 +20,11 @@ partial model MachineBase
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option" annotation(
     Dialog(tab = "Initialization"));
+  parameter Boolean useExtraInitEquationsPV = false "=true, if additional initial equation to prescribe P and V shall be used" annotation(
+    Dialog(tab = "Embedded PF", enable = not isRefNodeEPF),
+    choices(checkBox = true));
   parameter Boolean isRefNodeEPF = false "=true, if the generator shall become the slack node in the EPF" annotation(
-    Dialog(tab = "Embedded PF"),
+    Dialog(tab = "Embedded PF", enable = not useExtraInitEquationsPV),
     choices(checkBox = true));
   parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF and isRefNodeEPF));
@@ -45,7 +48,7 @@ initial equation
 
   // Equations to calculate the external offset for PmPu and ufPu if the EPF is
   // active and the node is a PVbus
-  if computePF and not isRefNodeEPF then
+  if computePF and useExtraInitEquationsPV and not isRefNodeEPF then
     port.P = PStart;
     port.VPu = UStart/UNom;
   end if;
