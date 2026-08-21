@@ -20,7 +20,7 @@ partial model MachineBase
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option" annotation(
     Dialog(tab = "Initialization"));
-  parameter Boolean useExtraInitEquationsPV = false "=true, if additional initial equation to prescribe P and V shall be used" annotation(
+  parameter Boolean useExtraInitEquationsPV = true "=true, if additional initial equation to prescribe P and V shall be used" annotation(
     Dialog(tab = "Embedded PF", enable = not isRefNodeEPF),
     choices(checkBox = true));
   parameter Boolean isRefNodeEPF = false "=true, if the generator shall become the slack node in the EPF" annotation(
