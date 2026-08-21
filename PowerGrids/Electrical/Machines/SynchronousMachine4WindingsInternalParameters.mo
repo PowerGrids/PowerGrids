@@ -59,11 +59,11 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   final parameter Types.PerUnit ufPuStart(fixed = false) "Start value of exciter voltage in p.u. (Kundur base)";
   final parameter Types.PerUnit ufPuInStart(fixed = false) "Start value of input exciter voltage in p.u. (user-selcted base";
   final parameter Types.PerUnit ifPuStart(fixed = false) "Start value of ifPu";
-  parameter Boolean useEPFtoSetExternalOffsetPQ = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and Q calculated by the EPF" annotation(
+  parameter Boolean useEPFtoSetExternalOffsetVref = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according the voltage calculated by the EPF" annotation(
     Dialog(tab = "Initialization", enable = computePF and not useEPFtoSetExternalOffsetPV),
     choices(checkBox = true));
   parameter Boolean useEPFtoSetExternalOffsetPV = false "=true, if external offset are used to calculate PmPu and ufPu, in order set them according P and V calculated by the EPF" annotation(
-    Dialog(tab = "Initialization", enable = computePF and not useEPFtoSetExternalOffsetPQ),
+    Dialog(tab = "Initialization", enable = computePF and not useEPFtoSetExternalOffsetVref),
     choices(checkBox = true));
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
@@ -135,11 +135,10 @@ initial equation
     der(lambdaQ2Pu) = 0;
   end if;
 // Equations to calculate the external offset for PmPu and ufPu if the EPF is
-// active and the flag useEPFtoSetExternalOffsetPQ is true, in order to
-// initialise the generator at the values P and Q calculated by the EPF
-  if computePF and useEPFtoSetExternalOffsetPQ then
-    port.P = PStart;
-    port.Q = QStart;
+// active and the flag useEPFtoSetExternalOffsetVref is true, in order to
+// initialise the generator so thet the voltage at its port is the one calculated by EPF
+  if computePF and useEPFtoSetExternalOffsetVref then
+    port.u = CM.fromPolar(UStart, UPhaseStart) "Set initial bus voltage, phase-to-phase";
   end if;
 // Equations to calculate the external offset for PmPu and ufPu if the EPF is
 // active and the flag useEPFtoSetExternalOffsetPV is true, in order to
@@ -148,7 +147,7 @@ initial equation
     port.P = PStart;
     port.VPu = UStart/UNom;
   end if;
-  assert(not (useEPFtoSetExternalOffsetPQ and useEPFtoSetExternalOffsetPV), "only one flag between useEPFtoSetExternalOffsetPQ and useEPFtoSetExternalOffsetPV can be set at the same time", level = AssertionLevel.error);
+  assert(not (useEPFtoSetExternalOffsetVref and useEPFtoSetExternalOffsetPV), "only one flag between useEPFtoSetExternalOffsetVref and useEPFtoSetExternalOffsetPV can be set at the same time", level = AssertionLevel.error);
 equation
 // Flux linkages
   lambdadPu = (MdPu + LdPu)*idPu + MdPu*ifPu + MdPu*iDPu;
