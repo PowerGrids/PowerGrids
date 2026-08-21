@@ -15,7 +15,7 @@ equation
   port.Q = QSlack;
 
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {82, 42}, extent = {{-26, 20}, {34, -40}}, textString = DynamicSelect("RS", if setPhase then "RS" else "S"))}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {82, 42}, extent = {{-26, 20}, {34, -40}}, textString = "RS")}),
     Documentation(info = "<html>
 <body>
 <p>Slack bus: prescribes voltage magnitude and phase (default zero).</p>
