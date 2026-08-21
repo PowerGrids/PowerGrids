@@ -4,7 +4,7 @@ model SynchronousMachine4WindingsPF
   extends Modelica.Icons.Example;
   inner Electrical.System systemPowerGrids(fNom = 60, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true, initOpt = Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow) annotation(
     Placement(transformation(origin = {-130, -62}, extent = {{-10, -10}, {10, 10}})));
-  Electrical.Machines.SynchronousMachine4Windings GEN12(H = 6, SNom = 5e8, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, redeclare model ComponentPF = Electrical.PowerFlow.SlackBus(UNom = 24000, SNom = 5e8) "slack bus is used in EPF instead of the PVBus, please manually fill the relevant parameters", useEPFtoSetExternalOffsetPV = false, useEPFtoSetExternalOffsetVref = true) annotation(
+  Electrical.Machines.SynchronousMachine4Windings GEN12(H = 6, SNom = 5e8, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, isRefNodeEPF = true) annotation(
     Placement(transformation(origin = {80, -20}, extent = {{-10, -10}, {10, 10}})));
   Electrical.Branches.LineConstantImpedance line2(R = 0.01, SNom = 550000000, UNom = 24000, X = 0.1) annotation(
     Placement(transformation(origin = {80, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
@@ -30,7 +30,7 @@ model SynchronousMachine4WindingsPF
     Placement(transformation(origin = {-114, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerFlow.TransformerFixedRatioPF TGEN21(XccPu = 0.4*5e8/24000^2, UNomA = 24000, SNom = 5e8) annotation(
     Placement(transformation(origin = {-92, 10}, extent = {{10, -10}, {-10, 10}})));
-  Electrical.Machines.SynchronousMachine4Windings GEN22(H = 6, PPF = -6e8, SNom = 5e8, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76, useEPFtoSetExternalOffsetPV = true) annotation(
+  Electrical.Machines.SynchronousMachine4Windings GEN22(H = 6, PPF = -6e8, SNom = 5e8, Tpd0 = 8, Tppd0 = 0.03, Tppq0 = 0.07, Tpq0 = 1, UNom = 24000, excitationPuType = Types.Choices.ExcitationPuType.Kundur, raPu = 0.003, timeConstApprox = Types.Choices.TimeConstantsApproximation.classicalDefinition, xdPu = 1.81, xlPu = 0.15, xpdPu = 0.3, xppdPu = 0.23, xppqPu = 0.25, xpqPu = 0.65, xqPu = 1.76) annotation(
     Placement(transformation(origin = {20, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Controls.FreeOffset ufPu22 annotation(
     Placement(transformation(origin = {-1, 35}, extent = {{-7, -7}, {7, 7}}, rotation = -90)));
@@ -38,9 +38,9 @@ model SynchronousMachine4WindingsPF
     Placement(transformation(origin = {30, 10}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   Branches.TransformerFixedRatio TGEN22(XccPu = 0.4*5e8/24000^2, UNomA = 24000, SNom = 5e8) annotation(
     Placement(transformation(origin = {50, 10}, extent = {{10, -10}, {-10, 10}}, rotation = -0)));
-  PowerFlow.BusPF busLoad1 annotation(
+  PowerFlow.BusPF busLoad1(UNom = 24000)  annotation(
     Placement(transformation(origin = {-62, 28}, extent = {{-10, -10}, {10, 10}})));
-  Buses.Bus busLoad2 annotation(
+  Buses.Bus busLoad2(UNom = 24000)  annotation(
     Placement(transformation(origin = {80, 28}, extent = {{-10, -10}, {10, 10}})));
   Loads.LoadPQVoltageDependence loadPQ22(UNom = 24000, SNom = 5e8, PRefConst = 5e8, QRefConst = 3e8, alpha = 1, beta = 1)  annotation(
     Placement(transformation(origin = {88, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
@@ -50,7 +50,7 @@ model SynchronousMachine4WindingsPF
     Placement(transformation(origin = {-32, -20}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.PowerFlow.PQBus LoadPQ31(P = 500000000, Q = 300000000, SNom = 5e8, UNom = 24000) annotation(
     Placement(transformation(origin = {-70, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
-  PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ221(PRefConst = 5e8, QRefConst = 3e8, SNom = 5e8, UNom = 24000) annotation(
+  PowerGrids.Electrical.Loads.LoadPQVoltageDependence loadPQ32(PRefConst = 5e8, QRefConst = 3e8, SNom = 5e8, UNom = 24000) annotation(
     Placement(transformation(origin = {72, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
 equation
   connect(busGen12.terminalAC, GEN12.terminalAC) annotation(
@@ -95,35 +95,51 @@ equation
     Line(points = {{-54, 40}, {-54, 28}, {-62, 28}}));
   connect(busLoad2.terminalAC, loadPQ22.terminalAC) annotation(
     Line(points = {{80, 28}, {88, 28}, {88, 40}}));
-  connect(loadPQ221.terminalAC, busLoad2.terminalAC) annotation(
+  connect(loadPQ32.terminalAC, busLoad2.terminalAC) annotation(
     Line(points = {{72, 40}, {72, 28}, {80, 28}}));
   annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StartTime = 0, StopTime = 40, Tolerance = 1e-06, Interval = 0.02),
     Documentation(info = "<html><head></head>
 <body>
-<p>This example extends the <i>green</i> case of the example <a href=\"modelica://PowerGrids.Electrical.Test.SynchronousMachine4WindingsPF2\">SynchronousMachine4WindingsPF2</a> by adding a second <a href=\"modelica://PowerGrids.Electrical.Machines.SynchronousMachine4Windings\">generator</a>, connected to the <a href=\"modelica://PowerGrids.Electrical.Buses.ReferenceBus\">reference bus</a> via a <a href=\"modelica://PowerGrids.Electrical.Branches.TransformerFixedRatio\">fixed-ratio transformer</a> (ratio = 1).
+<p>This example is to demonstrate the use of the EPF in a simple network, shown in the <i>green</i> box. The network is composed by two <i>generators</i>, one <i>transformer (ratio = 1)</i>, one <i>transmission line</i> and three <i>loads</i>.</p>
 
-<p> The new generator is modeled as a <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PV bus</a> in the EPF (<i>blue</i> box).</p>
+<p>In the <i>blue</i> box there is a the PF model which is indentical to the one automatically generated by the EPF starting from the network in the <i>green</i> box.</p>
 
-<p>The adopted EPF strategy is the same used in the <b><i>SynchronousMachine4WindingsPF2</i></b> example, that is to move the <i>EPF slack</i> node to the same node of one generator (the <code>GEN12</code> in this case), by redeclaring its EPF component as a <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">SlackBus</a>.</p>
+<p>The adopted EPF strategy is to put the EPF <i>slack node</i> to the same node of one generator (the <code>GEN12</code> in this case), by selecting that generator to be the <i>reference node</i> for the EPF (flag <code>isRefNodeEPF = true</code>). The second generator is of <i>PV</i> type in the EPF (default behaviour).</p>
 
-<p>Also in this case, in order to maintain the same <i>reference node</i> in both the EPF and the <i>dynamic</i> model, the <i>EPF slack</i> node doesn't prescribe the <i>reference angle</i> (flag <code>setPhase = false</code> in the redeclaration of the EPF component in the <i>generator</i>), the <i>reference angle</i> is still prescribed by the EPF component of the <i>reference node</i> (<a href=\"modelica://PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF\">PhaseReferenceBusPF</a>, redeclared as EPF component in the <i>reference node</i>).</p>
-
-
-<p>Both the <i>generators</i> have no <i>control</i> so two <a href=\"modelica://PowerGrids.Controls.FreeOffset\"><i>free offset</i></a> components for each generator have been used in order to calculate the values of the <code>PmPu</code> and the <code>ufPuIn</code> inputs that maintain the solution calculated by the EPF. All the necessary <b><i>offset</i></b> must be back-calulated starting from the solution calculated by the EPF, to do this some additional initial equations must be provided (one for each <b><i>offset</i></b> to be calculated). In this example the following additional equations have been choosen:</p>
+<p>Both the <i>generators</i> have no <i>control</i> so two <a href=\"modelica://PowerGrids.Controls.FreeOffset\"><i>free offset</i></a> components for each generator have been added in order to calculate the values of the <code>PmPu</code> and the <code>ufPuIn</code> inputs that maintain some conditions used to define the EPF (see below). In order to calculate the necessary <b><i>offset</i></b> some additional initial equations must be provided (one for each <b><i>offset</i></b> to be calculated). In this example the following additional equations have been used:</p>
 
 <ul>
-<li>two initial equations that enforce the <code>GEN12</code> to supply the same <code>P</code> and <code>Q</code> supplied by the <b><i>slack</i></b> node in the EPF, these initial equations are provided by the <code>GEN12</code>, by setting the flag <code>useEPFtoSetExternalOffsetPQ = true</code>,</li><br>
-<li>two initial equations that enforce the <code>GEN22</code> to supply the same <code>P</code> and <code>V</code> supplied by the <b><i>PV Bus</i></b> in the EPF, these initial equations are provided by the <code>GEN22</code>, by setting the flag <code>useEPFtoSetExternalOffsetPV = true</code> </li>
+<li>two initial equations that enforce the <code>GEN12</code> to fix the <i>reference voltage</i> and the <i>reference angle</i> at the <i>generator port</i> to the same values fixed by the <b><i>slack node</i></b> in the EPF. These initial equations are provided by the <code>GEN12</code>, by setting the flag <code>useEPFtoSetExternalOffsetVref = true</code>,</li><br>
+<li>two initial equations that enforce the <code>GEN22</code> to supply the same <i>active power</i> at the same <i>voltage</i> supplied by the <b><i>PV Bus</i></b> in the EPF, these initial equations are provided by the <code>GEN22</code>, by setting the flag <code>useEPFtoSetExternalOffsetPV = true</code> </li>
 </ul>
 
+The three loads are of the same type (<a href=\"modelica://PowerGrids.Electrical.Loads.LoadPQVoltageDependence\">LoadPQVoltageDependence</a>) but the <code>loadPQ32</code> has <code>alpha = beta = 0</code>, so that it becomes a <i>constant PQ</i> load.
+
 <p>The following figure shows the simulation results:</p><figure>
- <img src=\"modelica://PowerGrids/Resources/Images/Test/SynchronousMachine4WindingsPF3.png\">
+ <img src=\"modelica://PowerGrids/Resources/Images/Test/SynchronousMachine4WindingsPF.png\">
 </figure>
 
-<p>It is possible to see that also in this example the working point calculated by the dynamic initialization is exactly the same calculated by the EPF.</p>
+<p>It is possible to observe  that:</p>
+<ul>
+    <li>both the <i>voltage</i> and the <i>phase</i> at the <code>GEN12</code> node are the same calculated by the EPF, as expected (<i>reference slack node in the EPF)</i>,</li>
+    <li>the <i>active power</i> supplied by the <code>GEN22</code> and the <i>voltage</i> at its <code>bus</code> are the same calculated by the EPF, as expected (<i>PV bus in the EPF)</i>,</li>
+    <li>both the <i>active</i> and the <i>reactive</i> power absorbed by the <code>loadPQ12</code> and by <code>loadPQ32</code> are the same calculated by the EPF (<i>constant PQ bus in the EPF</i>). The first (<code>loadPQ12</code>) maintains the same load of the EPF after the dynamic initialization because both the <i>voltage</i> and the <i>phase</i> at its node are the same of the EPF (<i>reference slack node in the EPF</i>). The second (<code>loadPQ32</code>) maintains the same load because it is of <i>constant PQ</i> type,</li>
+    <li>the <i>active</i> and the <i>reactive</i> power absorbed by the <code>loadPQ22</code> is not the same calculated by the EPF because this load is of <i>voltage dependent</i> type and nothing ensure that the dynamic initialization is able to maintain the same voltage calculated by the EPF at its node.</li>
+</ul>
 
+<p>To better explain the reason of the difference between the EPF and the dynamic load of the <code>loadPQ22</code>, consider the sequence followed by the solver:</p>
+
+<ol>
+    <li>the EPF is calulated by substituting the <code>loadPQ22</code> whith a <i>fixed PQ load</i> that absorbs 500W and 300VAR <i>independently</i> from the voltage at its bus,</li>
+    <li>under this condition, the EPF calculates a <i>voltage</i> of 20.925kV and a <i>phase</i> of -3.9 degree at the <code>busLoad2</code>,</li>
+    <li>the values calculated by the EPF are used as first guesses for the dynamic initialization, but the dynamic <code>loadPQ22</code> at  20.925kV and -3.9 degree absorbs a power different from 500W and 300VAR, so the dynamic system is not in equilibrium and the dynamic initialization will converge to the new equilibrium shown in the figure above.</li>
+</ol>
+
+<p>In conclusion, the only way to maintain the EPF equilibrium also in the dynamic scenario is to use only <i>constant PQ</i> loads also in the dynamic model.</p>
+
+<p>Note also that the use of <i>variable voltage</i> loads in the EPF is not possible because the convergence of the EPF is ensured only by using <i>linear</i> models. Keep in mind that the primary goal of the EPF is to find an <i>initial guess</i> to be used to initialize the <i>non-linear</i> dynamic models.</p>
 </body>
 </html>"),
     Diagram(graphics = {Rectangle(origin = {48, 4}, lineColor = {85, 170, 0}, lineThickness = 2, extent = {{-62, 62}, {62, -62}}), Rectangle(origin = {-83, 11}, lineColor = {0, 85, 255}, lineThickness = 2, extent = {{-65, 55}, {65, -55}})}, coordinateSystem(extent = {{-160, 80}, {120, -80}})),
