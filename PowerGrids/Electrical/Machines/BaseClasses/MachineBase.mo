@@ -20,16 +20,16 @@ partial model MachineBase
   parameter Types.ActivePower PNom = SNom "Nominal active (turbine) power";
   parameter Types.Choices.InitializationOption initOpt = systemPowerGrids.initOpt "Initialization option" annotation(
     Dialog(tab = "Initialization"));
-  parameter Boolean useExtraInitEquationsPV = true "=true, if additional initial equation to prescribe P and V shall be used" annotation(
+  parameter Boolean useExtraInitEquationsPV = false "=true, if additional initial equation to prescribe P and V shall be used" annotation(
     Dialog(tab = "Embedded PF", enable = not isRefNodeEPF),
     choices(checkBox = true));
   parameter Boolean isRefNodeEPF = false "=true, if the generator shall become the slack node in the EPF" annotation(
     Dialog(tab = "Embedded PF", enable = not useExtraInitEquationsPV),
     choices(checkBox = true));
   parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF" annotation(
-    Dialog(group = "Embedded PF", enable = computePF and isRefNodeEPF));
+    Dialog(tab = "Embedded PF", enable = computePF and isRefNodeEPF));
   parameter Types.Voltage UPF = UNom "Voltage magnitude, phase-to-phase, to be used to compute the embedded PF" annotation(
-    Dialog(tab = "Embedded PF", enable = computePF and not isRefNodeEPF));
+    Dialog(tab = "Embedded PF", enable = computePF));
   parameter Types.ActivePower PPF = -SNom "Active power to be used to compute the embedded PF (positive entering), if the PVBus is used as embedded PF component" annotation(
     Dialog(tab = "Embedded PF", enable = computePF and not isRefNodeEPF));
   parameter Integer priority = integer(100 - 10*log10(PNom)) "Priority level used to select the machine to be used as frrequency reference (0=higher priority)" annotation(
