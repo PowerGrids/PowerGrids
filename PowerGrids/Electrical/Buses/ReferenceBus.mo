@@ -15,8 +15,7 @@ model ReferenceBus "Reference bus for an isolated grid"
     UNom = UNom,
     SNom = SNom,
     U = UPF,
-    UPhase = UPhasePF,
-    setPhaseOnly = setPhaseOnly)
+    UPhase = UPhasePF)
   constrainedby PowerGrids.Electrical.BaseClasses.OnePortACPF annotation(
     choices(
       choice(redeclare replaceable model ComponentPF = PowerGrids.Electrical.PowerFlow.PhaseReferenceBusPF
