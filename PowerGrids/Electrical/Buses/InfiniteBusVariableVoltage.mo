@@ -46,7 +46,7 @@ equation
     terminalAC.omegaRefPu = 1;
   end if;
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {-79, 0}, extent = {{-1, 60}, {1, -60}}), Text(origin = {59, 48}, extent = {{-39, 68}, {39, -68}}, textString = "", fontName = "Symbol")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Ellipse(origin = {70, 30}, lineThickness = 0.5, extent = {{-10, 10}, {10, -10}}), Ellipse(origin = {90, 30}, lineThickness = 0.5, extent = {{-10, 10}, {10, -10}})}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics),
     Documentation(info = "<html>
 <p>Infinite bus model with voltage e. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.</p>
