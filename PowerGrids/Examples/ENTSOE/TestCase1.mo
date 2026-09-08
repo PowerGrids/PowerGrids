@@ -2,9 +2,9 @@ within PowerGrids.Examples.ENTSOE;
 
 model TestCase1 "Test Case 1, Section 5.1, focuses on the dynamic behavior of the model for the synchronous generator machine and its AVR"
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(computePF = false) annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(computePF = false)  annotation(
     Placement(transformation(origin = {18, 40}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, useExtraInitEquationsPV = false) annotation(
     Placement(transformation(origin = {-26, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.ReferenceBus NTLV(SNom = 5e+08, UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {24, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
