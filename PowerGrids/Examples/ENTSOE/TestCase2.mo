@@ -6,7 +6,7 @@ model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of th
     Placement(transformation(origin = {62, 24}, extent = {{-10, -10}, {10, 10}})));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 4.75e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, useExtraInitEquationsPV = false) annotation(
     Placement(transformation(origin = {16, -6}, extent = {{-10, 10}, {10, -10}})));
-  PowerGrids.Electrical.Buses.ReferenceBus NGEN(SNom = 5e+08, UNom = 21000) annotation(
+  PowerGrids.Electrical.Buses.InfiniteBus NGEN(SNom = 5e+08, UNom = 21000) annotation(
     Placement(transformation(origin = {60, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.Controls.TurbineGovernors.IEEE_TGOV1 TGOV(R = 0.05, T1 = 0.5, T2 = 3, T3 = 10, VMax = 1) annotation(
     Placement(transformation(origin = {-20, 16}, extent = {{-10, 10}, {10, -10}})));
