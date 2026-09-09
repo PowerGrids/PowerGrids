@@ -1,7 +1,6 @@
 within PowerGrids.Electrical.Controls.TurbineGovernors;
 
 block IEEE_TGOV1 "Simple Steam Turbine Governor - IEEE type TGOV1"
-  extends Controls.BaseClasses.BaseControllerFramework;
   parameter SI.PerUnit VMax = 1 "Maximum gate limit in p.u.";
   parameter SI.PerUnit VMin = 0 "Minimum gate limit in p.u.";
   parameter SI.PerUnit R = 0.05 "Controller Droop";
@@ -9,11 +8,7 @@ block IEEE_TGOV1 "Simple Steam Turbine Governor - IEEE type TGOV1"
   parameter SI.Time T1 = 0.5 "Governor time constant";
   parameter SI.Time T2 = 3 "Turbine derivative time constant";
   parameter SI.Time T3 = 10 "Turbine delay time constant";
-  parameter SI.PerUnit PMechPuStart = 1 "Required start value of PmechPu when fixInitialControlledVariable = true" annotation(
-    Dialog(enable = fixInitialControlledVariable));
-  parameter SI.PerUnit oversaturationPu = 0.1 "abs(u-usat)/(Vmax-Vmin) in case of saturated initial condition" annotation(
-    Dialog(enable = fixInitialControlledVariable));
-  final parameter Real delta = (firstOrderLim.yMax - firstOrderLim.yMin)*oversaturationPu "Actuator saturation margin";
+
   Modelica.Blocks.Interfaces.RealInput RefLPu "Reference frequency/load input [pu]" annotation(
     Placement(transformation(origin = {-138, 50}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-102, 40}, extent = {{-20, -20}, {20, 20}})));
   Modelica.Blocks.Interfaces.RealInput omegaPu "Frequency [pu]" annotation(
@@ -36,26 +31,7 @@ block IEEE_TGOV1 "Simple Steam Turbine Governor - IEEE type TGOV1"
     Placement(visible = true, transformation(origin = {50, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback sumPMechPu annotation(
     Placement(visible = true, transformation(origin = {90, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-initial equation
-/* The following equation could be written as
- 
-    if fixInitialControlledVariable then
-      if firstOrderLim.u > firstOrderLim.yMax then
-        firstOrderLim.u = firstOrderLim.yMax + delta;
-      elseif firstOrderLim.u < firstOrderLim.yMin then
-        firstOrderLim.u = firstOrderLim.yMin - delta;
-      else
-        PMechPu = PMechPuStart;
-      end if;
-    end if;
-      
-      However, we need to use homotopy with a simplified linear model, to
-      avoid the need of explicitly initializing all the internal controller
-      variables. This is only possible by writing those equations in implicit form
-  */
-  if fixInitialControlledVariable then
-    0 = homotopy(actual = if firstOrderLim.u > firstOrderLim.yMax then firstOrderLim.u - (firstOrderLim.yMax + delta) else if firstOrderLim.u < firstOrderLim.yMin then firstOrderLim.u - (firstOrderLim.yMin - delta) else PMechPu - PMechPuStart, simplified = PMechPu - PMechPuStart);
-  end if;
+
 equation
   connect(omegaRefPu.y, deltaOmegaPu.u2) annotation(
     Line(points = {{-90, -23}, {-90, -8}}, color = {0, 0, 127}));

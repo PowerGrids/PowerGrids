@@ -1,7 +1,5 @@
 within PowerGrids.Electrical.Controls.ExcitationSystems;
 block VRProportional
-  extends Controls.BaseClasses.BaseControllerFramework;
-
   parameter SI.PerUnit Ka(min = 0) "Overall equivalent gain";
   parameter SI.PerUnit VrMax "Output voltage max limit in p.u.";
   parameter SI.PerUnit VrMin "Output voltage min limit in p.u.";
@@ -9,13 +7,6 @@ block VRProportional
   parameter Types.Time LagMin = 0 "Time lag before taking action when u going below uMin";
   parameter PowerGrids.Controls.LimiterWithLag.State stateStart = PowerGrids.Controls.LimiterWithLag.State.notSat "Saturation initial state" annotation(
   Dialog(tab = "Initialization"));
-  parameter SI.PerUnit VcPuStart = 1 "Required start value of VcPu when fixInitialControlledVariable = true" annotation(
-  Dialog(enable = fixInitialControlledVariable));
-  parameter SI.PerUnit oversaturationPu = 0.1 "abs(u-usat)/(Vmax-Vmin) in case of saturated initial condition" annotation(
-  Dialog(enable = fixInitialControlledVariable));
-  final parameter Real delta = (limiterWithLag.uMax-limiterWithLag.uMin)*oversaturationPu "Actuator saturation margin";
-
-  outer PowerGrids.Electrical.System systemPowerGrids "Reference to system object";
 
   Modelica.Blocks.Interfaces.RealInput VcPu "Machine terminal voltage p.u." annotation(
     Placement(visible = true, transformation(origin = {-140, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-98, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -29,30 +20,7 @@ block VRProportional
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Gain gain(k = Ka)  annotation(
     Placement(visible = true, transformation(origin = {-50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-initial equation
-  /* The following equation could be written as
- 
-     if fixInitialControlledVariable then
-       if limiterWithLag.u > limiterWithLag.uMax then
-         limiterWithLag.u = limiterWithLag.uMax + delta;
-       elseif limiterWithLag.u < limiterWithLag.uMin then
-         limiterWithLag.u = limiterWithLag.uMin - delta;
-       else
-         VcPu = VcPuStart;
-       end if;
-     end if;
-      
-     However, we need to use homotopy with a simplified linear model, to
-     avoid the need of explicitly initializing all the internal controller
-     variables. This is only possible by writing those equations in implicit form
-  */
-  if fixInitialControlledVariable then
-    0 = homotopy(
-      actual = if limiterWithLag.u > limiterWithLag.uMax then limiterWithLag.u - (limiterWithLag.uMax + delta)
-               else if limiterWithLag.u < limiterWithLag.uMin then limiterWithLag.u - (limiterWithLag.uMin - delta)
-               else VcPu - VcPuStart,
-      simplified = VcPu - VcPuStart);
-  end if;
+
 equation
   connect(VrefPu, Verr.u1) annotation(
     Line(points = {{-140, -30}, {-100, -30}, {-100, -30}, {-98, -30}}, color = {0, 0, 127}));

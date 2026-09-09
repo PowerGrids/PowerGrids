@@ -1,16 +1,9 @@
 within PowerGrids.Electrical.Controls.TurbineGovernors;
 
 block GoverProportional "Simple proportional governor"
-  extends Controls.BaseClasses.BaseControllerFramework;
-
   parameter SI.PerUnit KGover "Mechanical power sensitivity to frequency";
   parameter SI.PerUnit PMaxPu = 1 "Maximum mechanical power p.u.";
   parameter SI.PerUnit PMinPu = 0 "Minimum mechanical power p.u.";
-  parameter SI.PerUnit oversaturationPu = 0.1 "abs(u-usat)/(Vmax-Vmin) in case of saturated initial condition" annotation(
-  Dialog(enable = fixInitialControlledVariable));
-  final parameter Real delta = (limiter.uMax-limiter.uMin)*oversaturationPu "Actuator saturation margin";
-
-  outer PowerGrids.Electrical.System systemPowerGrids "Reference to system object";
 
   Modelica.Blocks.Interfaces.RealInput PmRefPu "Reference frequency/load input [pu]" annotation(
     Placement(visible = true, transformation(origin = {-140, 50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
