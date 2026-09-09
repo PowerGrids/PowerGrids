@@ -58,11 +58,8 @@ equation
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {0, 1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-100, 99}, {100, -101}}), Text(origin = {24, 4}, extent = {{-94, 70}, {56, -72}}, textString = "IEEE
 AC4A"), Text(origin = {0, 120}, textColor = {0, 0, 255}, extent = {{-80, 14}, {80, -14}}, textString = "%name")}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
-  Documentation(info = "<html>
-<p>The class implements a model of a static exictation system according to the IEEE Std 421.5TM-2005.</p>
+  Documentation(info = "<html><head></head><body><p>The class implements a model of a static exictation system according to the IEEE Std 421.5TM-2005.</p>
 <p>The type implemented is the AC4A, described in the chapter 6.4 of the same IEEE Std 421.5TM-2005.</p>
 <p>Unlike the aforementioned standard, the output voltage ceiling limitation is fixed to VrMax, while in the standard it depends to the field current IFd.</p>
-<p>If <code>fixInitialControlledVariable = true</code>, an initial equation is added to ensure that the machine voltage <code>VcPu</code> is equal to its start value <code>VcPuStart</code>. In order to fulfill this condition, the initial value of the reference signal should be free, so that the Modelica tool can back-compute it automatically. For this purpose, the <a href=\"modelica://PowerGrids.Controls.FreeOffset\">PowerGrids.Controls.FreeOffset</a> block should be used to generate the reference signal to be connected to the <code>VrefPu</code> input.</p>
-<p>In case the condition <code>VcPu = VcPuStart</code> cannot be fulfilled without violating the controller saturations, then an alternative initial condition is enforced, which prescribes the saturation block input so as to obtain a certain degree of oversaturation <code>oversaturationPu</code>. This allows to back-compute a unique initial value of the reference signal, which is of course dependent on <code>oversaturationPu</code> and hence somewhat arbitrary.</p>
-</html>"));
+</body></html>"));
 end IEEE_AC4A;

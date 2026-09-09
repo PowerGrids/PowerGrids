@@ -58,10 +58,7 @@ equation
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-99, 101}, {101, -99}}), Text(origin = {49, -25}, extent = {{-127, 27}, {33, -49}}, textString = "TGOV1"), Text(origin = {0, 120}, textColor = {0, 0, 255}, extent = {{-80, 12}, {80, -12}}, textString = "%name"), Text(origin = {-6, 46}, extent = {{-60, 26}, {70, -40}}, textString = "IEEE")}),
     Diagram(coordinateSystem(extent = {{-160, 80}, {140, -60}})),
-    Documentation(info = "<html>
-<p>The class implements a model of a simple steam turbine governor according to the IEEE technical report PES-TR1 Jan 2013.</p>
+    Documentation(info = "<html><head></head><body><p>The class implements a model of a simple steam turbine governor according to the IEEE technical report PES-TR1 Jan 2013.</p>
 <p>The type implemented is the TGOV1, described in the chapter 2.2 of the same IEEE technical report PES-TR1 Jan 2013.</p>
-<p>If <code>fixInitialControlledVariable = true</code>, an initial equation is added to ensure that the mechanical power output <code>PMechPu</code> is equal to its start value <code>PMechPuStart</code>. In order to fulfill this condition, the initial value of the reference signal should be free, so that the Modelica tool can back-compute it automatically. For this purpose, the <a href=\"modelica://PowerGrids.Controls.FreeOffset\">PowerGrids.Controls.FreeOffset</a> block should be used to generate the reference signal to be connected to the <code>VrefPu</code> input.</p>
-<p>In case the condition <code>PMechPu = PMechPuStart</code> cannot be fulfilled without violating the controller saturations, then an alternative initial condition is enforced, which prescribes the saturation block input so as to obtain a certain degree of oversaturation <code>oversaturationPu</code>. This allows to back-compute a unique initial value of the reference signal, which is of course dependent on <code>oversaturationPu</code> and hence somewhat arbitrary.</p>
-</html>"));
+</body></html>"));
 end IEEE_TGOV1;
