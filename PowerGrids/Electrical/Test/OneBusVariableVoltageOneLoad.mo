@@ -15,10 +15,10 @@ model OneBusVariableVoltageOneLoad
 equation
   connect(bus1.terminalAC, load1.terminalAC) annotation(
     Line(points = {{0, 10}, {0, 4}, {-1.33227e-15, 4}, {-1.33227e-15, 1}, {0, 1}, {0, 0}}));
-  connect(UMod.y, bus1.UIn) annotation(
-    Line(points = {{-38, 30}, {-26, 30}, {-26, 16}, {-10, 16}}, color = {0, 0, 127}));
   connect(UPhase.y, bus1.UPhaseIn) annotation(
-    Line(points = {{-38, -10}, {-26, -10}, {-26, 4}, {-10, 4}}, color = {0, 0, 127}));
+    Line(points = {{-38, -10}, {-20, -10}, {-20, 0}, {-10, 0}}, color = {0, 0, 127}));
+  connect(UMod.y, bus1.UIn) annotation(
+    Line(points = {{-38, 30}, {-20, 30}, {-20, 20}, {-10, 20}}, color = {0, 0, 127}));
   annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StopTime = 3.0, Interval = 0.01),
