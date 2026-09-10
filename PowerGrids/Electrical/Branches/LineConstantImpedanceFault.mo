@@ -3,6 +3,7 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   extends Electrical.BaseClasses.TwoPortAC(
     final isLinear = true,
     final hasSubPF = true,
+    redeclare PowerGrids.Electrical.BaseComponents.TwoPortACPFDummy componentPF(SNom = SNom, UNomA = UNom, UNomB = UNom),
     final UNomA = UNom,
     final UNomB = UNom,
     SNom = UNom^2/CM.abs(Complex(R,X)));

@@ -3,13 +3,14 @@ within PowerGrids.Examples.IEEE14bus;
 model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus system"
   extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    final hasSubPF = true);
+    final hasSubPF = true,
+    redeclare PowerGrids.Electrical.BaseComponents.OnePortACPFDummy componentPF(SNom = SNom, UNom = UNom));
   PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(
     SNom = SNom, UNom = UNom,
     final PPF = 0,
     final PStart = 0) annotation(
     Placement(transformation(origin = {-26, -18}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
-  Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VcPuStart = GEN.UStart/GEN.UNom, VrMax = 5, VrMin = -5) annotation(
+  Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VrMax = 5, VrMin = -5) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Controls.FreeOffset VrefPu(use_u = true) annotation(
     Placement(visible = true, transformation(origin = {-100, -22}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
