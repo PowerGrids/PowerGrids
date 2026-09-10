@@ -1,7 +1,7 @@
 within PowerGrids.Examples.Tutorial.GridOperation.Controlled;
 
 model ControlledGenerator "Model of a synchronous generator with governor, AVR, and PSS"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus = isRefNodeEPF);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF = true,
     redeclare PowerGrids.Electrical.BaseComponents.OnePortACPFDummy componentPF(SNom = SNom, UNom = UNom));
