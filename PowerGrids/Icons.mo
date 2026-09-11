@@ -82,10 +82,8 @@ package Icons "Icons for the PowerGrids library"
 
   model Grid
     extends OnePortDynamicTextBusPQ;
-    Boolean isSlackBus = false "=true, if componenPF is a slack bus";
     annotation(
       Icon(graphics = {Text(origin = {0, 150}, textColor = {0, 0, 255}, extent = {{-100, 12}, {100, -12}}, textString = "%name"),
-        Text(origin = {70, 46}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Right, textString = DynamicSelect("_", if isSlackBus then "S" else "")),
         Rectangle(origin = {0, 68},fillColor = {255, 255, 255},fillPattern = FillPattern.CrossDiag, extent = {{-60, 60}, {60, -60}}),
         Rectangle(fillPattern = FillPattern.Solid, extent = {{-100, 8}, {100, -8}})}));
   end Grid;
