@@ -2,14 +2,12 @@ within PowerGrids.Examples.IEEE14bus;
 
 model IEEE14busStaticNetworkEPF
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow)  annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true)  annotation(
     Placement(transformation(origin = {-170, 90}, extent = {{-10, -10}, {10, 10}})));
 
 // Buses
-  PowerGrids.Electrical.Buses.ReferenceBus bus1(
-    SNom = 100e6,
-    UNom = 69e3, 
-    setPhaseOnly = true    
+  PowerGrids.Electrical.Buses.Bus bus1(
+    UNom = 69e3 
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus2(
@@ -423,6 +421,7 @@ model IEEE14busStaticNetworkEPF
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN1(
     SNom = 1211e6,
     UNom = 24e3,
+    isRefNodeEPF = true,
     GEN(
       DPu = 0.0,
       H = 5.4,
@@ -438,8 +437,7 @@ model IEEE14busStaticNetworkEPF
       xlPu = 0.202,
       xppqPu = 0.262,
       xqPu = 2.22,
-      PNom = 1090e6,
-      PPF = -229.29e6 "tuned by trial and error in order to minimize the active power from/to the reference node (bus1.port.P)"
+      PNom = 1090e6
     )
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 56}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
