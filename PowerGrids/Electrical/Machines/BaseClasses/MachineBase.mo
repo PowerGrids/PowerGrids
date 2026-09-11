@@ -47,8 +47,8 @@ initial equation
   end if;
 
   // Equations to calculate the external offset for PmPu and ufPu if the EPF is
-  // active and the node is a PVbus
-  if computePF and useExtraInitEquationsPV and not isRefNodeEPF then
+  // active and the node is a PVbus in the EPF
+  if useExtraInitEquationsPV and not isRefNodeEPF then
     port.P = PStart;
     port.VPu = UStart/UNom;
   end if;
