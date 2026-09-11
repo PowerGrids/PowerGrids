@@ -1,14 +1,12 @@
 within PowerGrids.Examples.IEEE14bus;
 model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating in steady-state"
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false)  annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true)  annotation(
     Placement(transformation(origin = {-170, 90}, extent = {{-10, -10}, {10, 10}})));
 
 // Buses
-  PowerGrids.Electrical.Buses.ReferenceBus bus1(
-    SNom = 100e6,
-    UNom = 69e3,
-    UStart = 69e3*1.0598
+  PowerGrids.Electrical.Buses.Bus bus1(
+    UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus2(
