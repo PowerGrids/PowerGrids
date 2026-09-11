@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Machines;
 
 model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 windings - internal parameters"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus = isRefNodeEPF);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isReferenceBus = isRefNode, isSlackBus = isRefNode and computePF);
   extends Electrical.BaseClasses.SolutionChecking(VPuCheck = port.VPu, IPuCheck = port.IPu, enableOmegaPuChecking = true, omegaPuCheck = omegaPu);
   extends BaseClasses.MachineBase;
 
@@ -159,14 +159,21 @@ equation
 <li><code>Types.ExcitationPuType.nominalStatorVoltageNoLoad</code>: 1 p.u. of excitation voltage gives 1 p.u. of air-gap stator voltage at no-load conditions</li>
 <li><code>Types.ExcitationPuType.Kundur</code>: base voltage as in Kundur, Power Systems Stability and Control, Chapter 3. Note that in this case, typical p.u. values are less than 0.001</li>
 </ul>
-<p><b>Embedded Power Flow (EPF)</b>
-</p><p>If the EPF is activated the generator uses the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a> as default EPF component in order to fix both the active power and the voltage at the generator node. The EPF component can be redeclared, the most common use of this feature is to place the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a> in the same node of a strong generator (proposed choice).</p>
-<p>If the EPF is active and two external <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> are used to calculate <code>PmPu</code> and <code>ufPu</code> then one of the following flags can be set in order to supply the necessary additional initial equations:</p>
-<ul>
- <li><code>useEPFtoSetExternalOffsetPQ = true</code> to initialise P and Q to the same values calculated by the EPF.</li>
- <li><code>useEPFtoSetExternalOffsetPV = true</code> to initialise P and V to the same values calculated by the EPF.</li>
+<p><b>Embedded Power Flow (EPF)</b></p>
+<p>If the EPF is activated the generator can use two different EPF components depending on the flag <code>isRefNode</code>:
+</p><ul>
+<li>if <code>isRefNode = false</code> (default value) the EPF component is the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.PVBus\">PVBus</a>, which prescribes both the active power and the voltage at the generator node in the EPF, </li>
+<li>if <code>isRefNode = true</code> the EPF component is the <a href=\"modelica://PowerGrids.Electrical.PowerFlow.SlackBus\">slack node</a>, which calculates the necessary power to balance the power flow and prescribes the Voltage and the Phase at the slack terminal in the EPF.</li>
 </ul>
-<p>If the EPF component is redeclared then the user shall provide all the necessary parameters either by using the GUI or in textual form.</p>
+<p><b>Additional initial equations</b></p>
+<p>In some cases may be useful to use additional <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> in order to calculate the <code>PmPu</code> and the <code>ufPu</code> necessary to solve the initialization problem. In this case some additional equations shall be activated in order to calculate said <code>offset</code>. Two different set of additional initial equations can be activated by means of the following flags:</p>
+
+<ul>
+<li><code>useExtraInitEquationsPV = true</code>, to initialise P and V to the same values calculated by the EPF (if used) or given by means of the <code>PStart</code> and the <code>UStart</code> parameters,</li>
+<li><code>isRefNode = true</code>, to initialize the voltage and the phase at the generator port to the assigned values <code>UStart</code> and <code>UPhaseStart</code> (<code>UPF</code> and <code>UPhasePF</code> if the EPF is used).</li>
+</ul>
+
+
 </body></html>"),
     Icon);
 end SynchronousMachine4WindingsInternalParameters;

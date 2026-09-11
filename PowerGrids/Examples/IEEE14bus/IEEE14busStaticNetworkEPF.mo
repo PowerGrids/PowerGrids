@@ -421,7 +421,7 @@ model IEEE14busStaticNetworkEPF
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN1(
     SNom = 1211e6,
     UNom = 24e3,
-    isRefNodeEPF = true,
+    isRefNode = true,
     GEN(
       DPu = 0.0,
       H = 5.4,

@@ -4,7 +4,7 @@ model TestCase2 "Test Case 2, Section 5.2, focuses on the dynamic behavior of th
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow)  annotation(
     Placement(transformation(origin = {62, 24}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 4.75e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, useExtraInitEquationsPV = false, isRefNodeEPF = true) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 4.75e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, useExtraInitEquationsPV = false, isRefNode = true) annotation(
     Placement(transformation(origin = {30, -6}, extent = {{-10, 10}, {10, -10}})));
   PowerGrids.Electrical.Controls.TurbineGovernors.IEEE_TGOV1 TGOV(R = 0.05, T1 = 0.5, T2 = 3, T3 = 10, VMax = 1) annotation(
     Placement(transformation(origin = {2, 16}, extent = {{-10, 10}, {10, -10}})));

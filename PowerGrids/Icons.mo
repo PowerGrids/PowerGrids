@@ -8,10 +8,10 @@ package Icons "Icons for the PowerGrids library"
 
   annotation(
       Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Bus;
-  
+
   model BusPQ
     extends OnePortDynamicTextBusPQ;
-  
+
   annotation(
       Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end BusPQ;
 
@@ -35,14 +35,20 @@ package Icons "Icons for the PowerGrids library"
 
   model Machine
     extends OnePortDynamicText;
-    Boolean isSlackBus = false "=true, if componenPF is a slack bus";
+    Boolean isReferenceBus = false "=true, if component is also the reference bus";
+    Boolean isSlackBus = false "=true, if componenPF works as slack bus";
   annotation(
       Icon(graphics = {Text(origin = {0, -117}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name"),
-        Text(origin = {40, 42}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Left, textString = DynamicSelect(" ", if isSlackBus then "RS" else "")),
+        Text(origin = {40, 42}, extent = {{-30, 20}, {30, -40}}, horizontalAlignment = TextAlignment.Left,
+          textString = DynamicSelect(
+            " ",
+            if isSlackBus then "RS"
+            else if isReferenceBus then " R"
+            else "")),
         Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
         Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
-        Line(origin = {0.00014, -50.5485},points = 
-          {{-20, 0}, 
+        Line(origin = {0.00014, -50.5485},points =
+          {{-20, 0},
           {-15.375,13.3},
           {-13.8,16.6},
           {-12.35,18.65},
@@ -63,7 +69,9 @@ package Icons "Icons for the PowerGrids library"
           {12.35,-18.65},
           {13.8,-16.6},
           {15.375,-13.3},
-          {20,0}}, smooth = Smooth.Bezier)}, coordinateSystem(initialScale = 0.1)));end Machine;
+          {20,0}}, smooth = Smooth.Bezier)}, coordinateSystem(initialScale = 0.1)));
+
+  end Machine;
 
   model CapacitorBank
     extends OnePortDynamicText;
@@ -87,7 +95,7 @@ package Icons "Icons for the PowerGrids library"
   annotation (
       Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name"), Line(origin = {3.23656, -70.242}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -15}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 25}, {20, -25}})}));
   end Fault;
-  
+
   model OnePortDynamicText
     outer Electrical.System systemPowerGrids "Reference to system object";
     parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
@@ -124,7 +132,7 @@ annotation(
     input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
     input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
     input Types.Angle UPhaseIcon "Phase of voltage across the port";
-  
+
   annotation(
       Icon(graphics={
          Text(
@@ -142,10 +150,10 @@ annotation(
           extent={{-76,15},{76,-15}},
           horizontalAlignment = TextAlignment.Right,
           textColor = {0,0,255},
-          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases) 
+          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
                                               then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
                                             elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
-                                              then "----" 
+                                              then "----"
                                             else ""))}));
   end OnePortDynamicTextBus;
 
@@ -160,7 +168,7 @@ annotation(
     input Types.ReactivePower QIcon "Reactive power flowing into the port";
     input Types.PerUnit PPuIcon "Active power flowing into the port in p.u. (base SBase)";
     input Types.PerUnit QPuIcon "Reactive power flowing into the port in p.u. (base SBase)";
-  
+
   annotation(
       Icon(graphics={
         Text(
@@ -196,10 +204,10 @@ annotation(
           extent={{-76,15},{76,-15}},
           horizontalAlignment = TextAlignment.Right,
           textColor = {0,0,255},
-          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases) 
+          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
                                               then String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
                                             elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
-                                              then "----" 
+                                              then "----"
                                             else ""))}));
   end OnePortDynamicTextBusPQ;
 end Icons;

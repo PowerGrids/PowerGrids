@@ -10,7 +10,7 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
     final PPF = 0,
     final PStart = 0,
     final useExtraInitEquationsPV = false,
-    final isRefNodeEPF = false) annotation(
+    final isRefNode = false) annotation(
     Placement(transformation(origin = {-26, -18}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VrMax = 5, VrMin = -5) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

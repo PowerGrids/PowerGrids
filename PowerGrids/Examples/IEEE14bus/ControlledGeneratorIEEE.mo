@@ -1,15 +1,15 @@
 within PowerGrids.Examples.IEEE14bus;
 
 model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus benchmark - synchronous machine with proportional regulations"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isSlackBus = isRefNodeEPF);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu,  isReferenceBus = isRefNode, isSlackBus = isRefNode and computePF);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF = true,
     redeclare PowerGrids.Electrical.BaseComponents.OnePortACPFDummy componentPF(SNom = SNom, UNom = UNom));
 
-  parameter Boolean isRefNodeEPF = false "=true, if the generator shall become the slack node in the EPF" annotation(
+  parameter Boolean isRefNode = false "=true, if the generator shall become the slack node in the EPF" annotation(
     choices(checkBox = true));
 
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(SNom = SNom, UNom = UNom, useExtraInitEquationsPV = not isRefNodeEPF, isRefNodeEPF = isRefNodeEPF) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(SNom = SNom, UNom = UNom, useExtraInitEquationsPV = not isRefNode, isRefNode = isRefNode) annotation(
     Placement(transformation(origin = {34, 32}, extent = {{-10, 10}, {10, -10}})));
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VrMax = 5, VrMin = -5) annotation(
     Placement(transformation(origin = {-10, 30}, extent = {{-10, -10}, {10, 10}})));
