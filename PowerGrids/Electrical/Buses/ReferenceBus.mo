@@ -23,8 +23,8 @@ model ReferenceBus "Reference bus for an isolated grid"
   parameter Types.Angle UPhasePF = 0 "Voltage phase to be used to compute the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
   final parameter Types.ComplexPerUnit nStart = CM.fromPolar(1, UPhaseStart) "Unit phasor with angle UPhaseStart";
-  final parameter Types.ActivePower PSlack(fixed = false) "Constant slack active power leaving system through bus";
-  final parameter Types.ReactivePower QSlack(fixed = false) "Constant slack reactive power leaving system through bus";
+  final parameter Types.ActivePower PSlack(start = PStart, fixed = false) "Constant slack active power leaving system through bus";
+  final parameter Types.ReactivePower QSlack(start = QStart, fixed = false) "Constant slack reactive power leaving system through bus";
 
 initial equation
   if not setPhaseOnly then
