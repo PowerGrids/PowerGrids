@@ -173,7 +173,7 @@ The library was designed to initialize the system model according to three diffe
 
 <h3>4.2. Global steady-state, fixed power flows</h3>
 
-<p>In this case, the start values at the ports coming from the power flow are tentatively prescribed, causing the Modelica tool to back-compute the offsets for the governor and AVR setpoints, which are provided by suitable <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> blocks activated by this initialization option. In case the controllers cannot provide the required output values corresponding to the power flow, because of control action saturations, then a conventional value for the setpoint is computed, to guarantee a certain amount of oversaturation of the manipulated variable (e.g. 10%).</p>
+<p>In this case, the start values at the ports coming from the power flow are tentatively prescribed, causing the Modelica tool to back-compute the offsets for the governor and AVR setpoints, which are provided by suitable <a href=\"modelica://PowerGrids.Controls.FreeOffset\">FreeOffset</a> blocks activated by this initialization option. In case the controllers cannot provide the required output values corresponding to the power flow, because of control action saturations, the initialization may fail.</p>
 
 <h3>4.2. Local steady-state, fixed power flows</h3>
 

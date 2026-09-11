@@ -2,8 +2,6 @@ within PowerGrids.Examples.Tutorial.IslandOperation;
 
 model PowerFlow
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.PowerFlow.PVBus GEN1(P = -4.5088e+08, SNom = 5e+08, U = 20825, UNom = 21000) annotation(
-    Placement(transformation(origin = {-104, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(P = -4.5088e+08, SNom = 5e+08, U = 20825, UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {122, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus GRIDL1(P = 4.5e+08, Q = 200e6, SNom = 5e+08, UNom = 380000) annotation(
@@ -14,7 +12,7 @@ model PowerFlow
     Placement(visible = true, transformation(origin = {-80, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF TGEN1(RccPu = 0.15e-2, SNom = 5e+08, UNomA = 21000, UNomB = 419000, XccPu = 16e-2, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  PowerGrids.Electrical.PowerFlow.SlackBus NTHV1(SNom = 5e+08, UNom = 380000) annotation(
+  PowerGrids.Electrical.PowerFlow.BusPF NTHV1(UNom = 380000) annotation(
     Placement(visible = true, transformation(origin = {-20, 0}, extent = {{-10, 10}, {10, -10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF LINE(R = 10, SNom = 5e+8, UNom = 380000, X = 100) annotation(
     Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -26,6 +24,8 @@ model PowerFlow
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.BusPF NTLV2(UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
+  Electrical.PowerFlow.SlackBus GEN1(UNom = 21000, SNom = 5e8)  annotation(
+    Placement(transformation(origin = {-110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
 equation
   connect(NTLV1.terminalAC, TGEN1.terminalAC_a) annotation(
     Line(points = {{-80, 0}, {-60, 0}}));
@@ -33,8 +33,6 @@ equation
     Line(points = {{-40, 0}, {-20, 0}}));
   connect(NTHV1.terminalAC, GRIDL1.terminalAC) annotation(
     Line(points = {{-20, 0}, {-10, 0}, {-10, -46}}));
-  connect(GEN1.terminalAC, NTLV1.terminalAC) annotation(
-    Line(points = {{-104, 0}, {-80, 0}}));
   connect(LINE.terminalAC_a, NTHV1.terminalAC) annotation(
     Line(points = {{0, 0}, {-20, 0}}));
   connect(LINE.terminalAC_b, NTHV2.terminalAC) annotation(
@@ -47,6 +45,8 @@ equation
     Line(points = {{80, 0}, {100, 0}}));
   connect(NTLV2.terminalAC, GEN2.terminalAC) annotation(
     Line(points = {{100, 0}, {122, 0}}));
+  connect(GEN1.terminalAC, NTLV1.terminalAC) annotation(
+    Line(points = {{-110, 0}, {-80, 0}}));
   annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),

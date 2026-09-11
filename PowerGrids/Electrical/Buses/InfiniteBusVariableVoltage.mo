@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBusVariableVoltage
-  extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
+  extends Icons.BusPQ(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase, PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final generatorConvention = true,
     final hasSubPF,
@@ -21,9 +21,9 @@ model InfiniteBusVariableVoltage
   parameter Types.Angle UPhaseFixed = 0 "Fixed angle of source voltage, reference angle for the embedded PF" annotation(
     Dialog(group = "Embedded PF", enable = computePF));
   Modelica.Blocks.Interfaces.RealInput UIn(unit = "V", displayUnit = "kV") if useUIn "Source voltage modulus input, phase-to-phase, V" annotation(
-    Placement(transformation(origin = {-98, 40}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-100, 60}, extent = {{-20, -20}, {20, 20}})));
+    Placement(transformation(origin = {-98, 40}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-100, 100}, extent = {{-20, -20}, {20, 20}})));
   Modelica.Blocks.Interfaces.RealInput UPhaseIn(unit = "rad", displayUnit = "deg") if useUPhaseIn "Source voltage phase angle input, rad" annotation(
-    Placement(transformation(origin = {-98, -26}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-100, -60}, extent = {{-20, -20}, {20, 20}})));
+    Placement(transformation(origin = {-98, -26}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-100, -100}, extent = {{-20, -20}, {20, 20}})));
 protected
   // Auxiliary hidden connectors to manage the conditional connectors
   Modelica.Blocks.Interfaces.RealInput UAux "Source voltage modulus, phase-to-phase";
@@ -46,7 +46,7 @@ equation
     terminalAC.omegaRefPu = 1;
   end if;
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Rectangle(origin = {-79, 0}, extent = {{-1, 60}, {1, -60}}), Text(origin = {59, 48}, extent = {{-39, 68}, {39, -68}}, textString = "", fontName = "Symbol")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Ellipse(origin = {70, 30}, lineThickness = 0.5, extent = {{-10, 10}, {10, -10}}), Ellipse(origin = {90, 30}, lineThickness = 0.5, extent = {{-10, 10}, {10, -10}}), Rectangle(origin = {-78, 1}, fillPattern = FillPattern.Solid, extent = {{-2, 107}, {2, -107}})}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics),
     Documentation(info = "<html>
 <p>Infinite bus model with voltage e. The port voltage is v = e + Zi, where i is the current entering the bus. The default value of the series impedance Z = R + jX is zero.</p>

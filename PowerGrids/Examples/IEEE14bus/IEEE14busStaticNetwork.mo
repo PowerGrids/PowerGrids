@@ -460,6 +460,7 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN1(
     SNom = 1211e6,
     UNom = 24e3,
+    isRefNode = true,
     GEN(
       DPu = 0.0,
       H = 5.4,

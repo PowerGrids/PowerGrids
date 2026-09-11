@@ -1,14 +1,19 @@
 within PowerGrids.Examples.Tutorial.GridOperation.Controlled;
 
 model ControlledGenerator "Model of a synchronous generator with governor, AVR, and PSS"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu, isReferenceBus = isRefNode, isSlackBus = isRefNode and computePF);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
-    final hasSubPF = true);
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, PPF = -4.75e+08, SNom = SNom, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = UNom, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8) annotation(
+    final hasSubPF = true,
+    redeclare PowerGrids.Electrical.BaseComponents.OnePortACPFDummy componentPF(SNom = SNom, UNom = UNom));
+
+  parameter Boolean isRefNode = false "=true, if the generator shall become the slack node in the EPF" annotation(
+    choices(checkBox = true));
+
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, PPF = -4.75e+08, SNom = SNom, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = UNom, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, useExtraInitEquationsPV = not isRefNode, isRefNode = isRefNode) annotation(
     Placement(transformation(origin = {40, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
-  PowerGrids.Electrical.Controls.TurbineGovernors.IEEE_TGOV1 TGOV(PMechPuStart = -GEN.PStart/GEN.SNom, R = 0.05, T1 = 0.5, T2 = 3, T3 = 10, VMax = 1) annotation(
+  PowerGrids.Electrical.Controls.TurbineGovernors.IEEE_TGOV1 TGOV(R = 0.05, T1 = 0.5, T2 = 3, T3 = 10, VMax = 1) annotation(
     Placement(visible = true, transformation(origin = {4, 28}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
-  PowerGrids.Electrical.Controls.ExcitationSystems.IEEE_AC4A AVR(Ka = 200, Ta = 0.05, Tb = 10, Tc = 3, VcPuStart = GEN.UStart/GEN.UNom, VrMax = 4) annotation(
+  PowerGrids.Electrical.Controls.ExcitationSystems.IEEE_AC4A AVR(Ka = 200, Ta = 0.05, Tb = 10, Tc = 3, VrMax = 4) annotation(
     Placement(visible = true, transformation(origin = {4, -16}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression zero annotation(
     Placement(visible = true, transformation(origin = {-36, -52}, extent = {{-12, -10}, {12, 10}}, rotation = 0)));

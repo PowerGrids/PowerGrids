@@ -1,7 +1,7 @@
 within PowerGrids.Electrical.Buses;
 
 model InfiniteBus "Infinite bus with prescribed voltage"
-  extends Icons.Bus(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase);
+  extends Icons.BusPQ(VPuIcon = port.VPu, UIcon = port.U, UPhaseIcon = port.UPhase, PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final generatorConvention = true,
     final hasSubPF,
@@ -20,7 +20,7 @@ equation
     terminalAC.omegaRefPu = 1;
   end if;
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Text(origin = {59, 48}, extent = {{-39, 68}, {39, -68}}, textString = "", fontName = "Symbol")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Ellipse(origin = {70, 30}, lineThickness = 0.5, extent = {{-10, 10}, {10, -10}}), Ellipse(origin = {90, 30}, lineThickness = 0.5, extent = {{-10, 10}, {10, -10}})}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
     Documentation(info = "<html><head></head><body>Infinite bus model with constant voltage.</body></html>"));
 end InfiniteBus;

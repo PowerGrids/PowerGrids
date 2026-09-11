@@ -4,7 +4,7 @@ model SteadyState "Reproduces the basic static power flow, see fig. 3-1 of the r
   extends Modelica.Icons.Example;
   inner PowerGrids.Electrical.System systemPowerGrids annotation(
     Placement(transformation(origin = {42, 42}, extent = {{-10, -10}, {10, 10}})));
-  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, PPF = -4.75e8) annotation(
+  PowerGrids.Electrical.Machines.SynchronousMachine4Windings GEN(H = 4, SNom = 5e+08, Tpd0 = 5.143, Tppd0 = 0.042, Tppq0 = 0.083, Tpq0 = 2.16, UNom = 21000, raPu = 0, xdPu = 2, xlPu = 0.15, xpdPu = 0.35, xppdPu = 0.25, xppqPu = 0.3, xpqPu = 0.5, xqPu = 1.8, PPF = -4.75e8, useExtraInitEquationsPV = false) annotation(
     Placement(transformation(origin = {-26, 0}, extent = {{-10, 10}, {10, -10}}, rotation = -0)));
   PowerGrids.Electrical.Buses.Bus NTLV(UNom = 21000) annotation(
     Placement(transformation(origin = {0, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -59,12 +59,12 @@ equation
     Line(points = {{-52, 28}, {-40, 28}, {-40, 2}, {-32, 2}}, color = {0, 0, 127}));
   connect(NTLV.terminalAC, TGEN.terminalAC_a) annotation(
     Line(points = {{0, -20}, {14, -20}}));
-  connect(GEN.terminalAC, NTLV.terminalAC) annotation(
-    Line(points = {{-26, 0}, {-26, -20}, {0, -20}}));
   connect(TGEN.terminalAC_b, GRID.terminalAC) annotation(
     Line(points = {{34, -20}, {48, -20}, {48, 0}}));
   connect(GRIDL.terminalAC, GRID.terminalAC) annotation(
     Line(points = {{48, -38}, {48, 0}}));
+  connect(GEN.terminalAC, NTLV.terminalAC) annotation(
+    Line(points = {{-26, 0}, {-26, -20}, {0, -20}}));
   annotation(
     Diagram(coordinateSystem(extent = {{-140, 60}, {60, -60}})),
     experiment(StartTime = 0, StopTime = 2, Tolerance = 1e-6, Interval = 0.004),

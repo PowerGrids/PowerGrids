@@ -3,8 +3,8 @@ within PowerGrids.Electrical.BaseClasses;
 partial model TwoPortACBase "Base class for two-port AC components"
   extends TwoPortACVI(
     final isTwoPortAC = true,
-    redeclare replaceable connector TerminalAC_a = PowerGrids.Interfaces.TerminalAC_a,
-    redeclare replaceable connector TerminalAC_b = PowerGrids.Interfaces.TerminalAC_b,
+    redeclare connector TerminalAC_a = PowerGrids.Interfaces.TerminalAC_a,
+    redeclare connector TerminalAC_b = PowerGrids.Interfaces.TerminalAC_b,
     terminalAC_a(
       final computePF = computePF,
       terminalACPF(final v = vPF_a, final i = iPF_a)),

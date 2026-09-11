@@ -2,10 +2,10 @@ within PowerGrids.Electrical.PowerFlow.Test;
 
 model SmallSystem
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(showDataOnDiagramsPu = false, showDataOnDiagramsSI = true)  annotation(
       Placement(visible = true, transformation(origin = {50, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PVBus bus2(P = -1e+08,SNom = 1e+08, UNom = 400000)  annotation(
-      Placement(visible = true, transformation(origin = {60, -30}, extent = {{-10, 10}, {10, -10}}, rotation = 0)));
+      Placement(transformation(origin = {60, -36}, extent = {{-10, -10}, {10, 10}}, rotation = -0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF line1(R = 50, SNom = 1e+08, UNom = 400000, X = 500)  annotation(
       Placement(visible = true, transformation(origin = {-30, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.LineConstantImpedancePF line2(R = 50, SNom = 1e+08, UNom = 400000, X = 500)  annotation(
@@ -34,7 +34,7 @@ equation
   connect(load1.terminalAC, slack.terminalAC) annotation(
     Line(points = {{-60, -30}, {-60, 10}}));
   connect(line2.terminalAC_b, bus2.terminalAC) annotation(
-    Line(points = {{40, -30}, {60, -30}}));
+    Line(points = {{40, -30}, {60, -30}, {60, -36}}));
   connect(line1.terminalAC_b, bus.terminalAC) annotation(
     Line(points = {{-20, -30}, {0, -30}, {0, -30}, {0, -30}}));
   connect(line2.terminalAC_a, bus.terminalAC) annotation(

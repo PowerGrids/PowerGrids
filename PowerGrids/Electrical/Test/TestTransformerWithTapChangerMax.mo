@@ -19,14 +19,14 @@ model TestTransformerWithTapChangerMax
 equation
   connect(infiniteBus.terminalAC, trafo.terminalAC_a) annotation(
     Line(points = {{-30, 0}, {-10, 0}}));
-  connect(Uset.y, infiniteBus.UIn) annotation(
-    Line(points = {{-38, 30}, {-24, 30}, {-24, 10}}, color = {0, 0, 127}));
   connect(trafo.terminalAC_b, bus.terminalAC) annotation(
     Line(points = {{10, 0}, {20, 0}}));
   connect(bus.terminalAC, resistance.terminalAC_a) annotation(
     Line(points = {{20, 0}, {30, 0}}));
   connect(resistance.terminalAC_b, busLoad.terminalAC) annotation(
     Line(points = {{50, 0}, {60, 0}}));
+  connect(Uset.y, infiniteBus.UIn) annotation(
+    Line(points = {{-38, 30}, {-20, 30}, {-20, 10}}, color = {0, 0, 127}));
   annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     Icon(coordinateSystem(grid = {0.1, 0.1})),

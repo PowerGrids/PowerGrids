@@ -6,10 +6,8 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     Placement(visible = true, transformation(origin = {-170, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 // Buses
-  PowerGrids.Electrical.PowerFlow.SlackBus bus1(
-    SNom = 100e6,
-    UNom = 69000,
-    setPhaseOnly = true
+  PowerGrids.Electrical.PowerFlow.BusPF bus1(
+    UNom = 69e3
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.BusPF bus2(
@@ -400,14 +398,7 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     UNomB = 13.8e3
   ) annotation(
     Placement(visible = true, transformation(origin = {180, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-
-// Generators
-  PowerGrids.Electrical.PowerFlow.PVBus GEN1(
-    SNom = 1211e6,
-    UNom = 24e3,
-    P = -229.29e6, U = 24000
-  ) annotation(
-    Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 180)));
+  // Generators
   PowerGrids.Electrical.PowerFlow.PVBus GEN2(
     SNom = 1120e6,
     UNom = 24e3,
@@ -432,7 +423,8 @@ model IEEE14busPowerFlow "Power flow model of the IEEE 14-bus benchmark"
     P = 0, U = 18000
   ) annotation(
     Placement(visible = true, transformation(origin = {180, -36}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-
+  Electrical.PowerFlow.SlackBus GEN1(UNom = 24000, SNom = 1.211e9)  annotation(
+    Placement(transformation(origin = {-130, 60}, extent = {{-10, -10}, {10, 10}})));
 equation
   connect(bus12.terminalAC, L6to12.terminalAC_b) annotation(
     Line(points = {{-90, 90}, {-90, 60}, {-70, 60}}));
@@ -548,8 +540,6 @@ equation
     Line(points = {{122, -8}, {122, 0}, {124, 0}}));
   connect(Tgen1.terminalAC_a, busGEN1.terminalAC) annotation(
     Line(points = {{-130, 30}, {-130, 40}}));
-  connect(GEN1.terminalAC, busGEN1.terminalAC) annotation(
-    Line(points = {{-130, 60}, {-130, 40}}));
   connect(GEN2.terminalAC, busGEN2.terminalAC) annotation(
     Line(points = {{-170, -90}, {-150, -90}}));
   connect(Tgen2.terminalAC_a, busGEN2.terminalAC) annotation(
@@ -564,6 +554,8 @@ equation
     Line(points = {{180, -36}, {180, -20}}));
   connect(Load4.terminalAC, bus4.terminalAC) annotation(
     Line(points = {{136, -50}, {136, -36}, {122, -36}, {122, -40}, {114, -40}}));
+  connect(GEN1.terminalAC, busGEN1.terminalAC) annotation(
+    Line(points = {{-130, 60}, {-130, 40}}));
   annotation(
     Icon(coordinateSystem(grid = {0.1, 0.1})),
     Diagram(coordinateSystem(extent = {{-200, 120}, {220, -120}}, grid = {0.5, 0.5})),
