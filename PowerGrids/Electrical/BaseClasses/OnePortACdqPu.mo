@@ -11,13 +11,13 @@ partial model OnePortACdqPu "Base class for one-port AC components with p.u. Par
   final parameter Types.PerUnit iqPuStart(fixed = false) "Start value of iqPu";
 
   // d-q axis p.u. variables
-  Types.PerUnit udPu(final start = udPuStart) "Voltage of direct axis in p.u.";
-  Types.PerUnit uqPu(final start = uqPuStart) "Voltage of quadrature axis in p.u.";
-  Types.PerUnit idPu(final start = idPuStart) "Current of direct axis in p.u.";
-  Types.PerUnit iqPu(final start = iqPuStart) "Current of quadrature axis in p.u.";
+  Types.PerUnit udPu(final start = udPuStart, final fixed) "Voltage of direct axis in p.u.";
+  Types.PerUnit uqPu(final start = uqPuStart, final fixed) "Voltage of quadrature axis in p.u.";
+  Types.PerUnit idPu(final start = idPuStart, final fixed) "Current of direct axis in p.u.";
+  Types.PerUnit iqPu(final start = iqPuStart, final fixed) "Current of quadrature axis in p.u.";
   
   // other variables
-  Types.Angle theta(final start = thetaStart) "Rotation between machine rotor frame and port phasor frame";
+  Types.Angle theta(final start = thetaStart, final fixed) "Rotation between machine rotor frame and port phasor frame";
   
 initial equation
   // Park's transformations for start values
