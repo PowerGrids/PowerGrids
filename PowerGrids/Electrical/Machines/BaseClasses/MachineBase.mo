@@ -35,7 +35,7 @@ partial model MachineBase
   parameter Integer priority = integer(100 - 10*log10(PNom)) "Priority level used to select the machine to be used as frrequency reference (0=higher priority)" annotation(
     Evaluate = true);
 
-  Modelica.Blocks.Interfaces.RealOutput omegaPu(final start = 1) "Angular frequency in p.u." annotation(
+  Modelica.Blocks.Interfaces.RealOutput omegaPu(final start = 1, final fixed) "Angular frequency in p.u." annotation(
     Placement(transformation(origin = {106, -20}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -30}, extent = {{-10, -10}, {10, 10}})));
 
 initial equation
