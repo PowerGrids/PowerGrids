@@ -13,11 +13,11 @@ partial model PiNetworkVI "Generic Pi-Network base VI model"
   Types.ComplexAdmittance YB "Shunt admittance at port b";
   Types.ComplexPerUnit k "Complex ratio of ideal transformer at port A (vB/vA)";
 
-  // Electrical Interface to be connected via bindings in one children component
-  Types.ComplexVoltage vA(re(nominal = VNomA), im(nominal = VNomA));
-  Types.ComplexVoltage vB(re(nominal = VNomB), im(nominal = VNomB));
-  Types.ComplexCurrent iA(re(nominal = INomA), im(nominal = INomA));
-  Types.ComplexCurrent iB(re(nominal = INomB), im(nominal = INomB));
+  // Electrical Interface to be connected via bindings in the children component
+  input Types.ComplexVoltage vA(re(nominal = VNomA), im(nominal = VNomA));
+  input Types.ComplexVoltage vB(re(nominal = VNomB), im(nominal = VNomB));
+  input Types.ComplexCurrent iA(re(nominal = INomA), im(nominal = INomA));
+  input Types.ComplexCurrent iB(re(nominal = INomB), im(nominal = INomB));
 
   // See diagram in the documentation layer for the variable definitions
   Types.ComplexVoltage vAt(re(nominal = VNomB), im(nominal = VNomB));
