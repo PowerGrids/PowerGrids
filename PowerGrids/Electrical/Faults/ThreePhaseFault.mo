@@ -14,6 +14,10 @@ model ThreePhaseFault
   parameter SI.Time startTime "Start time of the fault" annotation(Dialog(group="Fault data"));
   parameter SI.Time stopTime "End time of the fault" annotation(Dialog(group="Fault data"));
 
+  final parameter Types.Impedance Zb = UNom^2/SNom "base impedance";
+  final parameter Types.PerUnit Rpu = R/Zb "Series resistance in pu";
+  final parameter Types.PerUnit Xpu = X/Zb "Series reactance in pu";
+
   Types.ComplexVoltage v(re(nominal = port.VNom), im(nominal = port.VNom)) = port.v "Port voltage, phase-to-ground";
   Types.ComplexCurrent i(re(nominal = port.INom), im(nominal = port.INom)) = port.i "Port current";
 
