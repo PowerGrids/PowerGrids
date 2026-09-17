@@ -4,6 +4,30 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true)  annotation(
     Placement(transformation(origin = {-170, 90}, extent = {{-10, -10}, {10, 10}})));
 
+// Auxiliary variables
+  Types.Power PtotLines = L1to2.Sbal.re + L1to5.Sbal.re
+                        + L2to3.Sbal.re + L2to4.Sbal.re + L2to5.Sbal.re
+                        + L3to4.Sbal.re
+                        + L4to5.Sbal.re
+                        + L6to11.Sbal.re + L6to12.Sbal.re + L6to13.Sbal.re
+                        + L7to8.Sbal.re + L7to9.Sbal.re
+                        + L9to10.Sbal.re + L9to14.Sbal.re
+                        + L10to11.Sbal.re
+                        + L12to13.Sbal.re
+                        + L13to14.Sbal.re;
+
+  Types.Power PtotLoads = Load2.port.P
+                        + Load3.port.P
+                        + Load4.port.P
+                        + Load5.port.P
+                        + Load6.port.P
+                        + Load9.port.P
+                        + Load10.port.P
+                        + Load11.port.P
+                        + Load12.port.P
+                        + Load13.port.P
+                        + Load14.port.P;
+
 // Buses
   PowerGrids.Electrical.Buses.Bus bus1(
     UNom = 69e3
