@@ -28,4 +28,12 @@ model LineConstantImpedanceWithBreakers "Transmission line with constant impedan
       final useBreakerB = false,
       final breakerAStatusStart = breakerAStatusStart,
       final breakerBStatusStart = breakerBStatusStart));
+
+
+  final parameter Types.Impedance Zb = UNom^2/SNom "base impedance";
+  final parameter Types.PerUnit Rpu = R/Zb "Series resistance in pu";
+  final parameter Types.PerUnit Xpu = X/Zb "Series reactance in pu";
+  final parameter Types.PerUnit Gpu = G*Zb "Shunt conductance in pu";
+  final parameter Types.PerUnit Bpu = B*Zb "Shunt suscceptance in pu";
+
 end LineConstantImpedanceWithBreakers;

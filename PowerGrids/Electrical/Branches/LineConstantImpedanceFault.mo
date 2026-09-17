@@ -20,6 +20,12 @@ model LineConstantImpedanceFault "Transmission line with constant impedance and 
   parameter Types.Resistance RFault "Fault resistance" annotation(Dialog(group="Fault data"));
   parameter Types.Reactance XFault "Fault reactance" annotation(Dialog(group="Fault data"));
 
+  final parameter Types.Impedance Zb = UNom^2/SNom "base impedance";
+  final parameter Types.PerUnit Rpu = R/Zb "Series resistance in pu";
+  final parameter Types.PerUnit Xpu = X/Zb "Series reactance in pu";
+  final parameter Types.PerUnit Gpu = G*Zb "Shunt conductance in pu";
+  final parameter Types.PerUnit Bpu = B*Zb "Shunt suscceptance in pu";
+
   PowerGrids.Electrical.Branches.LineConstantImpedance lineA(
     B = faultLocationPu * B, 
     G = faultLocationPu * G, 
