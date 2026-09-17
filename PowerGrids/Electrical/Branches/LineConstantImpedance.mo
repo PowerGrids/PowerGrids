@@ -24,6 +24,12 @@ model LineConstantImpedance "Transmission line with constant impedance"
       final G = G,
       final B = B));
 
+  final parameter Types.Impedance Zb = UNom^2/SNom "base impedance";
+  final parameter Types.PerUnit Rpu = R/Zb "Series resistance in pu";
+  final parameter Types.PerUnit Xpu = X/Zb "Series reactance in pu";
+  final parameter Types.PerUnit Gpu = G*Zb "Shunt conductance in pu";
+  final parameter Types.PerUnit Bpu = B*Zb "Shunt suscceptance in pu";
+
 annotation(
     Documentation(info = "<html>
 <p>Transmission line with constant series impedance R+jX and constant shunt admittance G+jB. </p>

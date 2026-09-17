@@ -15,6 +15,10 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   Types.ActivePower PRef(nominal = SNom) = PRefConst "Active power at reference voltage, the default binding can be changed when instantiating";
   Types.ActivePower QRef(nominal = SNom) = QRefConst "Reactive power at reference voltage, the default binding can be changed when instantiating";
   Types.PerUnit U_URef(final start = UStart/UNom) "Ratio between voltage and reference voltage (for monitoring purpose only), it uses UNom instead of URef to calculate the start value because some compilers produce an error 0/0 at the start of the initialization if UREf is used (probably they don't implement the right dependency between URef and UStart when calculate the start values), but this doesn't influence the convergence due to U_URef is not used in the model equations)";
+
+  final parameter Types.PerUnit PRefConstPu = PRefConst/SNom "Constant active power entering the load at reference voltage in pu";
+  final parameter Types.PerUnit QRefConstPu = QRefConst/SNom "Constant reactive power entering the load at reference voltage in pu";
+
 equation
   U_URef = port.U/URef "for monitoring purpose only";
   if port.VPu > VPuThr or not lowVoltageAsImpedance then
