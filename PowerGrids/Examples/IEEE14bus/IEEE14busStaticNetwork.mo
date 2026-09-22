@@ -29,8 +29,9 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
                         + Load14.port.P;
 
 // Buses
-  PowerGrids.Electrical.Buses.Bus bus1(
-    UNom = 69e3
+  PowerGrids.Electrical.Buses.ReferenceBus bus1(
+    UNom = 69e3,
+    SNom = 100e6
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus2(
@@ -482,7 +483,6 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN1(
     SNom = 1211e6,
     UNom = 24e3,
-    isRefNode = true,
     GEN(
       DPu = 0.0,
       H = 5.4,
