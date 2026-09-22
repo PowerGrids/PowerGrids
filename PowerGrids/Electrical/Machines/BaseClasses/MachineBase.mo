@@ -40,12 +40,16 @@ partial model MachineBase
 
 initial equation
 
-  if isRefNode then
+  if isRefNode
+     and (initOpt == InitializationOption.globalSteadyStateFixedPowerFlow
+          or initOpt == InitializationOption.localSteadyStateFixedPowerFlow) then
     // Equations to calculate the external offset for PmPu and ufPu if the EPF is
     // active and the node is the slack in the EPF
     port.u = CM.fromPolar(UStart, UPhaseStart) "Set initial bus voltage, phase-to-phase";
 
-  elseif useExtraInitEquationsPV then
+  elseif useExtraInitEquationsPV
+     and (initOpt == InitializationOption.globalSteadyStateFixedPowerFlow
+          or initOpt == InitializationOption.localSteadyStateFixedPowerFlow) then
     // Equations to calculate the external offset for PmPu and ufPu if the EPF is
     // active and the node is a PVbus in the EPF
     port.P = PStart;
