@@ -24,6 +24,8 @@ model System "System object"
     Dialog(group = "Visualization", enable = not showDataOnDiagramsSI), choices(checkBox = true));
   parameter Boolean showDataOnDiagramsSI = false "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
     Dialog(group = "Visualization", enable = not showDataOnDiagramsPu), choices(checkBox = true));
+  parameter Boolean phaseInRadOnDiagramsSI = false "=true, phases are shown in radians on the diagrams" annotation(
+    Dialog(group = "Visualization", enable = showDataOnDiagramsSI), choices(checkBox = true));
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads work as fixed impedances below their VPuThr voltage threshold" annotation(
     Evaluate = true);
   parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes" annotation(
