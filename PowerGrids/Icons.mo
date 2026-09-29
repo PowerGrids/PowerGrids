@@ -91,7 +91,7 @@ package Icons "Icons for the PowerGrids library"
   model Fault
   extends OnePortDynamicText;
   annotation (
-      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name"), Line(origin = {3.23656, -70.242}, points = {{-3.01972, 29.9973}, {18.9803, 9.99729}, {-19.0197, -12.0027}, {2.98028, -30.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -15}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 25}, {20, -25}})}));
+      Icon(coordinateSystem(grid = {0.1, 0.1}), graphics={Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name"), Line(origin = {-0.76344, -62.242}, points = {{-3.01972, 17.9973}, {10.9803, -6.00271}, {-9.0197, -18.0027}, {0.98028, -38.0027}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6), Rectangle(origin = {0, -31}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-20, 21}, {20, -21}})}));
   end Fault;
 
   model OnePortDynamicText
