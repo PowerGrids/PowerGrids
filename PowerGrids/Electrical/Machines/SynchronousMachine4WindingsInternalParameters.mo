@@ -35,9 +35,9 @@ model SynchronousMachine4WindingsInternalParameters "Synchronous machine with 4 
   final parameter Types.PerUnit ifPuStart(fixed = false) "Start value of ifPu";
   // Input variables
   Modelica.Blocks.Interfaces.RealInput PmPu(unit = "1") "Input mechanical power in p.u. (base PNom)" annotation(
-    Placement(transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-60, -20}, extent = {{-20, -20}, {20, 20}})));
+    Placement(transformation(origin = {-106, 46}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-70, -20}, extent = {{-20, -20}, {20, 20}})));
   Modelica.Blocks.Interfaces.RealInput ufPuIn(unit = "1", final start = ufPuInStart, final fixed) "Input voltage of exciter winding in p.u. (user-selected base voltage)" annotation(
-    Placement(transformation(origin = {-104, -50}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-60, -80}, extent = {{-20, -20}, {20, 20}})));
+    Placement(transformation(origin = {-104, -50}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-70, -80}, extent = {{-20, -20}, {20, 20}})));
   // Output variables
   Modelica.Blocks.Interfaces.RealOutput omega(unit = "rad/s") "Angular frequency in rad/s" annotation(
     Placement(transformation(origin = {106, -40}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -10}, extent = {{-10, -10}, {10, 10}})));

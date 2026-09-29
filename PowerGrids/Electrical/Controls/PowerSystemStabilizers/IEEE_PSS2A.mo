@@ -20,9 +20,9 @@ model IEEE_PSS2A "Power System Stabilizer IEEE type PSS2B"
   parameter SI.PerUnit VstMax = 0.1 "Stabilizer output max limit in p.u.";
   parameter SI.PerUnit VstMin = -0.1 "Stabilizer output min limit in p.u.";
   Modelica.Blocks.Interfaces.RealInput Vsi1Pu "Frequency input p.u." annotation(
-    Placement(visible = true, transformation(origin = {-200, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-200, 40}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput Vsi2Pu "Power input p.u." annotation(
-    Placement(visible = true, transformation(origin = {-180, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-102, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-180, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput VstPu "Stabilizer output" annotation(
     Placement(visible = true, transformation(origin = {172, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.DerivativeLag firstWashoutVsi1( T1 = Tw1,Td = Tw1, initType = Modelica.Blocks.Types.Init.SteadyState, yStart = 0)  annotation(

@@ -46,6 +46,6 @@ equation
    i = Y*v;
 
 annotation(
-    Icon(graphics = {Text(origin = {0, -24}, extent = {{-20, 20}, {20, -20}}, textString = "Z")}),
+    Icon(graphics = {Text(origin = {0, -32}, extent = {{-20, 20}, {20, -20}}, textString = "Z")}),
   Documentation(info = "<html><head></head><body><!--StartFragment--><p style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Three-phase fault with constant shunt impedance R+jX.&nbsp;</p><p style=\"font-family: 'MS Shell Dlg 2'; font-size: 12px;\">Fault start time and duration (i.e. stop time - start time) can be set by means of the parameters&nbsp;<span style=\"font-family: 'Cascadia Code'; font-size: 13.333333015441895px;\">startTime&nbsp;</span>and&nbsp;<span style=\"font-family: 'Cascadia Code'; font-size: 13.333333015441895px;\">stopTime.</span></p><!--EndFragment--></body></html>"));
 end ThreePhaseFault;

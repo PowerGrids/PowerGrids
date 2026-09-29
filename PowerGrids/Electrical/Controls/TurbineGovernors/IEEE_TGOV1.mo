@@ -10,9 +10,9 @@ block IEEE_TGOV1 "Simple Steam Turbine Governor - IEEE type TGOV1"
   parameter SI.Time T3 = 10 "Turbine delay time constant";
 
   Modelica.Blocks.Interfaces.RealInput RefLPu "Reference frequency/load input [pu]" annotation(
-    Placement(transformation(origin = {-138, 50}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-102, 40}, extent = {{-20, -20}, {20, 20}})));
+    Placement(transformation(origin = {-138, 50}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-120, 40}, extent = {{-20, -20}, {20, 20}})));
   Modelica.Blocks.Interfaces.RealInput omegaPu "Frequency [pu]" annotation(
-    Placement(transformation(origin = {-138, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-102, -40}, extent = {{-20, -20}, {20, 20}})));
+    Placement(transformation(origin = {-138, 0}, extent = {{-20, -20}, {20, 20}}), iconTransformation(origin = {-120, -40}, extent = {{-20, -20}, {20, 20}})));
   Modelica.Blocks.Interfaces.RealOutput PMechPu "Mechanical turbine power [pu]" annotation(
     Placement(transformation(origin = {130, 50}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {120, 3.55271e-15}, extent = {{-20, -20}, {20, 20}})));
   Modelica.Blocks.Math.Feedback errPu annotation(
