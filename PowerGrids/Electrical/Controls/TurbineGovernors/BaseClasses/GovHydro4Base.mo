@@ -40,9 +40,9 @@ partial model GovHydro4Base "Base class for Governors of hydraulic turbines"
   parameter SI.PerUnit qStart "Turbine flow Start value" annotation(
     Dialog(group = "Initialization"));
   Modelica.Blocks.Interfaces.RealInput deltaOmegaPu annotation(
-    Placement(visible = true, transformation(origin = {-200, 50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-100, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-200, 50}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealInput PrefPu annotation(
-    Placement(visible = true, transformation(origin = {-140, 100}, extent = {{-20, -20}, {20, 20}}, rotation = -90), iconTransformation(origin = {-100, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-140, 100}, extent = {{-20, -20}, {20, 20}}, rotation = -90), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Modelica.Blocks.Interfaces.RealOutput PmPu annotation(
     Placement(visible = true, transformation(origin = {190, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {110, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Controls.DiscontinuousDeadBand deadbandDb1(uMax = db1 / 2) annotation(
