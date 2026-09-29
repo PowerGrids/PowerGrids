@@ -1,7 +1,7 @@
 within PowerGrids.Examples.IEEE14bus;
 model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating in steady-state"
   extends Modelica.Icons.Example;
-  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true)  annotation(
+  inner PowerGrids.Electrical.System systemPowerGrids(initOpt = PowerGrids.Types.Choices.InitializationOption.globalSteadyStateFixedPowerFlow, computePF = false, showDataOnDiagramsPu = false, showDataOnDiagramsSI = true, phaseInRadOnDiagramsSI = true)  annotation(
     Placement(transformation(origin = {-170, 90}, extent = {{-10, -10}, {10, 10}})));
 
 // Auxiliary variables
@@ -29,8 +29,10 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
                         + Load14.port.P;
 
 // Buses
-  PowerGrids.Electrical.Buses.Bus bus1(
-    UNom = 69e3
+  PowerGrids.Electrical.Buses.ReferenceBus bus1(
+    UNom = 69e3,
+    SNom = 100e6,
+    UStart = 69e3*1.0598
   ) annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.Buses.Bus bus2(
@@ -482,7 +484,6 @@ model IEEE14busStaticNetwork "Dynamic model of the IEEE 14-bus system, operating
   PowerGrids.Examples.IEEE14bus.ControlledGeneratorIEEE GEN1(
     SNom = 1211e6,
     UNom = 24e3,
-    isRefNode = true,
     GEN(
       DPu = 0.0,
       H = 5.4,

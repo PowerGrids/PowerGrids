@@ -70,7 +70,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
     final QStart = QStartB,
     final portVariablesPhases = portVariablesPhases) "AC port - terminalAC_b";
 
-  Types.ComplexPower Sbal = portA.S + portB.S if computePowerBalance "Complex power balance";
+  Types.ComplexPower Sbal = -(portA.S + portB.S) if computePowerBalance "Complex power balance";
 
   outer Electrical.System systemPowerGrids "Reference to system object";
   annotation(

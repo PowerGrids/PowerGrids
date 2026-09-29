@@ -15,11 +15,17 @@ model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus
   Electrical.Controls.ExcitationSystems.VRProportional AVR(Ka = 20, VrMax = 5, VrMin = -5) annotation(
     Placement(visible = true, transformation(origin = {-70, -10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.RealExpression VrefPuDef(y = 1) annotation(
-    Placement(transformation(origin = {-100, -16}, extent = {{-10, -10}, {10, 10}})));
+    Placement(transformation(origin = {-140, -20}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Sources.RealExpression PmPu(y = 0) annotation(
     Placement(transformation(origin = {-70, -32}, extent = {{-10, -10}, {10, 10}})));
   Modelica.Blocks.Interfaces.RealOutput omega annotation(
     Placement(transformation(origin = {10, -26}, extent = {{-10, -10}, {10, 10}}), iconTransformation(origin = {60, -10}, extent = {{-10, -10}, {10, 10}})));
+  Controls.FreeOffset VrefPu(use_u = true)  annotation(
+    Placement(transformation(origin = {-110, -20}, extent = {{-10, -10}, {10, 10}})));
+
+initial equation
+  GEN.VPu = GEN.UStart/GEN.UNom;
+
 equation
   connect(AVR.VcPu, GEN.VPu) annotation(
     Line(points = {{-80, -4}, {-172, -4}, {-172, 70}, {40, 70}, {40, -11}, {-20, -11}}, color = {0, 0, 127}));
@@ -31,8 +37,10 @@ equation
     Line(points = {{-59, -32}, {-50, -32}, {-50, -16}, {-32, -16}}, color = {0, 0, 127}));
   connect(GEN.terminalAC, terminalAC) annotation(
     Line(points = {{-26, -18}, {-26, -40}, {48, -40}, {48, 80}, {0, 80}, {0, 100}}));
-  connect(VrefPuDef.y, AVR.VrefPu) annotation(
-    Line(points = {{-89, -16}, {-80, -16}}, color = {0, 0, 127}));
+  connect(VrefPu.y, AVR.VrefPu) annotation(
+    Line(points = {{-98, -20}, {-90, -20}, {-90, -16}, {-80, -16}}, color = {0, 0, 127}));
+  connect(VrefPuDef.y, VrefPu.u) annotation(
+    Line(points = {{-128, -20}, {-120, -20}}, color = {0, 0, 127}));
   annotation(
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}, grid = {0.5, 0.5})));
 end SynchronousCondenser;

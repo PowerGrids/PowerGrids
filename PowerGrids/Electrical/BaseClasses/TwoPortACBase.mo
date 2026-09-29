@@ -21,8 +21,8 @@ partial model TwoPortACBase "Base class for two-port AC components"
   Types.ComplexVoltage vPF_b "Phase-to-ground voltage phasor of embedded power flow model - portB";
   Types.ComplexCurrent iPF_b "Line current phasor of embedded power flow model - PortB";
 
-  Types.ComplexPower Sbal = portA.S + portB.S if computePowerBalance "Complex power balance";
   outer Electrical.System systemPowerGrids "Reference to system object";
+
 initial equation
   if computePF then
     // set values of initialization parameters based on EPF solution
