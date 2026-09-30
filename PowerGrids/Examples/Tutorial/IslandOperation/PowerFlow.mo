@@ -2,7 +2,7 @@ within PowerGrids.Examples.Tutorial.IslandOperation;
 
 model PowerFlow
   extends Modelica.Icons.Example;
-  PowerGrids.Electrical.PowerFlow.PVBus GEN2(P = -4.5088e+08, SNom = 5e+08, U = 20825, UNom = 21000) annotation(
+  PowerGrids.Electrical.PowerFlow.PVBus GEN2(P = -4.5e8, SNom = 5e+08, UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {122, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.PQBus GRIDL1(P = 4.5e+08, Q = 200e6, SNom = 5e+08, UNom = 380000) annotation(
     Placement(visible = true, transformation(origin = {-10, -46}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
