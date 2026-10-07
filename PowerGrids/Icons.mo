@@ -110,7 +110,10 @@ annotation(
           origin={0, -145},
           textColor={238, 46, 47},
           extent={{-76, 15}, {76, -15}},
-          textString=DynamicSelect("P", if showDataOnDiagramsPu then String(PPuIcon, format = "6.3f")
+          textString=DynamicSelect("P", if showDataOnDiagramsPu then 
+                                          if systemPowerGrids.useUniqueBaseOnDiagrams
+                                          then String(PIcon/systemPowerGrids.uniqueBasePQ, format = "6.3f")
+                                          else String(PPuIcon, format = "6.3f")
                                         else if showDataOnDiagramsSI then String((PIcon/1000000), format = "9.3f")
                                         else "")),
         Text(
@@ -118,53 +121,59 @@ annotation(
           origin={0, -179},
           textColor={217, 67, 180},
           extent={{-76, 15}, {76, -15}},
-          textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(QPuIcon, format = "6.3f")
+          textString = DynamicSelect("Q", if showDataOnDiagramsPu then 
+                                            if systemPowerGrids.useUniqueBaseOnDiagrams
+                                            then String(QIcon/systemPowerGrids.uniqueBasePQ, format = "6.3f")
+                                            else String(QPuIcon, format = "6.3f")
                                           else if showDataOnDiagramsSI then String((QIcon/1000000), format = "9.3f")
                                           else ""))}));
   end OnePortDynamicText;
 
-  model OnePortDynamicTextBus
-    outer Electrical.System systemPowerGrids "Reference to system object";
-    parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
-    parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
-    parameter Boolean phaseInRadOnDiagramsSI = systemPowerGrids.phaseInRadOnDiagramsSI "=true, phases are shown in radians on the diagrams" annotation(
-      Dialog(group = "Visualization"));
-    input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
-    input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
-    input Types.Angle UPhaseIcon "Phase of voltage across the port";
+model OnePortDynamicTextBus
+  outer Electrical.System systemPowerGrids "Reference to system object";
+  parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
+  parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
+  parameter Boolean phaseInRadOnDiagrams = systemPowerGrids.phaseInRadOnDiagrams "=true, phases are shown in radians on the diagrams" annotation(
+    Dialog(group = "Visualization"));
+  input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
+  input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
+  input Types.Angle UPhaseIcon "Phase of voltage across the port";
 
-  annotation(
-      Icon(graphics={
-         Text(
-          visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-          origin={-180, 17},
-          extent={{-76,15},{76,-15}},
-          textColor = {28,108,200},
-          horizontalAlignment = TextAlignment.Right,
-          textString = DynamicSelect("V", if showDataOnDiagramsPu then String(VPuIcon, format = "6.3f")
-                                          elseif showDataOnDiagramsSI then String(UIcon/1e3, format = "9.3f")
-                                          else "")),
-         Text(
-          visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
-          origin={-180, -17},
-          extent={{-76,15},{76,-15}},
-          horizontalAlignment = TextAlignment.Right,
-          textColor = {0,0,255},
-          textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
-                                              then 
-                                                if phaseInRadOnDiagramsSI
-                                                  then String(UPhaseIcon, format = "4.3f")+" rad"
-                                                  else String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
-                                            elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
-                                              then "----"
-                                            else ""))}));
-  end OnePortDynamicTextBus;
+annotation(
+    Icon(graphics={
+       Text(
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+        origin={-180, 17},
+        extent={{-76,15},{76,-15}},
+        textColor = {28,108,200},
+        horizontalAlignment = TextAlignment.Right,
+        textString = DynamicSelect("V", if showDataOnDiagramsPu then 
+                                          if systemPowerGrids.useUniqueBaseOnDiagrams
+                                          then String(UIcon/systemPowerGrids.uniqueBaseV, format = "6.3f")
+                                          else String(VPuIcon, format = "6.3f")
+                                        elseif showDataOnDiagramsSI then String(UIcon/1e3, format = "9.3f")
+                                        else "")),
+       Text(
+        visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
+        origin={-180, -17},
+        extent={{-76,15},{76,-15}},
+        horizontalAlignment = TextAlignment.Right,
+        textColor = {0,0,255},
+        textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
+                                            then 
+                                              if phaseInRadOnDiagrams
+                                                then String(UPhaseIcon, format = "4.3f")+" rad"
+                                                else String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
+                                          elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
+                                            then "----"
+                                          else ""))}));
+end OnePortDynamicTextBus;
 
 model OnePortDynamicTextBusPQ
   outer Electrical.System systemPowerGrids "Reference to system object";
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean phaseInRadOnDiagramsSI = systemPowerGrids.phaseInRadOnDiagramsSI "=true, phases are shown in radians on the diagrams" annotation(
+  parameter Boolean phaseInRadOnDiagrams = systemPowerGrids.phaseInRadOnDiagrams "=true, phases are shown in radians on the diagrams" annotation(
     Dialog(group = "Visualization"));
   input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
   input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
@@ -182,7 +191,10 @@ annotation(
         textColor={238, 46, 47},
         horizontalAlignment = TextAlignment.Right,
         extent={{-76, 15}, {76, -15}},
-        textString=DynamicSelect("P", if showDataOnDiagramsPu then String(PPuIcon, format = "6.3f")
+        textString=DynamicSelect("P", if showDataOnDiagramsPu then 
+                                        if systemPowerGrids.useUniqueBaseOnDiagrams
+                                        then String(PIcon/systemPowerGrids.uniqueBasePQ, format = "6.3f")
+                                        else String(PPuIcon, format = "6.3f")
                                       else if showDataOnDiagramsSI then String((PIcon/1000000), format = "9.3f")
                                       else "")),
       Text(
@@ -191,7 +203,10 @@ annotation(
         textColor={217, 67, 180},
         horizontalAlignment = TextAlignment.Right,
         extent={{-76, 15}, {76, -15}},
-        textString = DynamicSelect("Q", if showDataOnDiagramsPu then String(QPuIcon, format = "6.3f")
+        textString = DynamicSelect("Q", if showDataOnDiagramsPu then 
+                                          if systemPowerGrids.useUniqueBaseOnDiagrams
+                                          then String(QIcon/systemPowerGrids.uniqueBasePQ, format = "6.3f")
+                                          else String(QPuIcon, format = "6.3f")
                                         else if showDataOnDiagramsSI then String((QIcon/1000000), format = "9.3f")
                                         else "")),
       Text(
@@ -200,7 +215,10 @@ annotation(
         extent={{-76,15},{76,-15}},
         horizontalAlignment = TextAlignment.Right,
         textColor = {28,108,200},
-        textString = DynamicSelect("V", if showDataOnDiagramsPu then String(VPuIcon, format = "6.3f")
+        textString = DynamicSelect("V", if showDataOnDiagramsPu then
+                                          if systemPowerGrids.useUniqueBaseOnDiagrams
+                                          then String(UIcon/systemPowerGrids.uniqueBaseV, format = "6.3f")
+                                          else String(VPuIcon, format = "6.3f")
                                         elseif showDataOnDiagramsSI then String(UIcon/1e3, format = "9.3f")
                                         else "")),
        Text(
@@ -211,7 +229,7 @@ annotation(
         textColor = {0,0,255},
         textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
                                             then 
-                                              if phaseInRadOnDiagramsSI
+                                              if phaseInRadOnDiagrams
                                                 then String(UPhaseIcon, format = "4.3f")+" rad"
                                                 else String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
                                           elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)

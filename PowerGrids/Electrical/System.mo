@@ -22,16 +22,22 @@ model System "System object"
     Dialog(group = "Initialization"));
   parameter Boolean showDataOnDiagramsPu = true "=true, P,Q,V and phase are shown on the diagrams in per-unit (overrides the SI format)"  annotation(
     Dialog(group = "Visualization", enable = not showDataOnDiagramsSI), choices(checkBox = true));
+  parameter Boolean useUniqueBaseOnDiagrams = false "=true, if a unique base is used for the P,Q,V visualization on the diagrams" annotation(
+    Dialog(group = "Visualization", enable = showDataOnDiagramsPu), choices(checkBox = true));
+  parameter Types.Voltage uniqueBaseV = 1e3 "unique base for voltages visualization on the diagrams" annotation(
+    Dialog(group = "Visualization", enable = showDataOnDiagramsPu and useUniqueBaseOnDiagrams));
+  parameter Types.ApparentPower uniqueBasePQ = 1e6 "unique base for power visualization on the diagrams" annotation(
+    Dialog(group = "Visualization", enable = showDataOnDiagramsPu and useUniqueBaseOnDiagrams));
   parameter Boolean showDataOnDiagramsSI = false "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
     Dialog(group = "Visualization", enable = not showDataOnDiagramsPu), choices(checkBox = true));
-  parameter Boolean phaseInRadOnDiagramsSI = false "=true, phases are shown in radians on the diagrams" annotation(
-    Dialog(group = "Visualization", enable = showDataOnDiagramsSI), choices(checkBox = true));
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads work as fixed impedances below their VPuThr voltage threshold" annotation(
     Evaluate = true);
   parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes" annotation(
-    Evaluate = true, Dialog(group = "Visualization"));
+    Evaluate = true, Dialog(group = "Visualization"), choices(checkBox = true));
+  parameter Boolean phaseInRadOnDiagrams = false "=true, phases are shown in radians on the diagrams" annotation(
+    Dialog(group = "Visualization", enable = portVariablesPhases), choices(checkBox = true));
   parameter Boolean computePowerBalance = true "Compute net balance of complex power entering two-port components" annotation(
-    Dialog(group = "Visualization"));
+    Dialog(group = "Visualization"), choices(checkBox = true));
 
   final parameter SI.AngularVelocity omegaNom = fNom*2*Modelica.Constants.pi "Nominal system angular frequency";
 
