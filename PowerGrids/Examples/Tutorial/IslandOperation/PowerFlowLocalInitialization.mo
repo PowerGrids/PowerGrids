@@ -18,7 +18,7 @@ model PowerFlowLocalInitialization
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
   PowerGrids.Electrical.PowerFlow.TransformerFixedRatioPF TGEN2(RccPu = 0.15e-2, SNom = 5e+08, UNomA = 21000, UNomB = 419000, XccPu = 16e-2, rFixed = 419 / 21) annotation(
     Placement(visible = true, transformation(origin = {70, 0}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
-  inner Electrical.System systemPowerGrids(showDataOnDiagramsPu = false, showDataOnDiagramsSI = true, phaseInRadOnDiagramsSI = false)  annotation(
+  inner Electrical.System systemPowerGrids(showDataOnDiagramsPu = false, showDataOnDiagramsSI = true, phaseInRadOnDiagrams = false)  annotation(
     Placement(visible = true, transformation(origin = {130, 70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   PowerGrids.Electrical.PowerFlow.BusPF NTLV2(UNom = 21000) annotation(
     Placement(visible = true, transformation(origin = {100, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));

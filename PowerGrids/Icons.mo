@@ -133,7 +133,7 @@ model OnePortDynamicTextBus
   outer Electrical.System systemPowerGrids "Reference to system object";
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean phaseInRadOnDiagramsSI = systemPowerGrids.phaseInRadOnDiagramsSI "=true, phases are shown in radians on the diagrams" annotation(
+  parameter Boolean phaseInRadOnDiagrams = systemPowerGrids.phaseInRadOnDiagrams "=true, phases are shown in radians on the diagrams" annotation(
     Dialog(group = "Visualization"));
   input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
   input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
@@ -161,7 +161,7 @@ annotation(
         textColor = {0,0,255},
         textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
                                             then 
-                                              if phaseInRadOnDiagramsSI
+                                              if phaseInRadOnDiagrams
                                                 then String(UPhaseIcon, format = "4.3f")+" rad"
                                                 else String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
                                           elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
@@ -173,7 +173,7 @@ model OnePortDynamicTextBusPQ
   outer Electrical.System systemPowerGrids "Reference to system object";
   parameter Boolean showDataOnDiagramsPu = systemPowerGrids.showDataOnDiagramsPu "=true, P,Q,V and phase are shown on the diagrams in per-unit (it overrides the SI format)" annotation(Dialog(tab = "Visualization"));
   parameter Boolean showDataOnDiagramsSI = systemPowerGrids.showDataOnDiagramsSI "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(Dialog(tab = "Visualization"));
-  parameter Boolean phaseInRadOnDiagramsSI = systemPowerGrids.phaseInRadOnDiagramsSI "=true, phases are shown in radians on the diagrams" annotation(
+  parameter Boolean phaseInRadOnDiagrams = systemPowerGrids.phaseInRadOnDiagrams "=true, phases are shown in radians on the diagrams" annotation(
     Dialog(group = "Visualization"));
   input SI.PerUnit VPuIcon "Absolute value of voltage across the port in p.u. (base VBase)";
   input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
@@ -229,7 +229,7 @@ annotation(
         textColor = {0,0,255},
         textString = DynamicSelect("Uph", if ((showDataOnDiagramsPu or showDataOnDiagramsSI) and systemPowerGrids.portVariablesPhases)
                                             then 
-                                              if phaseInRadOnDiagramsSI
+                                              if phaseInRadOnDiagrams
                                                 then String(UPhaseIcon, format = "4.3f")+" rad"
                                                 else String(UPhaseIcon*180/3.14159265359, format = "4.1f")+"°"
                                           elseif ((showDataOnDiagramsPu or showDataOnDiagramsSI) and not systemPowerGrids.portVariablesPhases)
