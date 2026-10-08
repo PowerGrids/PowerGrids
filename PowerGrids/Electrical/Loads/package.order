@@ -1,4 +1,5 @@
 LoadPQVoltageDependence
+LoadPQVoltageDependenceWithBreaker
 LoadPQVoltageDependenceInputs
 LoadImpedancePQ
 LoadImpedancePQInputs

@@ -12,8 +12,8 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
     redeclare PowerGrids.Electrical.PowerFlow.PQBus componentPF(
       SNom = SNom,
       UNom = UNom,
-      P = PRefConst,
-      Q = QRefConst));
+      P = if breakerStatusStartPF then PRefConst else 0,
+      Q = if breakerStatusStartPF then QRefConst else 0));
 
   parameter Boolean lowVoltageAsImpedance = systemPowerGrids.loadLowVoltageAsImpedance "true, if the load shall work as a fixed-impedance at low-voltage condition" annotation(
     Evaluate = true);
@@ -27,6 +27,9 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   Types.ActivePower QRef(nominal = SNom) = QRefConst "Reactive power at reference voltage, the default binding can be changed when instantiating";
   final parameter Types.PerUnit PRefConstPu = PRefConst/SNom "Constant active power entering the load at reference voltage in pu";
   final parameter Types.PerUnit QRefConstPu = QRefConst/SNom "Constant reactive power entering the load at reference voltage in pu";
+
+protected
+  parameter Boolean breakerStatusStartPF = true "breaker initial status for the EPF (for extensions which implements breakers) - true means breaker closed";
 
 equation
   if port.VPu > VPuThr or not lowVoltageAsImpedance then

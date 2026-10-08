@@ -3,6 +3,7 @@ OneBusOneLoad
 OneBusTransmissionLineOneLoad
 OneBusOneVariableLoad
 OneBusVariableVoltageOneLoad
+OneBusVariableVoltageOneLoadBreaker
 OneBusTransmissionLineShuntOneLoad
 TwoBusesResistiveTransmissionLine
 TwoBusesInductiveTransmissionLine
