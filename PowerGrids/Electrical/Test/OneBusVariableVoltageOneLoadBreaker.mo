@@ -28,7 +28,13 @@ equation
   annotation(
     __OpenModelica_commandLineOptions = "--daeMode --tearingMethod=minimalTearing",
     experiment(StopTime = 3.0, Interval = 0.01),
-  Diagram(coordinateSystem(extent = {{-60, 60}, {60, -20}})));
+    Documentation(info = "<html><body>
+<p>This example is used to test the model <a href=\"modelica://PowerGrids.Electrical.Loads.LoadPQVoltageDependenceWithBreaker\">LoadPQVoltageDependenceWithBreaker</a>.</p>
+<p>The tested scenario is the following:</p>
+<ul>
+<li>The <code>Load1</code> consumption is of 200 MW and 100 MVAR, its breaker starts closed, it is open at time=1s and then closed again at time=2s.</li>
+<li>The <code>Load2</code> consumption is of 100 MW and 50 MVAR, its breaker starts open, it is closed at time=1s and then open again at time=2s.</li></body>
+ </html>"));
 
 
 end OneBusVariableVoltageOneLoadBreaker;
