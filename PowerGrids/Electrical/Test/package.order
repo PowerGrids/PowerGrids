@@ -3,7 +3,6 @@ OneBusOneLoad
 OneBusTransmissionLineOneLoad
 OneBusOneVariableLoad
 OneBusVariableVoltageOneLoad
-OneBusVariableVoltageOneLoadBreaker
 OneBusTransmissionLineShuntOneLoad
 TwoBusesResistiveTransmissionLine
 TwoBusesInductiveTransmissionLine
@@ -40,3 +39,4 @@ SynchronousMachine4WindingsPF
 TestControlledSynchronousMachine4WindingsPF
 TestOpenLoopSynchronousMachine4WindingsPF
 TestPropControlledSynchronousMachine4WindingsPF
+OneBusFourLoadsWithBreaker
