@@ -29,7 +29,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
   final parameter Types.PerUnit QRefConstPu = QRefConst/SNom "Constant reactive power entering the load at reference voltage in pu";
 
 protected
-  parameter Boolean breakerStatusStartPF = true "breaker initial status for the EPF (for extensions which implements breakers) - true means breaker closed";
+  parameter Boolean breakerStatusStartPF = true "breaker initial status for the EPF (to be set by the extensions which implements breakers) - true means breaker closed";
 
 equation
   if port.VPu > VPuThr or not lowVoltageAsImpedance then
