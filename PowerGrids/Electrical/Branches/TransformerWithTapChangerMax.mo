@@ -1,5 +1,6 @@
 within PowerGrids.Electrical.Branches;
 model TransformerWithTapChangerMax
+  extends PowerGrids.Icons.Transformer_TapChanger;
   extends PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterCommonVI(
     VNomA = portA.VNom,
     VNomB = portB.VNom,
