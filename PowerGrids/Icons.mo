@@ -7,25 +7,29 @@ package Icons "Icons for the PowerGrids library"
     extends OnePortDynamicTextBus;
 
   annotation(
-      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Bus;
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
+  end Bus;
 
   model BusPQ
     extends OnePortDynamicTextBusPQ;
 
   annotation(
-      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end BusPQ;
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
+  end BusPQ;
 
   model Line
   equation
 
   annotation(
-      Icon(graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-59, 11}, {61, -11}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -29}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Line;
+      Icon(graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-59, 11}, {61, -11}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -29}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
+  end Line;
 
   model Transformer
   equation
 
   annotation(
-      Icon(graphics = {Ellipse(origin = {-15, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {25, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}));end Transformer;
+      Icon(graphics = {Ellipse(origin = {-15, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {25, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}));
+  end Transformer;
 
   model Load
   extends OnePortDynamicText;
