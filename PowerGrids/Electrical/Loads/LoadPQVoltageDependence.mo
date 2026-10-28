@@ -30,7 +30,7 @@ model LoadPQVoltageDependence "Load model with voltage dependent P and Q"
 
 protected
   parameter Boolean breakerStatusStartPF = true "breaker initial status for the EPF (to be set by the extensions which implements breakers) - true means breaker closed";
-
+public
 equation
   if port.VPu > VPuThr or not lowVoltageAsImpedance then
     port.P = PRef*(port.U/URef)^alpha;
@@ -39,8 +39,8 @@ equation
     port.v = port.i/CM.conj(Complex(PRef*(UNom*VPuThr/URef)^alpha, QRef*(UNom*VPuThr/URef)^beta)/(UNom*VPuThr)^2);
   end if;
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1})),
-    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Text(origin = {60, -60}, extent = {{-20, 20}, {48, -40}}, textString = "PQ")}),
+    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics),
     Documentation(info = "<html><head></head><body><p>Model of a PQ load with voltage dependence.</p>
 <p><code>port.P = PRef*(port.U/URef)^alpha;</code> <br> <code>port.Q = QRef*(port.U/URef)^beta</code>.</p>
 <p>By default <br><br>

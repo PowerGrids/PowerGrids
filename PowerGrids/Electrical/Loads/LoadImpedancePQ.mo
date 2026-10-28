@@ -29,13 +29,13 @@ model LoadImpedancePQ "Load model with prescribed impedance specified by PRef an
 
 protected
   parameter Boolean breakerStatusStartPF = true "breaker initial status for the EPF (to be set by the extensions which implements breakers) - true means breaker closed";
-
+public
 equation
   i = Y*v;
 
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1})),
-    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Text(origin = {70, -70}, extent = {{-30, 30}, {30, -30}}, textString = "Z")}),
+    Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics),
     Documentation(info = "<html><head></head><body>
 <p>Model of a load with an iternal impedance whose value is specified by the current values of <code>PRef</code>, <code>QRef</code>, and <code>URef</code>.</p>
 <p>If the embedded PF is active, the PRefConst and QRefConst values are used as reference for the embedded PF computation, so they should be set accordingly to the initial values of PRef and QRef respectively.
