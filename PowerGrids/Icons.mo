@@ -25,6 +25,18 @@ package Icons "Icons for the PowerGrids library"
       Icon(graphics = {Ellipse(origin = {-15, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {25, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}));
   end Transformer;
 
+  model Transformer_TapChanger
+    extends Transformer;
+    annotation(
+      Icon(graphics = {Line(origin = {0, 1}, points = {{-20, -49}, {20, 49}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6)}));
+  end Transformer_TapChanger;
+
+  model Transformer_PhaseShifter
+    extends Transformer;
+    annotation(
+      Icon(graphics = {Line(origin = {0.00377134, 26.4605}, points = {{-20.0038, 25.5395}, {-0.00377134, -26.4605}, {19.9962, 25.5395}}), Line(origin = {0, 51.83}, points = {{-18, -1.82918}, {-14, 0.17082}, {-4, 2.17082}, {4, 2.17082}, {14, 0.17082}, {18, -1.82918}}, color = {0, 85, 255}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 4, smooth = Smooth.Bezier)}));
+  end Transformer_PhaseShifter;
+
   model Load
   extends OnePortDynamicText;
   annotation(
