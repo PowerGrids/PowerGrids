@@ -20,6 +20,8 @@ model System "System object"
     Dialog(group = "Initialization"));
   parameter InitializationOption initOpt = InitializationOption.globalSteadyStateFixedSetPoints "Initialization type option"  annotation(
     Dialog(group = "Initialization"));
+  parameter Boolean showDataOnDiagramsSI = false "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
+    Dialog(group = "Visualization", enable = not showDataOnDiagramsPu), choices(checkBox = true));
   parameter Boolean showDataOnDiagramsPu = true "=true, P,Q,V and phase are shown on the diagrams in per-unit (overrides the SI format)"  annotation(
     Dialog(group = "Visualization", enable = not showDataOnDiagramsSI), choices(checkBox = true));
   parameter Boolean useUniqueBaseOnDiagrams = false "=true, if a unique base is used for the P,Q,V visualization on the diagrams" annotation(
@@ -28,8 +30,6 @@ model System "System object"
     Dialog(group = "Visualization", enable = showDataOnDiagramsPu and useUniqueBaseOnDiagrams));
   parameter Types.ApparentPower uniqueBasePQ = 1e6 "unique base for power visualization on the diagrams" annotation(
     Dialog(group = "Visualization", enable = showDataOnDiagramsPu and useUniqueBaseOnDiagrams));
-  parameter Boolean showDataOnDiagramsSI = false "=true, P,Q,V and phase are shown on the diagrams in kV, MW, Mvar" annotation(
-    Dialog(group = "Visualization", enable = not showDataOnDiagramsPu), choices(checkBox = true));
   parameter Boolean loadLowVoltageAsImpedance = false "= true, all loads work as fixed impedances below their VPuThr voltage threshold" annotation(
     Evaluate = true);
   parameter Boolean portVariablesPhases = true "Compute voltage and current phases for monitoring purposes" annotation(
