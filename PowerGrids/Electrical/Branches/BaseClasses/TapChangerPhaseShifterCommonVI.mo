@@ -1,7 +1,6 @@
 within PowerGrids.Electrical.Branches.BaseClasses;
 partial model TapChangerPhaseShifterCommonVI "Common base class for tap-changer/phase shifter transformers"
   extends PowerGrids.Electrical.BaseComponents.PiNetworkVI;
-  extends Icons.Transformer;
 
   final constant Real NotUsed = Modelica.Constants.inf "Generic default value for not-used parameters";
   encapsulated type MonitoredQuantitySelection = enumeration(currentMagnitude "phase shifter monitors the port_b current magnitude",

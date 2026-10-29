@@ -1,7 +1,7 @@
 within PowerGrids.Examples.IEEE14bus;
 
 model ControlledGeneratorIEEE "Model of controlled generator for the IEEE 14-bus benchmark - synchronous machine with proportional regulations"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu,  isReferenceBus = isRefNode, isSlackBus = isRefNode and computePF);
+  extends Icons.ControlledMachine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu,  isReferenceBus = isRefNode, isSlackBus = isRefNode and computePF);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF = true,
     redeclare PowerGrids.Electrical.BaseComponents.OnePortACPFDummy componentPF(SNom = SNom, UNom = UNom));

@@ -5,31 +5,40 @@ package Icons "Icons for the PowerGrids library"
 
   model Bus
     extends OnePortDynamicTextBus;
-
   annotation(
-      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Bus;
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
+  end Bus;
 
   model BusPQ
     extends OnePortDynamicTextBusPQ;
-
   annotation(
-      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end BusPQ;
+      Icon(graphics = {Rectangle(origin = {0, 2}, fillPattern = FillPattern.Solid, extent = {{-100, 6}, {100, -10}}), Text(origin = {164, -1}, textColor = {0, 0, 255}, horizontalAlignment = TextAlignment.Left, extent = {{-56, 9}, {56, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
+  end BusPQ;
 
   model Line
-  equation
-
   annotation(
-      Icon(graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-59, 11}, {61, -11}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -29}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Line;
+      Icon(graphics = {Rectangle(origin = {-1, -1}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-59, 11}, {61, -11}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -29}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
+  end Line;
 
   model Transformer
-  equation
-
   annotation(
-      Icon(graphics = {Ellipse(origin = {-15, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {25, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}));end Transformer;
+      Icon(graphics = {Ellipse(origin = {-15, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {25, -7}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {-15, -7}, extent = {{-45, 47}, {35, -33}}), Ellipse(origin = {3, -9}, extent = {{57, 49}, {-23, -31}}), Line(origin = {-80, 0}, points = {{-20, 0}, {20, 0}, {20, 0}}), Line(origin = {80, 0}, points = {{-20, 0}, {20, 0}}), Text(origin = {0, -59}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}));
+  end Transformer;
+
+  model Transformer_TapChanger
+    extends Transformer;
+    annotation(
+      Icon(graphics = {Line(origin = {0, 1}, points = {{-20, -49}, {20, 49}}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 6)}));
+  end Transformer_TapChanger;
+
+  model Transformer_PhaseShifter
+    extends Transformer;
+    annotation(
+      Icon(graphics = {Line(origin = {0.00377134, 26.4605}, points = {{-20.0038, 25.5395}, {-0.00377134, -26.4605}, {19.9962, 25.5395}}), Line(origin = {0, 51.83}, points = {{-18, -1.82918}, {-14, 0.17082}, {-4, 2.17082}, {4, 2.17082}, {14, 0.17082}, {18, -1.82918}}, color = {0, 85, 255}, arrow = {Arrow.None, Arrow.Filled}, arrowSize = 4, smooth = Smooth.Bezier)}));
+  end Transformer_PhaseShifter;
 
   model Load
   extends OnePortDynamicText;
-
   annotation(
       Icon(graphics = {Line(origin = {0, -20}, points = {{0, 20}, {0, -20}, {0, -20}}), Polygon(origin = {0, -70}, fillPattern = FillPattern.Solid, points = {{-40, 30}, {40, 30}, {0, -30}, {-40, 30}}), Text(origin = {0, -116}, textColor = {0, 0, 255}, extent = {{-100, 10}, {100, -10}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));end Load;
 
@@ -46,7 +55,7 @@ package Icons "Icons for the PowerGrids library"
             else if isReferenceBus then " R"
             else "")),
         Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
-        Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
+        Ellipse(origin = {0, -50}, extent = {{-40, 41}, {40, -40}}),
         Line(origin = {0.00014, -50.5485},points =
           {{-20, 0},
           {-15.375,13.3},
@@ -70,12 +79,26 @@ package Icons "Icons for the PowerGrids library"
           {13.8,-16.6},
           {15.375,-13.3},
           {20,0}}, smooth = Smooth.Bezier)}, coordinateSystem(initialScale = 0.1)));
-
   end Machine;
+
+  model ControlledMachine
+    extends Machine;
+    Boolean isReferenceBus = false "=true, if component is also the reference bus";
+    Boolean isSlackBus = false "=true, if componenPF works as slack bus";
+  annotation(
+      Icon(graphics = {Rectangle(origin = {0, -50}, extent = {{-45, 45}, {45, -45}})}, coordinateSystem(initialScale = 0.1)));
+  end ControlledMachine;
+
+  model SynchronousCondenser
+    extends ControlledMachine;
+    Boolean isReferenceBus = false "=true, if component is also the reference bus";
+    Boolean isSlackBus = false "=true, if componenPF works as slack bus";
+  annotation(
+      Icon(graphics = {Text(origin = {-105, -65}, extent = {{-20, 20}, {48, -40}}, textString = "SC")}, coordinateSystem(initialScale = 0.1)));
+  end SynchronousCondenser;
 
   model CapacitorBank
     extends OnePortDynamicText;
-
     annotation(
       Icon(graphics = {Polygon(origin = {0, -70}, fillPattern = FillPattern.Solid, points = {{-40, 30}, {40, 30}, {0, -30}, {-40, 30}}), Rectangle(origin = {0, -14}, fillPattern = FillPattern.Solid, extent = {{-20, 2}, {20, -2}}), Rectangle(origin = {0, -26}, fillPattern = FillPattern.Solid, extent = {{-20, 2}, {20, -2}}), Line(origin = {0, -7}, points = {{0, 7}, {0, -7}}), Line(origin = {0, -34}, points = {{0, 8}, {0, -8}}), Text(origin = {0, -117}, textColor = {0, 0, 255}, extent = {{-100, 9}, {100, -9}}, textString = "%name")}, coordinateSystem(initialScale = 0.1)));
   end CapacitorBank;
@@ -103,7 +126,7 @@ package Icons "Icons for the PowerGrids library"
     input Types.PerUnit PPuIcon "Active power flowing into the port in p.u. (base SBase)";
     input Types.PerUnit QPuIcon "Reactive power flowing into the port in p.u. (base SBase)";
 
-annotation(
+  annotation(
       Icon(graphics={
         Text(
           visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
@@ -139,7 +162,7 @@ model OnePortDynamicTextBus
   input Types.Voltage UIcon "Port voltage absolute value (phase-to-phase)";
   input Types.Angle UPhaseIcon "Phase of voltage across the port";
 
-annotation(
+  annotation(
     Icon(graphics={
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
@@ -183,7 +206,7 @@ model OnePortDynamicTextBusPQ
   input Types.PerUnit PPuIcon "Active power flowing into the port in p.u. (base SBase)";
   input Types.PerUnit QPuIcon "Reactive power flowing into the port in p.u. (base SBase)";
 
-annotation(
+  annotation(
     Icon(graphics={
       Text(
         visible=(showDataOnDiagramsPu or showDataOnDiagramsSI),
@@ -236,4 +259,5 @@ annotation(
                                             then "----"
                                           else ""))}));
 end OnePortDynamicTextBusPQ;
+
 end Icons;

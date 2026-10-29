@@ -11,7 +11,7 @@ model ZLoad "Load with constant impedance"
 equation
   port.v = Z*port.i;
 annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {72, -60}, extent = {{-20, 20}, {20, -20}}, textString = "PQ")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}, initialScale = 0.1), graphics = {Text(origin = {70, -70}, extent = {{-30, 30}, {30, -30}}, textString = "Z")}),
     Documentation(info = "<html>
 <p>Load with constant impedance <code>Z</code>. The impedance is computed by default from the nominal values <code>PNom, QNom, UNom,</code> but can also be provided directly, by overriding the default binding for <code>Z</code>.</p>
 </body></html>"));

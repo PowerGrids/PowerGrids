@@ -1,7 +1,7 @@
 within PowerGrids.Examples.IEEE14bus;
 
 model SynchronousCondenser "Model of a synchronous condenser for the IEEE-14 bus system"
-  extends Icons.Machine(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
+  extends Icons.SynchronousCondenser(PIcon = port.P, QIcon = port.Q, PPuIcon = port.PPu, QPuIcon = port.QPu);
   extends PowerGrids.Electrical.BaseClasses.OnePortAC(
     final hasSubPF = true,
     redeclare PowerGrids.Electrical.BaseComponents.OnePortACPFDummy componentPF(SNom = SNom, UNom = UNom));

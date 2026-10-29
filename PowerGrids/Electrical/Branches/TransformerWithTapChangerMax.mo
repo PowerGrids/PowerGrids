@@ -1,5 +1,6 @@
 within PowerGrids.Electrical.Branches;
 model TransformerWithTapChangerMax
+  extends PowerGrids.Icons.Transformer_TapChanger;
   extends PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterCommonVI(
     VNomA = portA.VNom,
     VNomB = portB.VNom,
@@ -47,7 +48,7 @@ equation
       "pre() is required because k influences the triggering conditions
        of the state machine so it should be computed before the event takes place";
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1})),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Line(origin = {30, 60}, points = {{-8, 0}, {8, 0}}), Line(origin = {30, 52}, points = {{0, 8}, {0, -8}})}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}})),
   Documentation(info = "<html><head></head><body>This model implements a transformer with<span style=\"font-size: 12px;\">&nbsp;a tap changer which takes a maximum and stop phase-to-phase voltage magnitude limits, and tries to bring the magnitude of the phase-to-phase voltage at portB back to the stop limit when the maximum is reached.</span><div><br></div><div><div><span style=\"font-size: 12px;\">It extends two classes:</span></div><div><div style=\"font-size: 12px;\"><ul><li><a href=\"Modelica:///PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterCommon\">TapChangerPhaseShifterCommon</a>, wich implements the model of the transformer,</li></ul><ul><li><a href=\"Modelica:///PowerGrids.Electrical.Branches.BaseClasses.TapChangerPhaseShifterLogicMax\">TapChangerPhaseShifterLogicMax</a>, wich implements the logic that updates the position of the tap changer.</li></ul><div><br></div></div></div></div></body></html>"));
 end TransformerWithTapChangerMax;

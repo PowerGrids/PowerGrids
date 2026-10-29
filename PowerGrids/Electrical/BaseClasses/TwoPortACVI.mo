@@ -78,7 +78,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={-100,70},
-        extent={{-76,15},{76,-15}},
+        extent={{-56,15},{56,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if showDataOnDiagramsPu then 
                                           if systemPowerGrids.useUniqueBaseOnDiagrams
@@ -89,7 +89,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={-100,36},
-        extent={{-76,15},{76,-15}},
+        extent={{-56,15},{56,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if showDataOnDiagramsPu then
                                           if systemPowerGrids.useUniqueBaseOnDiagrams
@@ -100,7 +100,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={100,70},
-        extent={{-76,15},{76,-15}},
+        extent={{-56,15},{56,-15}},
         textColor = {238,46,47},
         textString = DynamicSelect("P", if showDataOnDiagramsPu then
                                           if systemPowerGrids.useUniqueBaseOnDiagrams
@@ -111,7 +111,7 @@ partial model TwoPortACVI "Base class for naked two-port AC components"
        Text(
         visible=showDataOnDiagramsPu or showDataOnDiagramsSI,
         origin={100, 36},
-        extent={{-76,15},{76,-15}},
+        extent={{-56,15},{56,-15}},
         textColor={217,67,180},
         textString = DynamicSelect("Q", if showDataOnDiagramsPu then
                                           if systemPowerGrids.useUniqueBaseOnDiagrams
