@@ -39,7 +39,7 @@ equation
     port.v = port.i/CM.conj(Complex(PRef*(UNom*VPuThr/URef)^alpha, QRef*(UNom*VPuThr/URef)^beta)/(UNom*VPuThr)^2);
   end if;
   annotation(
-    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Text(origin = {60, -60}, extent = {{-20, 20}, {48, -40}}, textString = "PQ")}),
+    Icon(coordinateSystem(grid = {0.1, 0.1}), graphics = {Text(origin = {75, -41}, extent = {{-29, 11}, {69, -25}}, textString = "α=%alpha", fontName = "sans-serif", horizontalAlignment = TextAlignment.Left), Text(origin = {70, -77}, extent = {{-26, 11}, {68, -27}}, textString = "β=%beta", fontName = "sans-serif", horizontalAlignment = TextAlignment.Left)}),
     Diagram(coordinateSystem(extent = {{-200, -100}, {200, 100}}), graphics),
     Documentation(info = "<html><head></head><body><p>Model of a PQ load with voltage dependence.</p>
 <p><code>port.P = PRef*(port.U/URef)^alpha;</code> <br> <code>port.Q = QRef*(port.U/URef)^beta</code>.</p>
