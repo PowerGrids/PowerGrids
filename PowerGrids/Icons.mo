@@ -55,7 +55,7 @@ package Icons "Icons for the PowerGrids library"
             else if isReferenceBus then " R"
             else "")),
         Rectangle(origin = {0, -50},fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid, extent = {{-50, 50}, {50, -50}}),
-        Ellipse(origin = {2, -51}, extent = {{-40, 41}, {40, -40}}),
+        Ellipse(origin = {0, -50}, extent = {{-40, 41}, {40, -40}}),
         Line(origin = {0.00014, -50.5485},points =
           {{-20, 0},
           {-15.375,13.3},
@@ -79,8 +79,23 @@ package Icons "Icons for the PowerGrids library"
           {13.8,-16.6},
           {15.375,-13.3},
           {20,0}}, smooth = Smooth.Bezier)}, coordinateSystem(initialScale = 0.1)));
-
   end Machine;
+
+  model ControlledMachine
+    extends Machine;
+    Boolean isReferenceBus = false "=true, if component is also the reference bus";
+    Boolean isSlackBus = false "=true, if componenPF works as slack bus";
+  annotation(
+      Icon(graphics = {Rectangle(origin = {0, -50}, extent = {{-45, 45}, {45, -45}})}, coordinateSystem(initialScale = 0.1)));
+  end ControlledMachine;
+
+  model SynchronousCondenser
+    extends ControlledMachine;
+    Boolean isReferenceBus = false "=true, if component is also the reference bus";
+    Boolean isSlackBus = false "=true, if componenPF works as slack bus";
+  annotation(
+      Icon(graphics = {Text(origin = {-105, -65}, extent = {{-20, 20}, {48, -40}}, textString = "SC")}, coordinateSystem(initialScale = 0.1)));
+  end SynchronousCondenser;
 
   model CapacitorBank
     extends OnePortDynamicText;
