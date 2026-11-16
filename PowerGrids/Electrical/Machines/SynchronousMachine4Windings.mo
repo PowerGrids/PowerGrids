@@ -74,6 +74,14 @@ initial equation
   // explicitly, given the internal parameters. The Modelica tool figures out automatically
   // how to solve them backwards, using symbolic and numerical techniques
 
+  // Assertions on parameters
+  // Tpq < Tpq0, Tpd < Tpd0
+  // Tppq < Tppq0, Tppd < Tppd0
+  // as indicated in Kundur, Table 1
+  assert(xdPu > xpdPu, "xdPu must be greater than xpdPu!");
+  assert(xqPu > xpqPu, "xqPu must be greater than xpqPu!");
+  assert(xpdPu > xppdPu, "xpdPu must be greater than xppdPu!");
+  assert(xpqPu > xppqPu, "xpqPu must be greater than xppqPu!");
 
   // Modelling assumption taken by Kundur
   LqPu = xlPu;
