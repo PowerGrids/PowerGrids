@@ -512,7 +512,7 @@ model IEEE14busStaticNetworkEPF
     SNom = 250e6,
     UNom = 18e3,
     GEN(
-      xpqPu = 0.31,
+      xpqPu = 0.346,
       Tpq0 = 8.4,
       DPu = 0.0,
       H = 2.748,
@@ -524,7 +524,7 @@ model IEEE14busStaticNetworkEPF
       xppdPu = 0.275,
       xdPu = 1.53,
       xlPu = 0.11,
-      xppqPu = 0.346,
+      xppqPu = 0.31,
       xqPu = 0.99,
       PNom = 242e6
     )
