@@ -60,35 +60,35 @@ initial algorithm
   end if;
 
 algorithm
-  when breakerStatus == BreakersState.AcBc
+  when pre(breakerStatus) == BreakersState.AcBc
        and not pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AcBo "AcBc to AcBo";
 
-  elsewhen breakerStatus == BreakersState.AcBc
+  elsewhen pre(breakerStatus) == BreakersState.AcBc
            and not pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AoBc "AcBc to AoBc";
 
-  elsewhen breakerStatus == BreakersState.AcBo
+  elsewhen pre(breakerStatus) == BreakersState.AcBo
            and not pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AoBo "AcBo to AoBo";
 
-  elsewhen breakerStatus == BreakersState.AoBc
+  elsewhen pre(breakerStatus) == BreakersState.AoBc
            and not pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AoBo "AoBc to AoBo";
 
-  elsewhen breakerStatus == BreakersState.AoBo
+  elsewhen pre(breakerStatus) == BreakersState.AoBo
            and pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AcBo "AoBo to AcBo";
 
-  elsewhen breakerStatus == BreakersState.AoBo
+  elsewhen pre(breakerStatus) == BreakersState.AoBo
            and pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AoBc "AoBo to AoBc";
 
-  elsewhen breakerStatus == BreakersState.AcBo
+  elsewhen pre(breakerStatus) == BreakersState.AcBo
            and pre(breakerStatusInternalB) then
     breakerStatus := BreakersState.AcBc "AcBo to AcBc";
 
-  elsewhen breakerStatus == BreakersState.AoBc
+  elsewhen pre(breakerStatus) == BreakersState.AoBc
            and pre(breakerStatusInternalA) then
     breakerStatus := BreakersState.AcBc "AoBc to AcBc";
   end when;

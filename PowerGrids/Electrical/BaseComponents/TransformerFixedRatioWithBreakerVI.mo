@@ -51,11 +51,11 @@ protected
   Modelica.Blocks.Interfaces.BooleanInput breakerStatusInInternal(start = breakerStatusStart, fixed = true) "breaker Status (port B)";
 
 algorithm
-  when breakerStatus == BreakersState.Bc
+  when pre(breakerStatus) == BreakersState.Bc
        and not pre(breakerStatusInInternal) then
     breakerStatus := BreakersState.Bo "Bc to Bo";
 
-  elsewhen breakerStatus == BreakersState.Bo
+  elsewhen pre(breakerStatus) == BreakersState.Bo
            and pre(breakerStatusInInternal) then
     breakerStatus := BreakersState.Bc "Bo to Bc";
 
