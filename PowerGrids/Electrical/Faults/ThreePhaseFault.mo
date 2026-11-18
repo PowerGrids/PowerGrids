@@ -24,6 +24,7 @@ model ThreePhaseFault
   discrete Types.ComplexAdmittance Y(re(start = 0, fixed = true), im(start = 0, fixed = true)) "Shunt admittance";
   Boolean fault(start = false, fixed = true) "The fault is active";
 
+// State machine to compute the fault variable
 algorithm
    when time >= startTime then
      fault := true;
@@ -32,8 +33,8 @@ algorithm
    when time >= stopTime then
      fault := false;
    end when;
+
 // State machine to compute the shunt admittance
-// State machine to compute the fault variable
 algorithm
    when pre(fault) then
      Y := 1/Complex(R, X);
